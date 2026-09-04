@@ -1,0 +1,11 @@
+/* Webgram Core quick view fallback styles. */
+.wgc-modal--quick-view .wgc-modal__dialog{width:min(920px,100%);padding:0;overflow:hidden}
+.wgc-quick-view{display:grid;grid-template-columns:1fr 1fr}@media(max-width:767px){.wgc-quick-view{grid-template-columns:1fr}}
+.wgc-quick-view__main img{width:100%;height:auto;display:block}
+.wgc-quick-view__thumbs{display:flex;gap:6px;padding:8px}.wgc-quick-view__thumbs button{width:56px;height:56px;padding:0;border:2px solid transparent;border-radius:6px;overflow:hidden;background:#f3f4f6;cursor:pointer}.wgc-quick-view__thumbs button.is-active{border-color:var(--wgc-color-primary,#a0181f)}.wgc-quick-view__thumbs img{width:100%;height:100%;object-fit:cover}
+.wgc-quick-view__summary{padding:28px;display:flex;flex-direction:column;gap:14px}
+.wgc-quick-view__title{margin:0;font-size:20px}.wgc-quick-view__title a{color:inherit;text-decoration:none}
+.wgc-quick-view__price{font-size:22px;font-weight:700}
+.wgc-quick-view__more{font-weight:600}
+.wgc-quick-view__loading,.wgc-quick-view__error{padding:40px;text-align:center}
+.wgc-quick-view-btn{cursor:pointer}

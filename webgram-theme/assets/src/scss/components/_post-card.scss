@@ -1,0 +1,16 @@
+@use "../abstracts/breakpoints" as *;
+@use "../abstracts/mixins" as *;
+.wg-posts { display: grid; gap: var(--wg-space-6);
+  @include up(md) { grid-template-columns: repeat(2, 1fr); }
+  @include up(lg) { @for $i from 1 through 5 { &--cols-#{$i} { grid-template-columns: repeat(#{$i}, 1fr); } } }
+  &--list { grid-template-columns: 1fr !important; }
+}
+.wg-post-card { display: flex; flex-direction: column; border: var(--wg-border-width) solid var(--wg-color-border); border-radius: var(--wg-card-radius); overflow: hidden; background: var(--wg-color-surface);
+  &__media { aspect-ratio: 16/10; overflow: hidden; img { width: 100%; height: 100%; object-fit: cover; } }
+  &__body { padding: var(--wg-space-5); }
+  &__meta { font-size: var(--wg-fs-xs); color: var(--wg-color-text-muted); margin-bottom: var(--wg-space-2); }
+  &__title { font-size: var(--wg-fs-lg); a { color: var(--wg-color-heading); } }
+  &__excerpt { color: var(--wg-color-text-muted); font-size: var(--wg-fs-sm); }
+}
+.wg-entry { &__meta { display: flex; gap: var(--wg-space-4); color: var(--wg-color-text-muted); font-size: var(--wg-fs-sm); margin-bottom: var(--wg-space-6); } &__media { margin: 0 0 var(--wg-space-8); img { border-radius: var(--wg-radius-lg); } } &--page .wg-entry__header { margin-bottom: var(--wg-space-6); } }
+.wg-comments { margin-top: var(--wg-space-12); }

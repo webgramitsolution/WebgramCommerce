@@ -1,0 +1,38 @@
+@use "../abstracts/breakpoints" as *;
+@use "../abstracts/mixins" as *;
+.wg-drawer { position: fixed; top: 0; bottom: 0; z-index: 1001; width: min(var(--wg-drawer-width, 360px), 88vw); background: var(--wg-color-surface); color: var(--wg-color-text); box-shadow: var(--wg-shadow-lg); display: flex; flex-direction: column; transform: translateX(-100%); transition: transform var(--wg-transition-base) var(--wg-ease), visibility 0s linear var(--wg-transition-base); visibility: hidden;
+  &--left { inset-inline-start: 0; }
+  &--right { inset-inline-end: 0; transform: translateX(100%); }
+  &[hidden] { display: flex; }
+  &.is-open { transform: none; visibility: visible; transition-delay: 0s; }
+  &__head { display: flex; align-items: center; justify-content: space-between; gap: var(--wg-space-3); padding: var(--wg-space-2) var(--wg-space-3) var(--wg-space-2) var(--wg-space-4); border-bottom: var(--wg-border-width) solid var(--wg-color-border); }
+  &__title { font-family: var(--wg-font-heading); font-weight: var(--wg-fw-heading); font-size: var(--wg-fs-lg); color: var(--wg-color-heading); }
+  &__tabs { display: flex; gap: var(--wg-space-4); }
+  &__tab { padding: 12px 0; border: 0; border-bottom: 2px solid transparent; background: transparent; color: var(--wg-color-text-muted); font-weight: var(--wg-fw-semibold); font-size: var(--wg-fs-sm); &.is-active { color: var(--wg-color-primary); border-color: var(--wg-color-primary); } }
+  &__search { padding: var(--wg-space-3) var(--wg-space-4) 0; }
+  &__body { flex: 1; overflow-y: auto; padding: var(--wg-space-2) var(--wg-space-4); }
+  &__pane { display: none; &.is-active { display: block; } }
+  &__foot { border-top: var(--wg-border-width) solid var(--wg-color-border); padding: var(--wg-space-3) var(--wg-space-4); padding-bottom: calc(var(--wg-space-3) + env(safe-area-inset-bottom)); }
+  &__links { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; a { display: flex; align-items: center; gap: 10px; padding: 8px 0; color: var(--wg-color-heading); font-weight: var(--wg-fw-medium); font-size: var(--wg-fs-sm); .wg-icon { color: var(--wg-color-primary); } } }
+  &__slots { display: flex; gap: var(--wg-space-4); margin-top: var(--wg-space-2); &:empty { display: none; } }
+}
+[dir="rtl"] .wg-drawer--left { transform: translateX(100%); }
+[dir="rtl"] .wg-drawer--right { transform: translateX(-100%); }
+[dir="rtl"] .wg-drawer.is-open { transform: none; }
+.wg-overlay { position: fixed; inset: 0; z-index: 1000; background: rgba(17, 24, 39, 0.45); opacity: 0; visibility: hidden; transition: opacity var(--wg-transition-base), visibility 0s linear var(--wg-transition-base);
+  &[hidden] { display: block; }
+  &.is-open { opacity: 1; visibility: visible; transition-delay: 0s; }
+}
+body.wg-drawer-open { overflow: hidden; }
+
+// Mobile accordion navigation (drawer)
+.wg-mobile-nav, .wg-mobile-cats { list-style: none; margin: 0; padding: 0;
+  li { position: relative; border-bottom: var(--wg-border-width) solid var(--wg-color-border); }
+  li li { border-bottom: 0; }
+  a { display: flex; align-items: center; gap: 10px; padding: 12px 40px 12px 0; color: var(--wg-color-heading); font-weight: var(--wg-fw-medium); font-size: var(--wg-fs-md); }
+  .wg-nav__icon { width: 18px; height: 18px; color: var(--wg-color-primary); }
+  .wg-nav__toggle { position: absolute; top: 4px; inset-inline-end: 0; width: 40px; height: 40px; border: 0; background: transparent; color: var(--wg-color-text-muted); display: inline-flex; align-items: center; justify-content: center; .wg-icon { transition: transform var(--wg-transition-fast); } &[aria-expanded="true"] .wg-icon { transform: rotate(180deg); } }
+  .wg-nav__sub { display: none; list-style: none; margin: 0; padding: 0 0 8px 16px; a { padding: 8px 40px 8px 0; font-weight: var(--wg-fw-regular); font-size: var(--wg-fs-sm); color: var(--wg-color-text); } }
+  li.is-open > .wg-nav__sub { display: block; }
+}
+.wg-mobile-cats { a { padding-block: 8px; } &__thumb { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex: none; background: var(--wg-color-bg-alt); display: inline-flex; align-items: center; justify-content: center; color: var(--wg-color-text-muted); } }

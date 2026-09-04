@@ -1,0 +1,8 @@
+@use "../abstracts/breakpoints" as *;
+@use "../abstracts/mixins" as *;
+.wg-empty { max-width: 560px; margin: var(--wg-space-16) auto; text-align: center;
+  &__code { font-family: var(--wg-font-heading); font-size: var(--wg-fs-4xl); font-weight: 800; color: var(--wg-color-border); margin: 0; line-height: 1; }
+  &__title { font-size: var(--wg-fs-2xl); }
+  &__text { color: var(--wg-color-text-muted); }
+  .wg-search { margin: var(--wg-space-6) 0; }
+}

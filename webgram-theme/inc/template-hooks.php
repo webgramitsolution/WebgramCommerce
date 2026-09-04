@@ -156,3 +156,17 @@ function webgram_force_rtl_attribute( string $output ): string {
 	}
 	return $output;
 }
+
+/** Without Core, the Bulk Order template falls back to the Social profiles WhatsApp link. */
+add_filter( 'webgram/bulk_order/whatsapp_url', 'webgram_bulk_order_whatsapp_fallback', 5 );
+function webgram_bulk_order_whatsapp_fallback( string $url ): string {
+	if ( '' !== $url ) {
+		return $url;
+	}
+	foreach ( (array) webgram_option( 'social_links' ) as $link ) {
+		if ( 'whatsapp' === ( $link['network'] ?? '' ) && ! empty( $link['url'] ) ) {
+			return (string) $link['url'];
+		}
+	}
+	return '';
+}

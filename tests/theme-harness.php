@@ -107,4 +107,12 @@ check('export round trip contains sections', $export['product']==='webgram' && i
 check('payment icon choices and svg exist', isset(webgram_payment_icon_choices()['upi']) && str_contains(webgram_payment_icon('visa',false),'<svg'));
 check('placeholder replacement', webgram_replace_placeholders('© {year} {site}')==='© '.gmdate('Y').' Demo Store');
 
+// 9. Product card helpers (Phase 2)
+function number_format_i18n($n,$d=0){ return number_format((float)$n,$d); } function _n($s,$p,$n,$d=null){ return $n===1?$s:$p; }
+check('savings percent', Webgram_WC_Product_Card::percent(900,499)===45 && Webgram_WC_Product_Card::percent(100,120)===0 && Webgram_WC_Product_Card::percent(0,10)===0);
+$pill = Webgram_WC_Product_Card::rating_pill(4.5, 12);
+check('rating pill markup', str_contains($pill,'class="wg-rating-pill"') && str_contains($pill,'4.5') && str_contains($pill,'(12)') && Webgram_WC_Product_Card::rating_pill(0,3)==='');
+$pill = Webgram_WC_Product_Card::rating_pill(4.53, 196, '#reviews-anchor', true);
+check('rating pill large variant with link and count text', str_starts_with($pill,'<a ') && str_contains($pill,'4.53') && str_contains($pill,'/5') && str_contains($pill,'196 reviews'));
+check('shop and product classes load without WooCommerce', class_exists('Webgram_WC_Shop') && class_exists('Webgram_WC_Product'));
 echo "\n".($fail?"$fail FAILURE(S)":"ALL PASSED")."\n"; exit($fail?1:0);

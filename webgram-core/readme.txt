@@ -4,7 +4,7 @@ Tags: woocommerce, reviews, wishlist, invoice, whatsapp, slider, reels, ai
 Requires at least: 6.4
 Tested up to: 6.6
 Requires PHP: 8.1
-Stable tag: 0.2.0
+Stable tag: 0.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,6 +17,12 @@ Webgram Core adds modular ecommerce features to WooCommerce: advanced reviews, w
 The plugin works with any theme and is designed for Webgram Theme.
 
 == Changelog ==
+
+= 0.3.0 =
+* WooCommerce Enhancements completed: Buy Now, recently viewed, specifications table with per-product rows, product video, contact seller cards, bulk inquiry (wg_inquiry) with admin list and email, track order shortcode and REST endpoint, product page delivery check, Webgram product data tab.
+* Badges module: rule engine (new, sale percent, best seller, low stock, sold out) plus custom badge per product.
+* Quick View module: modal with gallery, price, variations and add to cart.
+* Coupons module: product coupon box with copy to clipboard, cart offer progress with milestones and free shipping threshold.
 
 = 0.2.0 =
 * Site Tools module: HTML Blocks, Layouts with assignment conditions, promo popup, cookie notice, age verification, maintenance and coming soon modes, white label, custom JS, optional portfolio post type.

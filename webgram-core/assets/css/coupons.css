@@ -1,0 +1,10 @@
+/* Webgram Core coupons fallback styles. */
+.wgc-coupon-box{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:8px;background:#ecfdf5;border:1px dashed #86efac}
+.wgc-coupon-box__icon{color:#15803d;flex:none}.wgc-coupon-box__text{display:flex;flex-direction:column;flex:1;font-size:13px}.wgc-coupon-box__text strong{color:#111827}
+.wgc-coupon-box__code{display:inline-block;padding:1px 8px;border-radius:4px;background:#fff;border:1px solid #86efac;font-weight:700;letter-spacing:.05em}
+.wgc-coupon-box__copy{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid #15803d;border-radius:6px;background:#fff;color:#15803d;font-weight:600;cursor:pointer;font-size:13px}
+.wgc-toast{position:fixed;left:50%;bottom:32px;transform:translate(-50%,20px);padding:10px 18px;border-radius:999px;background:#111827;color:#fff;font-size:14px;opacity:0;transition:opacity .25s,transform .25s;z-index:100002}.wgc-toast.is-visible{opacity:1;transform:translate(-50%,0)}
+.wgc-progress{padding:14px;border-radius:12px;background:#f3f4f6;margin-bottom:16px}.wgc-progress__text{margin:0 0 12px;font-size:13px;font-weight:600}
+.wgc-progress__bar{position:relative;height:6px;border-radius:999px;background:#e5e7eb;margin:8px 8px 22px}.wgc-progress__fill{display:block;height:100%;border-radius:999px;background:var(--wgc-color-primary,#a0181f);transition:width .4s}
+.wgc-progress__node{position:absolute;top:50%;width:20px;height:20px;border-radius:50%;background:#fff;border:2px solid #d1d5db;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;color:#fff}.wgc-progress__node.is-done{background:var(--wgc-color-primary,#a0181f);border-color:var(--wgc-color-primary,#a0181f)}
+.wgc-progress__labels{display:flex;justify-content:space-between;font-size:11px;color:#6b7280}.wgc-progress__labels span{flex:1;text-align:right}.wgc-progress__labels span.is-done{color:#111827;font-weight:600}

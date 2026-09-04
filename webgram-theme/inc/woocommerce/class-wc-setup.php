@@ -46,12 +46,13 @@ final class Webgram_WC_Setup {
 	}
 
 	public static function columns(): int {
-		return max( 2, min( 6, (int) webgram_option( 'shop_columns' ) ) );
+		return max( 1, min( 6, (int) webgram_option_device( 'shop_columns', 'desktop' ) ) );
 	}
 
 	public static function related_args( array $args ): array {
-		$args['posts_per_page'] = 5;
-		$args['columns']        = 5;
+		$n                      = (int) webgram_option( 'product_related_count' );
+		$args['posts_per_page'] = $n;
+		$args['columns']        = min( 5, max( 1, $n ) );
 		return $args;
 	}
 
@@ -61,7 +62,9 @@ final class Webgram_WC_Setup {
 
 	public static function wrapper_end(): void {
 		echo '</main>';
-		if ( in_array( webgram_layout(), [ 'sidebar-left', 'sidebar-right' ], true ) && is_active_sidebar( 'sidebar-shop' ) ) {
+		if ( class_exists( 'Webgram_WC_Shop' ) && Webgram_WC_Shop::is_archive() ) {
+			Webgram_WC_Shop::filters();
+		} elseif ( in_array( webgram_layout(), [ 'sidebar-left', 'sidebar-right' ], true ) && is_active_sidebar( 'sidebar-shop' ) ) {
 			echo '<aside class="wg-sidebar wg-sidebar--shop">';
 			dynamic_sidebar( 'sidebar-shop' );
 			echo '</aside>';

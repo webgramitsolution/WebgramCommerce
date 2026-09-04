@@ -37,6 +37,16 @@ function webgram_enqueue_assets(): void {
 
 	wp_enqueue_script( 'webgram-main', WEBGRAM_URI . '/assets/js/main.js', [], webgram_asset_version( 'js/main.js' ), [ 'in_footer' => true, 'strategy' => 'defer' ] );
 
+	// Page specific bundles: shop archive and single product only load where they render.
+	if ( function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() || ( is_search() && 'product' === get_query_var( 'post_type' ) ) ) ) {
+		wp_enqueue_style( 'webgram-shop', WEBGRAM_URI . '/assets/css/shop' . $rtl . '.css', [ 'webgram-woocommerce' ], webgram_asset_version( 'css/shop.css' ) );
+		wp_enqueue_script( 'webgram-shop', WEBGRAM_URI . '/assets/js/shop.js', [ 'webgram-main' ], webgram_asset_version( 'js/shop.js' ), [ 'in_footer' => true, 'strategy' => 'defer' ] );
+	}
+	if ( function_exists( 'is_product' ) && is_product() ) {
+		wp_enqueue_style( 'webgram-product', WEBGRAM_URI . '/assets/css/product' . $rtl . '.css', [ 'webgram-woocommerce' ], webgram_asset_version( 'css/product.css' ) );
+		wp_enqueue_script( 'webgram-product', WEBGRAM_URI . '/assets/js/product.js', [ 'webgram-main' ], webgram_asset_version( 'js/product.js' ), [ 'in_footer' => true, 'strategy' => 'defer' ] );
+	}
+
 	wp_localize_script(
 		'webgram-main',
 		'webgramData',
@@ -57,6 +67,17 @@ function webgram_enqueue_assets(): void {
 					'live'     => (bool) webgram_option( 'search_live' ),
 					'minChars' => (int) webgram_option( 'search_min_chars' ),
 				],
+				'shop'       => [
+					'ajax'       => (bool) webgram_option( 'shop_ajax' ),
+					'pagination' => (string) webgram_option( 'shop_pagination' ),
+				],
+				'product'    => [
+					'autoSlide'    => (bool) webgram_option( 'product_auto_slide' ),
+					'interval'     => (int) webgram_option( 'product_auto_slide_interval' ),
+					'pauseOnHover' => (bool) webgram_option( 'product_auto_slide_pause' ),
+					'sticky'       => (bool) webgram_option( 'product_sticky_gallery' ),
+					'zoom'         => (bool) webgram_option( 'product_zoom' ),
+				],
 				'i18n'       => [
 					'menu'       => __( 'Menu', 'webgram' ),
 					'close'      => __( 'Close', 'webgram' ),
@@ -66,6 +87,12 @@ function webgram_enqueue_assets(): void {
 					'categories' => __( 'Categories', 'webgram' ),
 					'posts'      => __( 'Articles', 'webgram' ),
 					'searching'  => __( 'Searching', 'webgram' ),
+					'loadMore'   => __( 'Load more', 'webgram' ),
+					'loading'    => __( 'Loading', 'webgram' ),
+					'noMore'     => __( 'No more products', 'webgram' ),
+					'copied'     => __( 'Code copied', 'webgram' ),
+					'prev'       => __( 'Previous', 'webgram' ),
+					'next'       => __( 'Next', 'webgram' ),
 				],
 			]
 		)

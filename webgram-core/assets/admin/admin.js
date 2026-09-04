@@ -34,3 +34,26 @@
 		jQuery('.wgc-color-field').wpColorPicker();
 	}
 })();
+/* Simple table repeater used by the product panel (add / remove rows, reindex names). */
+(function () {
+	'use strict';
+	document.addEventListener('click', function (e) {
+		var add = e.target.closest('.wgc-row-add');
+		if (add) {
+			e.preventDefault();
+			var table = add.closest('.options_group').querySelector('[data-wgc-repeater] tbody');
+			var last = table.lastElementChild;
+			var row = last.cloneNode(true);
+			var idx = table.children.length;
+			row.querySelectorAll('input').forEach(function (i) { i.value = ''; i.name = i.name.replace(/\[\d+\]/, '[' + idx + ']'); });
+			table.appendChild(row);
+			return;
+		}
+		var rm = e.target.closest('.wgc-row-remove');
+		if (rm) {
+			e.preventDefault();
+			var tbody = rm.closest('tbody');
+			if (tbody.children.length > 1) rm.closest('tr').remove(); else rm.closest('tr').querySelectorAll('input').forEach(function (i) { i.value = ''; });
+		}
+	});
+})();

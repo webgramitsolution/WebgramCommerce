@@ -1,0 +1,18 @@
+@use "../abstracts/breakpoints" as *;
+@use "../abstracts/mixins" as *;
+// Section heading with the dot-line ornament on both sides (SVG-free: pseudo elements, never text characters).
+.wg-section-heading { display: flex; align-items: center; justify-content: center; gap: var(--wg-space-3); margin: 0 0 var(--wg-space-8); text-align: center;
+  &__title { margin: 0; font-size: var(--wg-fs-h2); }
+  &__ornament { display: inline-flex; align-items: center; gap: 6px; color: var(--wg-color-primary);
+    &::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+    &::after { content: ""; width: 36px; height: 2px; background: currentColor; border-radius: 2px; }
+    &--end { flex-direction: row-reverse; }
+  }
+  &--start { justify-content: flex-start; text-align: start; .wg-section-heading__ornament--end { display: none; } }
+  &__link { margin-inline-start: auto; font-weight: var(--wg-fw-semibold); font-size: var(--wg-fs-sm); display: inline-flex; align-items: center; gap: 4px; .wg-icon { width: 16px; height: 16px; } }
+}
+.wg-section-ornament > h2:first-child, .wg-section-ornament > section > h2:first-child, .related.products > h2, .up-sells.products > h2 { display: flex; align-items: center; justify-content: center; gap: var(--wg-space-3); text-align: center; margin-bottom: var(--wg-space-8); font-size: var(--wg-fs-h2);
+  &::before, &::after { content: ""; flex: none; width: 48px; height: 2px; background: var(--wg-color-primary); border-radius: 2px; box-shadow: -12px 0 0 -0px var(--wg-color-primary); }
+  &::before { background: linear-gradient(90deg, var(--wg-color-primary) 0 6px, transparent 6px 12px, var(--wg-color-primary) 12px); }
+  &::after { background: linear-gradient(90deg, var(--wg-color-primary) 0 36px, transparent 36px 42px, var(--wg-color-primary) 42px); }
+}

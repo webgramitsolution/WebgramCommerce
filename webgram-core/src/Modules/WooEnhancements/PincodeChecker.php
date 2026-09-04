@@ -15,6 +15,8 @@ final class PincodeChecker {
 	public function __construct( private Module $module ) {}
 
 	public function register(): void {
+		add_action( 'webgram/product/summary/pincode', [ $this, 'render_product_checker' ] );
+		add_shortcode( 'webgram_pincode_checker', [ $this, 'shortcode' ] );
 		( new class( $this ) extends AjaxHandler {
 			public function __construct( private PincodeChecker $checker ) {}
 			protected function action(): string {
@@ -34,6 +36,32 @@ final class PincodeChecker {
 				$this->success( $result );
 			}
 		} )->register();
+	}
+
+	/** Product page "Check delivery details" block, prefilled from the saved location. */
+	public function render_product_checker(): void {
+		global $product;
+		if ( ! Helpers::bool( $this->module->settings()->get( 'pincode_show_product', true ) ) ) {
+			return;
+		}
+		\webgram_core()->assets()->enqueue_module( 'woo_enhancements' );
+		$location = ( new Location( $this->module ) )->current();
+		\webgram_core()->view(
+			'woo-enhancements/pincode-checker',
+			[
+				'label'       => (string) $this->module->settings()->get( 'pincode_title', __( 'Check Delivery Details', 'webgram-core' ) ),
+				'field_label' => self::label( self::country() ),
+				'value'       => $location['pincode'],
+				'product_id'  => $product instanceof \WC_Product ? $product->get_id() : 0,
+				'country'     => self::country(),
+			]
+		);
+	}
+
+	public function shortcode(): string {
+		ob_start();
+		$this->render_product_checker();
+		return (string) ob_get_clean();
 	}
 
 	/** Country of the store, used for label and validation. */

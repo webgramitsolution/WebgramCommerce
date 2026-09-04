@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'WEBGRAM_VERSION', '0.2.0' );
+define( 'WEBGRAM_VERSION', '0.3.0' );
 define( 'WEBGRAM_DIR', get_template_directory() );
 define( 'WEBGRAM_URI', get_template_directory_uri() );
 define( 'WEBGRAM_MIN_CORE_VERSION', '0.1.0' );
@@ -50,6 +50,8 @@ $webgram_includes = [
 	'inc/woocommerce/class-wc-setup.php',
 	'inc/woocommerce/class-wc-product-card.php',
 	'inc/woocommerce/class-wc-ajax.php',
+	'inc/woocommerce/class-wc-shop.php',
+	'inc/woocommerce/class-wc-product.php',
 	'inc/admin/class-theme-dashboard.php',
 ];
 

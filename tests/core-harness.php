@@ -40,7 +40,7 @@ function get_theme_support($f){ return false; }
 function wp_register_style(...$a){} function wp_register_script(...$a){}
 function class_exists_stub(){}
 function register_activation_hook(...$a){} function register_deactivation_hook(...$a){}
-function add_shortcode(...$a){} function current_user_can($c){ return $GLOBALS['__cap'][$c] ?? false; } function esc_url($s){ return $s; } function esc_html__($s,$d=null){ return $s; } function admin_url($p=''){ return 'http://x/wp-admin/'.$p; }
+function add_shortcode(...$a){} function wp_strip_all_tags($s){ return strip_tags((string)$s); } function current_user_can($c){ return $GLOBALS['__cap'][$c] ?? false; } function esc_url($s){ return $s; } function esc_html__($s,$d=null){ return $s; } function admin_url($p=''){ return 'http://x/wp-admin/'.$p; }
 function sanitize_html_class($s){ return preg_replace('/[^A-Za-z0-9_-]/','',$s); } function wp_date($f,$t){ return gmdate($f,$t); } function translate_user_role($r){ return $r; }
 define('MINUTE_IN_SECONDS',60); define('WEBGRAM_CORE_TEST',true);
 
@@ -155,6 +155,48 @@ check('csv row values typed and duplicates last-wins', $parsed['rows'][0]['city'
 $nom = Webgram\Core\Modules\WooEnhancements\Geo\NominatimGeocoder::parse(['address'=>['postcode'=>'400001','suburb'=>'Fort','city'=>'Mumbai','state'=>'Maharashtra']]);
 check('nominatim parse picks city and postcode', $nom===['pincode'=>'400001','city'=>'Mumbai','state'=>'Maharashtra'] && Webgram\Core\Modules\WooEnhancements\Geo\NominatimGeocoder::parse(['address'=>[]])===null);
 check('location display label', Webgram\Core\Modules\WooEnhancements\Location::display_label(['city'=>'Mumbai','pincode'=>'400001'])==='Mumbai 400001' && Webgram\Core\Modules\WooEnhancements\Location::display_label(['pincode'=>'400001'])==='400001');
+
+// 13. Phase 2 pure logic: badges, specifications, contact seller, track order, coupons, recently viewed, bulk inquiry
+function wc_price($n){ return '₹'.number_format((float)$n,0); } function wp_unique_id($p=''){ return $p.'1'; } function _n($s,$p,$n,$d=null){ return $n===1?$s:$p; }
+use Webgram\Core\Modules\Badges\Module as Badges;
+$bs = ['new_days'=>14,'new_text'=>'New','sale_mode'=>'percent','sale_text'=>'Sale','best_threshold'=>50,'best_text'=>'Best seller','low_stock'=>3,'out_of_stock'=>true,'max_badges'=>2];
+$now = 1_700_000_000;
+$b = Badges::evaluate(['created_ts'=>$now-5*86400,'is_on_sale'=>true,'sale_percent'=>45,'total_sales'=>120,'stock'=>2,'managing_stock'=>true,'in_stock'=>true,'custom_text'=>''], $bs, $now);
+check('badges: sale percent then best seller, capped at 2', count($b)===2 && $b[0]['text']==='45% off' && $b[1]['type']==='best');
+$b = Badges::evaluate(['created_ts'=>$now-5*86400,'is_on_sale'=>false,'total_sales'=>0,'stock'=>2,'managing_stock'=>true,'in_stock'=>true,'custom_text'=>'Hot','custom_color'=>'#000'], $bs, $now);
+check('badges: custom first, then new, low stock dropped by cap', $b[0]['type']==='custom' && $b[1]['type']==='new' && count($b)===2);
+$b = Badges::evaluate(['in_stock'=>false,'is_on_sale'=>true,'sale_percent'=>50,'custom_text'=>''], $bs, $now);
+check('badges: sold out replaces everything', count($b)===1 && $b[0]['type']==='out');
+check('badges: theme sale mode prints no sale badge, old product no new badge', Badges::evaluate(['created_ts'=>$now-40*86400,'is_on_sale'=>true,'sale_percent'=>20,'in_stock'=>true,'total_sales'=>1], ['sale_mode'=>'theme']+$bs, $now)===[]);
+use Webgram\Core\Modules\WooEnhancements\Specifications;
+$rows = Specifications::merge([['label'=>'Weight','value'=>'1 kg'],['label'=>'Color','value'=>'Red']], [['label'=>'weight','value'=>'1.2 kg'],['label'=>'','value'=>'x'],['label'=>'Best offer','value'=>'1kg, 5kg']]);
+check('specifications merge: custom overrides attribute case-insensitively, empty dropped', count($rows)===3 && $rows[0]['value']==='1.2 kg' && $rows[2]['label']==='Best offer');
+check('specifications source filters', count(Specifications::merge([['label'=>'A','value'=>'1']],[['label'=>'B','value'=>'2']],'attributes'))===1 && Specifications::merge([['label'=>'A','value'=>'1']],[['label'=>'B','value'=>'2']],'custom')[0]['label']==='B');
+check('specifications sanitize rows', Specifications::sanitize_rows([['label'=>'<b>A</b>','value'=>'1'],['label'=>'','value'=>'2'],'junk'])===[['label'=>'A','value'=>'1']]);
+use Webgram\Core\Modules\WooEnhancements\ContactSeller;
+check('whatsapp link strips formatting and encodes message', ContactSeller::whatsapp_link('+91 98765-43210','Hi & bye')==='https://wa.me/919876543210?text=Hi%20%26%20bye' && ContactSeller::whatsapp_link('abc','x')==='');
+use Webgram\Core\Modules\WooEnhancements\TrackOrder;
+check('track order: email match is case-insensitive', TrackOrder::contact_matches('Buyer@Example.com','buyer@example.com','') && !TrackOrder::contact_matches('other@example.com','buyer@example.com',''));
+check('track order: phone match via E.164 and local digits', TrackOrder::contact_matches('098765 43210','', '+91 98765 43210') && TrackOrder::contact_matches('+919876543210','','9876543210') && !TrackOrder::contact_matches('12345','','9876543210'));
+$tl = TrackOrder::timeline('processing', ['placed'=>'1 Sep']);
+check('track order timeline: processing reaches confirmed', $tl[0]['done'] && $tl[1]['done'] && $tl[1]['current'] && !$tl[2]['done'] && $tl[0]['date']==='1 Sep' && count($tl)===6);
+check('track order timeline: completed marks all', count(array_filter(TrackOrder::timeline('completed'), fn($s)=>$s['done']))===6 && count(array_filter(TrackOrder::timeline('pending'), fn($s)=>$s['done']))===0);
+use Webgram\Core\Modules\Coupons\OfferProgress;
+use Webgram\Core\Modules\Coupons\Module as Coupons;
+$ms = OfferProgress::parse("amount|799|15% OFF|HYP15\nqty|2|Buy 2 @ 799|BUY2\nbad line\nqty|0|zero|X\nqty|3|Buy 3 @ 1149|");
+check('milestones parse: sorted by threshold, invalid dropped', count($ms)===3 && $ms[0]['type']==='qty' && $ms[0]['threshold']==2.0 && $ms[2]['code']==='HYP15');
+$pr = OfferProgress::compute($ms, 500.0, 1);
+check('progress: nothing achieved, next is qty 2, percent partial', $pr['achieved']===null && $pr['next']['label']==='Buy 2 @ 799' && $pr['percent']>0 && $pr['percent']<34 && str_contains($pr['message'],'Add 1 more'));
+$pr = OfferProgress::compute($ms, 850.0, 2);
+check('progress: qty 2 and amount 799 done, next qty 3', $pr['achieved']['code']==='HYP15' && $pr['next']['type']==='qty' && str_contains($pr['message'],'Unlocked 15% OFF | Code: HYP15'));
+check('progress: everything reached gives 100', OfferProgress::compute($ms, 2000.0, 5)['percent']===100 && OfferProgress::compute([], 10.0, 1)['percent']===0);
+check('coupon headline', Coupons::headline('percent',20.0,false)==='FLAT 20% OFF' && Coupons::headline('fixed_cart',100.0,false)==='FLAT ₹100 OFF' && Coupons::headline('x',0,true)==='FREE SHIPPING' && Coupons::headline('percent',20.0,false,'Festive deal')==='Festive deal');
+use Webgram\Core\Modules\WooEnhancements\RecentlyViewed;
+check('recently viewed push: dedupe, prepend, cap', RecentlyViewed::push([3,2,1],2,3)===[2,3,1] && count(RecentlyViewed::push(range(1,25),99))===20 && RecentlyViewed::push([],7)[0]===7);
+$bi = new Webgram\Core\Modules\WooEnhancements\BulkInquiry($m->get('woo_enhancements'));
+check('bulk inquiry: honeypot rejected', $bi->validate(['website'=>'spam','name'=>'A','phone'=>'9876543210','email'=>'a@b.co','quantity'=>5])['ok']===false);
+check('bulk inquiry: invalid phone rejected, valid accepted with E.164', $bi->validate(['website'=>'','name'=>'A','phone'=>'123','email'=>'a@b.co','quantity'=>5])['ok']===false && $bi->validate(['website'=>'','name'=>'A','phone'=>'98765 43210','email'=>'a@b.co','quantity'=>5])['phone']==='+919876543210');
+check('bulk inquiry: quantity required', $bi->validate(['website'=>'','name'=>'A','phone'=>'9876543210','email'=>'a@b.co','quantity'=>0])['ok']===false);
 
 echo "\n" . ($fail ? "$fail FAILURE(S)" : "ALL PASSED") . "\n";
 exit($fail ? 1 : 0);

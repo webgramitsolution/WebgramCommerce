@@ -20,3 +20,5 @@
 .wgc-admin .wgc-toggle input:disabled+.wgc-toggle__track{cursor:not-allowed}
 .wgc-admin .wgc-inline{margin-left:10px}
 .wgc-admin .wgc-image-field img{display:block;max-width:200px;height:auto;margin:6px 0;border:1px solid #dcdcde}
+.wgc-specs{width:100%;max-width:640px;margin:0 12px}.wgc-specs td{padding:2px 4px}.wgc-specs input{width:100%}.wgc-row-remove{color:#b32d2e;font-size:18px;text-decoration:none}
+.wgc-heading{margin:0;font-size:15px}

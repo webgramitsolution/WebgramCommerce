@@ -1,0 +1,4 @@
+// Loaded on single product pages only.
+@use "abstracts/breakpoints" as *;
+@use "abstracts/mixins" as *;
+@use "woocommerce/product";

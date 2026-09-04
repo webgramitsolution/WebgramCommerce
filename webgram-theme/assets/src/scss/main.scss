@@ -1,0 +1,27 @@
+// Webgram Theme: always-loaded bundle (base, layout, shared components). Target under 60 KB gzipped.
+@use "abstracts/breakpoints" as *;
+@use "abstracts/mixins" as *;
+@use "abstracts/tokens";
+@use "base/reset";
+@use "base/typography";
+@use "base/forms";
+@use "components/buttons";
+@use "components/badge";
+@use "components/rating";
+@use "components/price";
+@use "components/card";
+@use "components/drawer";
+@use "components/empty";
+@use "components/search";
+@use "components/marquee";
+@use "components/mega-menu";
+@use "components/bottom-nav";
+@use "components/floating";
+@use "components/page-title";
+@use "components/core";
+@use "components/section-heading";
+@use "components/pagination";
+@use "components/post-card";
+@use "layout/container";
+@use "layout/header";
+@use "layout/footer";
