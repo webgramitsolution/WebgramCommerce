@@ -17,13 +17,13 @@ final class SettingsPage {
 	public function __construct( private Plugin $plugin ) {}
 
 	public function register(): void {
-		add_action( 'admin_menu', [ $this, 'menu' ] );
+		add_action( 'admin_menu', [ $this, 'menu' ], 21 );
 		add_action( 'admin_post_webgram_core_save_settings', [ $this, 'save' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'assets' ] );
 	}
 
 	public function menu(): void {
-		add_submenu_page( ModulesPage::SLUG, __( 'Settings', 'webgram-core' ), __( 'Settings', 'webgram-core' ), 'manage_options', self::SLUG, [ $this, 'render' ] );
+		add_submenu_page( ModulesPage::parent_slug(), __( 'Core Settings', 'webgram-core' ), __( 'Core Settings', 'webgram-core' ), 'manage_options', self::SLUG, [ $this, 'render' ] );
 	}
 
 	public function assets( string $hook ): void {
@@ -125,6 +125,31 @@ final class SettingsPage {
 		$id   = 'wgc_' . $field['id'];
 		$name = 'settings[' . $field['id'] . ']';
 		$type = $field['type'] ?? 'text';
+		if ( isset( $field['choices'] ) && ! isset( $field['options'] ) ) {
+			$field['options'] = $field['choices'];
+		}
+		if ( 'heading' === $type ) {
+			printf( '<tr><th colspan="2"><h3 class="wgc-heading">%s</h3>%s</th></tr>', esc_html( $field['label'] ?? '' ), ! empty( $field['description'] ) ? '<p class="description">' . wp_kses_post( $field['description'] ) . '</p>' : '' );
+			return;
+		}
+		if ( in_array( $type, [ 'link', 'info' ], true ) ) {
+			printf( '<tr><th scope="row">%s</th><td>%s</td></tr>', esc_html( $field['label'] ?? '' ), 'link' === $type ? '<a class="button" href="' . esc_url( (string) ( $field['url'] ?? '#' ) ) . '">' . esc_html( (string) ( $field['button'] ?? __( 'Open', 'webgram-core' ) ) ) . '</a>' : wp_kses_post( (string) ( $field['content'] ?? '' ) ) );
+			return;
+		}
+		if ( 'page' === $type ) {
+			$field['options'] = [ 0 => __( 'Select a page', 'webgram-core' ) ];
+			foreach ( get_pages( [ 'number' => 300 ] ) ?: [] as $page ) {
+				$field['options'][ $page->ID ] = $page->post_title;
+			}
+			$type = 'select';
+		}
+		if ( 'html_block' === $type ) {
+			$field['options'] = [ 0 => __( 'None', 'webgram-core' ) ] + (array) apply_filters( 'webgram/html_blocks', [] );
+			$type             = 'select';
+		}
+		if ( 'radio' === $type ) {
+			$type = 'select';
+		}
 		?>
 		<tr>
 			<th scope="row"><label for="<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $field['label'] ); ?></label></th>

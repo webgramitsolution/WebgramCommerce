@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'WEBGRAM_VERSION', '0.1.0' );
+define( 'WEBGRAM_VERSION', '0.2.0' );
 define( 'WEBGRAM_DIR', get_template_directory() );
 define( 'WEBGRAM_URI', get_template_directory_uri() );
 define( 'WEBGRAM_MIN_CORE_VERSION', '0.1.0' );
@@ -28,11 +28,28 @@ $webgram_includes = [
 	'inc/template-functions.php',
 	'inc/template-hooks.php',
 	'inc/enqueue.php',
-	'inc/customizer/defaults.php',
+	'inc/settings/defaults.php',
+	'inc/settings/class-settings.php',
+	'inc/settings/class-settings-sanitizer.php',
+	'inc/settings/class-settings-fields.php',
+	'inc/settings/class-css-generator.php',
+	'inc/settings/class-settings-page.php',
+	'inc/settings/class-import-export.php',
+	'inc/settings/class-settings-migration.php',
 	'inc/customizer/class-customizer.php',
-	'inc/customizer/output/class-css-generator.php',
+	'inc/builders/class-element.php',
+	'inc/builders/presets.php',
+	'inc/builders/class-header-builder.php',
+	'inc/builders/class-footer-builder.php',
+	'inc/builders/class-builder-renderer.php',
+	'inc/builders/class-builder-page.php',
+	'inc/mega-menu/class-mega-menu-admin.php',
+	'inc/mega-menu/class-mega-menu-walker.php',
+	'inc/mega-menu/class-mega-menu-frontend.php',
+	'inc/mega-menu/class-mobile-nav-walker.php',
 	'inc/woocommerce/class-wc-setup.php',
 	'inc/woocommerce/class-wc-product-card.php',
+	'inc/woocommerce/class-wc-ajax.php',
 	'inc/admin/class-theme-dashboard.php',
 ];
 

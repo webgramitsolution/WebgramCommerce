@@ -40,6 +40,9 @@ function get_theme_support($f){ return false; }
 function wp_register_style(...$a){} function wp_register_script(...$a){}
 function class_exists_stub(){}
 function register_activation_hook(...$a){} function register_deactivation_hook(...$a){}
+function add_shortcode(...$a){} function current_user_can($c){ return $GLOBALS['__cap'][$c] ?? false; } function esc_url($s){ return $s; } function esc_html__($s,$d=null){ return $s; } function admin_url($p=''){ return 'http://x/wp-admin/'.$p; }
+function sanitize_html_class($s){ return preg_replace('/[^A-Za-z0-9_-]/','',$s); } function wp_date($f,$t){ return gmdate($f,$t); } function translate_user_role($r){ return $r; }
+define('MINUTE_IN_SECONDS',60); define('WEBGRAM_CORE_TEST',true);
 
 require __DIR__ . '/../webgram-core/webgram-core.php';
 
@@ -104,6 +107,54 @@ check('cache group flush', $cache->get('k','reviews') === false);
 // 8. Template resolution
 $t = new Webgram\Core\Support\Template();
 check('template path traversal stripped', str_contains($t->locate('../../etc/passwd'), 'templates/') || $t->locate('../../etc/passwd') === '');
+
+// 9. Site Tools boots without dependencies; WooEnhancements blocked without WooCommerce
+check('site_tools implemented and active', $m->is_active('site_tools') === true);
+check('woo_enhancements implemented but blocked without WooCommerce', $m->get('woo_enhancements')->is_implemented() && $m->is_active('woo_enhancements') === false && $m->blocked_reason('woo_enhancements') === 'woocommerce');
+check('theme filters registered by site_tools', isset($GLOBALS['__filters']['webgram/settings/tabs'], $GLOBALS['__filters']['webgram/html_block'], $GLOBALS['__filters']['webgram/layout_for']));
+
+// 10. Layout conditions engine
+use Webgram\Core\Modules\SiteTools\Layouts\Conditions;
+use Webgram\Core\Modules\SiteTools\Layouts\Resolver;
+$ctx = ['front_page'=>false,'shop'=>false,'blog'=>false,'search'=>false,'404'=>false,'post_id'=>12,'post_type'=>'product','terms'=>['product_cat'=>['5','decor','2'],'product_brand'=>['9']],'device'=>'mobile','logged_in'=>false];
+check('include all matches', Conditions::matches([['op'=>'include','type'=>'all','value'=>[]]], $ctx));
+check('include product ids matches by id', Conditions::matches([['op'=>'include','type'=>'product','value'=>['12','13']]], $ctx) && !Conditions::matches([['op'=>'include','type'=>'product','value'=>['99']]], $ctx));
+check('include category by slug or ancestor id', Conditions::matches([['op'=>'include','type'=>'product_cat','value'=>['decor']]], $ctx) && Conditions::matches([['op'=>'include','type'=>'product_cat','value'=>['2']]], $ctx));
+check('exclude wins over include', !Conditions::matches([['op'=>'include','type'=>'all','value'=>[]],['op'=>'exclude','type'=>'brand','value'=>['9']]], $ctx));
+check('no include rules never matches', !Conditions::matches([['op'=>'exclude','type'=>'all','value'=>[]]], $ctx));
+check('shop flag rule', !Conditions::matches([['op'=>'include','type'=>'shop','value'=>[]]], $ctx) && Conditions::matches([['op'=>'include','type'=>'shop','value'=>[]]], ['shop'=>true]));
+check('device and login gates', Conditions::allowed(['mobile'],'out',$ctx) && !Conditions::allowed(['desktop'],'any',$ctx) && !Conditions::allowed([],'in',$ctx));
+$san = Conditions::sanitize([['op'=>'exclude','type'=>'product_cat','value'=>' Decor, 5 ,'],['type'=>'bogus'],['type'=>'all','op'=>'x'],'junk']);
+check('conditions sanitize splits values and drops unknown types', count($san)===2 && $san[0]['value']===['decor','5'] && $san[0]['op']==='exclude' && $san[1]['op']==='include');
+$cands = [['id'=>1,'priority'=>0,'rules'=>[['op'=>'include','type'=>'all','value'=>[]]],'devices'=>[],'login'=>'any'],['id'=>2,'priority'=>10,'rules'=>[['op'=>'include','type'=>'product','value'=>['12']]],'devices'=>['mobile'],'login'=>'any'],['id'=>3,'priority'=>20,'rules'=>[['op'=>'include','type'=>'all','value'=>[]]],'devices'=>['desktop'],'login'=>'any']];
+usort($cands, fn($a,$b)=>$b['priority']<=>$a['priority']);
+check('resolver picks highest priority allowed match', Resolver::pick($cands,$ctx)===2 && Resolver::pick($cands,['device'=>'desktop','post_type'=>'page','post_id'=>1])===3 && Resolver::pick([], $ctx)===0);
+
+// 11. Site Tools settings sanitizer (Core side)
+use Webgram\Core\Modules\SiteTools\Settings as StSettings;
+$fields = ['popup_enabled'=>['type'=>'switch'],'popup_delay'=>['type'=>'number','min'=>0,'max'=>120],'popup_devices'=>['type'=>'multicheck','choices'=>['desktop'=>1,'mobile'=>1]],'js_footer'=>['type'=>'code','language'=>'javascript'],'age_redirect'=>['type'=>'url'],'maint_mode'=>['type'=>'select','choices'=>['off'=>1,'maintenance'=>1],'default'=>'off']];
+$GLOBALS['__cap']=['manage_options'=>true];
+$clean = StSettings::sanitize_values($fields, ['popup_enabled'=>'1','popup_delay'=>'999','popup_devices'=>['mobile','tv'],'js_footer'=>'alert(1)','age_redirect'=>'javascript:x','maint_mode'=>'evil','unknown'=>'x']);
+check('site tools sanitizer: switch, clamp, multicheck, url, select fallback', $clean['popup_enabled']===true && $clean['popup_delay']===120 && $clean['popup_devices']===['mobile'] && $clean['age_redirect']==='' && $clean['maint_mode']==='off' && !isset($clean['unknown']));
+check('custom JS rejected without unfiltered_html', !array_key_exists('js_footer',$clean));
+$GLOBALS['__cap']['unfiltered_html']=true;
+check('custom JS accepted with unfiltered_html', StSettings::sanitize_values($fields, ['js_footer'=>'alert(1)'])['js_footer']==='alert(1)');
+check('custom JS strips script wrappers', Webgram\Core\Modules\SiteTools\CustomJs::strip_tags("<script type=\"text/javascript\">x();</script>")==='x();');
+check('maintenance countdown parses and rejects junk', Webgram\Core\Modules\SiteTools\Maintenance::countdown_timestamp('2030-01-01 09:00') === gmmktime(9,0,0,1,1,2030) && Webgram\Core\Modules\SiteTools\Maintenance::countdown_timestamp('not a date')===0 && Webgram\Core\Modules\SiteTools\Maintenance::countdown_timestamp('')===0);
+check('css_class without theme support', Helpers::css_class('popup')==='wgc-popup' && Helpers::css_class('popup','x')==='wgc-popup x');
+
+// 12. Pincode validation, CSV parsing, geocoder parsing
+use Webgram\Core\Modules\WooEnhancements\PincodeChecker;
+check('IN pincode 6 digits not starting with 0', PincodeChecker::normalize(' 400 001 ','IN')==='400001' && PincodeChecker::normalize('012345','IN')==='' && PincodeChecker::normalize('4000011','IN')==='');
+check('US zip and GB postcode', PincodeChecker::normalize('90210-1234','US')==='90210-1234' && PincodeChecker::normalize('sw1a 1aa','GB')==='SW1A 1AA' && PincodeChecker::normalize('abc','US')==='');
+check('labels per country', PincodeChecker::label('IN')==='Pincode' && PincodeChecker::label('US')==='ZIP code' && PincodeChecker::label('DE')==='Postal code');
+$csv = "Pin Code,City,State,Deliverable,COD,ETA Days\n400001,Mumbai,Maharashtra,1,1,3\n012345,Bad,Row,1,1,1\n560001,Bengaluru,Karnataka,0,,\n400001,Mumbai Dup,MH,1,0,5\n";
+$parsed = PincodeChecker::parse_csv($csv,'IN');
+check('csv header mapping and invalid rows skipped', $parsed['skipped']===1 && count($parsed['rows'])===2);
+check('csv row values typed and duplicates last-wins', $parsed['rows'][0]['city']==='Mumbai Dup' && $parsed['rows'][0]['cod']===false && $parsed['rows'][0]['eta_days']===5 && $parsed['rows'][1]['deliverable']===false && $parsed['rows'][1]['cod']===true && $parsed['rows'][1]['eta_days']===null);
+$nom = Webgram\Core\Modules\WooEnhancements\Geo\NominatimGeocoder::parse(['address'=>['postcode'=>'400001','suburb'=>'Fort','city'=>'Mumbai','state'=>'Maharashtra']]);
+check('nominatim parse picks city and postcode', $nom===['pincode'=>'400001','city'=>'Mumbai','state'=>'Maharashtra'] && Webgram\Core\Modules\WooEnhancements\Geo\NominatimGeocoder::parse(['address'=>[]])===null);
+check('location display label', Webgram\Core\Modules\WooEnhancements\Location::display_label(['city'=>'Mumbai','pincode'=>'400001'])==='Mumbai 400001' && Webgram\Core\Modules\WooEnhancements\Location::display_label(['pincode'=>'400001'])==='400001');
 
 echo "\n" . ($fail ? "$fail FAILURE(S)" : "ALL PASSED") . "\n";
 exit($fail ? 1 : 0);

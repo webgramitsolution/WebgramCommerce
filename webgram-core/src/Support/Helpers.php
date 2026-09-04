@@ -50,4 +50,80 @@ final class Helpers {
 	public static function bool( mixed $value ): bool {
 		return filter_var( $value, FILTER_VALIDATE_BOOLEAN );
 	}
+
+	/**
+	 * CSS classes for a Core component: "wgc-{name}" always (fallback styles), plus "wg-{name}" when the active
+	 * theme declared that it styles Core components, so the theme can target its own prefix.
+	 */
+	public static function css_class( string $name, string $extra = '' ): string {
+		$classes = [ 'wgc-' . $name ];
+		$support = get_theme_support( 'webgram-core' );
+		if ( is_array( $support ) && ! empty( $support[0]['styles'] ) ) {
+			$classes[] = 'wg-' . $name;
+		}
+		if ( '' !== $extra ) {
+			$classes[] = $extra;
+		}
+		return implode( ' ', $classes );
+	}
+
+	/** Client IP hashed for rate limiting; never stored raw. */
+	public static function ip_hash(): string {
+		$ip = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
+		return substr( hash( 'sha256', 'webgram|' . $ip . '|' . ( defined( 'AUTH_SALT' ) ? AUTH_SALT : '' ) ), 0, 32 );
+	}
+
+	/**
+	 * Transient based rate limiter. Returns true when the action is allowed.
+	 */
+	public static function rate_limit( string $bucket, int $max, int $window_seconds ): bool {
+		$key   = 'wgc_rl_' . substr( md5( $bucket . '|' . self::ip_hash() ), 0, 24 );
+		$count = (int) get_transient( $key );
+		if ( $count >= $max ) {
+			return false;
+		}
+		set_transient( $key, $count + 1, $window_seconds );
+		return true;
+	}
+
+	/** Current device from the User-Agent, coarse: desktop|tablet|mobile. Cached pages should not depend on this. */
+	public static function device(): string {
+		$ua = isset( $_SERVER['HTTP_USER_AGENT'] ) ? strtolower( sanitize_text_field( wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) ) ) : '';
+		if ( preg_match( '/ipad|tablet|kindle|playbook|silk/', $ua ) ) {
+			return 'tablet';
+		}
+		if ( preg_match( '/mobi|android|iphone|ipod|blackberry|windows phone/', $ua ) ) {
+			return 'mobile';
+		}
+		return 'desktop';
+	}
+
+	/** Whether we are on a WooCommerce-ish page type used by targeting rules. */
+	public static function page_type(): string {
+		if ( is_front_page() ) {
+			return 'home';
+		}
+		if ( function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() ) ) {
+			return 'shop';
+		}
+		if ( function_exists( 'is_product' ) && is_product() ) {
+			return 'product';
+		}
+		if ( function_exists( 'is_cart' ) && is_cart() ) {
+			return 'cart';
+		}
+		if ( function_exists( 'is_checkout' ) && is_checkout() ) {
+			return 'checkout';
+		}
+		if ( function_exists( 'is_account_page' ) && is_account_page() ) {
+			return 'account';
+		}
+		if ( is_singular( 'post' ) || is_home() || is_category() || is_tag() ) {
+			return 'blog';
+		}
+		if ( is_page() ) {
+			return 'page';
+		}
+		return 'other';
+	}
 }

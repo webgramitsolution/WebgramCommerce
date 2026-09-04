@@ -1,0 +1,25 @@
+/* Webgram Core WooCommerce Enhancements fallback styles (theme-less installs). */
+.wgc-location{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid #e5e7eb;border-radius:999px;background:#fff;color:inherit;cursor:pointer;font:inherit;text-align:left}
+.wgc-location--plain{border:0;background:transparent;padding:0}
+.wgc-location__icon{color:var(--wgc-color-primary,#a0181f);flex:none}
+.wgc-location__text{display:flex;flex-direction:column;line-height:1.15}
+.wgc-location__text small{font-size:11px;color:#6b7280}
+.wgc-location__text strong{font-size:13px;white-space:nowrap;max-width:160px;overflow:hidden;text-overflow:ellipsis}
+.wgc-modal[hidden]{display:none}
+.wgc-modal{position:fixed;inset:0;z-index:100000;display:flex;align-items:center;justify-content:center;padding:16px}
+.wgc-modal__backdrop{position:absolute;inset:0;background:rgba(17,24,39,.5)}
+.wgc-modal__dialog{position:relative;width:min(440px,100%);background:#fff;border-radius:12px;padding:24px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.wgc-modal__head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.wgc-modal__head h3{margin:0;font-size:18px}
+.wgc-modal__close{border:0;background:transparent;font-size:24px;cursor:pointer;line-height:1}
+.wgc-location-form label{display:block;margin-bottom:6px;font-size:13px;font-weight:600}
+.wgc-location-form__row{display:flex;gap:8px}
+.wgc-location-form__row input{flex:1;min-height:44px;padding:0 12px;border:1px solid #e5e7eb;border-radius:8px}
+.wgc-location-form__message{margin:8px 0 0;font-size:13px;min-height:18px}
+.wgc-location-form__message.is-ok{color:#15803d}.wgc-location-form__message.is-error{color:#b91c1c}
+.wgc-location-form__geo{margin-top:16px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.wgc-location-form__or{font-size:12px;color:#6b7280;text-transform:uppercase}
+.wgc-location-form__attribution{font-size:11px;color:#6b7280}
+.wgc-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:8px 18px;border:1px solid var(--wgc-color-primary,#a0181f);border-radius:8px;background:var(--wgc-color-primary,#a0181f);color:#fff;font-weight:600;cursor:pointer}
+.wgc-btn--outline{background:transparent;color:var(--wgc-color-primary,#a0181f)}
+body.wgc-modal-open{overflow:hidden}

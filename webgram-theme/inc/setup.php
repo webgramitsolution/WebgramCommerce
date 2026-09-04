@@ -24,9 +24,11 @@ function webgram_setup(): void {
 	add_theme_support(
 		'webgram-core',
 		[
-			'styles'       => true,
-			'templates'    => true,
-			'header_icons' => [ 'wishlist', 'compare', 'cart' ],
+			'styles'         => true,
+			'templates'      => true,
+			'header_icons'   => [ 'wishlist', 'compare', 'cart' ],
+			'admin_menu'     => 'webgram',
+			'settings_panel' => true,
 		]
 	);
 
@@ -93,7 +95,8 @@ function webgram_widgets_init(): void {
 			'after_title'   => '</h3>',
 		]
 	);
-	for ( $i = 1; $i <= 4; $i++ ) {
+	$columns = max( 1, min( 6, (int) webgram_option( 'footer_columns' ) ) );
+	for ( $i = 1; $i <= $columns; $i++ ) {
 		register_sidebar(
 			[
 				/* translators: %d: column number */

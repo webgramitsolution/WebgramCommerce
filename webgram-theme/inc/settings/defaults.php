@@ -1,0 +1,273 @@
+<?php
+/**
+ * Single source of default values for every Theme Settings field. Tabs read from here; never inline a default twice.
+ * Header and footer layouts have their own defaults in inc/builders/presets.php.
+ *
+ * @package Webgram
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+function webgram_defaults(): array {
+	static $defaults = null;
+
+	if ( null === $defaults ) {
+		$defaults = [
+			// General.
+			'site_layout'             => 'wide',
+			'container_width'         => 1320,
+			'boxed_bg'                => '#f3f4f6',
+			'preloader'               => false,
+			'preloader_color'         => '#a0181f',
+			'back_to_top'             => true,
+			'back_to_top_offset'      => 400,
+			'rtl_force'               => false,
+
+			// Layout.
+			'page_layout'             => 'container',
+			'shop_layout'             => 'sidebar-left',
+			'blog_layout'             => 'sidebar-right',
+			'sidebar_width'           => 25,
+			'sidebar_sticky'          => true,
+
+			// Header banner.
+			'header_banner_enabled'   => false,
+			'header_banner_position'  => 'above',
+			'header_banner_type'      => 'text',
+			'header_banner_text'      => '',
+			'header_banner_image'     => 0,
+			'header_banner_link'      => '',
+			'header_banner_block'     => 0,
+			'header_banner_bg'        => '#111827',
+			'header_banner_color'     => '#ffffff',
+			'header_banner_close'     => true,
+			'header_banner_remember'  => 7,
+
+			// Mobile bottom navbar.
+			'mobile_nav_enabled'      => true,
+			'mobile_nav_style'        => 'light',
+			'mobile_nav_labels'       => true,
+			'mobile_nav_hide_scroll'  => false,
+			'mobile_nav_items'        => [
+				[ 'action' => 'home', 'icon' => 'home', 'label' => __( 'Home', 'webgram' ), 'link' => '' ],
+				[ 'action' => 'shop', 'icon' => 'grid', 'label' => __( 'Shop', 'webgram' ), 'link' => '' ],
+				[ 'action' => 'search', 'icon' => 'search', 'label' => __( 'Search', 'webgram' ), 'link' => '' ],
+				[ 'action' => 'wishlist', 'icon' => 'heart', 'label' => __( 'Wishlist', 'webgram' ), 'link' => '' ],
+				[ 'action' => 'cart', 'icon' => 'cart', 'label' => __( 'Cart', 'webgram' ), 'link' => '' ],
+			],
+
+			// Mobile menu (drawer).
+			'mobile_menu_position'    => 'left',
+			'mobile_menu_tabs'        => true,
+			'mobile_menu_categories'  => 'top',
+			'mobile_menu_account'     => true,
+			'mobile_menu_search'      => false,
+			'mobile_menu_width'       => 340,
+
+			// Search.
+			'search_live'             => true,
+			'search_results_count'    => 8,
+			'search_categories'       => true,
+			'search_popular'          => '',
+			'search_scope'            => 'product',
+			'search_min_chars'        => 2,
+			'search_page_columns'     => 4,
+
+			// Sticky navigation.
+			'sticky_enabled'          => true,
+			'sticky_rows'             => [ 'main' ],
+			'sticky_shrink'           => true,
+			'sticky_hide_on_scroll'   => false,
+			'sticky_shadow'           => true,
+			'sticky_mobile'           => true,
+
+			// Page title.
+			'page_title_show'         => true,
+			'page_title_size'         => 'medium',
+			'page_title_align'        => 'start',
+			'page_title_bg'           => '#f8f7f5',
+			'page_title_bg_image'     => 0,
+			'page_title_color'        => '#111827',
+			'breadcrumb_show'         => true,
+
+			// Footer.
+			'footer_copyright'        => sprintf( '© %s %s. %s', gmdate( 'Y' ), get_bloginfo( 'name' ), __( 'All rights reserved.', 'webgram' ) ),
+			'footer_headings_divider' => true,
+			'footer_payment_icons'    => [ 'visa', 'mastercard', 'upi', 'rupay' ],
+			'footer_bottom_show'      => true,
+			'footer_columns'          => 4,
+
+			// Typography.
+			'font_source'             => 'local',
+			'font_body'               => 'Inter',
+			'font_heading'            => 'Manrope',
+			'font_menu'               => 'inherit',
+			'font_button'             => 'inherit',
+			'font_custom_name'        => '',
+			'font_custom_url'         => '',
+			'font_size_base'          => [ 'desktop' => 16, 'tablet' => 16, 'mobile' => 15 ],
+			'body_line_height'        => 1.55,
+			'heading_weight'          => 700,
+			'heading_letter_spacing'  => -0.01,
+			'heading_line_height'     => 1.2,
+			'font_size_h1'            => [ 'desktop' => 40, 'tablet' => 34, 'mobile' => 28 ],
+			'font_size_h2'            => [ 'desktop' => 32, 'tablet' => 28, 'mobile' => 24 ],
+			'font_size_h3'            => [ 'desktop' => 24, 'tablet' => 22, 'mobile' => 20 ],
+			'font_size_h4'            => [ 'desktop' => 20, 'tablet' => 18, 'mobile' => 18 ],
+			'font_size_h5'            => [ 'desktop' => 18, 'tablet' => 16, 'mobile' => 16 ],
+			'font_size_h6'            => [ 'desktop' => 16, 'tablet' => 15, 'mobile' => 15 ],
+			'menu_font_size'          => 14,
+			'menu_font_weight'        => 600,
+			'menu_letter_spacing'     => 0,
+			'button_font_weight'      => 600,
+			'button_letter_spacing'   => 0,
+			'button_uppercase'        => false,
+
+			// Styles and colors.
+			'color_primary'           => '#a0181f',
+			'color_primary_hover'     => '#83131a',
+			'color_secondary'         => '#1f2937',
+			'color_accent'            => '#c9a24d',
+			'color_text'              => '#374151',
+			'color_text_muted'        => '#6b7280',
+			'color_heading'           => '#111827',
+			'color_bg'                => '#ffffff',
+			'color_bg_alt'            => '#f8f7f5',
+			'color_surface'           => '#ffffff',
+			'color_border'            => '#e5e7eb',
+			'color_success'           => '#15803d',
+			'color_warning'           => '#b45309',
+			'color_danger'            => '#b91c1c',
+			'color_price'             => '#111827',
+			'color_sale'              => '#15803d',
+			'color_star'              => '#f59e0b',
+			'color_topbar_bg'         => '#fff1f2',
+			'color_topbar_text'       => '#7f1d1d',
+			'color_header_bg'         => '#ffffff',
+			'color_header_text'       => '#111827',
+			'color_footer_bg'         => '#3f0d12',
+			'color_footer_text'       => '#f5e9ea',
+			'radius_scale'            => 'rounded',
+			'shadow_scale'            => 'normal',
+			'button_style'            => 'solid',
+			'button_radius'           => 8,
+			'button_shine'            => true,
+			'form_style'              => 'filled',
+			'card_style'              => 'bordered',
+			'badge_style'             => 'wave',
+
+			// Blog.
+			'blog_card_style'         => 'grid',
+			'blog_columns'            => 3,
+			'blog_meta'               => [ 'date', 'author', 'category' ],
+			'blog_excerpt_length'     => 24,
+			'blog_related'            => true,
+			'blog_related_count'      => 3,
+			'blog_share'              => true,
+			'blog_sidebar_single'     => true,
+
+			// Shop.
+			'shop_columns'            => [ 'desktop' => 5, 'tablet' => 3, 'mobile' => 2 ],
+			'shop_per_page'           => 20,
+			'shop_toolbar'            => true,
+			'shop_filters'            => 'sidebar',
+			'shop_pagination'         => 'numbers',
+			'shop_ajax'               => true,
+			'shop_grid_list_toggle'   => true,
+			'product_card_style'      => 'standard',
+			'card_image_ratio'        => '1-1',
+			'card_hover_effect'       => 'slideshow',
+			'card_slideshow_interval' => 1200,
+			'card_badge_position'     => 'top-left',
+			'card_actions_position'   => 'hover',
+			'card_rating_position'    => 'price_line',
+			'card_show_cart'          => true,
+			'card_show_buy_now'       => true,
+			'card_buy_now_label'      => __( 'Buy now', 'webgram' ),
+			'card_show_chips'         => true,
+			'card_chip_attribute'     => 'first',
+			'card_chip_style'         => 'chips',
+			'card_chips_max'          => 3,
+			'card_title_lines'        => 2,
+
+			// Product archive.
+			'archive_banner'          => true,
+			'archive_banner_height'   => 'medium',
+			'archive_description'     => 'top',
+			'subcategory_chips'       => true,
+			'category_card_shape'     => 'circle',
+
+			// Single product.
+			'product_layout'          => 'default',
+			'product_panels'          => 'panels',
+			'product_gallery_style'   => 'horizontal',
+			'product_thumbs_visible'  => 9,
+			'product_auto_slide'      => true,
+			'product_auto_slide_interval' => 3000,
+			'product_auto_slide_pause' => true,
+			'product_sticky_gallery'  => true,
+			'product_sticky_bar'      => true,
+			'product_zoom'            => true,
+			'product_tabs_style'      => 'stacked',
+			'product_related_count'   => 5,
+			'product_recent_count'    => 5,
+			'product_meta_show'       => true,
+			'product_share_show'      => true,
+			'product_summary_order'   => [ 'title', 'meta', 'price', 'short_description', 'variations', 'coupon', 'quantity_cart', 'payment_strip', 'trust_seals', 'contact_seller', 'pincode', 'shipping_returns', 'specifications', 'overview', 'share' ],
+			'product_below_order'     => [ 'related', 'reviews', 'reels', 'recently_viewed' ],
+			'product_payment_strip'   => true,
+			'product_payment_title'   => __( '100% secure payment by', 'webgram' ),
+			'product_payment_logo'    => 0,
+			'product_payment_icons'   => [ 'visa', 'mastercard', 'upi', 'rupay', 'gpay', 'phonepe', 'paytm' ],
+			'product_payment_caption' => __( 'Your payment information is processed securely.', 'webgram' ),
+			'product_trust_seals'     => [
+				[ 'icon' => 'shield', 'label' => __( 'Secure payments', 'webgram' ) ],
+				[ 'icon' => 'truck', 'label' => __( 'Fast and free shipping', 'webgram' ) ],
+				[ 'icon' => 'star', 'label' => __( 'Premium quality', 'webgram' ) ],
+				[ 'icon' => 'headset', 'label' => __( 'Customer support 24/7', 'webgram' ) ],
+				[ 'icon' => 'check-circle', 'label' => __( 'Satisfaction guaranteed', 'webgram' ) ],
+			],
+			'product_info_cards'      => [
+				[ 'icon' => 'refresh', 'title' => __( 'Returns', 'webgram' ), 'text' => __( 'As per brand policy, 7 days', 'webgram' ) ],
+				[ 'icon' => 'truck', 'title' => __( 'Shipping', 'webgram' ), 'text' => __( 'Free for bulk orders', 'webgram' ) ],
+			],
+
+			// My account.
+			'login_image'             => 0,
+			'login_image_mobile'      => 0,
+			'login_image_mobile_show' => false,
+			'login_trust_logos'       => [],
+			'account_dashboard_cards' => true,
+			'account_nav_icons'       => true,
+
+			// Social profiles.
+			'social_links'            => [],
+			'social_sidebar'          => false,
+			'social_sidebar_devices'  => [ 'desktop', 'tablet' ],
+			'social_share_networks'   => [ 'facebook', 'x', 'whatsapp', 'pinterest', 'copy' ],
+
+			// Performance.
+			'perf_lazy_load'          => true,
+			'perf_font_preload'       => true,
+			'perf_disable_emojis'     => true,
+			'perf_disable_embeds'     => false,
+			'perf_critical_header'    => false,
+			'perf_cdn_prefix'         => '',
+
+			// Custom CSS.
+			'custom_css'              => '',
+			'custom_css_tablet'       => '',
+			'custom_css_mobile'       => '',
+
+			// Other.
+			'page_404_title'          => __( 'Page not found', 'webgram' ),
+			'page_404_text'           => __( 'The page you are looking for does not exist or has moved.', 'webgram' ),
+			'page_404_image'          => 0,
+			'page_404_button'         => __( 'Back to home', 'webgram' ),
+			'page_404_block'          => 0,
+			'page_404_search'         => true,
+		];
+	}
+
+	return (array) apply_filters( 'webgram/defaults', $defaults );
+}

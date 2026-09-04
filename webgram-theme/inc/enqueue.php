@@ -46,10 +46,26 @@ function webgram_enqueue_assets(): void {
 				'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
 				'wcAjax'     => class_exists( 'WC_AJAX' ) ? WC_AJAX::get_endpoint( '%%endpoint%%' ) : '',
 				'nonce'      => wp_create_nonce( 'webgram_nonce' ),
-				'stickyHeader' => (bool) webgram_option( 'header_sticky' ),
+				'sticky'     => [
+					'enabled'      => (bool) webgram_option( 'sticky_enabled' ),
+					'shrink'       => (bool) webgram_option( 'sticky_shrink' ),
+					'shadow'       => (bool) webgram_option( 'sticky_shadow' ),
+					'hideOnScroll' => (bool) webgram_option( 'sticky_hide_on_scroll' ),
+					'mobile'       => (bool) webgram_option( 'sticky_mobile' ),
+				],
+				'search'     => [
+					'live'     => (bool) webgram_option( 'search_live' ),
+					'minChars' => (int) webgram_option( 'search_min_chars' ),
+				],
 				'i18n'       => [
-					'menu'  => __( 'Menu', 'webgram' ),
-					'close' => __( 'Close', 'webgram' ),
+					'menu'       => __( 'Menu', 'webgram' ),
+					'close'      => __( 'Close', 'webgram' ),
+					'noResults'  => __( 'No results found', 'webgram' ),
+					'viewAll'    => __( 'View all results', 'webgram' ),
+					'products'   => __( 'Products', 'webgram' ),
+					'categories' => __( 'Categories', 'webgram' ),
+					'posts'      => __( 'Articles', 'webgram' ),
+					'searching'  => __( 'Searching', 'webgram' ),
 				],
 			]
 		)
@@ -62,6 +78,18 @@ function webgram_enqueue_assets(): void {
 	// Print generated token CSS after the main stylesheet so it overrides compiled fallbacks.
 	wp_add_inline_style( 'webgram-main', Webgram_CSS_Generator::instance()->get_css() );
 }
+
+/** Critical header CSS inline (optional): the compiled header rules from assets/css/critical.css. */
+function webgram_critical_css(): void {
+	if ( ! webgram_option( 'perf_critical_header' ) ) {
+		return;
+	}
+	$file = WEBGRAM_DIR . '/assets/css/critical.css';
+	if ( is_readable( $file ) ) {
+		echo '<style id="wg-critical">' . wp_strip_all_tags( (string) file_get_contents( $file ) ) . '</style>' . "\n"; // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents, WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
+}
+add_action( 'wp_head', 'webgram_critical_css', 3 );
 add_action( 'wp_enqueue_scripts', 'webgram_enqueue_assets' );
 
 /** Remove WooCommerce's default stylesheets; the theme provides complete WooCommerce styling. */
@@ -75,7 +103,7 @@ add_action( 'admin_init', 'webgram_editor_assets' );
 
 /** Preload the two primary self-hosted font files. */
 function webgram_preload_fonts(): void {
-	if ( 'google' === webgram_option( 'font_source' ) ) {
+	if ( 'google' === webgram_option( 'font_source' ) || ! webgram_option( 'perf_font_preload' ) ) {
 		return;
 	}
 	foreach ( [ 'inter-latin-400.woff2', 'manrope-latin-700.woff2' ] as $file ) {

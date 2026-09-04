@@ -8,6 +8,10 @@
 defined( 'ABSPATH' ) || exit;
 
 get_header();
+
+if ( ! get_post_meta( get_the_ID(), '_webgram_hide_title', true ) ) {
+	webgram_part( 'misc/page-title', [ 'title' => get_the_title() ] );
+}
 ?>
 <div class="wg-container">
 	<div class="<?php echo esc_attr( webgram_content_classes() ); ?>">
@@ -22,6 +26,9 @@ get_header();
 			endwhile;
 			?>
 		</main>
+		<?php if ( in_array( webgram_layout(), [ 'sidebar-left', 'sidebar-right' ], true ) ) : ?>
+			<?php get_sidebar(); ?>
+		<?php endif; ?>
 	</div>
 </div>
 <?php

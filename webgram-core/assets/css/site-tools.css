@@ -1,0 +1,30 @@
+/* Webgram Core Site Tools fallback styles (loaded only when the theme does not declare Core styling support). */
+.wgc-popup[hidden],.wgc-cookie[hidden]{display:none}
+.wgc-popup{position:fixed;inset:0;z-index:100000;display:flex;align-items:center;justify-content:center;padding:16px}
+.wgc-popup__backdrop{position:absolute;inset:0;background:rgba(0,0,0,.55)}
+.wgc-popup__dialog{position:relative;width:min(var(--wgc-popup-width,640px),100%);max-height:90vh;overflow:auto;background:#fff;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.3);display:grid}
+.wgc-popup__dialog.has-image{grid-template-columns:40% 1fr}
+.wgc-popup__media img{width:100%;height:100%;object-fit:cover}
+.wgc-popup__body{padding:32px}
+.wgc-popup__close{position:absolute;top:8px;right:8px;width:36px;height:36px;border:0;border-radius:50%;background:#fff;font-size:22px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.wgc-cookie{position:fixed;z-index:99990;background:#111827;color:#fff;padding:16px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;font-size:14px}
+.wgc-cookie a{color:#fff;text-decoration:underline}
+.wgc-cookie--bottom{left:0;right:0;bottom:0}.wgc-cookie--top{left:0;right:0;top:0}
+.wgc-cookie--bottom-left,.wgc-cookie--bottom-right{bottom:20px;max-width:420px;border-radius:12px;flex-direction:column;align-items:flex-start}
+.wgc-cookie--bottom-left{left:20px}.wgc-cookie--bottom-right{right:20px}
+.wgc-cookie__actions{display:flex;gap:8px;margin-left:auto}
+.wgc-btn{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:8px 18px;border:1px solid var(--wgc-color-primary,#a0181f);border-radius:8px;background:var(--wgc-color-primary,#a0181f);color:#fff;font-weight:600;cursor:pointer}
+.wgc-btn--ghost{background:transparent;color:inherit;border-color:currentColor}
+.wgc-age{position:fixed;inset:0;z-index:100001;display:flex;align-items:center;justify-content:center;padding:16px;background:#111827 center/cover no-repeat}
+.wgc-age__dialog{max-width:440px;width:100%;background:#fff;color:#111827;border-radius:12px;padding:32px;text-align:center}
+.wgc-age__actions,.wgc-age__form{display:flex;gap:8px;justify-content:center;margin-top:16px}
+.wgc-age__error{color:#b91c1c;font-size:13px}
+body.wgc-age-locked,body.wgc-popup-open{overflow:hidden}
+.wgc-maintenance-body{margin:0;font-family:system-ui,sans-serif}
+.wgc-maintenance{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:#f8f7f5 center/cover no-repeat;text-align:center}
+.wgc-maintenance__inner{max-width:640px}
+.wgc-countdown{display:flex;gap:16px;justify-content:center;margin-top:24px}
+.wgc-countdown__unit{display:flex;flex-direction:column;min-width:64px;padding:12px;border-radius:8px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.wgc-countdown__unit strong{font-size:28px}
+.wgc-countdown__unit span{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#6b7280}
+#wpadminbar .wgc-adminbar-warning .ab-item{background:#b32d2e!important;color:#fff!important}

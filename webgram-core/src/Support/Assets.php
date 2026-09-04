@@ -57,10 +57,9 @@ final class Assets {
 	public function enqueue_base(): void {
 		wp_enqueue_script( 'webgram-core-base' );
 
-		if ( $this->theme_provides_styles() ) {
-			return; // Theme declared it styles Core components; skip fallback CSS.
+		if ( ! $this->theme_provides_styles() ) {
+			wp_enqueue_style( 'webgram-core-base' ); // Theme did not declare Core styling support; load fallback CSS.
 		}
-		wp_enqueue_style( 'webgram-core-base' );
 
 		if ( $this->frontend_data_printed ) {
 			return;
