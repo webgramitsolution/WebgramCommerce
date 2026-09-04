@@ -1,0 +1,7 @@
+/* Webgram Core fallback styles. Loaded only when the active theme does not declare add_theme_support('webgram-core', ['styles' => true]). */
+:root{--wgc-color-primary:#1f2937;--wgc-color-primary-contrast:#fff;--wgc-color-text:#1f2937;--wgc-color-muted:#6b7280;--wgc-color-border:#e5e7eb;--wgc-color-surface:#fff;--wgc-color-bg-alt:#f9fafb;--wgc-radius:8px;--wgc-space:16px;--wgc-font:inherit}
+[class^="wgc-"],[class*=" wgc-"]{box-sizing:border-box}
+.wgc-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 18px;border-radius:var(--wgc-radius);border:1px solid var(--wgc-color-primary);background:var(--wgc-color-primary);color:var(--wgc-color-primary-contrast);font:inherit;cursor:pointer;text-decoration:none;line-height:1.2}
+.wgc-btn--outline{background:transparent;color:var(--wgc-color-primary)}
+.wgc-btn:focus-visible{outline:2px solid var(--wgc-color-primary);outline-offset:2px}
+.wgc-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}

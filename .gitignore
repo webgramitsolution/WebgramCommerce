@@ -1,0 +1,6 @@
+node_modules/
+webgram-theme/assets/src/**/*.map
+webgram-core/vendor/
+*.zip
+.DS_Store
+Thumbs.db

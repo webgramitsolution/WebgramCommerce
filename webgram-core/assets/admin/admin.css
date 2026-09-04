@@ -1,0 +1,22 @@
+/* Webgram Core admin. All selectors scoped to .wgc-admin to avoid touching other screens. */
+.wgc-admin .wgc-modules{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin:20px 0}
+.wgc-admin .wgc-module{background:#fff;border:1px solid #dcdcde;border-radius:8px;padding:16px 18px;position:relative}
+.wgc-admin .wgc-module.is-stub{opacity:.65}
+.wgc-admin .wgc-module__head{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.wgc-admin .wgc-module h2{font-size:15px;margin:0;padding:0}
+.wgc-admin .wgc-module p{margin:0 0 10px;color:#50575e}
+.wgc-admin .wgc-module__settings{position:absolute;right:16px;top:16px;font-size:12px}
+.wgc-admin .wgc-badge{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;line-height:1.6}
+.wgc-admin .wgc-badge--ok{background:#e6f4ea;color:#1e7e34}
+.wgc-admin .wgc-badge--warn{background:#fff4e5;color:#8a4b00}
+.wgc-admin .wgc-badge--muted{background:#f0f0f1;color:#50575e}
+.wgc-admin .wgc-toggle{position:relative;display:inline-block;width:38px;height:22px;flex:none}
+.wgc-admin .wgc-toggle input{opacity:0;width:0;height:0;position:absolute}
+.wgc-admin .wgc-toggle__track{position:absolute;inset:0;background:#c3c4c7;border-radius:999px;transition:background .15s}
+.wgc-admin .wgc-toggle__track::after{content:"";position:absolute;width:18px;height:18px;left:2px;top:2px;background:#fff;border-radius:50%;transition:transform .15s}
+.wgc-admin .wgc-toggle input:checked+.wgc-toggle__track{background:#2271b1}
+.wgc-admin .wgc-toggle input:checked+.wgc-toggle__track::after{transform:translateX(16px)}
+.wgc-admin .wgc-toggle input:focus-visible+.wgc-toggle__track{box-shadow:0 0 0 2px #fff,0 0 0 4px #2271b1}
+.wgc-admin .wgc-toggle input:disabled+.wgc-toggle__track{cursor:not-allowed}
+.wgc-admin .wgc-inline{margin-left:10px}
+.wgc-admin .wgc-image-field img{display:block;max-width:200px;height:auto;margin:6px 0;border:1px solid #dcdcde}
