@@ -63,6 +63,8 @@ final class Webgram_Theme_Dashboard {
 				<?php if ( webgram_has_core() ) : ?>
 					<a class="button" href="<?php echo esc_url( admin_url( 'admin.php?page=webgram-core' ) ); ?>"><?php esc_html_e( 'Webgram Core modules', 'webgram' ); ?></a>
 				<?php endif; ?>
+				<a class="button" href="<?php echo esc_url( admin_url( 'admin.php?page=' . Webgram_Setup_Wizard::SLUG ) ); ?>"><?php esc_html_e( 'Setup wizard', 'webgram' ); ?></a>
+				<a class="button" href="<?php echo esc_url( admin_url( 'admin.php?page=' . Webgram_Demo_Importer::SLUG ) ); ?>"><?php esc_html_e( 'Demo import', 'webgram' ); ?></a>
 				<?php if ( class_exists( 'Webgram_Elementor_Sync' ) && Webgram_Elementor_Sync::available() ) : ?>
 					<a class="button" href="<?php echo esc_url( Webgram_Elementor_Sync::url() ); ?>"><?php esc_html_e( 'Sync tokens to Elementor', 'webgram' ); ?></a>
 				<?php endif; ?>

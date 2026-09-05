@@ -56,13 +56,13 @@ ol li,ul li{margin:4px 0}
 <p>Webgram is two products: <strong>Webgram Theme</strong> (design, header and footer builders, mega menu, shop and product layouts, slide cart) and <strong>Webgram Core</strong> (features: reviews, wishlist, compare, quick view, badges, coupons, slider, reels, Instagram, voice search, AI assistant, invoices, branded emails, WhatsApp notifications, analytics, site tools). The theme works on its own; Core adds the features and works with any theme.</p>
 <table><tr><th>Requirement</th><th>Version</th></tr><tr><td>WordPress</td><td>6.4 or newer</td></tr><tr><td>WooCommerce</td><td>8.5 or newer (optional for the theme, required for most Core modules)</td></tr><tr><td>PHP</td><td>8.1 to 8.4</td></tr><tr><td>Elementor</td><td>Optional. Every section is also a Gutenberg block and a shortcode.</td></tr></table>
 
-<h3 id="install">Install theme and Core</h3>
+<h3 id="install">Install everything from one zip</h3>
 <ol>
-<li>Appearance &gt; Themes &gt; Add New &gt; Upload Theme: choose <code>webgram-theme.zip</code>, install, activate.</li>
-<li>Go to <strong>Webgram &gt; System status</strong>. Click <strong>Install Webgram Core</strong>. The theme installs the plugin from its bundled copy and activates it. No external download.</li>
-<li>Install WooCommerce if it is not present and finish its setup wizard.</li>
-<li>Open <strong>Webgram &gt; Modules</strong> and switch on the modules you need. Disabled modules load nothing on the frontend.</li>
+<li>Appearance &gt; Themes &gt; Add New &gt; Upload Theme: choose <code>webgram-theme.zip</code>, install, activate. WordPress opens <strong>Webgram &gt; Setup wizard</strong>.</li>
+<li>Tick what you want (Elementor, child theme, demo store) and click <strong>Start setup</strong>. The wizard installs and activates WooCommerce from wordpress.org, Webgram Core from the theme package, Elementor from wordpress.org, installs and activates the Webgram Child theme from the theme package, then imports the demo store step by step. Each line shows done, skipped or failed; a failed step stops the run, and running the wizard again continues from what is left.</li>
+<li>Finish the WooCommerce store details (address, currency, payments) from the link at the end of the wizard, then open <strong>Webgram &gt; Modules</strong> to switch modules on or off.</li>
 </ol>
+<p>The wizard needs the server to reach wordpress.org for WooCommerce and Elementor; if that is blocked, install those two from Plugins &gt; Add New and run the wizard again. Webgram Core and the child theme can also be installed by hand from <strong>Webgram &gt; System status</strong> or from the separate zips in the package.</p>
 <div class="note">If you update the theme later and the new version bundles a newer Core, System status shows <strong>Update bundled Webgram Core</strong>. Click it to update in place. You can also upload <code>webgram-core.zip</code> through Plugins &gt; Add New at any time.</div>
 
 <h3 id="demo">Demo import</h3>

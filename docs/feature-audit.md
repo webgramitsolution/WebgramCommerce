@@ -35,6 +35,7 @@ Status values: **IMPLEMENTED** (code path exists and is exercised by the harness
 | Emails | IMPLEMENTED | Branding, header and footer, preview, test send, invoice attachments, wp_mail only | |
 | WhatsApp | IMPLEMENTED | Owner credentials encrypted, E.164, consent, template mapping, events, Action Scheduler with cron fallback, retries, idempotency, logs, webhook signature | |
 | Analytics | IMPLEMENTED | product_view, add_to_cart, buy_now, purchase, checkout_start, search, voice_search, quick_view, coupon_copy, wishlist_add, compare_add, review_helpful, reel and chat events, cta_click on any element with data-wg-cta; dashboard | |
+| Setup wizard | IMPLEMENTED | Webgram > Setup wizard after activation: WooCommerce and Elementor from wordpress.org through the plugin API, Webgram Core and the child theme from zips bundled in the theme, child activation, demo import step by step with progress, resumable | Needs outbound access to wordpress.org for the two third party plugins; NOT TESTED in WordPress |
 | Demo import | IMPLEMENTED | Settings once, presets only when unchanged, images, products, posts, Core content, pages, menus, widgets; idempotent | |
 | Elementor | IMPLEMENTED | Widgets for every section, product components, HTML Block widget, header and footer through Layouts; Gutenberg and shortcode fallbacks for all of them; optional | |
 | WooCommerce integration | IMPLEMENTED | Hooks first, 8 versioned overrides, WC_Order APIs, HPOS and block checkout declared, graceful without WooCommerce | |

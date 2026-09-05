@@ -59,6 +59,7 @@ $webgram_includes = [
 	'inc/elementor/class-elementor-sync.php',
 	'inc/admin/class-theme-dashboard.php',
 	'inc/admin/class-plugin-installer.php',
+	'inc/admin/class-setup-wizard.php',
 	'inc/admin/class-demo-importer.php',
 	'inc/admin/class-page-metabox.php',
 	'inc/admin/class-sidebars.php',

@@ -136,6 +136,7 @@ $csv = array_map('str_getcsv', file(get_template_directory().'/demo/products.csv
 $missing = array_diff(array_map(fn($r)=>$r[7], array_slice($csv,1)), array_map(fn($f)=>basename($f), glob(get_template_directory().'/demo/images/product-*.png')));
 check('demo products csv: 12 rows, every image file present', count($csv)===13 && $csv[0][0]==='sku' && $missing===[]);
 check('version constants agree', WEBGRAM_VERSION==='1.0.0' && WEBGRAM_MIN_CORE_VERSION==='1.0.0');
+check('setup wizard plan order and options', Webgram_Setup_Wizard::plan([])===['woocommerce','core'] && Webgram_Setup_Wizard::plan(['elementor'=>1,'child'=>1,'demo'=>1])===['woocommerce','core','elementor','child','demo:settings','demo:images','demo:products','demo:posts','demo:core','demo:pages','demo:menus','demo:widgets']);
 check('custom sidebar ids are unique and safe', Webgram_Sidebars::make_id('Shop Promo!')==='sidebar-shop-promo' && Webgram_Sidebars::make_id('Shop Promo', ['sidebar-shop-promo'])==='sidebar-shop-promo-2' && Webgram_Sidebars::make_id('!!!')==='sidebar-custom');
 check('page options layouts and sidebar choices', isset(Webgram_Page_Metabox::layouts()['sidebar-left']) && isset(Webgram_Sidebars::choices()['sidebar-product']) && Webgram_Sidebars::for_context('shop')==='sidebar-shop');
 check('page title type helper defaults to blog', webgram_page_title_type()==='blog');

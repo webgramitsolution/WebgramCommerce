@@ -27,6 +27,7 @@ Legend: nonce = WordPress or WooCommerce nonce checked; cap = capability or owne
 | Live search and cart update WC-AJAX: `webgram_nonce`, sanitized query, capped result count | done | `inc/woocommerce/class-wc-ajax.php` |
 | Login and register forms: WooCommerce nonces, server side validation, errors shown inline, no user enumeration beyond WooCommerce defaults | done | `woocommerce/myaccount/form-login.php`, `class-wc-account.php` |
 | Bundled Core installer: `install_plugins` + `activate_plugins` + nonce, installs only the zip inside the theme folder | done | `inc/admin/class-plugin-installer.php` |
+| Setup wizard: every AJAX step checks `install_plugins` and `activate_plugins` plus a nonce (`install_themes` and `switch_themes` for the child); WooCommerce and Elementor come from the wordpress.org plugin API download link, never from a hard coded URL | done | `inc/admin/class-setup-wizard.php` |
 | Demo importer: `manage_options` + nonce, reads only files inside `demo/`, never deletes | done | `inc/admin/class-demo-importer.php` |
 | Mega menu fields: `edit_theme_options` on save, `wp_kses_post` for HTML content | done | `inc/mega-menu/class-mega-menu-admin.php` |
 | Sidebars screen: `edit_theme_options` + nonce on create and delete, ids sanitized, hard cap of 20 areas | done | `inc/admin/class-sidebars.php` |

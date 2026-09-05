@@ -149,3 +149,7 @@
 .wg-mega-fields .wg-input{max-width:100%}
 
 @media (max-width:1100px){.wg-settings__layout{grid-template-columns:1fr}.wg-settings__tabs{flex-direction:row;flex-wrap:wrap;border-right:0;border-bottom:1px solid var(--wg-a-border)}.wg-settings__tab{border-left:0;border-bottom:3px solid transparent}.wg-settings__tab.is-active{border-bottom-color:var(--wg-a-primary)}.wg-builder__layout{grid-template-columns:1fr}.wg-builder__side{position:static}.wg-field{grid-template-columns:1fr}}
+
+.wg-setup__log{max-height:320px;overflow:auto;background:#f6f7f7;border:1px solid #dcdcde;border-radius:6px;padding:8px 12px;margin-top:12px;font-size:13px}
+.wg-setup__line{margin:4px 0}.wg-setup__line.is-done::before{content:"\2713  ";color:#1e7e34}.wg-setup__line.is-skipped{color:#646970}.wg-setup__line.is-failed{color:#b32d2e}
+.wg-setup__finish{margin-top:16px;padding-top:16px;border-top:1px solid #dcdcde}

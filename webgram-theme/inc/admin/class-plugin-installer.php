@@ -142,7 +142,7 @@ final class Webgram_Plugin_Installer {
 	/**
 	 * @return string Result code shown by notice().
 	 */
-	private static function run( string $task ): string {
+	public static function run( string $task ): string {
 		if ( 'activate' !== $task ) {
 			if ( ! self::has_bundle() ) {
 				return 'no_bundle';

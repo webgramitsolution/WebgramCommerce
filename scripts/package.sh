@@ -43,7 +43,11 @@ fi
 rm -rf "$BUILD/webgram-core/tests" "$BUILD/webgram-core/.gitignore"
 ( cd "$BUILD" && zip -qr "$DIST/webgram-core.zip" webgram-core -x "*.DS_Store" )
 
-# 3. Theme: git archive, drop src and tooling, add bundled Core.
+# 3. Child theme (also bundled inside the theme for the setup wizard).
+( cd "$ROOT" && git archive HEAD webgram-child | tar -x -C "$BUILD" )
+( cd "$BUILD" && zip -qr "$DIST/webgram-child.zip" webgram-child -x "*.DS_Store" )
+
+# 4. Theme: git archive, drop src and tooling, add bundled Core and child.
 ( cd "$ROOT" && git archive HEAD webgram-theme | tar -x -C "$BUILD" )
 rm -rf "$BUILD/webgram-theme/assets/src" "$BUILD/webgram-theme/node_modules" "$BUILD/webgram-theme/package.json" "$BUILD/webgram-theme/package-lock.json" "$BUILD/webgram-theme/.gitignore"
 # Compiled assets come from the working tree (git archive holds the committed build; the fresh build wins when present).
@@ -51,15 +55,14 @@ cp -R "$ROOT/webgram-theme/assets/css" "$BUILD/webgram-theme/assets/"
 cp -R "$ROOT/webgram-theme/assets/js" "$BUILD/webgram-theme/assets/"
 mkdir -p "$BUILD/webgram-theme/plugins" "$ROOT/webgram-theme/plugins"
 cp "$DIST/webgram-core.zip" "$BUILD/webgram-theme/plugins/webgram-core.zip"
-printf '{"name":"Webgram Core","file":"webgram-core.zip","version":"%s","built":"%s"}\n' "$CORE_VERSION" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > "$BUILD/webgram-theme/plugins/webgram-core.json"
+cp "$DIST/webgram-child.zip" "$BUILD/webgram-theme/plugins/webgram-child.zip"
+cp "$DIST/webgram-child.zip" "$ROOT/webgram-theme/plugins/webgram-child.zip"
+printf '{"name":"Webgram Core","file":"webgram-core.zip","version":"%s","child":"webgram-child.zip","child_version":"%s","built":"%s"}\n' "$CORE_VERSION" "$CHILD_VERSION" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > "$BUILD/webgram-theme/plugins/webgram-core.json"
 # Keep a copy in the working tree so a local WordPress can exercise the installer.
 cp "$BUILD/webgram-theme/plugins/webgram-core.zip" "$ROOT/webgram-theme/plugins/webgram-core.zip"
 cp "$BUILD/webgram-theme/plugins/webgram-core.json" "$ROOT/webgram-theme/plugins/webgram-core.json"
 ( cd "$BUILD" && zip -qr "$DIST/webgram-theme.zip" webgram-theme -x "*.DS_Store" )
 
-# 4. Child theme.
-( cd "$ROOT" && git archive HEAD webgram-child | tar -x -C "$BUILD" )
-( cd "$BUILD" && zip -qr "$DIST/webgram-child.zip" webgram-child -x "*.DS_Store" )
 
 # 5. Documentation and licensing.
 cp "$ROOT/docs/user-guide.html" "$DIST/documentation/index.html"
