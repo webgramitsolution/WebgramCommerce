@@ -149,6 +149,9 @@ function webgram_body_classes( array $classes ): array {
 	if ( webgram_option( 'mobile_nav_enabled' ) ) {
 		$classes[] = 'wg-has-bottom-nav';
 	}
+	if ( is_singular() && get_post_meta( get_the_ID(), '_webgram_flush_top', true ) ) {
+		$classes[] = 'wg-flush-top';
+	}
 	return $classes;
 }
 

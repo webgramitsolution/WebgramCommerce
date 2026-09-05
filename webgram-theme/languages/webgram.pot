@@ -9,34 +9,34 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-05T14:05:17+00:00\n"
+"POT-Creation-Date: 2026-09-05T15:49:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: webgram\n"
 
 #. Theme Name of the theme
-#: style.css:2
+#: style.css
 #: inc/sections/class-sections.php:145
 msgid "Webgram"
 msgstr ""
 
 #. Theme URI of the theme
-#: style.css:3
+#: style.css
 msgid "https://webgramitsolution.com/webgram-theme"
 msgstr ""
 
 #. Description of the theme
-#: style.css:6
+#: style.css
 msgid "Premium, fast WooCommerce theme with header and footer builders, mega menu, modular product page, slide cart and a complete design token system. Pairs with the Webgram Core plugin for reviews, reels, wishlist, AI assistant, invoices and WhatsApp notifications."
 msgstr ""
 
 #. Author of the theme
-#: style.css:4
+#: style.css
 msgid "Webgram IT Solution"
 msgstr ""
 
 #. Author URI of the theme
-#: style.css:5
+#: style.css
 msgid "https://webgramitsolution.com"
 msgstr ""
 
@@ -70,10 +70,6 @@ msgstr[1] ""
 
 #: comments.php:31
 msgid "Comments are closed."
-msgstr ""
-
-#: functions.php:19
-msgid "Webgram requires PHP 8.1 or newer. Please ask your host to upgrade PHP."
 msgstr ""
 
 #: header.php:19
@@ -136,7 +132,7 @@ msgstr ""
 
 #: inc/admin/class-demo-importer.php:125
 #: inc/admin/class-plugin-installer.php:131
-#: inc/admin/class-setup-wizard.php:195
+#: inc/admin/class-setup-wizard.php:200
 #: inc/admin/class-sidebars.php:158
 #: inc/admin/class-sidebars.php:175
 #: inc/builders/class-builder-page.php:298
@@ -234,21 +230,18 @@ msgstr ""
 #: inc/admin/class-demo-importer.php:354
 #: inc/builders/elements/class-element-links.php:95
 #: inc/builders/elements/class-element-links.php:99
-#: page-templates/template-help.php:3
 msgid "Help"
 msgstr ""
 
 #. Template Name of the theme
 #: inc/admin/class-demo-importer.php:355
 #: inc/builders/elements/class-element-links.php:61
-#: page-templates/template-track-order.php:3
 msgid "Track Order"
 msgstr ""
 
 #. Template Name of the theme
 #: inc/admin/class-demo-importer.php:356
 #: inc/builders/elements/class-element-links.php:80
-#: page-templates/template-bulk-order.php:3
 msgid "Bulk Order"
 msgstr ""
 
@@ -262,19 +255,19 @@ msgid "Contact"
 msgstr ""
 
 #. translators: %d: number of pages.
-#: inc/admin/class-demo-importer.php:377
+#: inc/admin/class-demo-importer.php:383
 #, php-format
 msgid "%d pages ready. Home set as the front page."
 msgstr ""
 
-#: inc/admin/class-demo-importer.php:384
+#: inc/admin/class-demo-importer.php:390
 #: inc/builders/elements/class-element-misc.php:79
 #: inc/settings/tabs/styles.php:28
 #: inc/setup.php:68
 msgid "Primary"
 msgstr ""
 
-#: inc/admin/class-demo-importer.php:386
+#: inc/admin/class-demo-importer.php:392
 #: inc/settings/defaults.php:64
 #: inc/settings/tabs/layout.php:30
 #: inc/settings/tabs/mobile-navbar.php:31
@@ -282,21 +275,21 @@ msgstr ""
 msgid "Shop"
 msgstr ""
 
-#: inc/admin/class-demo-importer.php:401
+#: inc/admin/class-demo-importer.php:407
 #: inc/settings/tabs/footer.php:12
 msgid "Footer"
 msgstr ""
 
-#: inc/admin/class-demo-importer.php:412
+#: inc/admin/class-demo-importer.php:418
 msgid "Primary and footer menus assigned."
 msgstr ""
 
-#: inc/admin/class-demo-importer.php:433
+#: inc/admin/class-demo-importer.php:439
 msgid "widgets.json is missing or invalid."
 msgstr ""
 
 #. translators: %d: number of widgets.
-#: inc/admin/class-demo-importer.php:458
+#: inc/admin/class-demo-importer.php:464
 #, php-format
 msgid "%d footer widgets added."
 msgstr ""
@@ -306,8 +299,8 @@ msgid "Webgram options"
 msgstr ""
 
 #: inc/admin/class-page-metabox.php:38
-#: inc/admin/class-page-metabox.php:69
-#: inc/admin/class-page-metabox.php:79
+#: inc/admin/class-page-metabox.php:70
+#: inc/admin/class-page-metabox.php:80
 msgid "Theme default"
 msgstr ""
 
@@ -337,13 +330,13 @@ msgstr ""
 msgid "Sidebar right"
 msgstr ""
 
-#: inc/admin/class-page-metabox.php:58
+#: inc/admin/class-page-metabox.php:59
 #: inc/settings/tabs/layout.php:21
 #: inc/settings/tabs/single-product.php:17
 msgid "Layout"
 msgstr ""
 
-#: inc/admin/class-page-metabox.php:67
+#: inc/admin/class-page-metabox.php:68
 #: inc/settings/tabs/layout.php:53
 #: inc/settings/tabs/shop.php:31
 #: sidebar.php:29
@@ -351,36 +344,44 @@ msgstr ""
 msgid "Sidebar"
 msgstr ""
 
-#: inc/admin/class-page-metabox.php:77
+#: inc/admin/class-page-metabox.php:78
 msgid "Page title band"
 msgstr ""
 
-#: inc/admin/class-page-metabox.php:80
+#: inc/admin/class-page-metabox.php:81
 msgid "Show"
 msgstr ""
 
-#: inc/admin/class-page-metabox.php:81
+#: inc/admin/class-page-metabox.php:82
 #: inc/settings/tabs/layout.php:57
 msgid "Hide"
 msgstr ""
 
-#: inc/admin/class-page-metabox.php:85
+#: inc/admin/class-page-metabox.php:86
 msgid "Title background image"
 msgstr ""
 
-#: inc/admin/class-page-metabox.php:91
+#: inc/admin/class-page-metabox.php:92
 #: inc/mega-menu/class-mega-menu-admin.php:28
 #: inc/settings/class-settings-fields.php:177
 #: inc/settings/class-settings-page.php:66
 msgid "Choose image"
 msgstr ""
 
-#: inc/admin/class-page-metabox.php:92
+#: inc/admin/class-page-metabox.php:93
 #: inc/admin/class-sidebars.php:133
 #: inc/builders/class-builder-page.php:134
 #: inc/settings/class-settings-fields.php:178
 #: inc/settings/class-settings-fields.php:346
 msgid "Remove"
+msgstr ""
+
+#: inc/admin/class-page-metabox.php:99
+msgid "Flush content to header"
+msgstr ""
+
+#: inc/admin/class-page-metabox.php:101
+msgid "Removes the space above the content so a full width hero touches the header."
 msgstr ""
 
 #: inc/admin/class-plugin-installer.php:112
@@ -414,242 +415,246 @@ msgid "The bundled Webgram Core zip is missing from the theme folder. Upload the
 msgstr ""
 
 #: inc/admin/class-plugin-installer.php:187
-#: inc/admin/class-setup-wizard.php:299
+#: inc/admin/class-setup-wizard.php:304
 msgid "Webgram Core could not be installed."
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:83
-#: inc/admin/class-setup-wizard.php:148
+#: inc/admin/class-setup-wizard.php:84
+#: inc/admin/class-setup-wizard.php:153
 #: inc/admin/class-theme-dashboard.php:66
 msgid "Setup wizard"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:100
+#: inc/admin/class-setup-wizard.php:101
 msgid "Working"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:101
+#: inc/admin/class-setup-wizard.php:102
 #: inc/woocommerce/class-wc-checkout.php:56
 msgid "Done"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:102
+#: inc/admin/class-setup-wizard.php:103
 msgid "Failed"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:103
+#: inc/admin/class-setup-wizard.php:104
 msgid "Skipped"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:104
+#: inc/admin/class-setup-wizard.php:105
 msgid "Setup complete. Your store is ready."
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:105
+#: inc/admin/class-setup-wizard.php:106
 msgid "Setup stopped at a failed step. Fix the issue and run it again; finished steps are kept."
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:118
+#: inc/admin/class-setup-wizard.php:119
 msgid "Webgram is active. Run the setup wizard to install WooCommerce, Webgram Core, Elementor and the child theme, then import the demo store."
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:120
+#: inc/admin/class-setup-wizard.php:121
 msgid "Run setup wizard"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:132
+#: inc/admin/class-setup-wizard.php:133
 msgid "wordpress.org"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:133
-#: inc/admin/class-setup-wizard.php:135
+#: inc/admin/class-setup-wizard.php:134
+#: inc/admin/class-setup-wizard.php:136
 msgid "bundled in the theme"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:133
-#: inc/admin/class-setup-wizard.php:135
+#: inc/admin/class-setup-wizard.php:134
+#: inc/admin/class-setup-wizard.php:136
 msgid "bundle missing"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:134
+#: inc/admin/class-setup-wizard.php:135
 msgid "wordpress.org, optional"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:135
+#: inc/admin/class-setup-wizard.php:136
 msgid "Webgram Child theme"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:144
+#: inc/admin/class-setup-wizard.php:145
+msgid "This site blocks plugin and theme installation (DISALLOW_FILE_MODS). Install WooCommerce, Webgram Core, Elementor and the child theme through your host, then use Webgram > Demo import."
+msgstr ""
+
+#: inc/admin/class-setup-wizard.php:149
 msgid "Active"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:144
+#: inc/admin/class-setup-wizard.php:149
 msgid "Installed, not active"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:144
+#: inc/admin/class-setup-wizard.php:149
 msgid "Not installed"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:150
+#: inc/admin/class-setup-wizard.php:155
 msgid "One click installs everything the store needs. WooCommerce and Elementor are downloaded from wordpress.org by your WordPress; Webgram Core and the child theme come from this theme package. Steps already done are skipped, so you can run the wizard again at any time."
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:152
+#: inc/admin/class-setup-wizard.php:157
 msgid "Component"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:152
+#: inc/admin/class-setup-wizard.php:157
 msgid "Source"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:152
+#: inc/admin/class-setup-wizard.php:157
 msgid "Status"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:162
+#: inc/admin/class-setup-wizard.php:167
 msgid "Demo store"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:163
+#: inc/admin/class-setup-wizard.php:168
 msgid "products, pages, menus, slider, testimonials, coupons"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:164
+#: inc/admin/class-setup-wizard.php:169
 msgid "Not imported"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:164
+#: inc/admin/class-setup-wizard.php:169
 msgid "Imported"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:169
+#: inc/admin/class-setup-wizard.php:174
 msgid "Install Elementor (optional page builder; every Webgram section also works as a Gutenberg block)"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:170
+#: inc/admin/class-setup-wizard.php:175
 msgid "Install and activate the Webgram Child theme (keeps your customizations safe on updates)"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:171
+#: inc/admin/class-setup-wizard.php:176
 msgid "Import the demo store"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:174
+#: inc/admin/class-setup-wizard.php:179
 msgid "Start setup"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:175
+#: inc/admin/class-setup-wizard.php:180
 msgid "Skip, I will install manually"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:179
+#: inc/admin/class-setup-wizard.php:184
 msgid "Next steps"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:181
+#: inc/admin/class-setup-wizard.php:186
 msgid "WooCommerce store details (address, currency, payments)"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:182
+#: inc/admin/class-setup-wizard.php:187
 #: inc/admin/class-theme-dashboard.php:60
 #: inc/settings/class-settings-page.php:32
 #: inc/settings/class-settings-page.php:91
 msgid "Theme Settings"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:183
+#: inc/admin/class-setup-wizard.php:188
 #: inc/admin/class-theme-dashboard.php:61
 #: inc/builders/class-builder-page.php:21
 #: inc/builders/class-builder-page.php:47
 msgid "Header Builder"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:184
+#: inc/admin/class-setup-wizard.php:189
 #: inc/builders/class-builder-page.php:150
 #: inc/settings/class-settings-page.php:93
 msgid "View site"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:242
+#: inc/admin/class-setup-wizard.php:247
 msgid "Unknown demo step."
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:245
+#: inc/admin/class-setup-wizard.php:250
 msgid "WooCommerce is not active, products skipped."
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:248
+#: inc/admin/class-setup-wizard.php:253
 msgid "Webgram Core is not active, Core demo content skipped."
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:253
+#: inc/admin/class-setup-wizard.php:258
 msgid "Unknown step."
 msgstr ""
 
 #. translators: %s: plugin name.
-#: inc/admin/class-setup-wizard.php:259
+#: inc/admin/class-setup-wizard.php:264
 #, php-format
 msgid "%s is already active."
 msgstr ""
 
 #. translators: 1: plugin name, 2: error.
-#: inc/admin/class-setup-wizard.php:265
+#: inc/admin/class-setup-wizard.php:270
 #, php-format
 msgid "%1$s could not be fetched from wordpress.org: %2$s. Install it from Plugins > Add New and run the wizard again."
 msgstr ""
 
 #. translators: 1: plugin name, 2: error.
-#: inc/admin/class-setup-wizard.php:265
+#: inc/admin/class-setup-wizard.php:270
 msgid "no download link"
 msgstr ""
 
 #. translators: 1: plugin name, 2: error.
-#: inc/admin/class-setup-wizard.php:272
+#: inc/admin/class-setup-wizard.php:277
 #, php-format
 msgid "%1$s could not be installed: %2$s"
 msgstr ""
 
 #. translators: 1: plugin name, 2: error.
 #. translators: %s: error.
-#: inc/admin/class-setup-wizard.php:272
-#: inc/admin/class-setup-wizard.php:316
+#: inc/admin/class-setup-wizard.php:277
+#: inc/admin/class-setup-wizard.php:321
 msgid "unknown error"
 msgstr ""
 
 #. translators: %s: plugin name.
-#: inc/admin/class-setup-wizard.php:282
+#: inc/admin/class-setup-wizard.php:287
 #, php-format
 msgid "%s installed and activated."
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:288
+#: inc/admin/class-setup-wizard.php:293
 msgid "Webgram Core is already active."
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:291
+#: inc/admin/class-setup-wizard.php:296
 msgid "The bundled Webgram Core zip is missing from the theme folder."
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:295
+#: inc/admin/class-setup-wizard.php:300
 msgid "Webgram Core installed and activated."
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:304
+#: inc/admin/class-setup-wizard.php:309
 msgid "You cannot install themes on this site."
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:309
+#: inc/admin/class-setup-wizard.php:314
 msgid "The bundled child theme zip is missing from the theme folder."
 msgstr ""
 
 #. translators: %s: error.
-#: inc/admin/class-setup-wizard.php:316
+#: inc/admin/class-setup-wizard.php:321
 #, php-format
 msgid "The child theme could not be installed: %s"
 msgstr ""
 
-#: inc/admin/class-setup-wizard.php:324
+#: inc/admin/class-setup-wizard.php:329
 msgid "Webgram Child installed and activated."
 msgstr ""
 
@@ -1705,6 +1710,16 @@ msgstr ""
 
 #: inc/builders/presets.php:135
 msgid "Widget areas (4 columns)"
+msgstr ""
+
+#. translators: 1: required PHP version, 2: current PHP version.
+#: inc/compat/requirements.php:16
+#, php-format
+msgid "Webgram needs PHP %1$s or newer. This server runs PHP %2$s, so the theme cannot load its styles or templates and the site falls back to plain WordPress output. Ask your host to switch this site to PHP 8.1, 8.2 or 8.3 (hPanel, cPanel or Plesk have a PHP version selector), then reload this page."
+msgstr ""
+
+#: inc/compat/requirements.php:25
+msgid "Webgram is not running."
 msgstr ""
 
 #. translators: 1: installed core version, 2: required version
@@ -4210,11 +4225,11 @@ msgstr ""
 msgid "Footer column %d"
 msgstr ""
 
-#: inc/template-functions.php:169
+#: inc/template-functions.php:172
 msgid "Net banking"
 msgstr ""
 
-#: inc/template-functions.php:171
+#: inc/template-functions.php:174
 msgid "Cash on delivery"
 msgstr ""
 

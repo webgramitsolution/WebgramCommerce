@@ -43,7 +43,15 @@
 .wg-categories { margin-block: var(--wg-space-10); --wg-cat-size: 120px;
   @include down(lg) { --wg-cat-size: 90px; }
   @include down(md) { --wg-cat-size: 70px; }
-  &__row { display: grid; grid-template-columns: repeat(var(--wgc-cols, 8), minmax(0, 1fr)); gap: var(--wg-space-4); @include down(lg) { grid-template-columns: repeat(4, minmax(0, 1fr)); } @include down(sm) { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--wg-space-3); } }
+  &__row { display: grid; grid-template-columns: repeat(var(--wgc-cols, 8), minmax(0, 1fr)); gap: var(--wg-space-8); justify-items: center;
+    @include down(lg) { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--wg-space-6); }
+    // Phone: a single row with three circles visible, the rest reached by swiping.
+    @include down(md) { display: flex; gap: var(--wg-space-3); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+      &::-webkit-scrollbar { display: none; }
+      > * { flex: 0 0 calc((100% - var(--wg-space-3) * 2) / 3); scroll-snap-align: start; }
+    }
+  }
+  @include down(md) { .wg-category-item { width: 100%; } }
   &.wg-carousel.is-carousel &__row, .wg-carousel.is-carousel > &__row { display: flex; --wg-carousel-item: 120px; } }
 .wg-category-item { position: relative; display: flex; flex-direction: column; align-items: center; gap: var(--wg-space-2); width: var(--wg-cat-size, 120px); text-align: center; color: var(--wg-color-heading); text-decoration: none;
   &__media { position: relative; display: block; width: 100%; aspect-ratio: 1; overflow: hidden; border-radius: 50%; border: 1px solid var(--wg-cat-ring, #ead9d9); background: var(--wg-color-bg-alt); transition: transform var(--wg-transition-base) var(--wg-ease), box-shadow var(--wg-transition-base);
@@ -54,7 +62,7 @@
   &:hover &__media { transform: scale(1.04); box-shadow: var(--wg-shadow-sm); }
 
   // Ribbon banner: sits across the circle, overhangs both edges, notched ends with a folded tail behind.
-  &__ribbon { position: absolute; top: 56%; inset-inline-start: 50%; transform: translate(-50%, -50%); width: calc(100% + 18px); height: 28px; z-index: 2; pointer-events: none;
+  &__ribbon { position: absolute; top: 56%; inset-inline-start: 50%; transform: translate(-50%, -50%); width: max-content; min-width: calc(100% + 18px); max-width: calc(100% + 28px); height: 28px; z-index: 2; pointer-events: none;
     [dir="rtl"] & { transform: translate(50%, -50%); }
     &::before, &::after { content: ""; position: absolute; top: 100%; width: 9px; height: 7px; background: var(--wg-cat-ribbon-fold, #7a1219); }
     &::before { inset-inline-start: 0; clip-path: polygon(0 0, 100% 0, 100% 100%); }
@@ -62,8 +70,8 @@
   }
   &__ribbon-text { display: block; width: 100%; height: 100%; line-height: 28px; padding: 0 16px; background: var(--wg-color-primary); color: #fff; font-size: 12px; font-weight: var(--wg-fw-bold); text-transform: uppercase; letter-spacing: .04em; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; clip-path: polygon(0 0, 100% 0, calc(100% - 9px) 50%, 100% 100%, 0 100%, 9px 50%); }
 
-  @include down(lg) { &__ribbon { height: 24px; width: calc(100% + 14px); } &__ribbon-text { line-height: 24px; font-size: 11px; padding: 0 13px; } }
-  @include down(md) { &__ribbon { height: 20px; width: calc(100% + 10px); } &__ribbon-text { line-height: 20px; font-size: 9px; padding: 0 10px; letter-spacing: .02em; } }
+  @include down(lg) { &__ribbon { height: 24px; min-width: calc(100% + 14px); max-width: calc(100% + 22px); } &__ribbon-text { line-height: 24px; font-size: 11px; padding: 0 13px; } }
+  @include down(md) { &__ribbon { height: 22px; min-width: calc(100% + 10px); max-width: calc(100% + 10px); } &__ribbon-text { line-height: 22px; font-size: 10px; padding: 0 11px; letter-spacing: .02em; } }
 
   &__label { font-weight: var(--wg-fw-semibold); font-size: var(--wg-fs-sm); }
   &__count { font-size: var(--wg-fs-xs); color: var(--wg-color-text-muted); }
@@ -141,3 +149,6 @@
 }
 .wg-strip { background: var(--wg-strip-bg, var(--wg-color-primary)); color: var(--wg-strip-color, #fff); font-size: var(--wg-fs-sm); font-weight: var(--wg-fw-medium); padding: 8px 0; margin-block: var(--wg-space-6); .wg-marquee__item { display: inline-flex; align-items: center; gap: 8px; .wg-icon { width: 16px; height: 16px; } } }
 .wp-block-webgram-strip .wg-strip, .elementor-widget-webgram-strip .wg-strip { margin-block: 0; }
+// Hero slider and the marquee strip under it sit flush, with no gap on either side.
+.wp-block-webgram-slider { margin-block: 0; }
+.wp-block-webgram-slider + .wp-block-webgram-strip { margin-block-start: 0; }

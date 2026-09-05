@@ -90,3 +90,18 @@
   --wg-transition-base: 250ms;
   --wg-ease: cubic-bezier(0.2, 0, 0, 1);
 }
+
+// Phones: the rem scale is anchored to the root font size, not the body base, so the step sizes are
+// restated here. Heading and base sizes come from the generated per device block.
+@media (max-width: 767.98px) {
+  :root {
+    --wg-fs-xs: 0.6875rem;
+    --wg-fs-sm: 0.8125rem;
+    --wg-fs-md: 0.875rem;
+    --wg-fs-lg: 1rem;
+    --wg-fs-xl: 1.125rem;
+    --wg-fs-2xl: 1.25rem;
+    --wg-fs-3xl: 1.5rem;
+    --wg-fs-4xl: 1.75rem;
+  }
+}

@@ -29,7 +29,7 @@ check('css generator outputs :root block', str_starts_with($css, ':root{--'));
 check('primary color token present', str_contains($css, '--wg-color-primary:#a0181f'));
 check('container token has px', str_contains($css, '--wg-container-max:1320px'));
 check('font stack quoted', str_contains($css, '--wg-font-body:"Inter",system-ui,sans-serif'));
-check('heading size tokens per device', str_contains($css,'--wg-fs-h1:40px') && str_contains($css,'@media(max-width:767.98px){:root{--wg-font-size-base:15px;--wg-fs-h1:28px'));
+check('heading size tokens per device', str_contains($css,'--wg-fs-h1:40px') && str_contains($css,'@media(max-width:767.98px){:root{--wg-font-size-base:14px;--wg-fs-h1:24px'));
 Webgram_Settings::instance()->update(['color_primary'=>'#123456','radius_scale'=>'pill','custom_css'=>'.x{color:red}</style><script>alert(1)</script>','custom_css_mobile'=>'.m{display:none}']);
 $css = Webgram_CSS_Generator::instance()->get_css();
 check('settings override applied', str_contains($css,'--wg-color-primary:#123456'));

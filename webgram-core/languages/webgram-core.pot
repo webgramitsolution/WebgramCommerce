@@ -9,33 +9,33 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-05T10:25:05+00:00\n"
+"POT-Creation-Date: 2026-09-05T15:49:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: webgram-core\n"
 
 #. Plugin Name of the plugin
-#: webgram-core.php:3
+#: webgram-core.php
 msgid "Webgram Core"
 msgstr ""
 
 #. Plugin URI of the plugin
-#: webgram-core.php:4
+#: webgram-core.php
 msgid "https://webgramitsolution.com/webgram-core"
 msgstr ""
 
 #. Description of the plugin
-#: webgram-core.php:5
+#: webgram-core.php
 msgid "Functionality layer for the Webgram WooCommerce ecosystem: reviews, reels, wishlist, compare, AI assistant, invoices, WhatsApp notifications, sliders and more. Works with any theme, designed for Webgram Theme."
 msgstr ""
 
 #. Author of the plugin
-#: webgram-core.php:10
+#: webgram-core.php
 msgid "Webgram IT Solution"
 msgstr ""
 
 #. Author URI of the plugin
-#: webgram-core.php:11
+#: webgram-core.php
 msgid "https://webgramitsolution.com"
 msgstr ""
 
@@ -4785,53 +4785,59 @@ msgstr ""
 msgid "%d coupons."
 msgstr ""
 
+#. translators: %d: count.
+#: src/Support/DemoContent.php:56
+#, php-format
+msgid "%d Instagram posts."
+msgstr ""
+
 #. translators: %s: page name.
-#: src/Support/DemoContent.php:57
+#: src/Support/DemoContent.php:60
 #, php-format
 msgid "%s page ready."
 msgstr ""
 
-#: src/Support/DemoContent.php:65
+#: src/Support/DemoContent.php:68
 msgid "Home slider."
 msgstr ""
 
-#: src/Support/DemoContent.php:67
+#: src/Support/DemoContent.php:70
 msgid "Webgram Core demo content: "
 msgstr ""
 
-#: src/Support/DemoContent.php:81
+#: src/Support/DemoContent.php:84
 msgid "Home slider"
 msgstr ""
 
-#: src/Support/DemoContent.php:91
+#: src/Support/DemoContent.php:94
 msgid "Festive pooja essentials"
 msgstr ""
 
-#: src/Support/DemoContent.php:92
+#: src/Support/DemoContent.php:95
 msgid "Brass, copper and sandalwood, chosen for daily rituals"
 msgstr ""
 
-#: src/Support/DemoContent.php:93
+#: src/Support/DemoContent.php:96
 msgid "Shop now"
 msgstr ""
 
-#: src/Support/DemoContent.php:101
+#: src/Support/DemoContent.php:104
 msgid "Home decor that feels like home"
 msgstr ""
 
-#: src/Support/DemoContent.php:102
+#: src/Support/DemoContent.php:105
 msgid "Handloom textiles, ceramics and wall art"
 msgstr ""
 
-#: src/Support/DemoContent.php:103
+#: src/Support/DemoContent.php:106
 msgid "Explore decor"
 msgstr ""
 
-#: src/Support/DemoContent.php:151
+#: src/Support/DemoContent.php:176
 msgid "10% off your first order"
 msgstr ""
 
-#: src/Support/DemoContent.php:152
+#: src/Support/DemoContent.php:177
 msgid "Free shipping on orders above 999"
 msgstr ""
 
@@ -5299,7 +5305,7 @@ msgid "%d Star"
 msgstr ""
 
 #. translators: %d: products
-#: templates/sections/categories.php:29
+#: templates/sections/categories.php:31
 #, php-format
 msgid "%d product"
 msgid_plural "%d products"

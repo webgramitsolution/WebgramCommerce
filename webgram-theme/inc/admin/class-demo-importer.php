@@ -363,6 +363,12 @@ final class Webgram_Demo_Importer {
 			if ( $id && $template ) {
 				update_post_meta( $id, '_wp_page_template', $template );
 			}
+			// The home page is a section layout: no title band, no sidebar, hero flush against the header.
+			if ( $id && 'home' === $slug && ! $page ) {
+				update_post_meta( $id, '_webgram_layout', 'full-width' );
+				update_post_meta( $id, '_webgram_page_title', 'hide' );
+				update_post_meta( $id, '_webgram_flush_top', '1' );
+			}
 			$context['pages'][ $slug ] = $id;
 		}
 		if ( ! empty( $context['pages']['about'] ) ) {

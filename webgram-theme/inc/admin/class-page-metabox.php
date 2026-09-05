@@ -1,7 +1,7 @@
 <?php
 /**
  * "Webgram options" box on pages, posts and products: layout, sidebar, page title band and title image overrides.
- * Writes _webgram_layout, _webgram_sidebar, _webgram_page_title, _webgram_page_title_image.
+ * Writes _webgram_layout, _webgram_sidebar, _webgram_page_title, _webgram_page_title_image, _webgram_flush_top.
  *
  * @package Webgram
  */
@@ -52,6 +52,7 @@ final class Webgram_Page_Metabox {
 			$title = 'hide';
 		}
 		$image    = (int) get_post_meta( $post->ID, '_webgram_page_title_image', true );
+		$flush    = (bool) get_post_meta( $post->ID, '_webgram_flush_top', true );
 		$sidebars = class_exists( 'Webgram_Sidebars' ) ? Webgram_Sidebars::choices() : [];
 		?>
 		<p>
@@ -91,6 +92,13 @@ final class Webgram_Page_Metabox {
 				<button type="button" class="button" data-wg-meta-image-select><?php esc_html_e( 'Choose image', 'webgram' ); ?></button>
 				<button type="button" class="button-link" data-wg-meta-image-remove <?php echo $image ? '' : 'hidden'; ?>><?php esc_html_e( 'Remove', 'webgram' ); ?></button>
 			</span>
+		</p>
+		<p>
+			<label for="webgram_flush_top">
+				<input type="checkbox" id="webgram_flush_top" name="webgram_flush_top" value="1" <?php checked( $flush ); ?>>
+				<strong><?php esc_html_e( 'Flush content to header', 'webgram' ); ?></strong>
+			</label>
+			<span class="description"><?php esc_html_e( 'Removes the space above the content so a full width hero touches the header.', 'webgram' ); ?></span>
 		</p>
 		<script>
 		(function () {
@@ -132,6 +140,8 @@ final class Webgram_Page_Metabox {
 		delete_post_meta( $post_id, '_webgram_hide_title' );
 
 		self::store( $post_id, '_webgram_page_title_image', isset( $_POST['webgram_page_title_image'] ) ? (string) absint( $_POST['webgram_page_title_image'] ) : '' );
+
+		self::store( $post_id, '_webgram_flush_top', isset( $_POST['webgram_flush_top'] ) ? '1' : '' );
 	}
 
 	private static function store( int $post_id, string $key, string $value ): void {

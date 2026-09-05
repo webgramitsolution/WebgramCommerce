@@ -111,7 +111,8 @@ final class DemoContent {
 			]
 		);
 		update_post_meta( $id, SliderType::META_SLIDES, $slides );
-		update_post_meta( $id, SliderType::META_SETTINGS, Slides::defaults() );
+		// The demo hero runs edge to edge under the header.
+		update_post_meta( $id, SliderType::META_SETTINGS, array_merge( Slides::defaults(), [ 'full_width' => true ] ) );
 		update_post_meta( $id, '_webgram_demo', 'home-slider' );
 		return (int) $id;
 	}

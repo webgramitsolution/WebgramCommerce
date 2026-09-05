@@ -8,6 +8,11 @@
 }
 body.wg-site-boxed { background: var(--wg-boxed-bg, #f3f4f6); .wg-site { max-width: calc(var(--wg-container-max) + 2 * var(--wg-container-padding)); margin-inline: auto; background: var(--wg-color-bg); box-shadow: var(--wg-shadow-md); } }
 .wg-main { min-width: 0; }
+// Full width pages are built from sections, so the reading measure of .wg-prose does not apply.
+.wg-content--full .wg-prose { max-width: none; }
+// "Flush content to header" on a page: the first section (usually a full bleed hero) touches the header.
+body.wg-flush-top .wg-site-content { padding-block-start: 0; }
+body.wg-flush-top .wg-entry--page > .wg-entry__content > :first-child { margin-block-start: 0; }
 .wg-widget { margin-bottom: var(--wg-space-8); &__title { font-size: var(--wg-fs-md); margin-bottom: var(--wg-space-3); } }
 .wg-section { padding-block: var(--wg-section-padding-y); &--alt { background: var(--wg-color-bg-alt); } }
 
