@@ -357,6 +357,9 @@ final class Webgram_Demo_Importer {
 			'about'       => [ __( 'About', 'webgram' ), '<!-- wp:webgram/about {"title":"About Us","subtitle":"Crafted with care, delivered with love","text":"We started with a simple idea: everyday essentials should feel special."} /-->', '' ],
 			'contact'     => [ __( 'Contact', 'webgram' ), '<!-- wp:paragraph --><p>Write to support@example.com or message us on WhatsApp at +91 98765 43210. We answer within one working day.</p><!-- /wp:paragraph -->', '' ],
 		];
+		foreach ( self::policy_pages() as $slug => $title ) {
+			$pages[ $slug ] = [ $title, self::policy_body( $title ), '' ];
+		}
 		foreach ( $pages as $slug => [ $title, $content, $template ] ) {
 			$page = get_page_by_path( $slug );
 			$id   = $page ? (int) $page->ID : (int) wp_insert_post( [ 'post_type' => 'page', 'post_status' => 'publish', 'post_name' => $slug, 'post_title' => $title, 'post_content' => $content, 'post_author' => get_current_user_id() ] );
@@ -383,6 +386,24 @@ final class Webgram_Demo_Importer {
 		return sprintf( /* translators: %d: number of pages. */ __( '%d pages ready. Home set as the front page.', 'webgram' ), count( $pages ) );
 	}
 
+	/** Policy pages the demo footer links to. slug => title. */
+	private static function policy_pages(): array {
+		return [
+			'privacy-policy'           => __( 'Privacy Policy', 'webgram' ),
+			'terms-and-conditions'     => __( 'Terms and Conditions', 'webgram' ),
+			'refund-and-cancellation'  => __( 'Refund and Cancellation', 'webgram' ),
+			'shipping-policy'          => __( 'Shipping Policy', 'webgram' ),
+		];
+	}
+
+	private static function policy_body( string $title ): string {
+		return '<!-- wp:paragraph --><p>' . sprintf(
+			/* translators: %s: page title. */
+			esc_html__( 'This is a placeholder %s created by the Webgram demo import. Replace this text with your own terms before you open the store.', 'webgram' ),
+			esc_html( $title )
+		) . '</p><!-- /wp:paragraph -->';
+	}
+
 	private static function import_menus( array &$context ): string {
 		$pages = $context['pages'] ?? [];
 		$shop  = class_exists( 'WooCommerce' ) ? (int) wc_get_page_id( 'shop' ) : 0;
@@ -404,18 +425,73 @@ final class Webgram_Demo_Importer {
 				}
 			}
 		}
-		$footer = self::nav_menu( __( 'Footer', 'webgram' ), 'webgram-footer' );
-		if ( $footer && ! wp_get_nav_menu_items( $footer ) ) {
-			foreach ( [ 'about', 'help', 'track-order', 'bulk-order', 'contact' ] as $slug ) {
-				if ( ! empty( $pages[ $slug ] ) ) {
-					self::menu_item( $footer, [ 'menu-item-object-id' => (int) $pages[ $slug ], 'menu-item-object' => 'page', 'menu-item-type' => 'post_type' ] );
+		// Three footer columns: shop categories, policies and support, matching the demo footer layout.
+		$categories = self::nav_menu( __( 'Footer Categories', 'webgram' ), 'webgram-footer-categories' );
+		if ( $categories && ! wp_get_nav_menu_items( $categories ) ) {
+			foreach ( [ 'pooja-essentials', 'home-decor', 'kitchen', 'gifting' ] as $slug ) {
+				$term = get_term_by( 'slug', $slug, 'product_cat' );
+				if ( $term ) {
+					self::menu_item( $categories, [ 'menu-item-object-id' => $term->term_id, 'menu-item-object' => 'product_cat', 'menu-item-type' => 'taxonomy' ] );
 				}
 			}
 		}
+
+		$policy = self::nav_menu( __( 'Footer Policy', 'webgram' ), 'webgram-footer-policy' );
+		if ( $policy && ! wp_get_nav_menu_items( $policy ) ) {
+			foreach ( array_keys( self::policy_pages() ) as $slug ) {
+				if ( ! empty( $pages[ $slug ] ) ) {
+					self::menu_item( $policy, [ 'menu-item-object-id' => (int) $pages[ $slug ], 'menu-item-object' => 'page', 'menu-item-type' => 'post_type' ] );
+				}
+			}
+			self::menu_item( $policy, [ 'menu-item-type' => 'custom', 'menu-item-url' => home_url( '/wp-sitemap.xml' ), 'menu-item-title' => __( 'Sitemap', 'webgram' ) ] );
+		}
+
+		$footer = self::nav_menu( __( 'Footer', 'webgram' ), 'webgram-footer' );
+		if ( $footer && ! wp_get_nav_menu_items( $footer ) ) {
+			$support = [
+				'help'        => __( 'Help & FAQ', 'webgram' ),
+				'about'       => __( 'About Us', 'webgram' ),
+				'bulk-order'  => __( 'Request Quote', 'webgram' ),
+				'track-order' => __( 'Track Order', 'webgram' ),
+				'contact'     => __( 'Contact Sales', 'webgram' ),
+			];
+			foreach ( $support as $slug => $title ) {
+				if ( ! empty( $pages[ $slug ] ) ) {
+					self::menu_item( $footer, [ 'menu-item-object-id' => (int) $pages[ $slug ], 'menu-item-object' => 'page', 'menu-item-type' => 'post_type', 'menu-item-title' => $title ] );
+				}
+			}
+		}
+
 		$locations = (array) get_theme_mod( 'nav_menu_locations', [] );
 		$locations = array_merge( $locations, [ 'primary' => $primary, 'secondary' => $primary, 'mobile' => $primary, 'footer' => $footer ] );
 		set_theme_mod( 'nav_menu_locations', $locations );
-		return __( 'Primary and footer menus assigned.', 'webgram' );
+		self::footer_layout( $categories, $policy, $footer );
+		return __( 'Primary and three footer menus assigned.', 'webgram' );
+	}
+
+	/**
+	 * Points the footer builder columns at the demo menus: brand, Categories, Policy, Support, Connect.
+	 * Runs only while the footer layout is still the one the settings step imported, so a store owner
+	 * who has already arranged their own footer keeps it.
+	 */
+	private static function footer_layout( int $categories, int $policy, int $support ): void {
+		$builder = Webgram_Footer_Builder::instance();
+		$done    = (array) get_option( self::OPTION, [] );
+		$written = (string) ( $done['demo_footer_hash'] ?? '' );
+		$stored  = get_option( $builder::OPTION );
+		$current = is_array( $stored ) ? md5( (string) wp_json_encode( $stored ) ) : '';
+		if ( '' !== $written && $written !== $current ) {
+			return;
+		}
+		$layout = $builder->layout();
+		$layout['widgets']['settings']['separators'] = true;
+		$layout['elements']['menu_1'] = [ 'heading' => __( 'Categories', 'webgram' ), 'menu' => $categories ];
+		$layout['elements']['menu_2'] = [ 'heading' => __( 'Policy', 'webgram' ), 'menu' => $policy ];
+		$layout['elements']['menu_3'] = [ 'heading' => __( 'Support', 'webgram' ), 'menu' => $support ];
+		$layout['elements']['social'] = [ 'heading' => __( 'Connect', 'webgram' ), 'style' => 'circle', 'show_labels' => true, 'direction' => 'column' ];
+		$builder->save( $layout );
+		$done['demo_footer_hash'] = md5( (string) wp_json_encode( get_option( $builder::OPTION ) ) );
+		update_option( self::OPTION, $done, false );
 	}
 
 	private static function nav_menu( string $name, string $slug ): int {

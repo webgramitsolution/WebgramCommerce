@@ -83,7 +83,7 @@
 .wg-spacer { display: inline-block; }
 .wg-text-el { display: inline-flex; align-items: center; gap: 8px; font-size: var(--wg-fs-sm); p { margin: 0; } }
 .wg-lang { display: flex; gap: 10px; list-style: none; margin: 0; padding: 0; font-size: var(--wg-fs-sm); a { color: inherit; } .is-active a, .current-lang a { font-weight: var(--wg-fw-semibold); } img { display: inline-block; vertical-align: middle; margin-inline-end: 4px; } }
-.wg-social { display: flex; gap: 8px; list-style: none; margin: 0; padding: 0; &--column { flex-direction: column; }
+.wg-social { display: flex; gap: 8px; list-style: none; margin: 0; padding: 0; &--column { flex-direction: column; gap: var(--wg-space-3); }
   &__link { display: inline-flex; align-items: center; gap: 10px; color: inherit; .wg-icon { width: 18px; height: 18px; } }
   &--circle &__link .wg-icon, &--filled &__link .wg-icon { box-sizing: content-box; padding: 9px; border-radius: 50%; }
   &--circle &__link .wg-icon { border: 1px solid currentColor; opacity: .85; }

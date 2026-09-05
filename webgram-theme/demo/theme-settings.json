@@ -3,9 +3,22 @@
   "version": "1.0.0",
   "theme_settings": {
     "social_links": [
-      { "network": "facebook", "url": "https://www.facebook.com/" },
-      { "network": "instagram", "url": "https://www.instagram.com/" },
-      { "network": "whatsapp", "url": "https://wa.me/919876543210" }
+      {
+        "network": "facebook",
+        "url": "https://www.facebook.com/"
+      },
+      {
+        "network": "instagram",
+        "url": "https://www.instagram.com/"
+      },
+      {
+        "network": "linkedin",
+        "url": "https://www.linkedin.com/"
+      },
+      {
+        "network": "x",
+        "url": "https://x.com/"
+      }
     ],
     "social_sidebar": true
   },

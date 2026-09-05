@@ -119,7 +119,7 @@ function webgram_footer_presets(): array {
 						'col_5' => [ 'social' ],
 						'col_6' => [],
 					],
-					'settings' => [ 'first_wide' => true, 'padding' => 64 ],
+					'settings' => [ 'first_wide' => true, 'separators' => true, 'padding' => 64 ],
 				],
 				'bottom'  => [
 					'enabled'  => true,
