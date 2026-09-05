@@ -30,6 +30,7 @@ while ( have_posts() ) :
 		<div id="product-<?php the_ID(); ?>" <?php wc_product_class( 'wg-product wg-product--' . sanitize_html_class( (string) webgram_option( 'product_panels' ) ) . ' wg-product--gallery-' . sanitize_html_class( (string) webgram_option( 'product_gallery_style' ) ), get_the_ID() ); ?> data-wg-component="product">
 			<?php if ( $webgram_layout ) : ?>
 				<?php webgram_render_block( $webgram_layout ); ?>
+				<?php Webgram_WC_Product::layout_extras(); ?>
 			<?php else : ?>
 				<div class="wg-product__columns">
 					<div class="wg-product__gallery-col" data-wg-sticky-col>

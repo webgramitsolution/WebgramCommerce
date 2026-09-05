@@ -77,6 +77,8 @@ return [
 				'product_recent_count'  => [ 'label' => __( 'Recently viewed', 'webgram' ), 'type' => 'range', 'min' => 0, 'max' => 10 ],
 				'product_meta_show'     => [ 'label' => __( 'Show meta row', 'webgram' ), 'type' => 'switch' ],
 				'product_share_show'    => [ 'label' => __( 'Show share row', 'webgram' ), 'type' => 'switch' ],
+				'product_block_after_cart'    => [ 'label' => __( 'HTML Block under Add to cart', 'webgram' ), 'type' => 'html_block' ],
+				'product_block_after_summary' => [ 'label' => __( 'HTML Block under the summary columns', 'webgram' ), 'type' => 'html_block' ],
 			],
 		],
 		'trust' => [

@@ -33,24 +33,28 @@ final class Settings {
 		return [
 			'promo_popup' => [
 				'id'       => 'promo_popup',
-				'label'    => __( 'Promo popup', 'webgram-core' ),
+				'label'    => __( 'Popups', 'webgram-core' ),
 				'icon'     => 'megaphone',
 				'priority' => 32,
 				'sections' => [
 					'popup' => [
-						'fields' => [
-							'popup_enabled'   => [ 'label' => __( 'Enable promo popup', 'webgram-core' ), 'type' => 'switch', 'default' => false ],
-							'popup_block'     => [ 'label' => __( 'HTML Block', 'webgram-core' ), 'type' => 'html_block', 'default' => 0, 'description' => sprintf( '<a href="%s">%s</a>', esc_url( $blocks ), esc_html__( 'Manage HTML Blocks', 'webgram-core' ) ), 'show_if' => [ 'popup_enabled', '==', true ] ],
-							'popup_content'   => [ 'label' => __( 'Or simple content', 'webgram-core' ), 'type' => 'html', 'rows' => 4, 'default' => '', 'description' => __( 'Used when no HTML Block is selected. Basic HTML allowed.', 'webgram-core' ), 'show_if' => [ 'popup_enabled', '==', true ] ],
-							'popup_image'     => [ 'label' => __( 'Side image', 'webgram-core' ), 'type' => 'image', 'default' => 0, 'show_if' => [ 'popup_enabled', '==', true ] ],
-							'popup_width'     => [ 'label' => __( 'Width', 'webgram-core' ), 'type' => 'number', 'min' => 320, 'max' => 1000, 'unit' => 'px', 'default' => 640, 'show_if' => [ 'popup_enabled', '==', true ] ],
-							'popup_trigger'   => [ 'label' => __( 'Trigger', 'webgram-core' ), 'type' => 'radio', 'choices' => [ 'delay' => __( 'After a delay', 'webgram-core' ), 'scroll' => __( 'After scrolling', 'webgram-core' ), 'exit' => __( 'Exit intent (desktop)', 'webgram-core' ) ], 'default' => 'delay', 'show_if' => [ 'popup_enabled', '==', true ] ],
-							'popup_delay'     => [ 'label' => __( 'Delay', 'webgram-core' ), 'type' => 'number', 'min' => 0, 'max' => 120, 'unit' => 's', 'default' => 5, 'show_if' => [ 'popup_trigger', '==', 'delay' ] ],
-							'popup_scroll'    => [ 'label' => __( 'Scroll depth', 'webgram-core' ), 'type' => 'number', 'min' => 5, 'max' => 100, 'unit' => '%', 'default' => 40, 'show_if' => [ 'popup_trigger', '==', 'scroll' ] ],
-							'popup_frequency' => [ 'label' => __( 'Show again', 'webgram-core' ), 'type' => 'select', 'choices' => [ 'session' => __( 'Once per session', 'webgram-core' ), 'day' => __( 'Once per day', 'webgram-core' ), 'week' => __( 'Once per week', 'webgram-core' ), 'always' => __( 'Every page load', 'webgram-core' ) ], 'default' => 'day', 'show_if' => [ 'popup_enabled', '==', true ] ],
-							'popup_devices'   => [ 'label' => __( 'Devices', 'webgram-core' ), 'type' => 'multicheck', 'choices' => $devices, 'default' => [ 'desktop', 'tablet', 'mobile' ], 'show_if' => [ 'popup_enabled', '==', true ] ],
-							'popup_pages'     => [ 'label' => __( 'Pages', 'webgram-core' ), 'type' => 'multicheck', 'choices' => $pages, 'default' => [ 'home', 'shop', 'product', 'blog', 'page', 'other' ], 'show_if' => [ 'popup_enabled', '==', true ] ],
+						'description' => __( 'Popups are posts under Webgram > Popups. Each popup has its own content (editor, Elementor or an HTML Block), trigger (delay, immediately, scroll depth, exit intent or a click on any element), frequency in days, devices and page targeting, including specific post or product ids.', 'webgram-core' ),
+						'fields'      => [
+							'popups_link' => [ 'label' => __( 'Manage popups', 'webgram-core' ), 'type' => 'link', 'url' => admin_url( 'edit.php?post_type=wg_popup' ), 'button' => __( 'Open Popups', 'webgram-core' ) ],
+							'popups_new'  => [ 'label' => __( 'Create a popup', 'webgram-core' ), 'type' => 'link', 'url' => admin_url( 'post-new.php?post_type=wg_popup' ), 'button' => __( 'Add popup', 'webgram-core' ) ],
 						],
+					],
+				],
+			],
+			'floating' => [
+				'id'       => 'floating',
+				'label'    => __( 'Floating blocks', 'webgram-core' ),
+				'icon'     => 'message-circle',
+				'priority' => 33,
+				'sections' => [
+					'floating' => [
+						'description' => __( 'Fixed buttons in a corner of every page: WhatsApp chat, a link with an icon or an HTML Block. The theme adds its own back to top button and floating social sidebar under Theme Settings.', 'webgram-core' ),
+						'fields'      => FloatingBlocks::fields(),
 					],
 				],
 			],
@@ -113,6 +117,9 @@ final class Settings {
 							'maint_countdown' => [ 'label' => __( 'Countdown to (date and time)', 'webgram-core' ), 'type' => 'text', 'default' => '', 'placeholder' => '2026-12-31 09:00', 'description' => __( 'Site timezone. Leave empty to hide the countdown.', 'webgram-core' ), 'show_if' => [ 'maint_mode', '!=', 'off' ] ],
 							'maint_bg'        => [ 'label' => __( 'Background image', 'webgram-core' ), 'type' => 'image', 'default' => 0, 'show_if' => [ 'maint_mode', '!=', 'off' ] ],
 							'maint_roles'     => [ 'label' => __( 'Roles that can still browse', 'webgram-core' ), 'type' => 'multicheck', 'choices' => $roles, 'default' => [ 'administrator', 'shop_manager' ], 'description' => __( 'Administrators always bypass.', 'webgram-core' ), 'show_if' => [ 'maint_mode', '!=', 'off' ] ],
+							'maint_logo'      => [ 'label' => __( 'Logo', 'webgram-core' ), 'type' => 'image', 'default' => 0, 'description' => __( 'Leave empty to use the site logo.', 'webgram-core' ), 'show_if' => [ 'maint_mode', '!=', 'off' ] ],
+							'maint_ips'       => [ 'label' => __( 'Allowed IP addresses', 'webgram-core' ), 'type' => 'textarea', 'rows' => 3, 'default' => '', 'description' => __( 'One per line. Visitors from these addresses see the normal site.', 'webgram-core' ), 'show_if' => [ 'maint_mode', '!=', 'off' ] ],
+							'maint_key'       => [ 'label' => __( 'Bypass key', 'webgram-core' ), 'type' => 'text', 'default' => '', 'description' => __( 'Share a link like https://example.com/?wg_preview=KEY with clients; the browser remembers it for a day.', 'webgram-core' ), 'show_if' => [ 'maint_mode', '!=', 'off' ] ],
 						],
 					],
 				],
@@ -128,7 +135,8 @@ final class Settings {
 						'fields'      => [
 							'wl_name'          => [ 'label' => __( 'Panel name', 'webgram-core' ), 'type' => 'text', 'default' => '', 'placeholder' => 'Webgram' ],
 							'wl_logo'          => [ 'label' => __( 'Panel logo', 'webgram-core' ), 'type' => 'image', 'default' => 0 ],
-							'wl_hide_sections' => [ 'label' => __( 'Hide from clients', 'webgram-core' ), 'type' => 'multicheck', 'choices' => [ 'status' => __( 'System status page', 'webgram-core' ), 'import_export' => __( 'Import / Export page', 'webgram-core' ), 'modules' => __( 'Modules page', 'webgram-core' ) ], 'default' => [] ],
+							'wl_hide_sections' => [ 'label' => __( 'Hide from clients', 'webgram-core' ), 'type' => 'multicheck', 'choices' => [ 'status' => __( 'System status page', 'webgram-core' ), 'import_export' => __( 'Import / Export page', 'webgram-core' ), 'modules' => __( 'Modules page', 'webgram-core' ), 'demo' => __( 'Demo import page', 'webgram-core' ), 'core_settings' => __( 'Core Settings page', 'webgram-core' ), 'analytics' => __( 'Analytics page', 'webgram-core' ) ], 'default' => [], 'description' => __( 'Hidden pages stay reachable by administrators of a multisite network.', 'webgram-core' ) ],
+							'wl_menu_icon'     => [ 'label' => __( 'Admin menu icon (dashicon class)', 'webgram-core' ), 'type' => 'text', 'default' => '', 'placeholder' => 'dashicons-store' ],
 						],
 					],
 				],
@@ -218,20 +226,6 @@ final class Settings {
 				'icon'     => 'image',
 				'priority' => 115,
 				'sections' => [
-					'help_page' => [
-						'id'       => 'help_page',
-						'label'    => __( 'Help page', 'webgram-core' ),
-						'icon'     => 'help-circle',
-						'priority' => 192,
-						'sections' => [
-							'faq' => [
-								'description' => __( 'Shown by the theme "Help" page template as an accordion, with contact cards from the Contact seller settings.', 'webgram-core' ),
-								'fields'      => [
-									'help_faqs' => [ 'label' => __( 'FAQ entries', 'webgram-core' ), 'type' => 'textarea', 'rows' => 12, 'full' => true, 'default' => '', 'description' => __( 'One entry per block separated by a blank line: first line is the question, the following lines are the answer.', 'webgram-core' ) ],
-								],
-							],
-						],
-					],
 					'portfolio' => [
 						'fields' => [
 							'portfolio_enabled'  => [ 'label' => __( 'Enable portfolio post type', 'webgram-core' ), 'type' => 'switch', 'default' => false, 'description' => __( 'Adds a Portfolio post type with categories. Save permalinks after enabling.', 'webgram-core' ) ],

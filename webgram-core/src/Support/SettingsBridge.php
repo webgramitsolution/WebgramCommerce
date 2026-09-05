@@ -80,7 +80,7 @@ final class SettingsBridge {
 			foreach ( self::flatten( $tab ) as $fid => $field ) {
 				if ( isset( $replacements[ $fid ] ) ) {
 					$field = $replacements[ $fid ] ? $replacements[ $fid ] + [ 'id' => $fid ] : null;
-				} elseif ( in_array( $field['type'] ?? '', [ 'repeater', 'sortable', 'radio_image', 'icon', 'dimensions', 'typography', 'code', 'menu' ], true ) ) {
+				} elseif ( in_array( $field['type'] ?? '', [ 'repeater', 'sortable', 'radio_image', 'icon', 'dimensions', 'typography', 'menu' ], true ) ) {
 					$field = null;
 				}
 				if ( $field ) {

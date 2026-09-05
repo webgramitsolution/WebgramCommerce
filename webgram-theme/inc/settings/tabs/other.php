@@ -13,6 +13,13 @@ return [
 	'icon'     => 'more',
 	'priority' => 190,
 	'sections' => [
+		'portfolio' => [
+			'label'  => __( 'Projects (portfolio)', 'webgram' ),
+			'fields' => [
+				'portfolio_columns' => [ 'label' => __( 'Columns', 'webgram' ), 'type' => 'range', 'min' => 2, 'max' => 4, 'description' => __( 'The portfolio post type is enabled under Webgram Core > Site tools > Portfolio.', 'webgram' ) ],
+				'portfolio_filter'  => [ 'label' => __( 'Category filter chips', 'webgram' ), 'type' => 'switch' ],
+			],
+		],
 		'404' => [
 			'label'  => __( '404 page', 'webgram' ),
 			'fields' => [

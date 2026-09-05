@@ -39,6 +39,12 @@ final class Tools {
 				'parameters'  => [ 'type' => 'object', 'properties' => [ 'limit' => [ 'type' => 'integer', 'minimum' => 1, 'maximum' => 6 ], 'category' => [ 'type' => 'string' ] ], 'required' => [] ],
 				'handler'     => [ $this, 'best_sellers' ],
 			],
+			'related_products' => [
+				'name'        => 'related_products',
+				'description' => 'Products that go well with a given product (cross-sells, upsells and same category). Use when the shopper asks what pairs with, complements or is similar to an item they mentioned or viewed.',
+				'parameters'  => [ 'type' => 'object', 'properties' => [ 'product_id' => [ 'type' => 'integer', 'description' => 'Product id from an earlier search result.' ], 'product_name' => [ 'type' => 'string', 'description' => 'Product name when the id is unknown.' ], 'limit' => [ 'type' => 'integer', 'minimum' => 1, 'maximum' => 6 ] ], 'required' => [] ],
+				'handler'     => [ $this, 'related_products' ],
+			],
 			'active_coupons'  => [
 				'name'        => 'active_coupons',
 				'description' => 'Currently valid public coupon codes and offers.',
@@ -194,6 +200,26 @@ final class Tools {
 		$ids   = ProductQuery::ids( [ 'source' => 'best_selling', 'limit' => (int) ( $a['limit'] ?? 4 ), 'category' => ! empty( $a['category'] ) ? [ sanitize_title( (string) $a['category'] ) ] : [] ] );
 		$cards = self::product_cards( $ids, (int) ( $a['limit'] ?? 4 ) );
 		return [ 'products' => $cards, 'count' => count( $cards ) ];
+	}
+
+	/** Cross-sells first, then upsells, then WooCommerce related products of the same category. */
+	public function related_products( array $a ): array {
+		$limit   = max( 1, min( 6, (int) ( $a['limit'] ?? 4 ) ) );
+		$product = ! empty( $a['product_id'] ) ? wc_get_product( (int) $a['product_id'] ) : null;
+		if ( ! $product && ! empty( $a['product_name'] ) ) {
+			$found   = wc_get_products( [ 's' => sanitize_text_field( (string) $a['product_name'] ), 'limit' => 1, 'status' => 'publish', 'return' => 'ids' ] );
+			$product = $found ? wc_get_product( (int) $found[0] ) : null;
+		}
+		if ( ! $product instanceof \WC_Product ) {
+			return [ 'products' => [], 'count' => 0, 'note' => 'Product not found. Ask the shopper which product they mean or run search_products first.' ];
+		}
+		$ids = array_merge( $product->get_cross_sell_ids(), $product->get_upsell_ids() );
+		if ( count( $ids ) < $limit && function_exists( 'wc_get_related_products' ) ) {
+			$ids = array_merge( $ids, wc_get_related_products( $product->get_id(), $limit * 2, $ids ) );
+		}
+		$ids   = array_values( array_unique( array_filter( array_map( 'intval', $ids ), static fn( int $id ) => $id !== $product->get_id() ) ) );
+		$cards = self::product_cards( $ids, $limit );
+		return [ 'for' => $product->get_name(), 'products' => $cards, 'count' => count( $cards ) ];
 	}
 
 	public function active_coupons(): array {

@@ -21,7 +21,41 @@ final class Maintenance {
 		return in_array( $mode, [ 'coming_soon', 'maintenance' ], true ) ? $mode : 'off';
 	}
 
+	/** Whether the visitor's IP is on the allowlist. Pure part covered by the harness. */
+	public static function ip_allowed( string $ip, string $list ): bool {
+		$ip = trim( $ip );
+		if ( '' === $ip ) {
+			return false;
+		}
+		foreach ( preg_split( '/[\s,]+/', $list ) ?: [] as $allowed ) {
+			$allowed = trim( $allowed );
+			if ( '' !== $allowed && strcasecmp( $allowed, $ip ) === 0 ) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/** Bypass key from the URL (?wg_preview=KEY) or the cookie it sets. */
+	private function key_bypass(): bool {
+		$key = trim( (string) $this->module->settings()->get( 'maint_key', '' ) );
+		if ( '' === $key ) {
+			return false;
+		}
+		$given = isset( $_GET['wg_preview'] ) ? sanitize_text_field( wp_unslash( $_GET['wg_preview'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( '' !== $given && hash_equals( $key, $given ) ) {
+			setcookie( 'wg_preview', hash_hmac( 'sha256', $key, wp_salt( 'auth' ) ), time() + DAY_IN_SECONDS, COOKIEPATH ?: '/', COOKIE_DOMAIN ?: '', is_ssl(), true );
+			return true;
+		}
+		$cookie = isset( $_COOKIE['wg_preview'] ) ? sanitize_text_field( wp_unslash( $_COOKIE['wg_preview'] ) ) : '';
+		return '' !== $cookie && hash_equals( hash_hmac( 'sha256', $key, wp_salt( 'auth' ) ), $cookie );
+	}
+
 	public function user_can_bypass(): bool {
+		$ip = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
+		if ( self::ip_allowed( $ip, (string) $this->module->settings()->get( 'maint_ips', '' ) ) || $this->key_bypass() ) {
+			return true;
+		}
 		if ( ! is_user_logged_in() ) {
 			return false;
 		}
@@ -69,6 +103,7 @@ final class Maintenance {
 				'text'      => (string) $s->get( 'maint_text', '' ),
 				'countdown' => self::countdown_timestamp( (string) $s->get( 'maint_countdown', '' ) ),
 				'bg'        => (int) $s->get( 'maint_bg', 0 ),
+				'logo'      => (int) $s->get( 'maint_logo', 0 ),
 			]
 		);
 		exit;

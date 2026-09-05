@@ -28,3 +28,24 @@ body.wgc-age-locked,body.wgc-popup-open{overflow:hidden}
 .wgc-countdown__unit strong{font-size:28px}
 .wgc-countdown__unit span{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#6b7280}
 #wpadminbar .wgc-adminbar-warning .ab-item{background:#b32d2e!important;color:#fff!important}
+
+@media (max-width:640px){.wgc-popup__dialog.has-image{grid-template-columns:1fr}.wgc-popup__media img{max-height:200px}.wgc-popup__body{padding:24px 20px}}
+
+.wgc-floating{position:fixed;z-index:890;display:none;flex-direction:column;gap:10px;--wgc-floating-offset:20px}
+.wgc-floating[hidden]{display:none}
+.wgc-floating--bottom-right{inset-inline-end:var(--wgc-floating-offset);bottom:calc(var(--wgc-floating-offset) + env(safe-area-inset-bottom))}
+.wgc-floating--bottom-left{inset-inline-start:var(--wgc-floating-offset);bottom:calc(var(--wgc-floating-offset) + env(safe-area-inset-bottom))}
+.wgc-floating--middle-right{inset-inline-end:var(--wgc-floating-offset);top:50%;transform:translateY(-50%)}
+.wgc-floating--middle-left{inset-inline-start:var(--wgc-floating-offset);top:50%;transform:translateY(-50%)}
+.wgc-floating--bottom-right.wgc-floating--has-back-to-top{bottom:calc(var(--wgc-floating-offset) + 56px + env(safe-area-inset-bottom))}
+@media (max-width:991px){body.wg-has-bottom-nav .wgc-floating--bottom-right,body.wg-has-bottom-nav .wgc-floating--bottom-left{bottom:calc(var(--wgc-floating-offset) + 64px + env(safe-area-inset-bottom))}}
+@media (min-width:992px){.wgc-floating--desktop{display:flex}}
+@media (min-width:768px) and (max-width:991px){.wgc-floating--tablet{display:flex}}
+@media (max-width:767px){.wgc-floating--mobile{display:flex}}
+.wgc-floating__btn{--wgc-floating-bg:var(--wgc-color-primary,#a0181f);display:inline-flex;align-items:center;gap:8px;min-width:52px;height:52px;padding:0 14px;border-radius:999px;background:var(--wgc-floating-bg);color:#fff;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.2);transition:transform .2s}
+.wgc-floating__btn:hover{transform:translateY(-2px);color:#fff}
+.wgc-floating__btn--whatsapp{--wgc-floating-bg:#25d366}
+.wgc-floating__label{display:none;font-size:14px;font-weight:600;white-space:nowrap}
+@media (min-width:992px){.wgc-floating--labels .wgc-floating__label{display:inline}}
+.wgc-floating:not(.wgc-floating--labels) .wgc-floating__btn{padding:0;justify-content:center;width:52px}
+.wgc-floating__block{max-width:320px}

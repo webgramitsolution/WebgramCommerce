@@ -20,6 +20,8 @@ function webgram_defaults(): array {
 			'preloader'               => false,
 			'preloader_color'         => '#a0181f',
 			'back_to_top'             => true,
+			'back_to_top_position'    => 'right',
+			'back_to_top_devices'     => [ 'desktop', 'tablet', 'mobile' ],
 			'back_to_top_offset'      => 400,
 			'rtl_force'               => false,
 
@@ -185,6 +187,7 @@ function webgram_defaults(): array {
 			'blog_excerpt_length'     => 24,
 			'blog_featured_image'     => true,
 			'blog_pagination'         => 'numbers',
+			'archive_empty_block'     => 0,
 			'blog_related'            => true,
 			'blog_related_count'      => 3,
 			'blog_share'              => true,
@@ -237,6 +240,8 @@ function webgram_defaults(): array {
 			'product_related_count'   => 5,
 			'product_recent_count'    => 5,
 			'product_cross_sells_count' => 4,
+			'product_block_after_cart' => 0,
+			'product_block_after_summary' => 0,
 			'product_meta_show'       => true,
 			'product_share_show'      => true,
 			'product_summary_order'   => [ 'title', 'meta', 'price', 'short_description', 'variations', 'coupon', 'quantity_cart', 'payment_strip', 'trust_seals', 'contact_seller', 'pincode', 'shipping_returns', 'specifications', 'overview', 'share' ],
@@ -260,6 +265,9 @@ function webgram_defaults(): array {
 
 			// Cart and checkout.
 			'cart_drawer'             => true,
+			'cart_drawer_block_top'   => 0,
+			'cart_drawer_block_bottom' => 0,
+			'cart_drawer_empty_block' => 0,
 			'cart_after_add'          => 'drawer',
 			'cart_drawer_progress'    => true,
 			'cart_drawer_recommend'   => true,
@@ -291,6 +299,7 @@ function webgram_defaults(): array {
 			// Social profiles.
 			'social_links'            => [],
 			'social_sidebar'          => false,
+			'social_sidebar_position' => 'right',
 			'social_sidebar_devices'  => [ 'desktop', 'tablet' ],
 			'social_share_networks'   => [ 'facebook', 'x', 'whatsapp', 'pinterest', 'copy' ],
 
@@ -308,6 +317,8 @@ function webgram_defaults(): array {
 			'custom_css_mobile'       => '',
 
 			// Other.
+			'portfolio_columns'       => 3,
+			'portfolio_filter'        => true,
 			'page_404_title'          => __( 'Page not found', 'webgram' ),
 			'page_404_text'           => __( 'The page you are looking for does not exist or has moved.', 'webgram' ),
 			'page_404_image'          => 0,

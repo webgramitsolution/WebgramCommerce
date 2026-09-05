@@ -63,13 +63,17 @@ final class Conditions {
 		$includes = array_filter( $rules, static fn( $r ) => 'include' === ( $r['op'] ?? 'include' ) );
 		$excludes = array_filter( $rules, static fn( $r ) => 'exclude' === ( $r['op'] ?? '' ) );
 
-		if ( ! $includes ) {
+		if ( ! $includes && ! $excludes ) {
 			return false;
 		}
 		foreach ( $excludes as $rule ) {
 			if ( self::rule_matches( $rule, $context ) ) {
 				return false;
 			}
+		}
+		if ( ! $includes ) {
+			// Exclude only rules: applies everywhere except the excluded targets.
+			return true;
 		}
 		foreach ( $includes as $rule ) {
 			if ( self::rule_matches( $rule, $context ) ) {

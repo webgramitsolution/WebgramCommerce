@@ -42,6 +42,7 @@ final class Webgram_Mega_Menu_Admin {
 				'width'    => [ 'label' => __( 'Panel width', 'webgram' ), 'type' => 'select', 'choices' => [ 'container' => __( 'Container', 'webgram' ), 'full' => __( 'Full width', 'webgram' ), 'custom' => __( 'Custom', 'webgram' ) ], 'default' => 'container' ],
 				'width_px' => [ 'label' => __( 'Custom width', 'webgram' ), 'type' => 'number', 'min' => 300, 'max' => 1600, 'unit' => 'px', 'default' => 900 ],
 				'columns'  => [ 'label' => __( 'Columns', 'webgram' ), 'type' => 'select', 'choices' => [ 2 => '2', 3 => '3', 4 => '4', 5 => '5', 6 => '6' ], 'default' => 4 ],
+				'html_block' => [ 'label' => __( 'HTML Block in the panel', 'webgram' ), 'type' => 'html_block', 'default' => 0, 'description' => __( 'Rendered after the columns (banner, promo, contact card).', 'webgram' ) ],
 			] + $common;
 		}
 		if ( 1 === $depth ) {
@@ -52,6 +53,7 @@ final class Webgram_Mega_Menu_Admin {
 				'promo_image'   => [ 'label' => __( 'Promo block image', 'webgram' ), 'type' => 'image', 'default' => 0 ],
 				'promo_heading' => [ 'label' => __( 'Promo heading', 'webgram' ), 'type' => 'text', 'default' => '' ],
 				'promo_link'    => [ 'label' => __( 'Promo link', 'webgram' ), 'type' => 'url', 'default' => '' ],
+				'html_block'    => [ 'label' => __( 'HTML Block in this column', 'webgram' ), 'type' => 'html_block', 'default' => 0 ],
 			] + $common;
 		}
 		return [

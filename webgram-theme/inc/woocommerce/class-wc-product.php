@@ -16,6 +16,8 @@ final class Webgram_WC_Product {
 			return;
 		}
 		add_action( 'wp', [ self::class, 'hooks' ] );
+		add_action( 'woocommerce_after_add_to_cart_form', static fn() => webgram_render_block( (int) webgram_option( 'product_block_after_cart' ) ), 20 );
+		add_action( 'webgram/product/after_summary', static fn() => webgram_render_block( (int) webgram_option( 'product_block_after_summary' ) ), 5 );
 		add_filter( 'webgram_core/recently_viewed/count', static fn( int $count ): int => (int) webgram_option( 'product_recent_count' ) > 0 ? (int) webgram_option( 'product_recent_count' ) : $count );
 		add_filter( 'woocommerce_product_tabs', [ self::class, 'tabs' ], 98 );
 		add_filter( 'body_class', [ self::class, 'body_class' ] );
@@ -210,6 +212,34 @@ final class Webgram_WC_Product {
 		echo '<div class="wg-product__related wg-section-ornament">';
 		woocommerce_output_related_products();
 		echo '</div>';
+	}
+
+	/**
+	 * Under a Core Layout the gallery and summary come from the layout widgets, but plugins hooked onto
+	 * woocommerce_before_single_product_summary and woocommerce_single_product_summary still expect to print.
+	 * WooCommerce's own template callbacks and the theme's are removed first so nothing renders twice.
+	 */
+	public static function layout_extras(): void {
+		foreach ( [ 'woocommerce_before_single_product_summary', 'woocommerce_single_product_summary' ] as $hook ) {
+			if ( empty( $GLOBALS['wp_filter'][ $hook ] ) ) {
+				continue;
+			}
+			foreach ( $GLOBALS['wp_filter'][ $hook ]->callbacks as $priority => $callbacks ) {
+				foreach ( $callbacks as $callback ) {
+					$fn = $callback['function'];
+					if ( ( is_string( $fn ) && str_starts_with( $fn, 'woocommerce_' ) ) || $fn instanceof \Closure || ( is_array( $fn ) && is_string( $fn[0] ?? null ) && str_starts_with( $fn[0], 'Webgram_' ) ) ) {
+						remove_action( $hook, $fn, (int) $priority );
+					}
+				}
+			}
+		}
+		ob_start();
+		do_action( 'woocommerce_before_single_product_summary' );
+		do_action( 'woocommerce_single_product_summary' );
+		$extra = trim( (string) ob_get_clean() );
+		if ( '' !== $extra ) {
+			echo '<div class="wg-product__extras">' . $extra . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- plugin output.
+		}
 	}
 
 	/** Cross-sells linked on the product (WooCommerce only shows them in the cart); rendered with the theme card. */

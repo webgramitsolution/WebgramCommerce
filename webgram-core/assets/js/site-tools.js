@@ -12,44 +12,81 @@
 		return m ? decodeURIComponent(m[1]) : null;
 	}
 
-	/* Promo popup */
-	var popup = document.querySelector('[data-wgc-popup]');
-	if (popup) {
-		var key = popup.dataset.key || 'wg_popup_seen';
-		var freq = popup.dataset.frequency || 'day';
-		var seen = freq === 'session' ? sessionStorage.getItem(key) : getCookie(key);
-		if (freq === 'always' || !seen) {
-			var shown = false;
-			var show = function () {
-				if (shown) return;
-				shown = true;
-				popup.hidden = false;
-				document.body.classList.add('wgc-popup-open');
-				var focusable = popup.querySelector('[data-wgc-popup-close]');
-				if (focusable) focusable.focus();
-			};
-			var close = function () {
-				popup.hidden = true;
-				document.body.classList.remove('wgc-popup-open');
-				if (freq === 'session') sessionStorage.setItem(key, '1');
-				else if (freq !== 'always') setCookie(key, '1', freq === 'week' ? 7 : 1);
-			};
-			popup.querySelectorAll('[data-wgc-popup-close]').forEach(function (b) { b.addEventListener('click', close); });
-			document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !popup.hidden) close(); });
-			var trigger = popup.dataset.trigger || 'delay';
-			if (trigger === 'delay') {
-				setTimeout(show, Math.max(0, parseInt(popup.dataset.delay || '5', 10)) * 1000);
-			} else if (trigger === 'scroll') {
-				var depth = parseInt(popup.dataset.scroll || '40', 10);
-				window.addEventListener('scroll', function onScroll() {
-					var max = document.documentElement.scrollHeight - window.innerHeight;
-					if (max > 0 && (window.scrollY / max) * 100 >= depth) { show(); window.removeEventListener('scroll', onScroll); }
-				}, { passive: true });
-			} else {
-				document.addEventListener('mouseout', function (e) { if (!e.relatedTarget && e.clientY <= 0) show(); });
-			}
-		}
+	/* Popups: several may exist; each has its own trigger, frequency and device list. One opens at a time. */
+	var popupOpen = null;
+	var lastFocus = null;
+	function deviceMatches(list) {
+		if (!list) return true;
+		var w = window.innerWidth;
+		var device = w < 768 ? 'mobile' : (w < 992 ? 'tablet' : 'desktop');
+		return list.split(',').indexOf(device) !== -1;
 	}
+	document.querySelectorAll('[data-wgc-popup]').forEach(function (popup) {
+		var key = popup.dataset.key || 'wg_popup_seen';
+		var freq = popup.dataset.frequency || 'days';
+		var days = Math.max(1, parseInt(popup.dataset.days || '1', 10));
+		var seen = freq === 'session' ? sessionStorage.getItem(key) : getCookie(key);
+		var trigger = popup.dataset.trigger || 'delay';
+		if (!deviceMatches(popup.dataset.devices)) return;
+		if (freq !== 'always' && seen && trigger !== 'click') return;
+		var shown = false;
+		var show = function () {
+			if (shown && trigger !== 'click') return;
+			if (popupOpen && popupOpen !== popup) return;
+			shown = true;
+			popupOpen = popup;
+			lastFocus = document.activeElement;
+			popup.hidden = false;
+			document.body.classList.add('wgc-popup-open');
+			var focusable = popup.querySelector('[data-wgc-popup-close]:not(.wgc-popup__backdrop), a, button:not([data-wgc-popup-close]), input');
+			if (focusable) focusable.focus();
+		};
+		var close = function () {
+			popup.hidden = true;
+			popupOpen = null;
+			document.body.classList.remove('wgc-popup-open');
+			if (freq === 'session') sessionStorage.setItem(key, '1');
+			else if (freq !== 'always') setCookie(key, '1', days);
+			if (lastFocus && lastFocus.focus) lastFocus.focus();
+		};
+		popup.querySelectorAll('[data-wgc-popup-close]').forEach(function (b) { b.addEventListener('click', close); });
+		document.addEventListener('keydown', function (e) {
+			if (popup.hidden) return;
+			if (e.key === 'Escape') { close(); return; }
+			if (e.key === 'Tab' && window.WebgramCore && window.WebgramCore.trapFocus) window.WebgramCore.trapFocus(popup, e);
+		});
+		if (trigger === 'click') {
+			var selector = popup.dataset.selector;
+			if (!selector) return;
+			document.addEventListener('click', function (e) {
+				var hit = null;
+				try { hit = e.target.closest(selector); } catch (err) { hit = null; }
+				if (hit) { e.preventDefault(); show(); }
+			});
+		} else if (trigger === 'load') {
+			show();
+		} else if (trigger === 'delay') {
+			setTimeout(show, Math.max(0, parseInt(popup.dataset.delay || '5', 10)) * 1000);
+		} else if (trigger === 'scroll') {
+			var depth = parseInt(popup.dataset.scroll || '40', 10);
+			window.addEventListener('scroll', function onScroll() {
+				var max = document.documentElement.scrollHeight - window.innerHeight;
+				if (max > 0 && (window.scrollY / max) * 100 >= depth) { show(); window.removeEventListener('scroll', onScroll); }
+			}, { passive: true });
+		} else {
+			document.addEventListener('mouseout', function (e) { if (!e.relatedTarget && e.clientY <= 0) show(); });
+		}
+	});
+
+	/* Floating blocks: optional show after scrolling. */
+	document.querySelectorAll('[data-wgc-floating]').forEach(function (stack) {
+		var after = parseInt(stack.dataset.scroll || '0', 10);
+		if (document.querySelector('.wg-back-to-top')) stack.classList.add('wgc-floating--has-back-to-top');
+		if (after <= 0) return;
+		var update = function () { stack.hidden = window.scrollY < after; };
+		window.addEventListener('scroll', update, { passive: true });
+		update();
+	});
 
 	/* Cookie notice */
 	var cookie = document.querySelector('[data-wgc-cookie]');

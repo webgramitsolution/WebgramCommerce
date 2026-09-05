@@ -15,6 +15,7 @@ final class Slides {
 		return [
 			'autoplay'     => true,
 			'delay'        => 5000,
+			'speed'        => 700,
 			'loop'         => true,
 			'navigation'   => true,
 			'pagination'   => true,
@@ -34,6 +35,7 @@ final class Slides {
 		return [
 			'autoplay'     => ! empty( $raw['autoplay'] ),
 			'delay'        => max( 1000, min( 30000, (int) ( $raw['delay'] ?? $d['delay'] ) ) ),
+			'speed'        => max( 100, min( 3000, (int) ( $raw['speed'] ?? $d['speed'] ) ) ),
 			'loop'         => ! empty( $raw['loop'] ),
 			'navigation'   => ! empty( $raw['navigation'] ),
 			'pagination'   => ! empty( $raw['pagination'] ),

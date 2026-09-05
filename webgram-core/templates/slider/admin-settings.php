@@ -14,6 +14,7 @@ $wgc_check = static function ( string $key, string $label ) use ( $wgc_s ): void
 ?>
 <?php $wgc_check( 'autoplay', __( 'Autoplay', 'webgram-core' ) ); ?>
 <p><label><?php esc_html_e( 'Delay (ms)', 'webgram-core' ); ?> <input type="number" name="wg_slider[delay]" value="<?php echo (int) $wgc_s['delay']; ?>" min="1000" max="30000" step="500" class="small-text"></label></p>
+<p><label><?php esc_html_e( 'Transition speed (ms)', 'webgram-core' ); ?> <input type="number" name="wg_slider[speed]" value="<?php echo (int) ( $wgc_s['speed'] ?? 700 ); ?>" min="100" max="3000" step="50" class="small-text"></label></p>
 <?php $wgc_check( 'pause_hover', __( 'Pause on hover', 'webgram-core' ) ); ?>
 <?php $wgc_check( 'loop', __( 'Loop', 'webgram-core' ) ); ?>
 <?php $wgc_check( 'navigation', __( 'Arrows (shown on hover)', 'webgram-core' ) ); ?>

@@ -32,6 +32,7 @@ return [
 			'label'  => __( 'Floating social sidebar', 'webgram' ),
 			'fields' => [
 				'social_sidebar'         => [ 'label' => __( 'Show floating sidebar', 'webgram' ), 'type' => 'switch', 'description' => __( 'Stacked square buttons on the right edge in brand colors.', 'webgram' ) ],
+				'social_sidebar_position' => [ 'label' => __( 'Side', 'webgram' ), 'type' => 'radio', 'choices' => [ 'right' => __( 'Right edge', 'webgram' ), 'left' => __( 'Left edge', 'webgram' ) ], 'show_if' => [ 'social_sidebar', '==', true ] ],
 				'social_sidebar_devices' => [ 'label' => __( 'Visible on', 'webgram' ), 'type' => 'multicheck', 'choices' => [ 'desktop' => __( 'Desktop', 'webgram' ), 'tablet' => __( 'Tablet', 'webgram' ), 'mobile' => __( 'Mobile', 'webgram' ) ], 'show_if' => [ 'social_sidebar', '==', true ] ],
 			],
 		],

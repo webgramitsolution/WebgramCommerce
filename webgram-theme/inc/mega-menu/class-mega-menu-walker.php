@@ -124,6 +124,11 @@ final class Webgram_Mega_Menu_Walker extends Walker_Nav_Menu {
 		}
 		$item_output .= (string) ( $args->after ?? '' );
 
+		if ( $in_mega && $depth <= 1 && ! empty( $meta['html_block'] ) ) {
+			ob_start();
+			webgram_render_block( (int) $meta['html_block'] );
+			$this->promos .= '<div class="wg-mega__block">' . (string) ob_get_clean() . '</div>';
+		}
 		if ( $in_mega && 1 === $depth && ! empty( $meta['promo_image'] ) ) {
 			$this->promos .= sprintf(
 				'<a class="wg-mega__promo" href="%s">%s%s</a>',

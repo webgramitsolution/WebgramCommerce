@@ -170,19 +170,41 @@ final class Webgram_Demo_Importer {
 		if ( ! is_array( $data ) ) {
 			throw new \RuntimeException( esc_html__( 'theme-settings.json is missing or invalid.', 'webgram' ) );
 		}
-		$applied = Webgram_Import_Export::apply_import( array_intersect_key( $data, [ 'theme_settings' => 1 ] ) );
+		$done    = (array) get_option( self::OPTION, [] );
+		$applied = [];
+		$skipped = [];
 
-		$header = webgram_header_presets()[ $data['header_preset'] ?? '' ]['layout'] ?? null;
-		if ( is_array( $header ) ) {
-			Webgram_Header_Builder::instance()->save( Webgram_Header_Builder::instance()->sanitize( $header ) );
-			$applied[] = 'header';
+		// Theme settings: applied on the first run only, so later customer edits survive a second import.
+		if ( empty( $done['settings'] ) ) {
+			$applied = Webgram_Import_Export::apply_import( array_intersect_key( $data, [ 'theme_settings' => 1 ] ) );
+		} else {
+			$skipped[] = __( 'theme settings (already imported)', 'webgram' );
 		}
-		$footer = webgram_footer_presets()[ $data['footer_preset'] ?? '' ]['layout'] ?? null;
-		if ( is_array( $footer ) ) {
-			Webgram_Footer_Builder::instance()->save( Webgram_Footer_Builder::instance()->sanitize( $footer ) );
-			$applied[] = 'footer';
+
+		// Builder layouts: written when empty, or when still identical to what the demo wrote last time.
+		foreach ( [ 'header' => [ 'webgram_header_presets', Webgram_Header_Builder::instance(), (string) ( $data['header_preset'] ?? '' ) ], 'footer' => [ 'webgram_footer_presets', Webgram_Footer_Builder::instance(), (string) ( $data['footer_preset'] ?? '' ) ] ] as $key => [ $presets_fn, $builder, $preset ] ) {
+			$layout = $presets_fn()[ $preset ]['layout'] ?? null;
+			if ( ! is_array( $layout ) ) {
+				continue;
+			}
+			$clean   = $builder->sanitize( $layout );
+			$stored  = get_option( $builder::OPTION );
+			$written = (string) ( $done[ 'demo_' . $key . '_hash' ] ?? '' );
+			$current = is_array( $stored ) ? md5( (string) wp_json_encode( $stored ) ) : '';
+			if ( ! is_array( $stored ) || '' === $current || ( '' !== $written && $written === $current ) ) {
+				$builder->save( $clean );
+				$done[ 'demo_' . $key . '_hash' ] = md5( (string) wp_json_encode( get_option( $builder::OPTION ) ) );
+				$applied[] = $key;
+			} else {
+				$skipped[] = $key . ' ' . __( 'layout (customized, kept)', 'webgram' );
+			}
 		}
-		return sprintf( /* translators: %s: comma separated list. */ __( 'Settings applied: %s', 'webgram' ), implode( ', ', $applied ) );
+		update_option( self::OPTION, $done, false );
+		$message = sprintf( /* translators: %s: comma separated list. */ __( 'Settings applied: %s', 'webgram' ), $applied ? implode( ', ', $applied ) : __( 'none', 'webgram' ) );
+		if ( $skipped ) {
+			$message .= ' ' . sprintf( /* translators: %s: comma separated list. */ __( 'Skipped: %s.', 'webgram' ), implode( ', ', $skipped ) );
+		}
+		return $message;
 	}
 
 	private static function import_images( array &$context ): string {

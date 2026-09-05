@@ -1,13 +1,13 @@
 @use "../abstracts/breakpoints" as *;
 @use "../abstracts/mixins" as *;
 // Back to top, floating social sidebar, preloader, header banner.
-.wg-back-to-top { position: fixed; inset-inline-end: 20px; bottom: 20px; z-index: 890; width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--wg-color-primary); color: #fff; box-shadow: var(--wg-shadow-md); display: inline-flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(12px); transition: opacity var(--wg-transition-base), transform var(--wg-transition-base); cursor: pointer;
+.wg-back-to-top { position: fixed; inset-inline-end: 20px; bottom: 20px; z-index: 890; &--left { inset-inline-end: auto; inset-inline-start: 20px; } &.wg-back-to-top { display: none; } &.wg-back-to-top.wg-show-desktop { @include up(lg) { display: inline-flex; } } &.wg-back-to-top.wg-show-tablet { @media (min-width: 768px) and (max-width: 991.98px) { display: inline-flex; } } &.wg-back-to-top.wg-show-mobile { @include down(md) { display: inline-flex; } } width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--wg-color-primary); color: #fff; box-shadow: var(--wg-shadow-md); display: inline-flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(12px); transition: opacity var(--wg-transition-base), transform var(--wg-transition-base); cursor: pointer;
   &[hidden] { display: inline-flex; visibility: hidden; }
   &.is-visible { opacity: 1; transform: none; visibility: visible; }
   &:hover { background: var(--wg-color-primary-hover); }
   @include down(lg) { body.wg-has-bottom-nav & { bottom: calc(72px + env(safe-area-inset-bottom)); } }
 }
-.wg-social-sidebar { position: fixed; inset-inline-end: 0; top: 50%; transform: translateY(-50%); z-index: 880; display: none; flex-direction: column; gap: 2px;
+.wg-social-sidebar { position: fixed; inset-inline-end: 0; top: 50%; transform: translateY(-50%); z-index: 880; &--left { inset-inline-end: auto; inset-inline-start: 0; } display: none; flex-direction: column; gap: 2px;
   &.wg-show-desktop { @include up(lg) { display: flex; } }
   &.wg-show-tablet { @media (min-width: 768px) and (max-width: 991.98px) { display: flex; } }
   &.wg-show-mobile { @include down(md) { display: flex; } }

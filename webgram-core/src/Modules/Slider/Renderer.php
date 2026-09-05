@@ -36,7 +36,7 @@ final class Renderer {
 			'effect'     => $settings['effect'],
 			'loop'       => $settings['loop'] && count( $slides ) > 1,
 			'autoplay'   => $settings['autoplay'] && count( $slides ) > 1 ? [ 'delay' => $settings['delay'], 'pauseOnMouseEnter' => $settings['pause_hover'], 'disableOnInteraction' => false ] : false,
-			'speed'      => 700,
+			'speed'      => (int) ( $settings['speed'] ?? 700 ),
 			'navigation' => $settings['navigation'],
 			'pagination' => $settings['pagination'],
 		];

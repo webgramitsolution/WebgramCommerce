@@ -11,7 +11,7 @@ use Webgram\Core\Support\Helpers;
 
 $wgc_inline = ! empty( $args['inline'] );
 ?>
-<div class="<?php echo esc_attr( Helpers::css_class( 'assistant', $wgc_inline ? 'wgc-assistant--inline' : 'wgc-assistant--floating' ) ); ?>" data-wgc-assistant<?php echo $wgc_inline ? ' data-inline="1"' : ' hidden'; ?> role="<?php echo $wgc_inline ? 'region' : 'dialog'; ?>" aria-label="<?php echo esc_attr( $args['name'] ); ?>"<?php echo $args['color'] ? ' style="--wgc-assistant-color:' . esc_attr( $args['color'] ) . '"' : ''; ?>>
+<div class="<?php echo esc_attr( Helpers::css_class( 'assistant', $wgc_inline ? 'wgc-assistant--inline' : 'wgc-assistant--floating' ) ); ?>" data-wgc-assistant<?php echo $wgc_inline ? ' data-inline="1"' : ' hidden'; ?> role="<?php echo $wgc_inline ? 'region' : 'dialog'; ?>"<?php echo $wgc_inline ? '' : ' aria-modal="true"'; ?> aria-label="<?php echo esc_attr( $args['name'] ); ?>"<?php echo $args['color'] ? ' style="--wgc-assistant-color:' . esc_attr( $args['color'] ) . '"' : ''; ?>>
 	<div class="<?php echo esc_attr( Helpers::css_class( 'assistant__head' ) ); ?>">
 		<span class="<?php echo esc_attr( Helpers::css_class( 'assistant__avatar' ) ); ?>">
 			<?php if ( $args['avatar'] ) : ?>

@@ -47,7 +47,8 @@ final class Module extends BaseModule {
 		( new Blocks( $this ) )->register();
 		( new Layouts\PostType( $this ) )->register();
 		( new Layouts\Resolver( $this ) )->register();
-		( new PromoPopup( $this ) )->register();
+		( new Popups( $this ) )->register();
+		( new FloatingBlocks( $this ) )->register();
 		( new CookieNotice( $this ) )->register();
 		( new AgeVerify( $this ) )->register();
 		( new Maintenance( $this ) )->register();

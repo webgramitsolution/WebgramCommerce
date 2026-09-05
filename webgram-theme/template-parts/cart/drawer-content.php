@@ -30,6 +30,7 @@ $webgram_count = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
 			<?php if ( webgram_option( 'cart_drawer_recommend' ) ) : ?>
 				<?php do_action( 'webgram/cart/recommendations' ); ?>
 			<?php endif; ?>
+			<?php webgram_render_block( (int) webgram_option( 'cart_drawer_block_top' ) ); ?>
 
 			<ul class="wg-cart__items">
 				<?php foreach ( $webgram_items as $webgram_item ) : ?>
@@ -71,6 +72,7 @@ $webgram_count = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
 				<?php endforeach; ?>
 			</ul>
 			<?php do_action( 'webgram/cart/after_items' ); ?>
+			<?php webgram_render_block( (int) webgram_option( 'cart_drawer_block_bottom' ) ); ?>
 		<?php else : ?>
 			<div class="wg-cart__empty">
 				<?php webgram_icon( 'cart', 'wg-cart__empty-icon' ); ?>
@@ -78,6 +80,7 @@ $webgram_count = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
 				<p class="wg-cart__empty-text"><?php esc_html_e( 'Looks like you have not added anything yet.', 'webgram' ); ?></p>
 				<a class="wg-btn wg-btn--primary" href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" data-wg-close="drawer"><?php esc_html_e( 'Start shopping', 'webgram' ); ?></a>
 				<?php do_action( 'webgram/cart/empty' ); ?>
+				<?php webgram_render_block( (int) webgram_option( 'cart_drawer_empty_block' ) ); ?>
 			</div>
 		<?php endif; ?>
 	</div>

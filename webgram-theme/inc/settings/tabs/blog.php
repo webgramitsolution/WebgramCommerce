@@ -22,6 +22,7 @@ return [
 				'blog_excerpt_length' => [ 'label' => __( 'Excerpt length (words)', 'webgram' ), 'type' => 'number', 'min' => 10, 'max' => 80 ],
 				'blog_featured_image' => [ 'label' => __( 'Show featured images', 'webgram' ), 'type' => 'switch', 'description' => __( 'Applies to post cards and the single post header.', 'webgram' ) ],
 				'blog_pagination'     => [ 'label' => __( 'Pagination', 'webgram' ), 'type' => 'select', 'choices' => [ 'numbers' => __( 'Page numbers', 'webgram' ), 'load_more' => __( 'Load more button', 'webgram' ) ] ],
+				'archive_empty_block' => [ 'label' => __( 'HTML Block when nothing is found', 'webgram' ), 'type' => 'html_block', 'description' => __( 'Shown under the "Nothing found" message on empty archives and searches.', 'webgram' ) ],
 			],
 		],
 		'single' => [

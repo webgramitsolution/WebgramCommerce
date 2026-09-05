@@ -23,6 +23,7 @@ final class Blocks {
 		add_filter( 'webgram/html_blocks', [ $this, 'list' ] );
 		add_filter( 'webgram/html_block', [ $this, 'filter_render' ], 10, 2 );
 		add_filter( 'elementor/cpt_support', [ $this, 'elementor_support' ] );
+		add_filter( 'webgram_core/elementor/widgets', [ $this, 'widget_definition' ] );
 		add_filter( 'manage_' . self::POST_TYPE . '_posts_columns', [ $this, 'columns' ] );
 		add_action( 'manage_' . self::POST_TYPE . '_posts_custom_column', [ $this, 'column' ], 10, 2 );
 	}
@@ -51,6 +52,20 @@ final class Blocks {
 				'has_archive'         => false,
 			]
 		);
+	}
+
+	/** "Webgram HTML Block" widget, block and [webgram_html_block] shortcode: places any saved block inside a page. */
+	public function widget_definition( array $w ): array {
+		$w['html_block'] = [
+			'title'    => __( 'Webgram HTML Block', 'webgram-core' ),
+			'icon'     => 'eicon-code',
+			'category' => 'webgram',
+			'controls' => [
+				'block_id' => [ 'label' => __( 'HTML Block', 'webgram-core' ), 'type' => 'select', 'options' => static fn(): array => [ 0 => __( 'Select a block', 'webgram-core' ) ] + (array) apply_filters( 'webgram/html_blocks', [] ), 'default' => 0 ],
+			],
+			'render'   => static fn( array $a ): string => (int) ( $a['block_id'] ?? 0 ) > 0 ? '<div class="wgc-block-embed">' . self::render( (int) $a['block_id'] ) . '</div>' : '',
+		];
+		return $w;
 	}
 
 	public function elementor_support( array $types ): array {

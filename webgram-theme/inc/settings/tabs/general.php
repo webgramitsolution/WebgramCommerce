@@ -29,6 +29,8 @@ return [
 				'preloader_color'    => [ 'label' => __( 'Preloader color', 'webgram' ), 'type' => 'color', 'show_if' => [ 'preloader', '==', true ] ],
 				'back_to_top'        => [ 'label' => __( 'Back to top button', 'webgram' ), 'type' => 'switch' ],
 				'back_to_top_offset' => [ 'label' => __( 'Show after scrolling', 'webgram' ), 'type' => 'number', 'min' => 100, 'max' => 2000, 'unit' => 'px', 'show_if' => [ 'back_to_top', '==', true ] ],
+				'back_to_top_position' => [ 'label' => __( 'Position', 'webgram' ), 'type' => 'radio', 'choices' => [ 'right' => __( 'Bottom right', 'webgram' ), 'left' => __( 'Bottom left', 'webgram' ) ], 'show_if' => [ 'back_to_top', '==', true ] ],
+				'back_to_top_devices'  => [ 'label' => __( 'Visible on', 'webgram' ), 'type' => 'multicheck', 'choices' => [ 'desktop' => __( 'Desktop', 'webgram' ), 'tablet' => __( 'Tablet', 'webgram' ), 'mobile' => __( 'Mobile', 'webgram' ) ], 'show_if' => [ 'back_to_top', '==', true ] ],
 				'favicon'            => [ 'label' => __( 'Favicon and logo', 'webgram' ), 'type' => 'link', 'url' => admin_url( 'customize.php?autofocus[section]=title_tagline' ), 'button' => __( 'Open Site Identity', 'webgram' ), 'description' => __( 'Logo, site icon and tagline stay in the WordPress Customizer.', 'webgram' ) ],
 			],
 		],

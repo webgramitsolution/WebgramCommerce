@@ -167,7 +167,20 @@ final class SettingsPage {
 						echo '</select>';
 						break;
 					case 'textarea':
-						printf( '<textarea id="%s" name="%s" rows="4" class="large-text">%s</textarea>', esc_attr( $id ), esc_attr( $name ), esc_textarea( (string) $value ) );
+					case 'html':
+						printf( '<textarea id="%s" name="%s" rows="%d" class="large-text">%s</textarea>', esc_attr( $id ), esc_attr( $name ), (int) ( $field['rows'] ?? 4 ), esc_textarea( (string) $value ) );
+						break;
+					case 'code':
+						$locked = 'javascript' === ( $field['language'] ?? '' ) && ! current_user_can( 'unfiltered_html' );
+						printf( '<textarea id="%s" name="%s" rows="%d" class="large-text code" spellcheck="false" data-language="%s" %s>%s</textarea>%s', esc_attr( $id ), esc_attr( $name ), (int) ( $field['rows'] ?? 8 ), esc_attr( (string) ( $field['language'] ?? '' ) ), $locked ? 'readonly' : '', esc_textarea( (string) $value ), $locked ? '<p class="description">' . esc_html__( 'Only users with the unfiltered_html capability can edit scripts.', 'webgram-core' ) . '</p>' : '' );
+						break;
+					case 'multicheck':
+						$current = array_map( 'strval', (array) $value );
+						echo '<fieldset>';
+						foreach ( (array) ( $field['options'] ?? [] ) as $k => $label ) {
+							printf( '<label class="wgc-inline"><input type="checkbox" name="%s[]" value="%s" %s> %s</label><br>', esc_attr( $name ), esc_attr( (string) $k ), checked( in_array( (string) $k, $current, true ), true, false ), esc_html( (string) $label ) );
+						}
+						echo '</fieldset>';
 						break;
 					case 'number':
 						printf( '<input type="number" id="%s" name="%s" value="%s" class="small-text" min="%s" max="%s" step="%s">', esc_attr( $id ), esc_attr( $name ), esc_attr( (string) $value ), esc_attr( (string) ( $field['min'] ?? '' ) ), esc_attr( (string) ( $field['max'] ?? '' ) ), esc_attr( (string) ( $field['step'] ?? '1' ) ) );
@@ -242,6 +255,25 @@ final class SettingsPage {
 				continue;
 			}
 
+			if ( in_array( $type, [ 'heading', 'link', 'info' ], true ) ) {
+				continue;
+			}
+			if ( 'multicheck' === $type ) {
+				$choices       = array_map( 'strval', array_keys( (array) ( $field['choices'] ?? $field['options'] ?? [] ) ) );
+				$values[ $id ] = array_values( array_intersect( array_map( 'sanitize_key', (array) ( $raw[ $id ] ?? [] ) ), $choices ) );
+				continue;
+			}
+			if ( 'code' === $type ) {
+				if ( 'javascript' === ( $field['language'] ?? '' ) && ! current_user_can( 'unfiltered_html' ) ) {
+					continue;
+				}
+				$values[ $id ] = str_replace( "\0", '', (string) ( $raw[ $id ] ?? '' ) );
+				continue;
+			}
+			if ( 'html' === $type ) {
+				$values[ $id ] = wp_kses_post( (string) ( $raw[ $id ] ?? '' ) );
+				continue;
+			}
 			$sanitize = $field['sanitize'] ?? match ( $type ) {
 				'checkbox' => 'bool',
 				'number'   => 'int',
