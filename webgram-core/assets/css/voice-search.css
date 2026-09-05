@@ -1,0 +1,7 @@
+/* Webgram Core voice search fallback styles. */
+.wgc-voice-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:0;border-radius:50%;background:transparent;color:inherit;cursor:pointer}
+.wgc-voice-btn:hover{color:var(--wgc-color-primary,#a0181f)}
+.wgc-voice-btn.is-listening{color:var(--wgc-color-primary,#a0181f)}
+.wgc-voice-btn__pulse{position:absolute;inset:0;border-radius:50%;border:2px solid currentColor;opacity:0;pointer-events:none}
+.wgc-voice-btn.is-listening .wgc-voice-btn__pulse{animation:wgc-pulse 1.2s ease-out infinite}
+@keyframes wgc-pulse{0%{transform:scale(.8);opacity:.8}100%{transform:scale(1.6);opacity:0}}

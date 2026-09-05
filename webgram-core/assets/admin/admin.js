@@ -100,3 +100,33 @@
 		if (tg) { e.preventDefault(); tg.closest('[data-wgc-slide]').classList.toggle('is-collapsed'); }
 	});
 })();
+/* Reel video picker (media library, video type). */
+(function () {
+	'use strict';
+	document.addEventListener('click', function (e) {
+		var btn = e.target.closest('.wgc-video-select');
+		if (btn && window.wp && wp.media) {
+			e.preventDefault();
+			var wrap = btn.closest('.wgc-video-field');
+			var frame = wp.media({ title: btn.textContent, multiple: false, library: { type: 'video' } });
+			frame.on('select', function () {
+				var att = frame.state().get('selection').first().toJSON();
+				wrap.querySelector('input[type="hidden"]').value = att.id;
+				var name = wrap.querySelector('.wgc-video-field__name');
+				name.textContent = att.filename || att.url;
+				name.hidden = false;
+				wrap.querySelector('.wgc-video-remove').hidden = false;
+			});
+			frame.open();
+			return;
+		}
+		var rm = e.target.closest('.wgc-video-remove');
+		if (rm) {
+			e.preventDefault();
+			var w = rm.closest('.wgc-video-field');
+			w.querySelector('input[type="hidden"]').value = '';
+			w.querySelector('.wgc-video-field__name').hidden = true;
+			rm.hidden = true;
+		}
+	});
+})();

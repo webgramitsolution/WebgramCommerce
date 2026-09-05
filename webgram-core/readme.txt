@@ -4,7 +4,7 @@ Tags: woocommerce, reviews, wishlist, invoice, whatsapp, slider, reels, ai
 Requires at least: 6.4
 Tested up to: 6.6
 Requires PHP: 8.1
-Stable tag: 0.6.0
+Stable tag: 0.7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,6 +17,11 @@ Webgram Core adds modular ecommerce features to WooCommerce: advanced reviews, w
 The plugin works with any theme and is designed for Webgram Theme.
 
 == Changelog ==
+
+= 0.7.0 =
+* Reels module: wg_reel post type with categories, upload or external sources (MP4, YouTube Shorts, Vimeo, Cloudflare Stream, Bunny), 9:16 cards with muted autoplay and product mini card, full screen viewer with product sheet and add to cart, analytics events, shortcode, widget and block.
+* Voice Search module: microphone button in the theme search and the assistant using the browser Web Speech API, language and auto submit settings, server engine interface for later.
+* AI Shopping Assistant module: rule based provider without API key, Anthropic, OpenAI and Gemini providers with tool calling (search products, best sellers, coupons, order status, store info), conversation tables with retention and privacy export and erase, nonce protected REST with rate limit and daily budget, launcher that loads the chat on first click, inline widget, block and shortcode.
 
 = 0.6.0 =
 * Slider module: wg_slider post type with per-device images, overlays, CTAs, benefit rows and animations, Swiper renderer with picture sources and priority hint on the first slide, shortcode, widget and block.

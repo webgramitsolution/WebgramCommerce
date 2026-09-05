@@ -4,7 +4,7 @@ Resume instructions: read CLAUDE.md, this file, then the current phase in docs/B
 
 ## Current phase
 
-Phase 6: reels, voice search, AI assistant.
+Phase 7: invoice, emails, notifications (WhatsApp), analytics.
 
 ## Completed
 
@@ -14,7 +14,8 @@ Phase 6: reels, voice search, AI assistant.
 - Phase 3: slide cart drawer with savings line, offer progress and Core recommendations, cart page, checkout with summary coupon and steps, thank you timeline, My Account icons and cards, split login/register with server validation, help page with Core FAQs and contact cards. Report: docs/phases/phase-3-cart-checkout-account.md.
 - Phase 4: Core Advanced Reviews (summary, sort and filters, load more, media uploads, helpful votes, admin column, schema, shortcode, third-party stand down), Wishlist and Compare (signed cookie or user meta storage, merge on login, header icons, card and product buttons, pages with share link and difference highlight, compare bar, page setup notices). Report: docs/phases/phase-4-reviews-wishlist-compare.md.
 - Phase 5: ProductQuery and trending score, Slider module (wg_slider, Swiper renderer), Instagram module (Graph API and manual), Integrations registry with Elementor widgets, Gutenberg blocks and shortcodes for all sections, testimonials CPT, product layout widgets, theme presentational sections, carousel module, Sync tokens to Elementor, demo homepage content. Report: docs/phases/phase-5-homepage-integrations.md.
+- Phase 6: Reels module (post type, sources, row, viewer, product sheet, events), Voice Search (Web Speech engine, mic in search and assistant), AI Shopping Assistant (rule based, Anthropic, OpenAI, Gemini providers with tools, conversation tables, REST, privacy, launcher and chat window). Report: docs/phases/phase-6-reels-voice-assistant.md.
 
 ## Next task
 
-Phase 6, task 1: Core `Reels` module (post type `wg_reel`, taxonomy `wg_reel_category`, meta `_wg_video_source`, `_wg_video_id`, `_wg_video_url`, `_wg_poster_id`, `_wg_products`, `_wg_cta`, source adapters filter `webgram_core/reels/sources`, admin columns), then the 9:16 card row and full screen viewer with product sheet, analytics events, shortcode and registry definition; then VoiceSearch (engine interface, Web Speech engine, mic in `webgram/search/input`); then AiAssistant (settings, providers, tools, tables `wg_ai_conversations` and `wg_ai_messages`, REST, launcher and chat window).
+Phase 7, task 1: Core `Analytics` module first (table `wg_events` through `EventRepository`, collector REST `POST webgram/v1/events` batched and sampled with nonce, server side `webgram_core/analytics/event` listener, client `WebgramCore.track` and `wg:track` listener, `webgram_core/trending/views` provider, retention cron, reports page), then `Invoice` (sequence table, numbering format, `InvoiceData::from_order`, dompdf generator, storage, REST download with ownership check, admin actions, settings), `Emails` (branding settings, template hooks, preview, invoice attachment), `Notifications` (channels, events, templates, opt in, queue, log, WhatsApp Cloud API with test connection and webhook).
