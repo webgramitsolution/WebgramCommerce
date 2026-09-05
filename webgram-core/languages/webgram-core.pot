@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Webgram Core 0.8.0\n"
+"Project-Id-Version: Webgram Core 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/webgram-core\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-05T08:28:08+00:00\n"
+"POT-Creation-Date: 2026-09-05T08:51:00+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: webgram-core\n"
@@ -48,7 +48,7 @@ msgid "Please log in to continue."
 msgstr ""
 
 #: src/Abstracts/AjaxHandler.php:61
-#: src/Admin/ModulesPage.php:125
+#: src/Admin/ModulesPage.php:126
 #: src/Admin/PageSetup.php:54
 #: src/Admin/SettingsPage.php:215
 #: src/Modules/Emails/Preview.php:106
@@ -96,25 +96,27 @@ msgstr ""
 msgid "Module settings saved."
 msgstr ""
 
-#: src/Admin/ModulesPage.php:104
+#. translators: %s: placeholder value.
+#: src/Admin/ModulesPage.php:105
 #, php-format
 msgid "Coming in phase %d"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:106
+#. translators: %s: placeholder value.
+#: src/Admin/ModulesPage.php:107
 #, php-format
 msgid "Needs: %s"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:108
+#: src/Admin/ModulesPage.php:109
 msgid "Active"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:111
+#: src/Admin/ModulesPage.php:112
 msgid "Settings"
 msgstr ""
 
-#: src/Admin/ModulesPage.php:117
+#: src/Admin/ModulesPage.php:118
 #: src/Admin/SettingsPage.php:118
 msgid "Save changes"
 msgstr ""
@@ -127,6 +129,7 @@ msgstr ""
 msgid "Webgram Core: the PHP Sodium extension is disabled on this server. API credentials cannot be stored securely, so modules that need API keys will not save them. Ask your host to enable ext-sodium."
 msgstr ""
 
+#. translators: %s: placeholder value.
 #: src/Admin/Notices.php:32
 #, php-format
 msgid "Webgram Core %1$s works best with Webgram Theme %2$s or newer. Please update the theme."
@@ -430,7 +433,7 @@ msgstr ""
 
 #: src/Modules/AiAssistant/Module.php:94
 #: src/Modules/AiAssistant/Providers/RuleBasedProvider.php:171
-#: templates/invoice/invoice.php:152
+#: templates/invoice/invoice.php:196
 msgid "Shipping"
 msgstr ""
 
@@ -468,7 +471,7 @@ msgid "Ask about products, offers or your order"
 msgstr ""
 
 #: src/Modules/AiAssistant/Module.php:172
-#: src/Modules/Notifications/Admin/LogPage.php:163
+#: src/Modules/Notifications/Admin/LogPage.php:179
 #: templates/ai-assistant/window.php:42
 msgid "Send"
 msgstr ""
@@ -478,7 +481,7 @@ msgid "Typing"
 msgstr ""
 
 #: src/Modules/AiAssistant/Module.php:174
-#: src/Modules/Notifications/Admin/LogPage.php:129
+#: src/Modules/Notifications/Admin/LogPage.php:145
 msgid "Retry"
 msgstr ""
 
@@ -531,7 +534,7 @@ msgid "AI assistant conversations"
 msgstr ""
 
 #: src/Modules/AiAssistant/Privacy.php:57
-#: src/Modules/Notifications/Admin/LogPage.php:113
+#: src/Modules/Notifications/Admin/LogPage.php:125
 #: src/Modules/WooEnhancements/BulkInquiry.php:170
 msgid "Date"
 msgstr ""
@@ -542,7 +545,7 @@ msgstr ""
 
 #: src/Modules/AiAssistant/Privacy.php:59
 #: src/Modules/WooEnhancements/BulkInquiry.php:193
-#: templates/woo-enhancements/bulk-inquiry.php:43
+#: templates/woo-enhancements/bulk-inquiry.php:47
 msgid "Message"
 msgstr ""
 
@@ -613,7 +616,7 @@ msgid "Order #%1$s is %2$s (placed %3$s, total %4$s). Items: %5$s."
 msgstr ""
 
 #: src/Modules/AiAssistant/Providers/RuleBasedProvider.php:171
-#: templates/site-tools/maintenance.php:34
+#: templates/site-tools/maintenance.php:37
 msgid "Hours"
 msgstr ""
 
@@ -634,7 +637,7 @@ msgid "Too many requests."
 msgstr ""
 
 #: src/Modules/Analytics/Module.php:23
-#: src/Modules/Analytics/Module.php:166
+#: src/Modules/Analytics/Module.php:167
 #: src/Modules/Analytics/Reports.php:20
 msgid "Analytics"
 msgstr ""
@@ -663,12 +666,12 @@ msgstr ""
 msgid "Keep events for (days)"
 msgstr ""
 
-#: src/Modules/Analytics/Module.php:163
-#: src/Modules/Analytics/Module.php:173
+#: src/Modules/Analytics/Module.php:164
+#: src/Modules/Analytics/Module.php:176
 msgid "Webgram analytics events"
 msgstr ""
 
-#: src/Modules/Analytics/Module.php:166
+#: src/Modules/Analytics/Module.php:167
 msgid "Stored events"
 msgstr ""
 
@@ -879,7 +882,7 @@ msgstr ""
 
 #: src/Modules/Compare/Module.php:92
 #: src/Modules/Compare/Table.php:48
-#: templates/invoice/invoice.php:118
+#: templates/invoice/invoice.php:142
 #: templates/wishlist/table.php:43
 #: templates/wishlist/table.php:53
 msgid "Price"
@@ -899,7 +902,7 @@ msgstr ""
 
 #: src/Modules/Compare/Module.php:95
 #: src/Modules/Compare/Table.php:57
-#: templates/invoice/invoice.php:116
+#: templates/invoice/invoice.php:137
 msgid "SKU"
 msgstr ""
 
@@ -2055,7 +2058,7 @@ msgstr ""
 #: src/Modules/Invoice/Module.php:81
 #: src/Modules/WooEnhancements/BulkInquiry.php:134
 #: src/Modules/WooEnhancements/BulkInquiry.php:193
-#: templates/woo-enhancements/bulk-inquiry.php:39
+#: templates/woo-enhancements/bulk-inquiry.php:43
 msgid "Phone"
 msgstr ""
 
@@ -2065,7 +2068,7 @@ msgstr ""
 #: src/Modules/Reviews/Module.php:276
 #: src/Modules/WooEnhancements/BulkInquiry.php:135
 #: src/Modules/WooEnhancements/BulkInquiry.php:193
-#: templates/woo-enhancements/bulk-inquiry.php:40
+#: templates/woo-enhancements/bulk-inquiry.php:44
 msgid "Email"
 msgstr ""
 
@@ -2074,7 +2077,7 @@ msgid "Website"
 msgstr ""
 
 #: src/Modules/Invoice/Module.php:84
-#: templates/invoice/invoice.php:163
+#: templates/invoice/invoice.php:216
 msgid "GSTIN"
 msgstr ""
 
@@ -2245,71 +2248,71 @@ msgstr ""
 msgid "All statuses"
 msgstr ""
 
-#: src/Modules/Notifications/Admin/LogPage.php:106
+#: src/Modules/Notifications/Admin/LogPage.php:110
 msgid "All channels"
 msgstr ""
 
-#: src/Modules/Notifications/Admin/LogPage.php:107
+#: src/Modules/Notifications/Admin/LogPage.php:115
 #: templates/analytics/dashboard.php:63
 msgid "All events"
 msgstr ""
 
-#: src/Modules/Notifications/Admin/LogPage.php:108
+#: src/Modules/Notifications/Admin/LogPage.php:120
 msgid "Order ID"
 msgstr ""
 
-#: src/Modules/Notifications/Admin/LogPage.php:109
+#: src/Modules/Notifications/Admin/LogPage.php:121
 msgid "Filter"
 msgstr ""
 
 #. translators: %d: rows
-#: src/Modules/Notifications/Admin/LogPage.php:110
+#: src/Modules/Notifications/Admin/LogPage.php:122
 #, php-format
 msgid "%d entry"
 msgid_plural "%d entries"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Modules/Notifications/Admin/LogPage.php:113
+#: src/Modules/Notifications/Admin/LogPage.php:125
 msgid "Order"
 msgstr ""
 
-#: src/Modules/Notifications/Admin/LogPage.php:113
+#: src/Modules/Notifications/Admin/LogPage.php:125
 msgid "Event"
 msgstr ""
 
-#: src/Modules/Notifications/Admin/LogPage.php:113
+#: src/Modules/Notifications/Admin/LogPage.php:125
 msgid "Channel"
 msgstr ""
 
-#: src/Modules/Notifications/Admin/LogPage.php:113
+#: src/Modules/Notifications/Admin/LogPage.php:125
 msgid "Recipient"
 msgstr ""
 
-#: src/Modules/Notifications/Admin/LogPage.php:113
+#: src/Modules/Notifications/Admin/LogPage.php:125
 #: src/Modules/Notifications/Settings.php:32
 #: src/Modules/WooEnhancements/BulkInquiry.php:170
 #: src/Modules/WooEnhancements/BulkInquiry.php:198
 msgid "Status"
 msgstr ""
 
-#: src/Modules/Notifications/Admin/LogPage.php:113
+#: src/Modules/Notifications/Admin/LogPage.php:125
 msgid "Attempts"
 msgstr ""
 
-#: src/Modules/Notifications/Admin/LogPage.php:113
+#: src/Modules/Notifications/Admin/LogPage.php:125
 msgid "Error"
 msgstr ""
 
-#: src/Modules/Notifications/Admin/LogPage.php:116
+#: src/Modules/Notifications/Admin/LogPage.php:128
 msgid "No notifications yet."
 msgstr ""
 
-#: src/Modules/Notifications/Admin/LogPage.php:129
+#: src/Modules/Notifications/Admin/LogPage.php:145
 msgid "Resend"
 msgstr ""
 
-#: src/Modules/Notifications/Admin/LogPage.php:143
+#: src/Modules/Notifications/Admin/LogPage.php:159
 msgid "Notifications"
 msgstr ""
 
@@ -2369,7 +2372,7 @@ msgid "Payment failed"
 msgstr ""
 
 #: src/Modules/Notifications/Events.php:25
-#: templates/invoice/invoice.php:155
+#: templates/invoice/invoice.php:208
 msgid "Refunded"
 msgstr ""
 
@@ -2379,6 +2382,7 @@ msgctxt "Order status"
 msgid "Shipped"
 msgstr ""
 
+#. translators: %s: placeholder value.
 #: src/Modules/Notifications/Events.php:62
 #, php-format
 msgid "Shipped <span class=\"count\">(%s)</span>"
@@ -2392,6 +2396,7 @@ msgctxt "Order status"
 msgid "Out for delivery"
 msgstr ""
 
+#. translators: %s: placeholder value.
 #: src/Modules/Notifications/Events.php:64
 #, php-format
 msgid "Out for delivery <span class=\"count\">(%s)</span>"
@@ -2944,11 +2949,11 @@ msgstr ""
 #: src/Modules/Reviews/Module.php:166
 #: src/Modules/WooEnhancements/BulkInquiry.php:136
 #: src/Modules/WooEnhancements/BulkInquiry.php:193
-#: templates/invoice/invoice.php:115
+#: templates/invoice/invoice.php:133
 #: templates/wishlist/table.php:42
 #: templates/wishlist/table.php:52
 #: templates/woo-enhancements/bulk-inquiry.php:29
-#: templates/woo-enhancements/bulk-inquiry.php:34
+#: templates/woo-enhancements/bulk-inquiry.php:38
 msgid "Product"
 msgstr ""
 
@@ -3001,6 +3006,7 @@ msgstr ""
 msgid "Be the first to review"
 msgstr ""
 
+#. translators: %s: placeholder value.
 #: src/Modules/Reviews/Module.php:265
 #, php-format
 msgid "Leave a reply to %s"
@@ -3983,6 +3989,7 @@ msgstr ""
 msgid "Pincodes"
 msgstr ""
 
+#. translators: %s: placeholder value.
 #: src/Modules/WooEnhancements/Admin/PincodesPage.php:41
 #, php-format
 msgid "%1$d pincodes imported or updated, %2$d rows skipped as invalid."
@@ -3996,11 +4003,13 @@ msgstr ""
 msgid "Pincode table cleared."
 msgstr ""
 
+#. translators: %s: placeholder value.
 #: src/Modules/WooEnhancements/Admin/PincodesPage.php:48
 #, php-format
 msgid "Rows in the offline table: %d."
 msgstr ""
 
+#. translators: %s: placeholder value.
 #: src/Modules/WooEnhancements/Admin/PincodesPage.php:48
 #, php-format
 msgid "Delivery data mode: %s."
@@ -4132,8 +4141,8 @@ msgstr ""
 #: src/Modules/WooEnhancements/BulkInquiry.php:137
 #: src/Modules/WooEnhancements/BulkInquiry.php:170
 #: src/Modules/WooEnhancements/BulkInquiry.php:193
-#: templates/invoice/invoice.php:119
-#: templates/woo-enhancements/bulk-inquiry.php:41
+#: templates/invoice/invoice.php:143
+#: templates/woo-enhancements/bulk-inquiry.php:45
 msgid "Quantity"
 msgstr ""
 
@@ -4509,6 +4518,68 @@ msgstr ""
 msgid "Loading"
 msgstr ""
 
+#. translators: %d: count.
+#: src/Support/DemoContent.php:50
+#, php-format
+msgid "%d testimonials."
+msgstr ""
+
+#. translators: %d: count.
+#: src/Support/DemoContent.php:53
+#, php-format
+msgid "%d coupons."
+msgstr ""
+
+#. translators: %s: page name.
+#: src/Support/DemoContent.php:57
+#, php-format
+msgid "%s page ready."
+msgstr ""
+
+#: src/Support/DemoContent.php:65
+msgid "Home slider."
+msgstr ""
+
+#: src/Support/DemoContent.php:67
+msgid "Webgram Core demo content: "
+msgstr ""
+
+#: src/Support/DemoContent.php:81
+msgid "Home slider"
+msgstr ""
+
+#: src/Support/DemoContent.php:91
+msgid "Festive pooja essentials"
+msgstr ""
+
+#: src/Support/DemoContent.php:92
+msgid "Brass, copper and sandalwood, chosen for daily rituals"
+msgstr ""
+
+#: src/Support/DemoContent.php:93
+msgid "Shop now"
+msgstr ""
+
+#: src/Support/DemoContent.php:101
+msgid "Home decor that feels like home"
+msgstr ""
+
+#: src/Support/DemoContent.php:102
+msgid "Handloom textiles, ceramics and wall art"
+msgstr ""
+
+#: src/Support/DemoContent.php:103
+msgid "Explore decor"
+msgstr ""
+
+#: src/Support/DemoContent.php:151
+msgid "10% off your first order"
+msgstr ""
+
+#: src/Support/DemoContent.php:152
+msgid "Free shipping on orders above 999"
+msgstr ""
+
 #. translators: %s: assistant name
 #: templates/ai-assistant/launcher.php:12
 #, php-format
@@ -4615,115 +4686,115 @@ msgstr ""
 msgid "View on Instagram"
 msgstr ""
 
-#: templates/invoice/invoice.php:87
+#: templates/invoice/invoice.php:105
 msgid "INVOICE"
 msgstr ""
 
-#: templates/invoice/invoice.php:90
-#: templates/invoice/invoice.php:106
+#: templates/invoice/invoice.php:108
+#: templates/invoice/invoice.php:124
 msgid "Order Date"
 msgstr ""
 
-#: templates/invoice/invoice.php:91
+#: templates/invoice/invoice.php:109
 msgid "Payment Date"
 msgstr ""
 
-#: templates/invoice/invoice.php:92
+#: templates/invoice/invoice.php:110
 msgid "Order Status"
 msgstr ""
 
-#: templates/invoice/invoice.php:101
+#: templates/invoice/invoice.php:119
 msgid "Billing Address"
 msgstr ""
 
-#: templates/invoice/invoice.php:102
+#: templates/invoice/invoice.php:120
 msgid "Shipping Address"
 msgstr ""
 
-#: templates/invoice/invoice.php:102
+#: templates/invoice/invoice.php:120
 msgid "Same as billing"
 msgstr ""
 
-#: templates/invoice/invoice.php:103
+#: templates/invoice/invoice.php:121
 msgid "Order Information"
 msgstr ""
 
-#: templates/invoice/invoice.php:104
+#: templates/invoice/invoice.php:122
 msgid "Invoice Number"
 msgstr ""
 
-#: templates/invoice/invoice.php:105
+#: templates/invoice/invoice.php:123
 msgid "Order Number"
 msgstr ""
 
-#: templates/invoice/invoice.php:107
+#: templates/invoice/invoice.php:125
 msgid "Payment Method"
 msgstr ""
 
-#: templates/invoice/invoice.php:108
+#: templates/invoice/invoice.php:126
 msgid "Shipping Method"
 msgstr ""
 
-#: templates/invoice/invoice.php:117
+#: templates/invoice/invoice.php:141
 msgid "HSN"
 msgstr ""
 
-#: templates/invoice/invoice.php:120
+#: templates/invoice/invoice.php:144
 msgid "Total"
 msgstr ""
 
 #. translators: %s: amount
-#: templates/invoice/invoice.php:130
+#: templates/invoice/invoice.php:165
 #, php-format
 msgid "Discount: %s"
 msgstr ""
 
-#: templates/invoice/invoice.php:145
+#: templates/invoice/invoice.php:186
 msgid "Payment Information"
 msgstr ""
 
-#: templates/invoice/invoice.php:146
+#: templates/invoice/invoice.php:187
 msgid "Notes"
 msgstr ""
 
-#: templates/invoice/invoice.php:150
+#: templates/invoice/invoice.php:191
 msgid "Subtotal"
 msgstr ""
 
-#: templates/invoice/invoice.php:151
+#: templates/invoice/invoice.php:195
 msgid "Discount"
 msgstr ""
 
-#: templates/invoice/invoice.php:152
+#: templates/invoice/invoice.php:196
 msgid "Free"
 msgstr ""
 
-#: templates/invoice/invoice.php:153
+#: templates/invoice/invoice.php:200
 msgid "Fees"
 msgstr ""
 
-#: templates/invoice/invoice.php:156
+#: templates/invoice/invoice.php:209
 msgid "Grand Total"
 msgstr ""
 
-#: templates/invoice/invoice.php:163
+#: templates/invoice/invoice.php:216
 msgid "PAN"
 msgstr ""
 
-#: templates/invoice/invoice.php:163
+#: templates/invoice/invoice.php:216
 msgid "CIN"
 msgstr ""
 
-#: templates/invoice/invoice.php:164
+#: templates/invoice/invoice.php:217
 msgid "Need Help?"
 msgstr ""
 
-#: templates/invoice/invoice.php:165
+#: templates/invoice/invoice.php:218
 msgid "Stay connected"
 msgstr ""
 
 #. translators: %s: date time
-#: templates/invoice/invoice.php:171
+#: templates/invoice/invoice.php:224
 #, php-format
 msgid "Invoice generated on %s"
 msgstr ""
@@ -5014,15 +5085,15 @@ msgstr ""
 msgid "Cookie notice"
 msgstr ""
 
-#: templates/site-tools/maintenance.php:34
+#: templates/site-tools/maintenance.php:37
 msgid "Days"
 msgstr ""
 
-#: templates/site-tools/maintenance.php:34
+#: templates/site-tools/maintenance.php:37
 msgid "Minutes"
 msgstr ""
 
-#: templates/site-tools/maintenance.php:34
+#: templates/site-tools/maintenance.php:37
 msgid "Seconds"
 msgstr ""
 
@@ -5279,15 +5350,15 @@ msgstr ""
 msgid "Start typing a product name"
 msgstr ""
 
-#: templates/woo-enhancements/bulk-inquiry.php:37
+#: templates/woo-enhancements/bulk-inquiry.php:41
 msgid "Your name"
 msgstr ""
 
-#: templates/woo-enhancements/bulk-inquiry.php:38
+#: templates/woo-enhancements/bulk-inquiry.php:42
 msgid "Company (optional)"
 msgstr ""
 
-#: templates/woo-enhancements/bulk-inquiry.php:46
+#: templates/woo-enhancements/bulk-inquiry.php:50
 msgid "Request quote"
 msgstr ""
 

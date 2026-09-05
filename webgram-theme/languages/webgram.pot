@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Webgram Theme 0.8.0\n"
+"Project-Id-Version: Webgram 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/webgram-theme\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-05T08:28:07+00:00\n"
+"POT-Creation-Date: 2026-09-05T08:50:59+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: webgram\n"
@@ -66,6 +66,238 @@ msgstr ""
 
 #: header.php:19
 msgid "Skip to content"
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:33
+#: inc/admin/class-demo-importer.php:83
+msgid "Demo import"
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:42
+msgid "Theme settings, header and footer presets"
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:43
+msgid "Placeholder images"
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:44
+msgid "Sample products and categories (needs WooCommerce)"
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:45
+msgid "Blog posts"
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:46
+msgid "Webgram Core content: slider, testimonials, coupons, wishlist and compare pages (needs Webgram Core)"
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:47
+msgid "Pages: Home, Blog, Help, Track Order, Bulk Order, About, Contact"
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:48
+msgid "Menus assigned to all locations"
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:49
+msgid "Footer widgets"
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:86
+msgid "Import finished."
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:98
+msgid "Imports the demo store shown in the theme preview. Existing content is never deleted. Run it on a fresh site; on a live store import only the parts you need."
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:111
+msgid "imported"
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:116
+msgid "Import demo content"
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:125
+#: inc/admin/class-plugin-installer.php:131
+#: inc/builders/class-builder-page.php:298
+#: inc/builders/class-builder-page.php:324
+#: inc/elementor/class-elementor-sync.php:59
+#: inc/settings/class-import-export.php:132
+#: inc/settings/class-import-export.php:146
+#: inc/settings/class-import-export.php:166
+#: inc/settings/class-settings-page.php:164
+#: inc/settings/class-settings-page.php:208
+msgid "You do not have permission to do this."
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:171
+msgid "theme-settings.json is missing or invalid."
+msgstr ""
+
+#. translators: %s: comma separated list.
+#: inc/admin/class-demo-importer.php:185
+#, php-format
+msgid "Settings applied: %s"
+msgstr ""
+
+#. translators: %d: number of images.
+#: inc/admin/class-demo-importer.php:198
+#, php-format
+msgid "%d placeholder images available in the media library."
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:232
+msgid "WooCommerce is not active."
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:236
+msgid "products.csv is missing."
+msgstr ""
+
+#. translators: 1: imported count, 2: updated count.
+#: inc/admin/class-demo-importer.php:261
+#, php-format
+msgid "Products imported: %1$d new, %2$d updated."
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:279
+msgid "posts.json is missing or invalid."
+msgstr ""
+
+#. translators: %d: number of posts.
+#: inc/admin/class-demo-importer.php:309
+#, php-format
+msgid "%d blog posts created."
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:314
+msgid "Webgram Core is not active."
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:322
+msgid "Webgram Core demo content processed."
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:330
+#: inc/settings/defaults.php:52
+#: inc/settings/tabs/mobile-navbar.php:31
+#: template-parts/misc/breadcrumb.php:21
+msgid "Home"
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:331
+#: inc/settings/tabs/blog.php:12
+#: inc/settings/tabs/layout.php:27
+msgid "Blog"
+msgstr ""
+
+#. Template Name of the theme
+#: inc/admin/class-demo-importer.php:332
+#: inc/builders/elements/class-element-links.php:95
+#: inc/builders/elements/class-element-links.php:99
+#: page-templates/template-help.php:3
+msgid "Help"
+msgstr ""
+
+#. Template Name of the theme
+#: inc/admin/class-demo-importer.php:333
+#: inc/builders/elements/class-element-links.php:61
+#: page-templates/template-track-order.php:3
+msgid "Track Order"
+msgstr ""
+
+#. Template Name of the theme
+#: inc/admin/class-demo-importer.php:334
+#: inc/builders/elements/class-element-links.php:80
+#: page-templates/template-bulk-order.php:3
+msgid "Bulk Order"
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:335
+msgid "About"
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:336
+#: inc/builders/elements/class-element-footer.php:258
+msgid "Contact"
+msgstr ""
+
+#. translators: %d: number of pages.
+#: inc/admin/class-demo-importer.php:355
+#, php-format
+msgid "%d pages ready. Home set as the front page."
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:362
+#: inc/builders/elements/class-element-misc.php:79
+#: inc/settings/tabs/styles.php:28
+#: inc/setup.php:68
+msgid "Primary"
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:364
+#: inc/settings/defaults.php:53
+#: inc/settings/tabs/layout.php:28
+#: inc/settings/tabs/mobile-navbar.php:31
+#: inc/settings/tabs/shop.php:19
+msgid "Shop"
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:379
+#: inc/settings/tabs/footer.php:12
+msgid "Footer"
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:390
+msgid "Primary and footer menus assigned."
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:411
+msgid "widgets.json is missing or invalid."
+msgstr ""
+
+#. translators: %d: number of widgets.
+#: inc/admin/class-demo-importer.php:436
+#, php-format
+msgid "%d footer widgets added."
+msgstr ""
+
+#: inc/admin/class-plugin-installer.php:112
+msgid "Install Webgram Core"
+msgstr ""
+
+#: inc/admin/class-plugin-installer.php:113
+msgid "Update bundled Webgram Core"
+msgstr ""
+
+#: inc/admin/class-plugin-installer.php:114
+msgid "Activate Webgram Core"
+msgstr ""
+
+#. translators: %s: version number.
+#: inc/admin/class-plugin-installer.php:125
+#, php-format
+msgid "bundled version %s"
+msgstr ""
+
+#: inc/admin/class-plugin-installer.php:184
+msgid "Webgram Core is installed and active."
+msgstr ""
+
+#: inc/admin/class-plugin-installer.php:185
+msgid "Webgram Core was updated to the bundled version."
+msgstr ""
+
+#: inc/admin/class-plugin-installer.php:186
+msgid "The bundled Webgram Core zip is missing from the theme folder. Upload the plugin from the download package instead."
+msgstr ""
+
+#: inc/admin/class-plugin-installer.php:187
+msgid "Webgram Core could not be installed."
 msgstr ""
 
 #: inc/admin/class-theme-dashboard.php:19
@@ -249,26 +481,31 @@ msgstr ""
 msgid "Row settings"
 msgstr ""
 
+#. translators: %s: placeholder value.
 #: inc/builders/class-builder-page.php:209
 #, php-format
 msgid "Sticky rows, shrink and hide-on-scroll are configured under %s."
 msgstr ""
 
+#. translators: %s: placeholder value.
 #: inc/builders/class-builder-page.php:209
 msgid "Theme Settings > Sticky navigation"
 msgstr ""
 
+#. translators: %s: placeholder value.
 #: inc/builders/class-builder-page.php:209
 #, php-format
 msgid "Mobile drawer and bottom navbar: %s."
 msgstr ""
 
+#. translators: %s: placeholder value.
 #: inc/builders/class-builder-page.php:209
 #: inc/settings/tabs/mobile-menu.php:12
 #: inc/setup.php:39
 msgid "Mobile menu"
 msgstr ""
 
+#. translators: %s: placeholder value.
 #: inc/builders/class-builder-page.php:209
 #: inc/settings/tabs/mobile-navbar.php:12
 msgid "Mobile bottom navbar"
@@ -324,19 +561,8 @@ msgid "Save layout"
 msgstr ""
 
 #: inc/builders/class-builder-page.php:277
-#: inc/settings/class-settings-page.php:151
+#: inc/settings/class-settings-page.php:154
 msgid "Unsaved changes"
-msgstr ""
-
-#: inc/builders/class-builder-page.php:297
-#: inc/builders/class-builder-page.php:323
-#: inc/elementor/class-elementor-sync.php:59
-#: inc/settings/class-import-export.php:132
-#: inc/settings/class-import-export.php:146
-#: inc/settings/class-import-export.php:166
-#: inc/settings/class-settings-page.php:161
-#: inc/settings/class-settings-page.php:205
-msgid "You do not have permission to do this."
 msgstr ""
 
 #: inc/builders/class-element.php:92
@@ -729,10 +955,6 @@ msgstr ""
 msgid "Contact info"
 msgstr ""
 
-#: inc/builders/elements/class-element-footer.php:258
-msgid "Contact"
-msgstr ""
-
 #: inc/builders/elements/class-element-footer.php:259
 msgid "Address"
 msgstr ""
@@ -765,27 +987,8 @@ msgstr ""
 msgid "Track order"
 msgstr ""
 
-#. Template Name of the theme
-#: inc/builders/elements/class-element-links.php:61
-#: page-templates/template-track-order.php:3
-msgid "Track Order"
-msgstr ""
-
 #: inc/builders/elements/class-element-links.php:76
 msgid "Bulk order"
-msgstr ""
-
-#. Template Name of the theme
-#: inc/builders/elements/class-element-links.php:80
-#: page-templates/template-bulk-order.php:3
-msgid "Bulk Order"
-msgstr ""
-
-#. Template Name of the theme
-#: inc/builders/elements/class-element-links.php:95
-#: inc/builders/elements/class-element-links.php:99
-#: page-templates/template-help.php:3
-msgid "Help"
 msgstr ""
 
 #: inc/builders/elements/class-element-logo.php:17
@@ -814,15 +1017,18 @@ msgstr ""
 msgid "Primary menu"
 msgstr ""
 
+#. translators: %s: placeholder value.
 #: inc/builders/elements/class-element-menu.php:32
 #, php-format
 msgid "Leave empty to use the \"%s\" menu location."
 msgstr ""
 
+#. translators: %s: placeholder value.
 #: inc/builders/elements/class-element-menu.php:33
 msgid "Mega menu panels"
 msgstr ""
 
+#. translators: %s: placeholder value.
 #: inc/builders/elements/class-element-menu.php:33
 msgid "Configure panels per item under Appearance > Menus."
 msgstr ""
@@ -922,12 +1128,6 @@ msgstr ""
 #: inc/builders/elements/class-element-misc.php:78
 #: inc/settings/tabs/social.php:26
 msgid "URL"
-msgstr ""
-
-#: inc/builders/elements/class-element-misc.php:79
-#: inc/settings/tabs/styles.php:28
-#: inc/setup.php:68
-msgid "Primary"
 msgstr ""
 
 #: inc/builders/elements/class-element-misc.php:79
@@ -1185,7 +1385,7 @@ msgid "Added to cart"
 msgstr ""
 
 #: inc/enqueue.php:111
-#: template-parts/cart/drawer-content.php:112
+#: template-parts/cart/drawer-content.php:127
 msgid "View cart"
 msgstr ""
 
@@ -1665,33 +1865,20 @@ msgstr ""
 msgid "Settings sections"
 msgstr ""
 
-#: inc/settings/class-settings-page.php:110
+#: inc/settings/class-settings-page.php:113
 msgid "Core"
 msgstr ""
 
-#: inc/settings/class-settings-page.php:149
+#: inc/settings/class-settings-page.php:152
 msgid "Save changes"
 msgstr ""
 
-#: inc/settings/class-settings-page.php:150
+#: inc/settings/class-settings-page.php:153
 msgid "Reset this tab"
 msgstr ""
 
-#: inc/settings/class-settings-page.php:169
+#: inc/settings/class-settings-page.php:172
 msgid "Unknown settings tab."
-msgstr ""
-
-#: inc/settings/defaults.php:52
-#: inc/settings/tabs/mobile-navbar.php:31
-#: template-parts/misc/breadcrumb.php:21
-msgid "Home"
-msgstr ""
-
-#: inc/settings/defaults.php:53
-#: inc/settings/tabs/layout.php:28
-#: inc/settings/tabs/mobile-navbar.php:31
-#: inc/settings/tabs/shop.php:19
-msgid "Shop"
 msgstr ""
 
 #: inc/settings/defaults.php:55
@@ -1779,11 +1966,6 @@ msgstr ""
 
 #: inc/settings/defaults.php:288
 msgid "Back to home"
-msgstr ""
-
-#: inc/settings/tabs/blog.php:12
-#: inc/settings/tabs/layout.php:27
-msgid "Blog"
 msgstr ""
 
 #: inc/settings/tabs/blog.php:17
@@ -2001,10 +2183,6 @@ msgstr ""
 
 #: inc/settings/tabs/custom-css.php:21
 msgid "Custom JavaScript is provided by the Webgram Core plugin (Site Tools module)."
-msgstr ""
-
-#: inc/settings/tabs/footer.php:12
-msgid "Footer"
 msgstr ""
 
 #: inc/settings/tabs/footer.php:18
@@ -3460,21 +3638,22 @@ msgid "View my orders"
 msgstr ""
 
 #. translators: %s: product
-#: template-parts/cards/product-card-compact.php:30
+#: template-parts/cards/product-card-compact.php:33
 #, php-format
 msgid "Add %s to cart"
 msgstr ""
 
 #. translators: %s: product
-#: template-parts/cards/product-card-compact.php:30
+#: template-parts/cards/product-card-compact.php:33
 msgid "ADD"
 msgstr ""
 
-#: template-parts/cards/product-card-compact.php:32
+#: template-parts/cards/product-card-compact.php:35
 #: template-parts/shop/toolbar.php:24
 msgid "View"
 msgstr ""
 
+#. translators: %s: placeholder value.
 #. translators: %s: formatted amount saved
 #: template-parts/cards/product-card-list.php:22
 #: template-parts/cards/product-card.php:32
@@ -3483,7 +3662,7 @@ msgstr ""
 msgid "Save %s"
 msgstr ""
 
-#: template-parts/cards/product-card-list.php:37
+#: template-parts/cards/product-card-list.php:43
 #: template-parts/cards/product-card.php:65
 msgid "off"
 msgstr ""
@@ -3500,58 +3679,58 @@ msgid_plural "Your Cart (%s Items)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: template-parts/cart/drawer-content.php:53
+#: template-parts/cart/drawer-content.php:62
 #: woocommerce/global/quantity-input.php:27
 msgid "Decrease quantity"
 msgstr ""
 
 #. translators: %s: Quantity.
-#: template-parts/cart/drawer-content.php:54
+#: template-parts/cart/drawer-content.php:63
 #: woocommerce/cart/cart.php:26
 #: woocommerce/cart/cart.php:87
 #: woocommerce/global/quantity-input.php:14
 msgid "Quantity"
 msgstr ""
 
-#: template-parts/cart/drawer-content.php:55
-#: woocommerce/global/quantity-input.php:41
+#: template-parts/cart/drawer-content.php:64
+#: woocommerce/global/quantity-input.php:44
 msgid "Increase quantity"
 msgstr ""
 
-#: template-parts/cart/drawer-content.php:58
+#: template-parts/cart/drawer-content.php:67
 #: woocommerce/cart/cart.php:22
 msgid "Remove item"
 msgstr ""
 
-#: template-parts/cart/drawer-content.php:68
+#: template-parts/cart/drawer-content.php:77
 msgid "Your cart is empty"
 msgstr ""
 
-#: template-parts/cart/drawer-content.php:69
+#: template-parts/cart/drawer-content.php:78
 msgid "Looks like you have not added anything yet."
 msgstr ""
 
-#: template-parts/cart/drawer-content.php:70
+#: template-parts/cart/drawer-content.php:79
 msgid "Start shopping"
 msgstr ""
 
-#: template-parts/cart/drawer-content.php:81
+#: template-parts/cart/drawer-content.php:90
 #: woocommerce/cart/cart.php:126
 #: woocommerce/checkout/form-checkout.php:54
 #: woocommerce/checkout/form-checkout.php:55
 msgid "Coupon code"
 msgstr ""
 
-#: template-parts/cart/drawer-content.php:82
+#: template-parts/cart/drawer-content.php:91
 #: woocommerce/checkout/form-checkout.php:56
 msgid "Apply"
 msgstr ""
 
-#: template-parts/cart/drawer-content.php:86
+#: template-parts/cart/drawer-content.php:95
 msgid "SUBTOTAL"
 msgstr ""
 
-#: template-parts/cart/drawer-content.php:92
+#: template-parts/cart/drawer-content.php:101
 msgid "You save"
 msgstr ""
 
@@ -3577,7 +3756,7 @@ msgstr ""
 msgid "Read more"
 msgstr ""
 
-#: template-parts/header/banner.php:27
+#: template-parts/header/banner.php:33
 msgid "Close banner"
 msgstr ""
 
@@ -3653,7 +3832,7 @@ msgstr ""
 msgid "Scroll thumbnails forward"
 msgstr ""
 
-#: template-parts/product/price.php:21
+#: template-parts/product/price.php:27
 msgid "OFF"
 msgstr ""
 

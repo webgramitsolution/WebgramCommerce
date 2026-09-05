@@ -124,4 +124,16 @@ check('thank you timeline: on-hold unpaid stops at placed, paid reaches payment'
 check('thank you timeline: completed marks all', count(array_filter(Webgram_WC_Checkout::timeline('completed', true), fn($s)=>$s['done']))===4);
 check('split name: first and rest, whitespace collapsed', Webgram_WC_Account::split_name('  Priya   Sharma Rao ')===['Priya','Sharma Rao'] && Webgram_WC_Account::split_name('Priya')===['Priya',''] && Webgram_WC_Account::split_name('')===['','']);
 check('cart drawer defaults registered', webgram_defaults()['cart_drawer']===true && webgram_defaults()['cart_after_add']==='drawer' && isset(webgram_defaults()['checkout_coupon_place']));
+
+// 10. Phase 8: bundled Core installer and demo importer pure logic
+check('installer parses the plugin header version', Webgram_Plugin_Installer::parse_header_version("<?php\n/**\n * Plugin Name: Webgram Core\n * Version:           1.0.0\n */")==='1.0.0' && Webgram_Plugin_Installer::parse_header_version('no header')==='');
+check('installer state: no bundle, install, update, activate, current', Webgram_Plugin_Installer::resolve_state(false,'1.0.0','',false)==='no_bundle' && Webgram_Plugin_Installer::resolve_state(true,'1.0.0','',false)==='install' && Webgram_Plugin_Installer::resolve_state(true,'1.1.0','1.0.0',true)==='update' && Webgram_Plugin_Installer::resolve_state(true,'1.0.0','1.0.0',false)==='activate' && Webgram_Plugin_Installer::resolve_state(true,'1.0.0','1.0.0',true)==='current' && Webgram_Plugin_Installer::resolve_state(true,'','1.0.0',true)==='current');
+check('demo importer keeps canonical step order and drops unknown steps', Webgram_Demo_Importer::normalize_steps(['widgets','bogus','settings','pages'])===['settings','pages','widgets']);
+check('demo importer injects the slider id once', Webgram_Demo_Importer::inject_slider_id('<!-- wp:webgram/slider {"slider_id":0} /--> {"slider_id":0}', 42)==='<!-- wp:webgram/slider {"slider_id":42} /--> {"slider_id":0}' && Webgram_Demo_Importer::inject_slider_id('x{"slider_id":0}', 0)==='x{"slider_id":0}');
+$demo = json_decode(file_get_contents(get_template_directory().'/demo/theme-settings.json'), true);
+check('demo settings file valid and presets exist', is_array($demo) && isset(webgram_header_presets()[$demo['header_preset']], webgram_footer_presets()[$demo['footer_preset']]) && json_decode(file_get_contents(get_template_directory().'/demo/posts.json'), true) && json_decode(file_get_contents(get_template_directory().'/demo/widgets.json'), true));
+$csv = array_map('str_getcsv', file(get_template_directory().'/demo/products.csv'));
+$missing = array_diff(array_map(fn($r)=>$r[7], array_slice($csv,1)), array_map(fn($f)=>basename($f), glob(get_template_directory().'/demo/images/product-*.png')));
+check('demo products csv: 12 rows, every image file present', count($csv)===13 && $csv[0][0]==='sku' && $missing===[]);
+check('version constants agree', WEBGRAM_VERSION==='1.0.0' && WEBGRAM_MIN_CORE_VERSION==='1.0.0');
 echo "\n".($fail?"$fail FAILURE(S)":"ALL PASSED")."\n"; exit($fail?1:0);

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Webgram Theme and Webgram Core: Documentation</title>
+<style>
+:root{--ink:#1f2937;--muted:#6b7280;--brand:#a0181f;--navy:#1f2a44;--line:#e5e7eb;--bg:#f8f7f4}
+*{box-sizing:border-box}body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:#fff}
+.wrap{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+nav{background:var(--bg);border-right:1px solid var(--line);padding:24px;position:sticky;top:0;height:100vh;overflow:auto}
+nav h1{font-size:18px;margin:0 0 4px;color:var(--brand)}nav p{margin:0 0 16px;color:var(--muted);font-size:13px}
+nav a{display:block;color:var(--ink);text-decoration:none;padding:4px 0;font-size:14px}nav a:hover{color:var(--brand)}nav .sub{padding-left:12px;font-size:13px;color:var(--muted)}
+main{padding:40px 56px;max-width:960px}
+h2{font-size:26px;margin:48px 0 12px;padding-top:12px;border-top:1px solid var(--line);color:var(--navy)}h2:first-child{border:0;margin-top:0}
+h3{font-size:18px;margin:28px 0 8px}
+table{border-collapse:collapse;width:100%;font-size:14px;margin:12px 0}th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}th{background:var(--bg)}
+code{background:var(--bg);padding:1px 5px;border-radius:4px;font-size:13px}pre{background:var(--navy);color:#fff;padding:14px 16px;border-radius:8px;overflow:auto;font-size:13px}
+.note{border-left:4px solid var(--brand);background:var(--bg);padding:10px 14px;margin:14px 0;border-radius:0 6px 6px 0}
+ol li,ul li{margin:4px 0}
+@media (max-width:860px){.wrap{grid-template-columns:1fr}nav{position:static;height:auto}main{padding:24px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav>
+<h1>Webgram</h1>
+<p>Theme 1.0.0 and Core 1.0.0</p>
+<a href="#start">Getting started</a>
+<a class="sub" href="#install">Install theme and Core</a>
+<a class="sub" href="#demo">Demo import</a>
+<a class="sub" href="#child">Child theme</a>
+<a href="#settings">Theme Settings</a>
+<a href="#header">Header and footer builders</a>
+<a href="#megamenu">Mega menu</a>
+<a href="#home">Homepage sections</a>
+<a href="#shop">Shop, product, cart, checkout</a>
+<a href="#modules">Webgram Core modules</a>
+<a class="sub" href="#reviews">Reviews, wishlist, compare</a>
+<a class="sub" href="#slider">Slider, reels, Instagram</a>
+<a class="sub" href="#assistant">AI assistant and voice search</a>
+<a class="sub" href="#invoice">Invoices and emails</a>
+<a class="sub" href="#whatsapp">WhatsApp notifications</a>
+<a class="sub" href="#analytics">Analytics</a>
+<a class="sub" href="#sitetools">Site tools</a>
+<a href="#translation">Translation and RTL</a>
+<a href="#performance">Performance</a>
+<a href="#update">Updates</a>
+<a href="#faq">FAQ</a>
+<a href="#developers">Developers</a>
+</nav>
+<main>
+
+<h2 id="start">Getting started</h2>
+<p>Webgram is two products: <strong>Webgram Theme</strong> (design, header and footer builders, mega menu, shop and product layouts, slide cart) and <strong>Webgram Core</strong> (features: reviews, wishlist, compare, quick view, badges, coupons, slider, reels, Instagram, voice search, AI assistant, invoices, branded emails, WhatsApp notifications, analytics, site tools). The theme works on its own; Core adds the features and works with any theme.</p>
+<table><tr><th>Requirement</th><th>Version</th></tr><tr><td>WordPress</td><td>6.4 or newer</td></tr><tr><td>WooCommerce</td><td>8.5 or newer (optional for the theme, required for most Core modules)</td></tr><tr><td>PHP</td><td>8.1 to 8.4</td></tr><tr><td>Elementor</td><td>Optional. Every section is also a Gutenberg block and a shortcode.</td></tr></table>
+
+<h3 id="install">Install theme and Core</h3>
+<ol>
+<li>Appearance &gt; Themes &gt; Add New &gt; Upload Theme: choose <code>webgram-theme.zip</code>, install, activate.</li>
+<li>Go to <strong>Webgram &gt; System status</strong>. Click <strong>Install Webgram Core</strong>. The theme installs the plugin from its bundled copy and activates it. No external download.</li>
+<li>Install WooCommerce if it is not present and finish its setup wizard.</li>
+<li>Open <strong>Webgram &gt; Modules</strong> and switch on the modules you need. Disabled modules load nothing on the frontend.</li>
+</ol>
+<div class="note">If you update the theme later and the new version bundles a newer Core, System status shows <strong>Update bundled Webgram Core</strong>. Click it to update in place. You can also upload <code>webgram-core.zip</code> through Plugins &gt; Add New at any time.</div>
+
+<h3 id="demo">Demo import</h3>
+<p><strong>Webgram &gt; Demo import</strong> reproduces the preview store. Tick the parts you want and click Import. Steps run in order: theme settings and builder presets, placeholder images, sample products and categories, blog posts, Webgram Core content (home slider, testimonials, coupons, wishlist and compare pages), pages (Home, Blog, Help, Track Order, Bulk Order, About, Contact), menus and footer widgets. Nothing you already have is deleted; running it twice reuses what exists.</p>
+<p>The placeholder images are flat coloured shapes: replace them with your own product photos under Products and Media.</p>
+
+<h3 id="child">Child theme</h3>
+<p>Activate <code>webgram-child.zip</code> when you plan to edit template files or add PHP. Put CSS in the child <code>style.css</code> and template overrides at the same path as in the parent (for example <code>webgram-child/woocommerce/content-product.php</code>). Core templates can be overridden at <code>webgram-child/webgram-core/{module}/{name}.php</code>.</p>
+
+<h2 id="settings">Theme Settings</h2>
+<p><strong>Webgram &gt; Theme Settings</strong> is the single place for design and layout. Each tab saves on its own and has a Reset tab button. Settings tabs:</p>
+<table>
+<tr><th>Tab</th><th>What it controls</th></tr>
+<tr><td>General</td><td>Site layout (contained or full width), container width, back to top, preloader, breadcrumbs, scroll behaviour.</td></tr>
+<tr><td>Styles</td><td>Brand colours (primary, secondary, accent, text, backgrounds, borders), button style and radius scale. Every colour becomes a CSS variable.</td></tr>
+<tr><td>Typography</td><td>Body and heading fonts (Google or local), sizes per device, weights, letter spacing.</td></tr>
+<tr><td>Layout</td><td>Spacing scale, section padding, card radius, shadows.</td></tr>
+<tr><td>Header banner, Sticky, Mobile menu, Mobile navbar</td><td>Announcement bar, sticky header behaviour and shrink, mobile drawer contents, bottom navigation bar items.</td></tr>
+<tr><td>Search</td><td>Live search, categories dropdown, product suggestions, popular searches.</td></tr>
+<tr><td>Page title</td><td>Title band style, background, breadcrumb position.</td></tr>
+<tr><td>Shop, Product archive</td><td>Grid columns per device, product card style and elements (badges, hover slideshow, swatches, quick view, wishlist, compare, buy now), filters sidebar, toolbar, pagination or load more, category chips.</td></tr>
+<tr><td>Single product</td><td>Gallery style, sticky columns, section order (drag to reorder), each element show or hide: rating pill, coupon box, payment strip, trust seals, contact seller cards, delivery check, info cards, specifications, overview, share, related, reviews, reels, recently viewed, mobile sticky bar.</td></tr>
+<tr><td>Cart and checkout</td><td>Slide cart drawer options (savings line, offer progress, recommendations, coupon form), cart page layout, checkout steps and summary, thank you timeline.</td></tr>
+<tr><td>My Account</td><td>Login image and layout, dashboard cards, navigation icons.</td></tr>
+<tr><td>Blog</td><td>Archive layout, card style, sidebar, single post elements.</td></tr>
+<tr><td>Footer</td><td>Footer colours and spacing (structure lives in the Footer Builder).</td></tr>
+<tr><td>Social</td><td>Profiles, floating social sidebar, share buttons.</td></tr>
+<tr><td>Performance</td><td>Local fonts, preload, lazy loading, asset scope.</td></tr>
+<tr><td>Custom CSS, Other</td><td>Global and mobile CSS, 404 page, maintenance links, import and export.</td></tr>
+</table>
+<p>When Webgram Core is active, its feature tabs appear in the same panel (Reviews, Wishlist, Compare, Invoice, Notifications, and so on). The Customizer keeps only Site Identity.</p>
+<p><strong>Import / Export</strong> (Webgram &gt; Import / Export) downloads a JSON file with theme settings, header and footer layouts and Core settings, and imports the same file on another site.</p>
+
+<h2 id="header">Header and footer builders</h2>
+<p><strong>Webgram &gt; Header Builder</strong>: three rows (top, main, bottom) with left, center and right areas, separate layouts for desktop and mobile. Drag elements into areas: logo, menus, search, cart, account, wishlist, compare, deliver to, contact, social, HTML, button, marquee. Each element has its own settings (click the gear). Presets replace the layout in one click: Store, Classic, Minimal, Two row, Centered. Sticky settings apply per row.</p>
+<p><strong>Webgram &gt; Footer Builder</strong>: a widgets row (2 to 6 columns, first column wide option) and a bottom bar with left, center, right areas. Elements: logo, description, menus, social, contact, payment icons, copyright, HTML, newsletter. Widget areas <code>footer-1</code> to <code>footer-6</code> accept normal WordPress widgets too.</p>
+
+<h2 id="megamenu">Mega menu</h2>
+<p>Appearance &gt; Menus: each top level item gets Webgram fields: mega menu on or off, columns, column width, icon, badge text, featured image, description, and an HTML block per column (choose an HTML Block created under Webgram &gt; HTML Blocks). Child items become column groups. The mobile drawer shows the same menu with expandable groups and a Categories tab.</p>
+
+<h2 id="home">Homepage sections</h2>
+<p>Every section from the demo homepage exists as an Elementor widget (Webgram category), a Gutenberg block (Webgram category) and a shortcode <code>[webgram_{section}]</code>: slider, marquee strip, category circles, trending products, mega saver, best sellers band, reels row, about, blog grid, testimonials, Instagram feed, benefits row, coupons row, trust badges, section heading, banner. Product sections choose a source (trending, best selling, on sale, featured, top rated, recent, category, tag, specific ids) and a layout (grid, slider, band).</p>
+<p>The demo homepage lives in <code>demo/homepage-gutenberg.html</code> (paste in the code editor) and <code>demo/homepage-elementor.json</code> (Templates &gt; Import). <strong>Sync tokens to Elementor</strong> on the System status page writes your brand colours and fonts into the Elementor kit.</p>
+
+<h2 id="shop">Shop, product, cart, checkout</h2>
+<ul>
+<li><strong>Product card</strong>: wave badge, hover slideshow, variant swatches that change price and add to cart, wishlist, compare and quick view actions, buy now. Styles: default, compact, list.</li>
+<li><strong>Product page</strong>: sticky gallery with thumbnails and video, rating pill, coupon box, payment strip, trust seals, contact seller cards, delivery check by pincode, info cards, specifications table, section order from Theme Settings, mobile sticky add to cart bar.</li>
+<li><strong>Slide cart</strong>: opens on add to cart, savings line, offer progress (free shipping threshold and milestones), recommendations, coupon form, updates without reload.</li>
+<li><strong>Checkout</strong>: steps indicator, order summary with coupon, trust info, WhatsApp consent checkbox (when Notifications is connected). Works with the standard WooCommerce checkout and payment gateways.</li>
+<li><strong>Thank you page</strong>: order timeline, invoice download, track link.</li>
+<li><strong>My Account</strong>: icon navigation, dashboard cards, split login and register with inline validation, invoice download per order, WhatsApp updates toggle.</li>
+<li><strong>Help, Track Order, Bulk Order</strong> page templates: assign them under Page Attributes.</li>
+</ul>
+
+<h2 id="modules">Webgram Core modules</h2>
+<p><strong>Webgram &gt; Modules</strong> lists every module with a switch. Settings for each live in Webgram &gt; Settings (or the theme panel tabs when Webgram Theme is active).</p>
+
+<h3 id="reviews">Reviews, wishlist, compare</h3>
+<ul>
+<li><strong>Reviews</strong>: rating summary with distribution bars, sort and star filters, load more, photo and video uploads (held private until approval), helpful votes, recommendation, review title. Media column and bulk approve in Comments. Stands down automatically when Judge.me, YITH Reviews or Customer Reviews is active. Shortcode <code>[webgram_reviews]</code>.</li>
+<li><strong>Wishlist</strong>: guest lists in a signed cookie, merged into the account on login. Header icon with count, card and product buttons, page with share link (<code>[webgram_wishlist]</code>). Create the page from the notice or Demo import.</li>
+<li><strong>Compare</strong>: up to 4 products, floating compare bar, page with sticky first column and difference highlighting (<code>[webgram_compare]</code>).</li>
+<li><strong>Quick view</strong>, <strong>Badges</strong> (rules: new, sale percent, best seller, low stock, sold out, plus a custom badge per product) and <strong>Coupons</strong> (product coupon box with copy, cart offer progress) each have a settings tab.</li>
+</ul>
+
+<h3 id="slider">Slider, reels, Instagram</h3>
+<ul>
+<li><strong>Sliders</strong> (Webgram &gt; Sliders): slides with desktop, tablet and mobile images, heading, subheading, text, two buttons, overlay, text colour, animation and up to four benefit lines. Slider settings: autoplay, delay, loop, arrows, dots, ratio per device, fade or slide, full width. Insert with the Slider widget, block or <code>[webgram_slider id="123"]</code>.</li>
+<li><strong>Reels</strong> (Webgram &gt; Reels): upload an MP4 or paste a YouTube Shorts, Vimeo, Cloudflare Stream or Bunny URL, poster image, up to five products, call to action. The row shows 9:16 cards with muted autoplay; the viewer swipes between reels with a product sheet and add to cart. Categories group reels for the widget.</li>
+<li><strong>Instagram</strong>: connect through the Instagram Graph API (app id, secret, access token; token is encrypted and refreshed monthly) or use manual images. Grid or slider, count, columns, Follow button.</li>
+</ul>
+
+<h3 id="assistant">AI assistant and voice search</h3>
+<p>The <strong>AI Shopping Assistant</strong> works without any API key in rule based mode (search, best sellers, coupons, order status, store info). To use a model, pick a provider (Anthropic, OpenAI or Gemini), paste the API key (stored encrypted), choose the model, set the per minute limit and the daily budget. The launcher loads the chat only on first click. Conversations are kept for the retention period and are included in WordPress privacy export and erase. Order status is available only to the logged in customer who owns the order.</p>
+<p><strong>Voice search</strong> adds a microphone to the search box and the assistant using the browser's speech recognition (Chrome, Edge, Safari). Choose the language and whether to submit automatically. Nothing is sent to a server by Webgram; the browser handles recognition.</p>
+
+<h3 id="invoice">Invoices and emails</h3>
+<p><strong>Invoice</strong>: store details (logo, legal name, address, GSTIN, PAN, support line), numbering (prefix, padding, financial year, yearly restart), when to generate (payment complete, processing or completed, manual), layout options and colours. PDF through dompdf (bundled) with an HTML fallback. Customers download from My Account and the thank you page; managers from the order screen, or in bulk as a zip. Files are stored under <code>uploads/webgram-invoices/</code> and served only through a protected endpoint. An HSN field appears in the product Webgram panel when the HSN column is on.</p>
+<p><strong>Emails</strong>: branded header, footer and styles for every WooCommerce email (logo, colours, button style, footer text, social links), a preview page with test send, and invoice attachments per email type. Sending stays with WordPress <code>wp_mail()</code>: install any SMTP plugin for delivery.</p>
+
+<h3 id="whatsapp">WhatsApp notifications</h3>
+<ol>
+<li>Create a Meta Business app with the WhatsApp product, add a phone number and get the Phone Number ID, WhatsApp Business Account ID and a permanent access token.</li>
+<li>Webgram &gt; Settings &gt; Notifications: paste the three values, click Test connection. Status turns CONNECTED.</li>
+<li>Create message templates in Meta Business Manager using the texts in <code>webgram-core/docs/whatsapp-templates.md</code>, wait for approval, click Sync templates.</li>
+<li>Map each event (order placed, payment successful, processing, shipped, out for delivery, delivered, cancelled, failed, refunded) to a template and the parameter order. Optionally attach the invoice PDF as the document header.</li>
+<li>Paste the webhook URL and verify token into the Meta app to receive delivered and read states.</li>
+</ol>
+<p>Customers opt in at checkout or in My Account; no message is sent without consent. Messages go from your own Meta account and any charges are billed by Meta to you. Webgram does not relay or bill messages. Email channel: the same event matrix enables or disables WooCommerce emails and adds Shipped and Out for delivery emails. <strong>Webgram &gt; Notifications log</strong> shows every attempt with retry and resend.</p>
+
+<h3 id="analytics">Analytics</h3>
+<p>First party events (product views, reel plays, assistant conversations, wishlist and compare adds, WhatsApp delivery) stored in your database without IP addresses. <strong>Webgram &gt; Analytics</strong> shows cards, 7 or 30 day bars, top reels and products. Sampling, staff tracking and retention are settings. Trending product sections use these views.</p>
+
+<h3 id="sitetools">Site tools</h3>
+<p>HTML Blocks (reusable content for header, footer, mega menu and layouts), Layouts (hook a block into a position with conditions), promo popup, cookie notice, age verification, maintenance and coming soon modes, white label (rename the Webgram menu and hide branding), custom JS (only for users with <code>unfiltered_html</code>), optional portfolio post type.</p>
+
+<h2 id="translation">Translation and RTL</h2>
+<p>POT files: <code>webgram-theme/languages/webgram.pot</code> and <code>webgram-core/languages/webgram-core.pot</code>. Create translations with Loco Translate or Poedit and place them in <code>wp-content/languages/themes/webgram-{locale}.mo</code> and <code>wp-content/languages/plugins/webgram-core-{locale}.mo</code>. <code>wpml-config.xml</code> in both products tells WPML and Polylang which options and post types to translate. RTL stylesheets load automatically for RTL languages.</p>
+
+<h2 id="performance">Performance</h2>
+<ul>
+<li>Each page loads only the stylesheets and scripts it renders; disabled modules load nothing.</li>
+<li>Use a caching plugin (WP Rocket, LiteSpeed Cache) and Redis object cache on the server. Cart, wishlist and compare counts update through fragments, so full page cache is safe.</li>
+<li>Host fonts locally from Theme Settings &gt; Performance to avoid a third party request.</li>
+<li>Serve WebP images (WooCommerce 8.5+ supports it) and keep slider images under 300 KB per device.</li>
+</ul>
+
+<h2 id="update">Updates</h2>
+<p>Upload the new theme zip through Appearance &gt; Themes &gt; Add New &gt; Upload (WordPress replaces the current version) or use the marketplace update plugin. Then open Webgram &gt; System status and click Update bundled Webgram Core if offered. Settings, layouts and Core data are kept. Custom code belongs in the child theme so updates never overwrite it. Core runs its database migrations automatically on the first admin visit after an update; back up before major updates.</p>
+
+<h2 id="faq">FAQ</h2>
+<p><strong>The Webgram menu is missing.</strong> The theme is not active or your user lacks <code>edit_theme_options</code>.</p>
+<p><strong>Core tabs do not show in Theme Settings.</strong> Enable the module under Webgram &gt; Modules; only enabled modules register tabs.</p>
+<p><strong>Invoices download as HTML, not PDF.</strong> The Core folder is missing <code>vendor/</code> (dompdf). Reinstall from the packaged zip or run <code>composer install --no-dev</code> in the plugin folder.</p>
+<p><strong>The microphone does not appear.</strong> The browser has no speech recognition (Firefox) or the page is not served over HTTPS.</p>
+<p><strong>WhatsApp messages stay queued.</strong> WP cron is not running. Set up a system cron (see the deployment guide) or install WP Crontrol to check.</p>
+<p><strong>Wishlist page shows nothing.</strong> Set the page containing <code>[webgram_wishlist]</code> in Webgram &gt; Settings &gt; Wishlist or click the notice to create it.</p>
+<p><strong>Header changes do not appear.</strong> Clear the page cache; the builder saves immediately but cached pages keep the old HTML.</p>
+
+<h2 id="developers">Developers</h2>
+<p>Hooks: see <code>hooks-reference.md</code> (generated from the source). Theme hooks follow <code>webgram/area/event</code>, Core hooks <code>webgram_core/module/event</code>. Templates: Core templates in <code>webgram-core/templates/</code> can be copied to <code>{theme}/webgram-core/{path}</code>. Theme parts receive an <code>$args</code> array. REST namespace <code>webgram/v1</code>; WC-AJAX actions are prefixed <code>webgram_</code> and require the nonce found in the <code>WebgramCore</code> JS object. Check module state from a theme with <code>webgram_has_core( 'wishlist' )</code>. Source SCSS and ES modules are in the repository under <code>webgram-theme/assets/src</code>; build with <code>npm install &amp;&amp; npm run build</code>.</p>
+<p>Deployment on a Linux VPS with Nginx, PHP-FPM and Redis, including the rule that protects invoice files: <code>deploy-hostinger.md</code>.</p>
+
+</main>
+</div>
+</body>
+</html>

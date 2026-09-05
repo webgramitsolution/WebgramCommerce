@@ -7,10 +7,10 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'WEBGRAM_VERSION', '0.8.0' );
+define( 'WEBGRAM_VERSION', '1.0.0' );
 define( 'WEBGRAM_DIR', get_template_directory() );
 define( 'WEBGRAM_URI', get_template_directory_uri() );
-define( 'WEBGRAM_MIN_CORE_VERSION', '0.1.0' );
+define( 'WEBGRAM_MIN_CORE_VERSION', '1.0.0' );
 
 if ( version_compare( PHP_VERSION, '8.1', '<' ) ) {
 	add_action(
@@ -58,6 +58,8 @@ $webgram_includes = [
 	'inc/sections/class-sections.php',
 	'inc/elementor/class-elementor-sync.php',
 	'inc/admin/class-theme-dashboard.php',
+	'inc/admin/class-plugin-installer.php',
+	'inc/admin/class-demo-importer.php',
 ];
 
 foreach ( $webgram_includes as $webgram_file ) {

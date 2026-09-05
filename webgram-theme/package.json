@@ -1,6 +1,6 @@
 {
   "name": "webgram-theme",
-  "version": "0.8.0",
+  "version": "1.0.0",
   "private": true,
   "description": "Build tooling for Webgram Theme. Compiled output ships in assets/css and assets/js; src is not shipped.",
   "scripts": {

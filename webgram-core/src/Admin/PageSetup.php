@@ -59,6 +59,25 @@ final class PageSetup {
 		if ( ! $req ) {
 			wp_die( esc_html__( 'Unknown page request.', 'webgram-core' ) );
 		}
+		$this->create_page( $key );
+		wp_safe_redirect( wp_get_referer() ?: admin_url() );
+		exit;
+	}
+
+	/**
+	 * Creates the page for a registered request and stores its id in the module settings.
+	 * Returns the existing page id when one is already configured. Used by the notice action and the demo importer.
+	 */
+	public function create_page( string $key ): int {
+		$req = $this->requests()[ $key ] ?? null;
+		if ( ! $req ) {
+			return 0;
+		}
+		$settings = $this->plugin->settings( $req['module'] );
+		$current  = (int) $settings->get( $req['setting'], 0 );
+		if ( $current > 0 && get_post_status( $current ) && 'trash' !== get_post_status( $current ) ) {
+			return $current;
+		}
 		$page_id = wp_insert_post(
 			[
 				'post_type'    => 'page',
@@ -69,12 +88,11 @@ final class PageSetup {
 			],
 			true
 		);
-		if ( ! is_wp_error( $page_id ) ) {
-			$settings = $this->plugin->settings( $req['module'] );
-			$settings->set( $req['setting'], (int) $page_id );
-			do_action( 'webgram_core/page_setup/created', $key, (int) $page_id );
+		if ( is_wp_error( $page_id ) ) {
+			return 0;
 		}
-		wp_safe_redirect( wp_get_referer() ?: admin_url() );
-		exit;
+		$settings->set( $req['setting'], (int) $page_id );
+		do_action( 'webgram_core/page_setup/created', $key, (int) $page_id );
+		return (int) $page_id;
 	}
 }

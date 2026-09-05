@@ -4,3 +4,6 @@ webgram-core/vendor/
 *.zip
 .DS_Store
 Thumbs.db
+dist/
+build/
+webgram-theme/plugins/webgram-core.json
