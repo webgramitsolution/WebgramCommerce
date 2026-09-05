@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-05T17:12:19+00:00\n"
+"POT-Creation-Date: 2026-09-05T18:12:13+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: webgram-core\n"
@@ -1626,16 +1626,24 @@ msgstr ""
 msgid "Webgram widgets, blocks and shortcodes for homepage sections and product layouts. Elementor stays optional."
 msgstr ""
 
-#: src/Modules/Integrations/Module.php:66
+#: src/Modules/Integrations/Module.php:96
 msgid "Register Elementor widgets"
 msgstr ""
 
-#: src/Modules/Integrations/Module.php:66
+#: src/Modules/Integrations/Module.php:96
 msgid "Only applies when Elementor is active."
 msgstr ""
 
-#: src/Modules/Integrations/Module.php:67
+#: src/Modules/Integrations/Module.php:97
 msgid "Register Gutenberg blocks"
+msgstr ""
+
+#: src/Modules/Integrations/Module.php:98
+msgid "Edit products with Elementor"
+msgstr ""
+
+#: src/Modules/Integrations/Module.php:98
+msgid "Adds \"Edit with Elementor\" to the WooCommerce products list. Without Elementor Pro the editor covers the product content area; design the whole product page with a Webgram Layout for single products."
 msgstr ""
 
 #: src/Modules/Integrations/ProductParts.php:38
