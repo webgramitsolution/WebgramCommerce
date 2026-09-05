@@ -45,14 +45,26 @@
   @include down(md) { --wg-cat-size: 70px; }
   &__row { display: grid; grid-template-columns: repeat(var(--wgc-cols, 8), minmax(0, 1fr)); gap: var(--wg-space-4); @include down(lg) { grid-template-columns: repeat(4, minmax(0, 1fr)); } @include down(sm) { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--wg-space-3); } }
   &.wg-carousel.is-carousel &__row, .wg-carousel.is-carousel > &__row { display: flex; --wg-carousel-item: 120px; } }
-.wg-category-item { display: flex; flex-direction: column; align-items: center; gap: var(--wg-space-2); text-align: center; color: var(--wg-color-heading); text-decoration: none;
-  &__media { position: relative; display: block; width: var(--wg-cat-size, 120px); max-width: 100%; aspect-ratio: 1; overflow: hidden; border-radius: 50%; border: 2px solid var(--wg-color-border); box-shadow: var(--wg-shadow-sm); transition: transform var(--wg-transition-base) var(--wg-ease), box-shadow var(--wg-transition-base); .wg-categories--square & { border-radius: 0; } .wg-categories--rounded & { border-radius: var(--wg-radius-lg); } img { width: 100%; height: 100%; object-fit: cover; display: block; } }
-  &:hover &__media { transform: scale(1.04); box-shadow: var(--wg-shadow-md); }
-  &__ribbon { position: absolute; inset-inline-start: 50%; transform: translateX(-50%); bottom: 14%; width: 92%; height: 28px; display: block; line-height: 28px; background: var(--wg-color-primary); color: #fff; font-size: 14px; font-weight: var(--wg-fw-bold); text-transform: uppercase; letter-spacing: .02em; padding: 0 10px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-shadow: var(--wg-shadow-sm); clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 50%, 100% 100%, 0 100%, 8px 50%);
-    [dir="rtl"] & { transform: translateX(50%); }
-    @include down(lg) { height: 24px; line-height: 24px; font-size: 12px; }
-    @include down(md) { height: 20px; line-height: 20px; font-size: 10px; padding: 0 6px; }
+.wg-category-item { position: relative; display: flex; flex-direction: column; align-items: center; gap: var(--wg-space-2); width: var(--wg-cat-size, 120px); text-align: center; color: var(--wg-color-heading); text-decoration: none;
+  &__media { position: relative; display: block; width: 100%; aspect-ratio: 1; overflow: hidden; border-radius: 50%; border: 1px solid var(--wg-cat-ring, #ead9d9); background: var(--wg-color-bg-alt); transition: transform var(--wg-transition-base) var(--wg-ease), box-shadow var(--wg-transition-base);
+    .wg-categories--square & { border-radius: 0; }
+    .wg-categories--rounded & { border-radius: var(--wg-radius-lg); }
+    img { width: 100%; height: 100%; object-fit: cover; display: block; }
   }
+  &:hover &__media { transform: scale(1.04); box-shadow: var(--wg-shadow-sm); }
+
+  // Ribbon banner: sits across the circle, overhangs both edges, notched ends with a folded tail behind.
+  &__ribbon { position: absolute; top: 56%; inset-inline-start: 50%; transform: translate(-50%, -50%); width: calc(100% + 18px); height: 28px; z-index: 2; pointer-events: none;
+    [dir="rtl"] & { transform: translate(50%, -50%); }
+    &::before, &::after { content: ""; position: absolute; top: 100%; width: 9px; height: 7px; background: var(--wg-cat-ribbon-fold, #7a1219); }
+    &::before { inset-inline-start: 0; clip-path: polygon(0 0, 100% 0, 100% 100%); }
+    &::after { inset-inline-end: 0; clip-path: polygon(0 0, 100% 0, 0 100%); }
+  }
+  &__ribbon-text { display: block; width: 100%; height: 100%; line-height: 28px; padding: 0 16px; background: var(--wg-color-primary); color: #fff; font-size: 12px; font-weight: var(--wg-fw-bold); text-transform: uppercase; letter-spacing: .04em; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; clip-path: polygon(0 0, 100% 0, calc(100% - 9px) 50%, 100% 100%, 0 100%, 9px 50%); }
+
+  @include down(lg) { &__ribbon { height: 24px; width: calc(100% + 14px); } &__ribbon-text { line-height: 24px; font-size: 11px; padding: 0 13px; } }
+  @include down(md) { &__ribbon { height: 20px; width: calc(100% + 10px); } &__ribbon-text { line-height: 20px; font-size: 9px; padding: 0 10px; letter-spacing: .02em; } }
+
   &__label { font-weight: var(--wg-fw-semibold); font-size: var(--wg-fs-sm); }
   &__count { font-size: var(--wg-fs-xs); color: var(--wg-color-text-muted); }
 }

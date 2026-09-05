@@ -17,11 +17,13 @@ $wgc_a = $args['a'];
 		<?php foreach ( $args['items'] as $wgc_item ) : ?>
 			<a class="<?php echo esc_attr( Helpers::css_class( 'category-item' ) ); ?>" href="<?php echo esc_url( $wgc_item['url'] ); ?>">
 				<span class="<?php echo esc_attr( Helpers::css_class( 'category-item__media' ) ); ?>">
-					<img src="<?php echo esc_url( $wgc_item['image'] ); ?>" alt="" loading="lazy" width="240" height="240">
-					<?php if ( 'ribbon' === $wgc_a['label_position'] ) : ?>
-						<span class="<?php echo esc_attr( Helpers::css_class( 'category-item__ribbon' ) ); ?>"><?php echo esc_html( $wgc_item['name'] ); ?></span>
+					<?php if ( $wgc_item['image'] ) : ?>
+						<img src="<?php echo esc_url( $wgc_item['image'] ); ?>" alt="" loading="lazy" width="240" height="240">
 					<?php endif; ?>
 				</span>
+				<?php if ( 'ribbon' === $wgc_a['label_position'] ) : ?>
+					<span class="<?php echo esc_attr( Helpers::css_class( 'category-item__ribbon' ) ); ?>"><span class="<?php echo esc_attr( Helpers::css_class( 'category-item__ribbon-text' ) ); ?>"><?php echo esc_html( $wgc_item['name'] ); ?></span></span>
+				<?php endif; ?>
 				<?php if ( 'below' === $wgc_a['label_position'] ) : ?>
 					<span class="<?php echo esc_attr( Helpers::css_class( 'category-item__label' ) ); ?>"><?php echo esc_html( $wgc_item['name'] ); ?></span>
 				<?php endif; ?>
