@@ -28,7 +28,7 @@ fi
 
 # 2. Core with production vendor.
 if command -v composer >/dev/null 2>&1; then
-  ( cd "$ROOT/webgram-core" && composer install --no-dev --optimize-autoloader --no-interaction --quiet )
+  ( cd "$ROOT/webgram-core" && composer install --no-dev --optimize-autoloader --prefer-dist --no-interaction --quiet )
 else
   echo "composer not found: the Core zip will ship without vendor/ and invoices fall back to HTML." >&2
 fi
@@ -36,6 +36,9 @@ mkdir -p "$BUILD/webgram-core"
 ( cd "$ROOT" && git archive HEAD webgram-core | tar -x -C "$BUILD" )
 if [ -d "$ROOT/webgram-core/vendor" ]; then
   cp -R "$ROOT/webgram-core/vendor" "$BUILD/webgram-core/vendor"
+  # Ship runtime code only: drop VCS metadata, test suites and docs that a source checkout may carry.
+  find "$BUILD/webgram-core/vendor" -type d \( -name .git -o -name tests -o -name test -o -name docs -o -name .github \) -prune -exec rm -rf {} +
+  find "$BUILD/webgram-core/vendor" -type f \( -name '*.md' -o -name 'phpunit*.xml*' -o -name '.gitignore' -o -name '.gitattributes' -o -name 'phpstan*' -o -name 'psalm*' \) -delete
 fi
 rm -rf "$BUILD/webgram-core/tests" "$BUILD/webgram-core/.gitignore"
 ( cd "$BUILD" && zip -qr "$DIST/webgram-core.zip" webgram-core -x "*.DS_Store" )
