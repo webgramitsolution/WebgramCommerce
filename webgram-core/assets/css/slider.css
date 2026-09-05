@@ -15,7 +15,8 @@
 .wgc-slide--vtop .wgc-slide__content{justify-content:flex-start}
 .wgc-slide--vbottom .wgc-slide__content{justify-content:flex-end}
 .wgc-slide__subheading{margin:0;font-size:14px;letter-spacing:.12em;text-transform:uppercase;opacity:.9}
-.wgc-slide__heading{margin:0;font-size:clamp(28px,4.5vw,56px);line-height:1.08;font-weight:700}
+.wgc-slide__heading{margin:0;font-size:clamp(28px,4.5vw,56px);line-height:1.08;font-weight:700;color:inherit}
+.wgc-slide__content h1,.wgc-slide__content h2,.wgc-slide__content h3,.wgc-slide__content p,.wgc-slide__content li{color:inherit}
 .wgc-slide__text{font-size:clamp(14px,1.4vw,18px);max-width:520px}
 .wgc-slide__text p{margin:0}
 .wgc-slide__benefits{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px 20px;font-size:14px}
