@@ -49,19 +49,21 @@ rm -rf "$BUILD/webgram-core/tests" "$BUILD/webgram-core/.gitignore"
 
 # 4. Theme: git archive, drop src and tooling, add bundled Core and child.
 ( cd "$ROOT" && git archive HEAD webgram-theme | tar -x -C "$BUILD" )
-rm -rf "$BUILD/webgram-theme/assets/src" "$BUILD/webgram-theme/node_modules" "$BUILD/webgram-theme/package.json" "$BUILD/webgram-theme/package-lock.json" "$BUILD/webgram-theme/.gitignore"
+# WordPress matches a child theme's "Template:" against the parent FOLDER name, so the parent ships as "webgram".
+mv "$BUILD/webgram-theme" "$BUILD/webgram"
+rm -rf "$BUILD/webgram/assets/src" "$BUILD/webgram/node_modules" "$BUILD/webgram/package.json" "$BUILD/webgram/package-lock.json" "$BUILD/webgram/.gitignore"
 # Compiled assets come from the working tree (git archive holds the committed build; the fresh build wins when present).
-cp -R "$ROOT/webgram-theme/assets/css" "$BUILD/webgram-theme/assets/"
-cp -R "$ROOT/webgram-theme/assets/js" "$BUILD/webgram-theme/assets/"
-mkdir -p "$BUILD/webgram-theme/plugins" "$ROOT/webgram-theme/plugins"
-cp "$DIST/webgram-core.zip" "$BUILD/webgram-theme/plugins/webgram-core.zip"
-cp "$DIST/webgram-child.zip" "$BUILD/webgram-theme/plugins/webgram-child.zip"
+cp -R "$ROOT/webgram-theme/assets/css" "$BUILD/webgram/assets/"
+cp -R "$ROOT/webgram-theme/assets/js" "$BUILD/webgram/assets/"
+mkdir -p "$BUILD/webgram/plugins" "$ROOT/webgram-theme/plugins"
+cp "$DIST/webgram-core.zip" "$BUILD/webgram/plugins/webgram-core.zip"
+cp "$DIST/webgram-child.zip" "$BUILD/webgram/plugins/webgram-child.zip"
 cp "$DIST/webgram-child.zip" "$ROOT/webgram-theme/plugins/webgram-child.zip"
-printf '{"name":"Webgram Core","file":"webgram-core.zip","version":"%s","child":"webgram-child.zip","child_version":"%s","built":"%s"}\n' "$CORE_VERSION" "$CHILD_VERSION" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > "$BUILD/webgram-theme/plugins/webgram-core.json"
+printf '{"name":"Webgram Core","file":"webgram-core.zip","version":"%s","child":"webgram-child.zip","child_version":"%s","built":"%s"}\n' "$CORE_VERSION" "$CHILD_VERSION" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > "$BUILD/webgram/plugins/webgram-core.json"
 # Keep a copy in the working tree so a local WordPress can exercise the installer.
-cp "$BUILD/webgram-theme/plugins/webgram-core.zip" "$ROOT/webgram-theme/plugins/webgram-core.zip"
-cp "$BUILD/webgram-theme/plugins/webgram-core.json" "$ROOT/webgram-theme/plugins/webgram-core.json"
-( cd "$BUILD" && zip -qr "$DIST/webgram-theme.zip" webgram-theme -x "*.DS_Store" )
+cp "$BUILD/webgram/plugins/webgram-core.zip" "$ROOT/webgram-theme/plugins/webgram-core.zip"
+cp "$BUILD/webgram/plugins/webgram-core.json" "$ROOT/webgram-theme/plugins/webgram-core.json"
+( cd "$BUILD" && zip -qr "$DIST/webgram-theme.zip" webgram -x "*.DS_Store" )
 
 
 # 5. Documentation and licensing.

@@ -13,12 +13,8 @@ define( 'WEBGRAM_URI', get_template_directory_uri() );
 define( 'WEBGRAM_MIN_CORE_VERSION', '1.0.0' );
 
 if ( version_compare( PHP_VERSION, '8.1', '<' ) ) {
-	add_action(
-		'admin_notices',
-		static function () {
-			echo '<div class="notice notice-error"><p>' . esc_html__( 'Webgram requires PHP 8.1 or newer. Please ask your host to upgrade PHP.', 'webgram' ) . '</p></div>';
-		}
-	);
+	// Safe mode: stub functions plus a loud message, so the site renders instead of throwing a critical error.
+	require_once WEBGRAM_DIR . '/inc/compat/requirements.php';
 	return;
 }
 
