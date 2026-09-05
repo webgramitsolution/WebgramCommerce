@@ -147,7 +147,10 @@ final class Module extends BaseModule {
 	/** If WooEnhancements (which owns the panel) is off, show the fields in a small metabox instead. */
 	public function metabox_fallback(): void {
 		if ( ! $this->plugin->modules()->is_active( 'woo_enhancements' ) ) {
-			add_meta_box( 'wg_badge', __( 'Webgram badge', 'webgram-core' ), function ( \WP_Post $post ) { wp_nonce_field( 'wg_badge_save', 'wg_badge_nonce' ); $this->panel_fields( $post->ID ); }, 'product', 'side' );
+			add_meta_box( 'wg_badge', __( 'Webgram badge', 'webgram-core' ), function ( \WP_Post $post ) {
+ wp_nonce_field( 'wg_badge_save', 'wg_badge_nonce' );
+$this->panel_fields( $post->ID );
+}, 'product', 'side' );
 		}
 	}
 

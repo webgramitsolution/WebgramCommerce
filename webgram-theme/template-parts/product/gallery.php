@@ -19,7 +19,7 @@ $size    = (string) apply_filters( 'woocommerce_gallery_image_size', 'woocommerc
 	<div class="wg-gallery__main">
 		<div class="wg-gallery__badges">
 			<?php if ( $save ) : ?>
-				<span class="wg-badge wg-badge--sale wg-badge--wave"><?php printf( esc_html__( 'Save %s', 'webgram' ), wp_kses_post( $save['amount'] ) ); ?></span>
+				<span class="wg-badge wg-badge--sale wg-badge--wave"><?php printf( /* translators: %s: placeholder value. */ esc_html__( 'Save %s', 'webgram' ), wp_kses_post( $save['amount'] ) ); ?></span>
 			<?php endif; ?>
 			<?php do_action( 'webgram/product/gallery_badges', $product ); ?>
 		</div>

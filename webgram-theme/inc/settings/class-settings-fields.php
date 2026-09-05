@@ -182,10 +182,10 @@ final class Webgram_Settings_Fields {
 			case 'page':
 				wp_dropdown_pages(
 					[
-						'name'              => $name,
-						'id'                => $dom,
+						'name'              => esc_attr( $name ),
+						'id'                => esc_attr( $dom ),
 						'selected'          => (int) $value,
-						'show_option_none'  => __( 'Select a page', 'webgram' ),
+						'show_option_none'  => esc_html__( 'Select a page', 'webgram' ),
 						'option_none_value' => 0,
 						'class'             => 'wg-input',
 					]

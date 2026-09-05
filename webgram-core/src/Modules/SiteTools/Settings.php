@@ -219,20 +219,20 @@ final class Settings {
 				'priority' => 115,
 				'sections' => [
 					'help_page' => [
-				'id'       => 'help_page',
-				'label'    => __( 'Help page', 'webgram-core' ),
-				'icon'     => 'help-circle',
-				'priority' => 192,
-				'sections' => [
-					'faq' => [
-						'description' => __( 'Shown by the theme "Help" page template as an accordion, with contact cards from the Contact seller settings.', 'webgram-core' ),
-						'fields'      => [
-							'help_faqs' => [ 'label' => __( 'FAQ entries', 'webgram-core' ), 'type' => 'textarea', 'rows' => 12, 'full' => true, 'default' => '', 'description' => __( 'One entry per block separated by a blank line: first line is the question, the following lines are the answer.', 'webgram-core' ) ],
+						'id'       => 'help_page',
+						'label'    => __( 'Help page', 'webgram-core' ),
+						'icon'     => 'help-circle',
+						'priority' => 192,
+						'sections' => [
+							'faq' => [
+								'description' => __( 'Shown by the theme "Help" page template as an accordion, with contact cards from the Contact seller settings.', 'webgram-core' ),
+								'fields'      => [
+									'help_faqs' => [ 'label' => __( 'FAQ entries', 'webgram-core' ), 'type' => 'textarea', 'rows' => 12, 'full' => true, 'default' => '', 'description' => __( 'One entry per block separated by a blank line: first line is the question, the following lines are the answer.', 'webgram-core' ) ],
+								],
+							],
 						],
 					],
-				],
-			],
-			'portfolio' => [
+					'portfolio' => [
 						'fields' => [
 							'portfolio_enabled'  => [ 'label' => __( 'Enable portfolio post type', 'webgram-core' ), 'type' => 'switch', 'default' => false, 'description' => __( 'Adds a Portfolio post type with categories. Save permalinks after enabling.', 'webgram-core' ) ],
 							'portfolio_slug'     => [ 'label' => __( 'URL slug', 'webgram-core' ), 'type' => 'text', 'default' => 'portfolio', 'show_if' => [ 'portfolio_enabled', '==', true ] ],

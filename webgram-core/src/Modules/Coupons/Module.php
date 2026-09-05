@@ -154,7 +154,7 @@ final class Module extends BaseModule {
 		if ( ! $product ) {
 			return '';
 		}
-		$GLOBALS['product'] = $product; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+		$GLOBALS['product'] = $product; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 		ob_start();
 		$this->product_box();
 		return (string) ob_get_clean();
@@ -172,8 +172,10 @@ final class Module extends BaseModule {
 	}
 
 	public function panel_save( int $post_id ): void {
-		if ( isset( $_POST['_wg_coupon'] ) && current_user_can( 'edit_product', $post_id ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- verified by ProductPanel before firing this action.
+		// phpcs:disable WordPress.Security.NonceVerification.Missing -- ProductPanel verifies its nonce before firing this action.
+		if ( isset( $_POST['_wg_coupon'] ) && current_user_can( 'edit_product', $post_id ) ) {
 			update_post_meta( $post_id, self::META, sanitize_text_field( wp_unslash( $_POST['_wg_coupon'] ) ) );
 		}
+		// phpcs:enable
 	}
 }

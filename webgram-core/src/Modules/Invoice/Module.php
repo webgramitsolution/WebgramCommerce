@@ -253,8 +253,10 @@ final class Module extends BaseModule {
 	}
 
 	public function hsn_save( int $post_id ): void {
-		if ( isset( $_POST['_wg_hsn'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- verified by the product panel.
+		// phpcs:disable WordPress.Security.NonceVerification.Missing -- the product panel verifies its nonce before firing this action.
+		if ( isset( $_POST['_wg_hsn'] ) ) {
 			update_post_meta( $post_id, '_wg_hsn', sanitize_text_field( wp_unslash( $_POST['_wg_hsn'] ) ) );
 		}
+		// phpcs:enable
 	}
 }

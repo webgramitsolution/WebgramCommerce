@@ -1,0 +1,90 @@
+<wpml-config>
+	<custom-types>
+		<custom-type translate="1">wg_slider</custom-type>
+		<custom-type translate="1">wg_testimonial</custom-type>
+		<custom-type translate="1">wg_reel</custom-type>
+		<custom-type translate="1">wg_block</custom-type>
+		<custom-type translate="1">wg_layout</custom-type>
+		<custom-type translate="0">wg_inquiry</custom-type>
+	</custom-types>
+	<taxonomies>
+		<taxonomy translate="1">wg_reel_category</taxonomy>
+	</taxonomies>
+	<custom-fields>
+		<custom-field action="translate">_wg_slides</custom-field>
+		<custom-field action="translate">_wg_cta</custom-field>
+		<custom-field action="copy">_wg_slider_settings</custom-field>
+		<custom-field action="copy">_wg_poster_id</custom-field>
+		<custom-field action="copy">_wg_products</custom-field>
+		<custom-field action="translate">_wg_label</custom-field>
+		<custom-field action="copy">_wg_rating</custom-field>
+		<custom-field action="translate">_wg_specs</custom-field>
+		<custom-field action="translate">_wg_badge_text</custom-field>
+		<custom-field action="copy">_wg_coupon</custom-field>
+		<custom-field action="copy">_wg_hsn</custom-field>
+	</custom-fields>
+	<admin-texts>
+		<key name="webgram_core_settings_coupons">
+			<key name="milestones" />
+		</key>
+		<key name="webgram_core_settings_woo_enhancements">
+			<key name="contact_hours" />
+			<key name="bulk_benefits" />
+			<key name="location_label" />
+			<key name="location_placeholder" />
+		</key>
+		<key name="webgram_core_settings_site_tools">
+			<key name="popup_content" />
+			<key name="cookie_text" />
+			<key name="cookie_button" />
+			<key name="age_title" />
+			<key name="age_text" />
+			<key name="maint_title" />
+			<key name="maint_text" />
+			<key name="help_faqs" />
+		</key>
+		<key name="webgram_core_settings_ai_assistant">
+			<key name="name" />
+			<key name="greeting" />
+			<key name="suggestions" />
+			<key name="consent_text" />
+			<key name="info_shipping" />
+			<key name="info_returns" />
+			<key name="info_payments" />
+			<key name="info_contact" />
+			<key name="faqs" />
+		</key>
+		<key name="webgram_core_settings_notifications">
+			<key name="optin_label" />
+			<key name="email_subject_shipped" />
+			<key name="email_body_shipped" />
+			<key name="email_subject_out_for_delivery" />
+			<key name="email_body_out_for_delivery" />
+		</key>
+		<key name="webgram_core_settings_invoice">
+			<key name="support_line" />
+			<key name="footer_note" />
+			<key name="disclaimer" />
+		</key>
+		<key name="webgram_core_settings_emails">
+			<key name="footer_text" />
+		</key>
+		<key name="webgram_core_settings_instagram">
+			<key name="title" />
+			<key name="follow_text" />
+		</key>
+	</admin-texts>
+	<elementor-widgets>
+		<widget name="webgram-product_grid"><fields><field>title</field><field>subtitle</field><field>view_all_text</field></fields></widget>
+		<widget name="webgram-product_slider"><fields><field>title</field><field>subtitle</field><field>view_all_text</field></fields></widget>
+		<widget name="webgram-trending"><fields><field>title</field><field>subtitle</field><field>view_all_text</field></fields></widget>
+		<widget name="webgram-best_sellers"><fields><field>title</field><field>subtitle</field><field>view_all_text</field><field>band_line1</field><field>band_line2</field></fields></widget>
+		<widget name="webgram-mega_saver"><fields><field>title</field><field>subtitle</field><field>view_all_text</field></fields></widget>
+		<widget name="webgram-featured"><fields><field>title</field><field>subtitle</field><field>view_all_text</field></fields></widget>
+		<widget name="webgram-categories"><fields><field>title</field><field>subtitle</field><field>view_all_text</field></fields></widget>
+		<widget name="webgram-coupons_row"><fields><field>title</field><field>subtitle</field></fields></widget>
+		<widget name="webgram-testimonials"><fields><field>title</field><field>subtitle</field></fields></widget>
+		<widget name="webgram-instagram"><fields><field>title</field><field>follow_text</field></fields></widget>
+		<widget name="webgram-reels"><fields><field>title</field><field>subtitle</field></fields></widget>
+	</elementor-widgets>
+</wpml-config>

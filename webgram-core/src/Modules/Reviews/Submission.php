@@ -80,7 +80,7 @@ final class Submission {
 	}
 
 	private function reject( string $message, int $status = 400 ): void {
-		wp_die( esc_html( $message ), esc_html__( 'Review not submitted', 'webgram-core' ), [ 'response' => $status, 'back_link' => true ] );
+		wp_die( esc_html( $message ), esc_html__( 'Review not submitted', 'webgram-core' ), [ 'response' => (int) $status, 'back_link' => true ] );
 	}
 
 	/** comment_post: store meta and upload media once the comment exists. */

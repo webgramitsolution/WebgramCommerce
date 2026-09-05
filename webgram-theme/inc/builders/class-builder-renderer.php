@@ -141,7 +141,7 @@ final class Webgram_Builder_Renderer {
 					! empty( $w['settings']['first_wide'] ) ? ' wg-footer__widgets--first-wide' : '',
 					'center' === ( $w['settings']['align'] ?? 'start' ) ? ' wg-footer__widgets--center' : '',
 					esc_attr( $style ),
-					$columns
+					(int) $columns
 				);
 				for ( $i = 1; $i <= $columns; $i++ ) {
 					echo '<div class="wg-footer__col">';

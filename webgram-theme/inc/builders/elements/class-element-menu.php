@@ -29,7 +29,7 @@ class Webgram_Element_Menu extends Webgram_Element {
 
 	public function settings_fields(): array {
 		return [
-			'menu'      => [ 'label' => __( 'Menu', 'webgram' ), 'type' => 'menu', 'default' => 0, 'description' => sprintf( __( 'Leave empty to use the "%s" menu location.', 'webgram' ), $this->location ) ],
+			'menu'      => [ 'label' => __( 'Menu', 'webgram' ), 'type' => 'menu', 'default' => 0, 'description' => sprintf( /* translators: %s: placeholder value. */ __( 'Leave empty to use the "%s" menu location.', 'webgram' ), $this->location ) ],
 			'mega'      => [ 'label' => __( 'Mega menu panels', 'webgram' ), 'type' => 'switch', 'default' => true, 'description' => __( 'Configure panels per item under Appearance > Menus.', 'webgram' ) ],
 			'align'     => [ 'label' => __( 'Alignment', 'webgram' ), 'type' => 'radio', 'choices' => [ 'start' => __( 'Start', 'webgram' ), 'center' => __( 'Center', 'webgram' ), 'end' => __( 'End', 'webgram' ) ], 'default' => 'center' ],
 			'gap'       => [ 'label' => __( 'Gap between items', 'webgram' ), 'type' => 'number', 'min' => 8, 'max' => 64, 'unit' => 'px', 'default' => 32 ],

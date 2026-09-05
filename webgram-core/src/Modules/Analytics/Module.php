@@ -160,21 +160,25 @@ final class Module extends BaseModule {
 	}
 
 	public function exporter( array $exporters ): array {
-		$exporters['webgram-analytics'] = [ 'exporter_friendly_name' => __( 'Webgram analytics events', 'webgram-core' ), 'callback' => function ( string $email ): array {
+		$exporters['webgram-analytics'] = [
+			'exporter_friendly_name' => __( 'Webgram analytics events', 'webgram-core' ), 'callback' => function ( string $email ): array {
 			$user = get_user_by( 'email', $email );
 			$n    = $user ? $this->repo()->count_for_user( (int) $user->ID ) : 0;
 			$data = $n ? [ [ 'group_id' => 'webgram-analytics', 'group_label' => __( 'Analytics', 'webgram-core' ), 'item_id' => 'wg-events', 'data' => [ [ 'name' => __( 'Stored events', 'webgram-core' ), 'value' => (string) $n ] ] ] ] : [];
 			return [ 'data' => $data, 'done' => true ];
-		} ];
+		},
+		];
 		return $exporters;
 	}
 
 	public function eraser( array $erasers ): array {
-		$erasers['webgram-analytics'] = [ 'eraser_friendly_name' => __( 'Webgram analytics events', 'webgram-core' ), 'callback' => function ( string $email ): array {
+		$erasers['webgram-analytics'] = [
+			'eraser_friendly_name' => __( 'Webgram analytics events', 'webgram-core' ), 'callback' => function ( string $email ): array {
 			$user    = get_user_by( 'email', $email );
 			$removed = $user ? $this->repo()->delete_for_user( (int) $user->ID ) > 0 : false;
 			return [ 'items_removed' => $removed, 'items_retained' => false, 'messages' => [], 'done' => true ];
-		} ];
+		},
+		];
 		return $erasers;
 	}
 }

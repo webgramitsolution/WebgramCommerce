@@ -4,13 +4,15 @@
   "private": true,
   "description": "Build tooling for Webgram Theme. Compiled output ships in assets/css and assets/js; src is not shipped.",
   "scripts": {
-    "build": "npm run build:css && npm run build:js",
+    "build": "npm run build:css && npm run build:js && npm run build:rtl",
     "build:css": "sass --no-source-map --style=compressed --load-path=assets/src/scss assets/src/scss/main.scss:assets/css/main.css assets/src/scss/woocommerce.scss:assets/css/woocommerce.css assets/src/scss/shop.scss:assets/css/shop.css assets/src/scss/product.scss:assets/css/product.css assets/src/scss/cart-checkout.scss:assets/css/cart-checkout.css",
     "build:js": "esbuild assets/src/js/main.js assets/src/js/shop.js assets/src/js/product.js assets/src/js/cart.js assets/src/js/checkout.js assets/src/js/blocks.js --bundle --minify --format=iife --target=es2018 --outdir=assets/js",
-    "watch": "npm run build:css -- --watch & npm run build:js -- --watch"
+    "watch": "npm run build:css -- --watch & npm run build:js -- --watch",
+    "build:rtl": "for f in main woocommerce shop product cart-checkout; do rtlcss assets/css/$f.css assets/css/$f-rtl.css; done"
   },
   "devDependencies": {
     "esbuild": "^0.23.0",
+    "rtlcss": "^4.3.0",
     "sass": "^1.77.0"
   }
 }

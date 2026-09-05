@@ -73,7 +73,7 @@ final class WhatsAppController extends RestController {
 		foreach ( self::parse_statuses( (array) $request->get_json_params() ) as $s ) {
 			$map = [ 'sent' => 'sent', 'delivered' => 'delivered', 'read' => 'read', 'failed' => 'failed' ];
 			if ( isset( $map[ $s['status'] ] ) && $this->log->set_status_by_provider_id( $s['id'], $map[ $s['status'] ], $s['error_code'], $s['error_message'] ) ) {
-				$updated++;
+				++$updated;
 			}
 		}
 		return $this->ok( [ 'updated' => $updated ] );

@@ -19,7 +19,7 @@ $rating  = $args['rating'] > 0 ? Webgram_WC_Product_Card::rating_pill( (float) $
 		</a>
 		<div class="wg-card__badges">
 			<?php if ( $args['save'] ) : ?>
-				<span class="wg-badge wg-badge--sale"><?php printf( esc_html__( 'Save %s', 'webgram' ), wp_kses_post( $args['save']['amount'] ) ); ?></span>
+				<span class="wg-badge wg-badge--sale"><?php printf( /* translators: %s: placeholder value. */ esc_html__( 'Save %s', 'webgram' ), wp_kses_post( $args['save']['amount'] ) ); ?></span>
 			<?php endif; ?>
 			<?php do_action( 'webgram/product_card/badges', $product ); ?>
 		</div>
@@ -33,8 +33,14 @@ $rating  = $args['rating'] > 0 ? Webgram_WC_Product_Card::rating_pill( (float) $
 			<div class="wg-card__price wg-price" data-wg-price>
 				<?php if ( $args['price']['sale'] ) : ?>
 					<span class="wg-price__sale"><?php echo wp_kses_post( $args['price']['sale'] ); ?></span>
-					<?php if ( $args['price']['regular'] ) : ?><del class="wg-price__regular"><?php echo wp_kses_post( $args['price']['regular'] ); ?></del><?php endif; ?>
-					<?php if ( $args['save'] ) : ?><span class="wg-price__percent"><?php echo esc_html( (string) $args['save']['percent'] ); ?>% <?php esc_html_e( 'off', 'webgram' ); ?></span><?php endif; ?>
+					<?php
+					if ( $args['price']['regular'] ) :
+?>
+<del class="wg-price__regular"><?php echo wp_kses_post( $args['price']['regular'] ); ?></del><?php endif; ?>
+					<?php
+					if ( $args['save'] ) :
+?>
+<span class="wg-price__percent"><?php echo esc_html( (string) $args['save']['percent'] ); ?>% <?php esc_html_e( 'off', 'webgram' ); ?></span><?php endif; ?>
 				<?php else : ?>
 					<?php echo wp_kses_post( $args['price']['html'] ); ?>
 				<?php endif; ?>

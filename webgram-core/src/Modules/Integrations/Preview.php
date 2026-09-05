@@ -22,7 +22,7 @@ final class Preview {
 		}
 		$p = $id ? wc_get_product( $id ) : null;
 		if ( $p ) {
-			$GLOBALS['product'] = $p; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+			$GLOBALS['product'] = $p; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 			$GLOBALS['post']    = get_post( $p->get_id() ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 			setup_postdata( $GLOBALS['post'] );
 		}

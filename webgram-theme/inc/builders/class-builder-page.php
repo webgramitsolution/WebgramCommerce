@@ -206,7 +206,7 @@ final class Webgram_Builder_Page {
 						<?php endforeach; ?>
 
 						<?php if ( 'header' === $cfg['context'] ) : ?>
-							<p class="wg-builder__hint"><?php printf( esc_html__( 'Sticky rows, shrink and hide-on-scroll are configured under %s.', 'webgram' ), '<a href="' . esc_url( admin_url( 'admin.php?page=webgram&tab=sticky' ) ) . '">' . esc_html__( 'Theme Settings > Sticky navigation', 'webgram' ) . '</a>' ); ?> <?php printf( esc_html__( 'Mobile drawer and bottom navbar: %s.', 'webgram' ), '<a href="' . esc_url( admin_url( 'admin.php?page=webgram&tab=mobile_menu' ) ) . '">' . esc_html__( 'Mobile menu', 'webgram' ) . '</a>, <a href="' . esc_url( admin_url( 'admin.php?page=webgram&tab=mobile_navbar' ) ) . '">' . esc_html__( 'Mobile bottom navbar', 'webgram' ) . '</a>' ); ?></p>
+							<p class="wg-builder__hint"><?php printf( /* translators: %s: placeholder value. */ esc_html__( 'Sticky rows, shrink and hide-on-scroll are configured under %s.', 'webgram' ), '<a href="' . esc_url( admin_url( 'admin.php?page=webgram&tab=sticky' ) ) . '">' . esc_html__( 'Theme Settings > Sticky navigation', 'webgram' ) . '</a>' ); ?> <?php printf( /* translators: %s: placeholder value. */ esc_html__( 'Mobile drawer and bottom navbar: %s.', 'webgram' ), '<a href="' . esc_url( admin_url( 'admin.php?page=webgram&tab=mobile_menu' ) ) . '">' . esc_html__( 'Mobile menu', 'webgram' ) . '</a>, <a href="' . esc_url( admin_url( 'admin.php?page=webgram&tab=mobile_navbar' ) ) . '">' . esc_html__( 'Mobile bottom navbar', 'webgram' ) . '</a>' ); ?></p>
 						<?php endif; ?>
 					</div>
 
@@ -282,13 +282,14 @@ final class Webgram_Builder_Page {
 	}
 
 	private static function posted_layout(): array {
-		$json   = isset( $_POST['layout_json'] ) ? wp_unslash( $_POST['layout_json'] ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- nonce checked by the caller (save()); JSON is sanitized by the builder sanitizer.
+		$json   = isset( $_POST['layout_json'] ) ? wp_unslash( $_POST['layout_json'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		$layout = json_decode( (string) $json, true );
 		return is_array( $layout ) ? $layout : [];
 	}
 
 	private static function posted( string $key ): array {
-		$value = isset( $_POST[ $key ] ) && is_array( $_POST[ $key ] ) ? wp_unslash( $_POST[ $key ] ) : []; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$value = isset( $_POST[ $key ] ) && is_array( $_POST[ $key ] ) ? wp_unslash( $_POST[ $key ] ) : []; // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- nonce checked by the caller (save()); values are sanitized against the field schema.
 		return Webgram_Settings_Page::strip_none_markers( $value );
 	}
 

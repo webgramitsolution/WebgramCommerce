@@ -26,7 +26,10 @@ $wgc_bg = $args['bg'] ? (string) wp_get_attachment_image_url( (int) $args['bg'],
 		<?php if ( $args['block'] ) : ?>
 			<?php echo $args['block']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- block output. ?>
 		<?php else : ?>
-			<?php if ( has_custom_logo() ) : ?><div class="<?php echo esc_attr( Helpers::css_class( 'maintenance__logo' ) ); ?>"><?php the_custom_logo(); ?></div><?php endif; ?>
+			<?php
+			if ( has_custom_logo() ) :
+?>
+<div class="<?php echo esc_attr( Helpers::css_class( 'maintenance__logo' ) ); ?>"><?php the_custom_logo(); ?></div><?php endif; ?>
 			<h1><?php echo esc_html( $args['title'] ); ?></h1>
 			<p><?php echo esc_html( $args['text'] ); ?></p>
 			<?php if ( $args['countdown'] > time() ) : ?>

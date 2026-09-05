@@ -112,7 +112,7 @@ function webgram_head_inline_vars(): void {
 	$layout = Webgram_Header_Builder::instance()->layout();
 	$main   = (int) ( $layout['desktop']['main']['settings']['height'] ?? 72 );
 	$top    = ! empty( $layout['desktop']['top']['settings']['enabled'] ) ? (int) ( $layout['desktop']['top']['settings']['height'] ?? 36 ) : 0;
-	printf( '<style id="wg-runtime-vars">:root{--wg-header-height:%dpx;--wg-topbar-height:%dpx;--wg-sticky-offset:0px}</style>' . "\n", $main, $top );
+	printf( '<style id="wg-runtime-vars">:root{--wg-header-height:%dpx;--wg-topbar-height:%dpx;--wg-sticky-offset:0px}</style>' . "\n", (int) $main, (int) $top );
 }
 add_action( 'wp_head', 'webgram_head_inline_vars', 2 );
 

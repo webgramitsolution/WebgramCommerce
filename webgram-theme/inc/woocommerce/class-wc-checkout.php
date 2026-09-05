@@ -60,7 +60,7 @@ final class Webgram_WC_Checkout {
 		foreach ( $keys as $i => $key ) {
 			$class = $i < $pos ? 'is-done' : ( $i === $pos ? 'is-current' : '' );
 			$link  = 'cart' === $key ? wc_get_cart_url() : ( 'details' === $key ? wc_get_checkout_url() : '' );
-			printf( '<li class="wg-steps__item %s"><span class="wg-steps__num">%d</span>%s</li>', esc_attr( $class ), $i + 1, $link && $i < $pos ? '<a href="' . esc_url( $link ) . '">' . esc_html( $steps[ $key ] ) . '</a>' : '<span>' . esc_html( $steps[ $key ] ) . '</span>' );
+			printf( '<li class="wg-steps__item %s"><span class="wg-steps__num">%d</span>%s</li>', esc_attr( $class ), (int) $i + 1, $link && $i < $pos ? '<a href="' . esc_url( $link ) . '">' . esc_html( $steps[ $key ] ) . '</a>' : '<span>' . esc_html( $steps[ $key ] ) . '</span>' );
 		}
 		echo '</ol>';
 	}

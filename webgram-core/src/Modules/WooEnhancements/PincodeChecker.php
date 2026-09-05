@@ -189,7 +189,7 @@ final class PincodeChecker {
 			}
 			$code = self::normalize( (string) ( $cols[ $map['pincode'] ] ?? '' ), $country );
 			if ( '' === $code ) {
-				$skipped++;
+				++$skipped;
 				continue;
 			}
 			$del = $cols[ $map['deliverable'] ] ?? '1';

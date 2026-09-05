@@ -20,7 +20,10 @@ $product = $args['product'];
 		<div class="wg-card__price wg-price">
 			<?php if ( $args['price']['sale'] ) : ?>
 				<span class="wg-price__sale"><?php echo wp_kses_post( $args['price']['sale'] ); ?></span>
-				<?php if ( $args['price']['regular'] ) : ?><del class="wg-price__regular"><?php echo wp_kses_post( $args['price']['regular'] ); ?></del><?php endif; ?>
+				<?php
+				if ( $args['price']['regular'] ) :
+?>
+<del class="wg-price__regular"><?php echo wp_kses_post( $args['price']['regular'] ); ?></del><?php endif; ?>
 			<?php else : ?>
 				<?php echo wp_kses_post( $args['price']['html'] ); ?>
 			<?php endif; ?>

@@ -97,7 +97,7 @@ final class Admin {
 			$file  = $order instanceof \WC_Order ? $this->module->file_for( $order, false, true ) : null;
 			if ( $file ) {
 				$zip->addFile( $file['path'], basename( $file['path'] ) );
-				$added++;
+				++$added;
 			}
 		}
 		$zip->close();

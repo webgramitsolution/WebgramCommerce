@@ -59,9 +59,9 @@ final class Events {
 	}
 
 	public function register_statuses(): void {
-		register_post_status( 'wc-' . self::SHIPPED, [ 'label' => _x( 'Shipped', 'Order status', 'webgram-core' ), 'public' => true, 'show_in_admin_status_list' => true, 'label_count' => _n_noop( 'Shipped <span class="count">(%s)</span>', 'Shipped <span class="count">(%s)</span>', 'webgram-core' ) ] );
+		register_post_status( 'wc-' . self::SHIPPED, [ 'label' => _x( 'Shipped', 'Order status', 'webgram-core' ), 'public' => true, 'show_in_admin_status_list' => true, 'label_count' => /* translators: %s: placeholder value. */ _n_noop( 'Shipped <span class="count">(%s)</span>', 'Shipped <span class="count">(%s)</span>', 'webgram-core' ) ] );
 		if ( \Webgram\Core\Support\Helpers::bool( $this->module->settings()->get( 'status_out_for_delivery', true ) ) ) {
-			register_post_status( 'wc-' . self::OUT, [ 'label' => _x( 'Out for delivery', 'Order status', 'webgram-core' ), 'public' => true, 'show_in_admin_status_list' => true, 'label_count' => _n_noop( 'Out for delivery <span class="count">(%s)</span>', 'Out for delivery <span class="count">(%s)</span>', 'webgram-core' ) ] );
+			register_post_status( 'wc-' . self::OUT, [ 'label' => _x( 'Out for delivery', 'Order status', 'webgram-core' ), 'public' => true, 'show_in_admin_status_list' => true, 'label_count' => /* translators: %s: placeholder value. */ _n_noop( 'Out for delivery <span class="count">(%s)</span>', 'Out for delivery <span class="count">(%s)</span>', 'webgram-core' ) ] );
 		}
 	}
 

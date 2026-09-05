@@ -29,7 +29,7 @@ final class Notices {
 		$theme_version = wp_get_theme()->get( 'Version' );
 		$theme_name    = wp_get_theme()->get( 'TextDomain' );
 		if ( 'webgram' === $theme_name && $theme_version && version_compare( (string) $theme_version, WEBGRAM_CORE_MIN_THEME_VERSION, '<' ) ) {
-			$this->notice( 'warning', sprintf( __( 'Webgram Core %1$s works best with Webgram Theme %2$s or newer. Please update the theme.', 'webgram-core' ), WEBGRAM_CORE_VERSION, WEBGRAM_CORE_MIN_THEME_VERSION ) );
+			$this->notice( 'warning', sprintf( /* translators: %s: placeholder value. */ __( 'Webgram Core %1$s works best with Webgram Theme %2$s or newer. Please update the theme.', 'webgram-core' ), WEBGRAM_CORE_VERSION, WEBGRAM_CORE_MIN_THEME_VERSION ) );
 		}
 
 		if ( get_transient( 'webgram_core_just_activated' ) ) {

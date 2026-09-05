@@ -20,7 +20,10 @@ $webgram_icons = (array) webgram_option( 'product_payment_icons' );
 	</div>
 	<?php if ( $webgram_icons ) : ?>
 		<div class="wg-payments wg-payment-strip__icons">
-			<?php foreach ( $webgram_icons as $webgram_slug ) { webgram_payment_icon( (string) $webgram_slug ); } ?>
+			<?php
+			foreach ( $webgram_icons as $webgram_slug ) {
+webgram_payment_icon( (string) $webgram_slug ); }
+?>
 		</div>
 	<?php endif; ?>
 	<?php if ( webgram_option( 'product_payment_caption' ) ) : ?>

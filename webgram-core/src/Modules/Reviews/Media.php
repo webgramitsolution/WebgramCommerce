@@ -42,7 +42,7 @@ final class Media {
 			return [];
 		}
 		$out = [];
-		foreach ( array_keys( (array) $_FILES[ $field ]['name'] ) as $i ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		foreach ( array_keys( (array) $_FILES[ $field ]['name'] ) as $i ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- keys only; each file is validated by validate_all() and wp_handle_upload().
 			$file = [];
 			foreach ( [ 'name', 'type', 'tmp_name', 'error', 'size' ] as $k ) {
 				$file[ $k ] = $_FILES[ $field ][ $k ][ $i ] ?? ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput

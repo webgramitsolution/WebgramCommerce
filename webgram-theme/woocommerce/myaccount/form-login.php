@@ -37,7 +37,7 @@ $webgram_gen_pass = 'yes' === get_option( 'woocommerce_registration_generate_pas
 
 				<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide wg-form__row">
 					<label for="username"><?php esc_html_e( 'Username or email address', 'webgram' ); ?>&nbsp;<span class="required" aria-hidden="true">*</span></label>
-					<span class="wg-form__field"><?php webgram_icon( 'user' ); ?><input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="username" autocomplete="username" value="<?php echo ( ! empty( $_POST['username'] ) ) ? esc_attr( wp_unslash( $_POST['username'] ) ) : ''; ?>" required aria-required="true" /></span><?php // phpcs:ignore WordPress.Security.NonceVerification.Missing ?>
+					<span class="wg-form__field"><?php webgram_icon( 'user' ); ?><input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="username" autocomplete="username" value="<?php echo ( ! empty( $_POST['username'] ) ) ? esc_attr( sanitize_user( wp_unslash( $_POST['username'] ) ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce verifies the login nonce. ?>" required aria-required="true" /></span>
 				</p>
 				<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide wg-form__row">
 					<label for="password"><?php esc_html_e( 'Password', 'webgram' ); ?>&nbsp;<span class="required" aria-hidden="true">*</span></label>
@@ -68,17 +68,17 @@ $webgram_gen_pass = 'yes' === get_option( 'woocommerce_registration_generate_pas
 					<div class="wg-form__grid">
 						<p class="form-row wg-form__row">
 							<label for="webgram_full_name"><?php esc_html_e( 'Full name', 'webgram' ); ?>&nbsp;<span class="required" aria-hidden="true">*</span></label>
-							<span class="wg-form__field"><?php webgram_icon( 'user' ); ?><input type="text" class="input-text" name="webgram_full_name" id="webgram_full_name" autocomplete="name" value="<?php echo ( ! empty( $_POST['webgram_full_name'] ) ) ? esc_attr( wp_unslash( $_POST['webgram_full_name'] ) ) : ''; ?>" required aria-required="true" /></span><?php // phpcs:ignore WordPress.Security.NonceVerification.Missing ?>
+							<span class="wg-form__field"><?php webgram_icon( 'user' ); ?><input type="text" class="input-text" name="webgram_full_name" id="webgram_full_name" autocomplete="name" value="<?php echo ( ! empty( $_POST['webgram_full_name'] ) ) ? esc_attr( sanitize_text_field( wp_unslash( $_POST['webgram_full_name'] ) ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce verifies the registration nonce. ?>" required aria-required="true" /></span>
 						</p>
 						<?php if ( 'no' === get_option( 'woocommerce_registration_generate_username' ) ) : ?>
 							<p class="woocommerce-form-row form-row wg-form__row">
 								<label for="reg_username"><?php esc_html_e( 'Username', 'webgram' ); ?>&nbsp;<span class="required" aria-hidden="true">*</span></label>
-								<span class="wg-form__field"><?php webgram_icon( 'user' ); ?><input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="reg_username" autocomplete="username" value="<?php echo ( ! empty( $_POST['username'] ) ) ? esc_attr( wp_unslash( $_POST['username'] ) ) : ''; ?>" required aria-required="true" /></span><?php // phpcs:ignore WordPress.Security.NonceVerification.Missing ?>
+								<span class="wg-form__field"><?php webgram_icon( 'user' ); ?><input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="reg_username" autocomplete="username" value="<?php echo ( ! empty( $_POST['username'] ) ) ? esc_attr( sanitize_user( wp_unslash( $_POST['username'] ) ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce verifies the registration nonce. ?>" required aria-required="true" /></span>
 							</p>
 						<?php endif; ?>
 						<p class="woocommerce-form-row form-row wg-form__row">
 							<label for="reg_email"><?php esc_html_e( 'Email address', 'webgram' ); ?>&nbsp;<span class="required" aria-hidden="true">*</span></label>
-							<span class="wg-form__field"><?php webgram_icon( 'mail' ); ?><input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" autocomplete="email" value="<?php echo ( ! empty( $_POST['email'] ) ) ? esc_attr( wp_unslash( $_POST['email'] ) ) : ''; ?>" required aria-required="true" /></span><?php // phpcs:ignore WordPress.Security.NonceVerification.Missing ?>
+							<span class="wg-form__field"><?php webgram_icon( 'mail' ); ?><input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" autocomplete="email" value="<?php echo ( ! empty( $_POST['email'] ) ) ? esc_attr( sanitize_email( wp_unslash( $_POST['email'] ) ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce verifies the registration nonce. ?>" required aria-required="true" /></span>
 						</p>
 						<?php if ( ! $webgram_gen_pass ) : ?>
 							<p class="woocommerce-form-row form-row wg-form__row">

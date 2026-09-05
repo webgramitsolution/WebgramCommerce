@@ -41,7 +41,10 @@ $variations = $product->get_available_variations( 'objects' );
 					$webgram_stock = $webgram_match ? $webgram_match->is_in_stock() : true;
 					?>
 					<button type="button" class="wg-swatch<?php echo $webgram_img ? ' wg-swatch--image' : ''; ?><?php echo $webgram_stock ? '' : ' is-out-of-stock'; ?>" data-value="<?php echo esc_attr( $webgram_value ); ?>" role="radio" aria-checked="false" title="<?php echo esc_attr( $webgram_text ); ?>">
-						<?php if ( $webgram_img ) : ?><span class="wg-swatch__media"><?php echo $webgram_img; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span><?php endif; ?>
+						<?php
+						if ( $webgram_img ) :
+?>
+<span class="wg-swatch__media"><?php echo $webgram_img; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span><?php endif; ?>
 						<span class="wg-swatch__name"><?php echo esc_html( $webgram_text ); ?></span>
 						<?php if ( $webgram_match && count( $attributes ) === 1 ) : ?>
 							<span class="wg-swatch__price"><?php echo wp_kses_post( $webgram_match->get_price_html() ); ?></span>

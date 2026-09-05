@@ -1,0 +1,5370 @@
+# Copyright (C) 2026 Webgram IT Solution
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Webgram Core 0.8.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/webgram-core\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-05T08:28:08+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: webgram-core\n"
+
+#. Plugin Name of the plugin
+#: webgram-core.php:3
+msgid "Webgram Core"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: webgram-core.php:4
+msgid "https://webgramitsolution.com/webgram-core"
+msgstr ""
+
+#. Description of the plugin
+#: webgram-core.php:5
+msgid "Functionality layer for the Webgram WooCommerce ecosystem: reviews, reels, wishlist, compare, AI assistant, invoices, WhatsApp notifications, sliders and more. Works with any theme, designed for Webgram Theme."
+msgstr ""
+
+#. Author of the plugin
+#: webgram-core.php:10
+msgid "Webgram IT Solution"
+msgstr ""
+
+#. Author URI of the plugin
+#: webgram-core.php:11
+msgid "https://webgramitsolution.com"
+msgstr ""
+
+#: src/Abstracts/AjaxHandler.php:53
+msgid "Your session has expired. Please refresh the page and try again."
+msgstr ""
+
+#: src/Abstracts/AjaxHandler.php:57
+msgid "Please log in to continue."
+msgstr ""
+
+#: src/Abstracts/AjaxHandler.php:61
+#: src/Admin/ModulesPage.php:125
+#: src/Admin/PageSetup.php:54
+#: src/Admin/SettingsPage.php:215
+#: src/Modules/Emails/Preview.php:106
+#: src/Modules/Emails/Preview.php:122
+#: src/Modules/Instagram/Module.php:115
+#: src/Modules/Invoice/Admin.php:56
+#: src/Modules/Invoice/Admin.php:115
+#: src/Modules/Notifications/Admin/LogPage.php:47
+#: src/Modules/WooEnhancements/Admin/PincodesPage.php:71
+#: src/Modules/WooEnhancements/Admin/PincodesPage.php:97
+msgid "You do not have permission to do this."
+msgstr ""
+
+#: src/Abstracts/AjaxHandler.php:71
+#: src/Modules/AiAssistant/Module.php:175
+#: src/Support/Assets.php:76
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: src/Activator.php:11
+msgid "Webgram Core requires PHP 8.1 or newer."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:44
+#: src/Admin/ModulesPage.php:45
+#: src/Modules/Integrations/Blocks.php:20
+#: src/Modules/Integrations/Elementor/Loader.php:20
+#: src/Modules/WooEnhancements/Admin/ProductPanel.php:27
+msgid "Webgram"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:53
+msgid "Modules"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:77
+msgid "Webgram Core Modules"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:78
+msgid "Turn features on or off. Disabled modules load no code and no assets on the front end."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:81
+msgid "Module settings saved."
+msgstr ""
+
+#: src/Admin/ModulesPage.php:104
+#, php-format
+msgid "Coming in phase %d"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:106
+#, php-format
+msgid "Needs: %s"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:108
+msgid "Active"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:111
+msgid "Settings"
+msgstr ""
+
+#: src/Admin/ModulesPage.php:117
+#: src/Admin/SettingsPage.php:118
+msgid "Save changes"
+msgstr ""
+
+#: src/Admin/Notices.php:22
+msgid "Webgram Core: WooCommerce is not active. Ecommerce modules (reviews, wishlist, invoices, notifications and others) stay disabled until WooCommerce is installed and activated."
+msgstr ""
+
+#: src/Admin/Notices.php:26
+msgid "Webgram Core: the PHP Sodium extension is disabled on this server. API credentials cannot be stored securely, so modules that need API keys will not save them. Ask your host to enable ext-sodium."
+msgstr ""
+
+#: src/Admin/Notices.php:32
+#, php-format
+msgid "Webgram Core %1$s works best with Webgram Theme %2$s or newer. Please update the theme."
+msgstr ""
+
+#. translators: %s: link to modules page
+#: src/Admin/Notices.php:41
+#, php-format
+msgid "Webgram Core is active. Choose which features to enable on the %s screen."
+msgstr ""
+
+#: src/Admin/Notices.php:42
+msgid "Webgram Modules"
+msgstr ""
+
+#. translators: %s: feature name
+#: src/Admin/PageSetup.php:45
+#, php-format
+msgid "Webgram Core: the %s page is not set. Create it now or choose an existing page in Webgram > Settings."
+msgstr ""
+
+#. translators: %s: feature name
+#: src/Admin/PageSetup.php:47
+#, php-format
+msgid "Create %s page"
+msgstr ""
+
+#: src/Admin/PageSetup.php:60
+msgid "Unknown page request."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:26
+msgid "Core Settings"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:41
+#: src/Modules/Notifications/Settings.php:13
+#: src/Modules/WooEnhancements/BulkInquiry.php:105
+msgid "General"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:62
+msgid "Default phone country"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:66
+msgid "Used to normalize phone numbers that are entered without a country code."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:70
+msgid "Remove all data on uninstall"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:73
+msgid "Deletes Webgram Core tables, options and generated files when the plugin is deleted. Cannot be undone."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:91
+msgid "Webgram Core Settings"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:94
+msgid "Settings saved."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:136
+msgid "Open"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:140
+msgid "Select a page"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:147
+#: src/Modules/Reels/PostType.php:128
+#: src/Modules/WooEnhancements/Geo/NullGeocoder.php:14
+msgid "None"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:181
+msgid "Saved. Enter a new value to replace it."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:182
+msgid "Clear"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:197
+#: assets/blocks/editor.js:30
+msgid "Choose image"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:198
+#: src/Modules/WooEnhancements/Admin/ProductPanel.php:66
+#: templates/reels/admin.php:23
+#: templates/reels/admin.php:35
+#: templates/slider/admin-slides.php:25
+#: assets/blocks/editor.js:32
+#: assets/blocks/editor.js:51
+msgid "Remove"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:223
+msgid "Unknown settings tab."
+msgstr ""
+
+#: src/Modules/AiAssistant/Assistant.php:67
+msgid "Please log in to chat with the assistant."
+msgstr ""
+
+#: src/Modules/AiAssistant/Assistant.php:70
+msgid "Please write a message (up to 1000 characters)."
+msgstr ""
+
+#: src/Modules/AiAssistant/Assistant.php:74
+msgid "You are sending messages too quickly. Please wait a moment."
+msgstr ""
+
+#: src/Modules/AiAssistant/Assistant.php:78
+msgid "The assistant has reached its daily limit. Please try again tomorrow or contact us directly."
+msgstr ""
+
+#: src/Modules/AiAssistant/Assistant.php:124
+msgid "I cannot help with that request. Ask me about products, offers, orders, shipping or returns."
+msgstr ""
+
+#: src/Modules/AiAssistant/Assistant.php:125
+msgid "The assistant is temporarily unavailable. Please try again in a moment or contact us directly."
+msgstr ""
+
+#: src/Modules/AiAssistant/Assistant.php:130
+msgid "Here is what I found."
+msgstr ""
+
+#: src/Modules/AiAssistant/Assistant.php:130
+msgid "Could you tell me a bit more about what you are looking for?"
+msgstr ""
+
+#: src/Modules/AiAssistant/Assistant.php:145
+msgid "Show cheaper options"
+msgstr ""
+
+#: src/Modules/AiAssistant/Assistant.php:146
+msgid "Any coupons?"
+msgstr ""
+
+#: src/Modules/AiAssistant/Assistant.php:148
+msgid "Best sellers"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:25
+msgid "AI Shopping Assistant"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:29
+msgid "Chat assistant that finds products, shares offers and tracks orders. Works without an API key (rule based) or with OpenAI, Gemini or Anthropic."
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:76
+msgid "Provider"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:76
+msgid "Rule based (no API key, keyword search)"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:77
+msgid "API key"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:77
+msgid "Stored encrypted. Not needed for the rule based provider."
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:78
+msgid "Model name"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:78
+msgid "Leave empty for the provider default (Anthropic: claude-opus-5, OpenAI: gpt-4o-mini, Gemini: gemini-2.0-flash)."
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:79
+msgid "Store notes for the assistant"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:79
+msgid "Extra instructions or facts (tone, brand voice, policies). Appended to the built in system prompt."
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:80
+msgid "Assistant name"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:80
+#: src/Modules/AiAssistant/Module.php:161
+#: src/Modules/AiAssistant/Module.php:201
+msgid "Shopping Assistant"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:81
+msgid "Avatar"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:82
+msgid "Greeting"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:82
+msgid "Hi! Looking for something? I can find products, share offers and track your order."
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:83
+msgid "Suggested questions (one per line)"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:83
+msgid ""
+"Show me best sellers\n"
+"Any coupons today?\n"
+"Wall decor under 2000\n"
+"What is your return policy?"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:84
+msgid "Show the launcher on"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:84
+msgid "All pages"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:84
+msgid "Shop, category and product pages"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:84
+msgid "Selected page IDs"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:84
+msgid "Nowhere (inline widget only)"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:85
+msgid "Page IDs (comma separated)"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:86
+msgid "Launcher position"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:86
+msgid "Bottom right"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:86
+msgid "Bottom left"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:87
+#: src/Modules/Invoice/Module.php:105
+msgid "Accent color"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:87
+msgid "Empty uses the theme primary color."
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:88
+msgid "Logged in shoppers only"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:89
+msgid "Daily message budget (all visitors)"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:89
+msgid "0 means unlimited."
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:90
+msgid "Messages per minute per visitor"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:91
+msgid "Keep conversations for (days)"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:92
+msgid "Consent text shown before the first message"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:92
+msgid "Messages are processed by an AI assistant and stored to improve your experience. Do not share sensitive information."
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:93
+msgid "Store facts for answers"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:94
+#: src/Modules/AiAssistant/Providers/RuleBasedProvider.php:171
+#: templates/invoice/invoice.php:152
+msgid "Shipping"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:95
+#: src/Modules/AiAssistant/Providers/RuleBasedProvider.php:171
+msgid "Returns"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:96
+#: src/Modules/AiAssistant/Providers/RuleBasedProvider.php:171
+msgid "Payments"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:97
+#: src/Modules/AiAssistant/Providers/RuleBasedProvider.php:171
+#: src/Modules/WooEnhancements/BulkInquiry.php:170
+msgid "Contact"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:98
+msgid "Support hours"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:99
+msgid "FAQ for the rule based provider (blank line separated: question, then answer lines)"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:135
+msgid "Hi! Looking for something?"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:171
+#: templates/ai-assistant/window.php:40
+msgid "Ask about products, offers or your order"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:172
+#: src/Modules/Notifications/Admin/LogPage.php:163
+#: templates/ai-assistant/window.php:42
+msgid "Send"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:173
+msgid "Typing"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:174
+#: src/Modules/Notifications/Admin/LogPage.php:129
+msgid "Retry"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:176
+msgid "Add to cart"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:177
+#: templates/compare/table.php:57
+#: templates/wishlist/table.php:59
+#: templates/woo-enhancements/cart-recommendations.php:31
+msgid "View"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:178
+#: templates/ai-assistant/window.php:25
+msgid "Online"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:179
+#: templates/ai-assistant/window.php:29
+msgid "Close chat"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:180
+#: templates/woo-enhancements/contact-cards.php:24
+msgid "Chat with us"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:181
+#: templates/ai-assistant/window.php:34
+msgid "Start chatting"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:182
+msgid "You"
+msgstr ""
+
+#: src/Modules/AiAssistant/Module.php:216
+msgid "Webgram AI Assistant"
+msgstr ""
+
+#: src/Modules/AiAssistant/Privacy.php:37
+#: src/Modules/AiAssistant/Privacy.php:42
+msgid "Webgram AI assistant conversations"
+msgstr ""
+
+#: src/Modules/AiAssistant/Privacy.php:54
+msgid "AI assistant conversations"
+msgstr ""
+
+#: src/Modules/AiAssistant/Privacy.php:57
+#: src/Modules/Notifications/Admin/LogPage.php:113
+#: src/Modules/WooEnhancements/BulkInquiry.php:170
+msgid "Date"
+msgstr ""
+
+#: src/Modules/AiAssistant/Privacy.php:58
+msgid "Role"
+msgstr ""
+
+#: src/Modules/AiAssistant/Privacy.php:59
+#: src/Modules/WooEnhancements/BulkInquiry.php:193
+#: templates/woo-enhancements/bulk-inquiry.php:43
+msgid "Message"
+msgstr ""
+
+#. translators: %s: store name
+#: src/Modules/AiAssistant/Providers/RuleBasedProvider.php:96
+#, php-format
+msgid "Hello! I can help you find products, check offers, track an order or answer questions about shipping and returns at %s. What are you looking for?"
+msgstr ""
+
+#: src/Modules/AiAssistant/Providers/RuleBasedProvider.php:99
+msgid "You are welcome! Anything else I can help with?"
+msgstr ""
+
+#: src/Modules/AiAssistant/Providers/RuleBasedProvider.php:102
+msgid "Tell me what you are looking for, for example \"wall decor under 2000\", \"best sellers\" or \"any coupons?\"."
+msgstr ""
+
+#: src/Modules/AiAssistant/Providers/RuleBasedProvider.php:106
+msgid "I cannot help with that yet, but our support team can."
+msgstr ""
+
+#: src/Modules/AiAssistant/Providers/RuleBasedProvider.php:142
+msgid "Please log in to your account so I can check your order."
+msgstr ""
+
+#: src/Modules/AiAssistant/Providers/RuleBasedProvider.php:143
+msgid "I could not find an order with that number on your account. Please check the number from your confirmation email."
+msgstr ""
+
+#: src/Modules/AiAssistant/Providers/RuleBasedProvider.php:144
+msgid "Sorry, I could not fetch that right now. Please try again."
+msgstr ""
+
+#: src/Modules/AiAssistant/Providers/RuleBasedProvider.php:152
+msgid "I could not find matching products. Try different words or a wider price range."
+msgstr ""
+
+#: src/Modules/AiAssistant/Providers/RuleBasedProvider.php:155
+msgid "These are our best sellers right now:"
+msgstr ""
+
+#. translators: %d: count
+#: src/Modules/AiAssistant/Providers/RuleBasedProvider.php:156
+#, php-format
+msgid "Here is %d product that matches:"
+msgid_plural "Here are %d products that match:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Modules/AiAssistant/Providers/RuleBasedProvider.php:159
+msgid "There are no public coupons right now, but check the offers on the homepage."
+msgstr ""
+
+#. translators: %s: amount
+#: src/Modules/AiAssistant/Providers/RuleBasedProvider.php:163
+#, php-format
+msgid "min order %s"
+msgstr ""
+
+#: src/Modules/AiAssistant/Providers/RuleBasedProvider.php:165
+msgid "Current offers:"
+msgstr ""
+
+#. translators: 1: number, 2: status, 3: date, 4: total, 5: items
+#: src/Modules/AiAssistant/Providers/RuleBasedProvider.php:168
+#, php-format
+msgid "Order #%1$s is %2$s (placed %3$s, total %4$s). Items: %5$s."
+msgstr ""
+
+#: src/Modules/AiAssistant/Providers/RuleBasedProvider.php:171
+#: templates/site-tools/maintenance.php:34
+msgid "Hours"
+msgstr ""
+
+#: src/Modules/AiAssistant/Providers/RuleBasedProvider.php:176
+msgid "Store details are not filled in yet. Please contact us for shipping and return information."
+msgstr ""
+
+#: src/Modules/AiAssistant/Providers/RuleBasedProvider.php:178
+msgid "Done."
+msgstr ""
+
+#: src/Modules/Analytics/Collector.php:52
+msgid "No events."
+msgstr ""
+
+#: src/Modules/Analytics/Collector.php:55
+msgid "Too many requests."
+msgstr ""
+
+#: src/Modules/Analytics/Module.php:23
+#: src/Modules/Analytics/Module.php:166
+#: src/Modules/Analytics/Reports.php:20
+msgid "Analytics"
+msgstr ""
+
+#: src/Modules/Analytics/Module.php:27
+msgid "Reel plays, assistant conversations, wishlist adds and product views stored on your own site, with a simple dashboard."
+msgstr ""
+
+#: src/Modules/Analytics/Module.php:72
+msgid "Collect browser events"
+msgstr ""
+
+#: src/Modules/Analytics/Module.php:72
+msgid "Reel plays, chat opens, product views. No IP addresses are stored; sessions are hashed."
+msgstr ""
+
+#: src/Modules/Analytics/Module.php:73
+msgid "Sampling (percent of visitors)"
+msgstr ""
+
+#: src/Modules/Analytics/Module.php:74
+msgid "Also track logged in staff"
+msgstr ""
+
+#: src/Modules/Analytics/Module.php:75
+msgid "Keep events for (days)"
+msgstr ""
+
+#: src/Modules/Analytics/Module.php:163
+#: src/Modules/Analytics/Module.php:173
+msgid "Webgram analytics events"
+msgstr ""
+
+#: src/Modules/Analytics/Module.php:166
+msgid "Stored events"
+msgstr ""
+
+#: src/Modules/Analytics/Reports.php:44
+msgid "Assistant conversations"
+msgstr ""
+
+#: src/Modules/Analytics/Reports.php:45
+msgid "Reel plays"
+msgstr ""
+
+#: src/Modules/Analytics/Reports.php:46
+msgid "Wishlist adds"
+msgstr ""
+
+#: src/Modules/Analytics/Reports.php:47
+msgid "Product views"
+msgstr ""
+
+#: src/Modules/Analytics/Reports.php:48
+msgid "Notification delivery"
+msgstr ""
+
+#: src/Modules/Analytics/Reports.php:51
+msgid "Most played reels"
+msgstr ""
+
+#: src/Modules/Analytics/Reports.php:52
+msgid "Most viewed products"
+msgstr ""
+
+#: src/Modules/Analytics/Reports.php:53
+msgid "Products clicked in chat"
+msgstr ""
+
+#: src/Modules/Analytics/Reports.php:54
+msgid "Most wishlisted"
+msgstr ""
+
+#: src/Modules/Badges/Module.php:21
+msgid "Product Badges"
+msgstr ""
+
+#: src/Modules/Badges/Module.php:25
+msgid "New, sale percent, best seller, low stock and custom badges on cards and product pages."
+msgstr ""
+
+#: src/Modules/Badges/Module.php:51
+msgid "\"New\" badge for products newer than (days)"
+msgstr ""
+
+#: src/Modules/Badges/Module.php:51
+#: src/Modules/Badges/Module.php:55
+msgid "0 disables the badge."
+msgstr ""
+
+#: src/Modules/Badges/Module.php:52
+msgid "\"New\" text"
+msgstr ""
+
+#: src/Modules/Badges/Module.php:52
+#: src/Modules/Badges/Module.php:96
+#: src/Modules/WooEnhancements/BulkInquiry.php:179
+#: src/Modules/WooEnhancements/BulkInquiry.php:184
+msgid "New"
+msgstr ""
+
+#: src/Modules/Badges/Module.php:53
+msgid "Sale badge"
+msgstr ""
+
+#: src/Modules/Badges/Module.php:53
+msgid "Theme default (\"Save amount\")"
+msgstr ""
+
+#: src/Modules/Badges/Module.php:53
+msgid "Percent off"
+msgstr ""
+
+#: src/Modules/Badges/Module.php:53
+msgid "Custom text"
+msgstr ""
+
+#: src/Modules/Badges/Module.php:53
+#: src/Modules/Wishlist/Module.php:91
+msgid "Hidden"
+msgstr ""
+
+#: src/Modules/Badges/Module.php:53
+msgid "The Webgram theme prints the \"Save ₹X\" wave badge itself; choose Percent to replace it."
+msgstr ""
+
+#: src/Modules/Badges/Module.php:54
+msgid "Sale custom text"
+msgstr ""
+
+#: src/Modules/Badges/Module.php:54
+#: src/Modules/Badges/Module.php:87
+msgid "Sale"
+msgstr ""
+
+#: src/Modules/Badges/Module.php:55
+msgid "\"Best seller\" when total sales reach"
+msgstr ""
+
+#: src/Modules/Badges/Module.php:56
+msgid "\"Best seller\" text"
+msgstr ""
+
+#: src/Modules/Badges/Module.php:56
+#: src/Modules/Badges/Module.php:92
+msgid "Best seller"
+msgstr ""
+
+#: src/Modules/Badges/Module.php:57
+msgid "\"Only N left\" when stock is at or below"
+msgstr ""
+
+#: src/Modules/Badges/Module.php:58
+msgid "Show \"Sold out\" badge"
+msgstr ""
+
+#: src/Modules/Badges/Module.php:59
+msgid "Maximum badges per product"
+msgstr ""
+
+#: src/Modules/Badges/Module.php:78
+msgid "Sold out"
+msgstr ""
+
+#. translators: %d: percent
+#: src/Modules/Badges/Module.php:85
+#, php-format
+msgid "%d%% off"
+msgstr ""
+
+#. translators: %d: units left
+#: src/Modules/Badges/Module.php:100
+#, php-format
+msgid "Only %d left"
+msgstr ""
+
+#: src/Modules/Badges/Module.php:142
+msgid "Custom badge text"
+msgstr ""
+
+#: src/Modules/Badges/Module.php:142
+msgid "Shown first on cards and the product page."
+msgstr ""
+
+#: src/Modules/Badges/Module.php:143
+msgid "Custom badge color"
+msgstr ""
+
+#: src/Modules/Badges/Module.php:150
+msgid "Webgram badge"
+msgstr ""
+
+#. translators: 1: selected count, 2: maximum
+#: src/Modules/Compare/Module.php:29
+#: src/Modules/Compare/Module.php:103
+#: src/Modules/Compare/Module.php:123
+#: src/Modules/Compare/Module.php:152
+#: src/Modules/Compare/Module.php:157
+#: src/Modules/Compare/Module.php:171
+#: templates/compare/bar.php:22
+#: templates/compare/button.php:18
+msgid "Compare"
+msgstr ""
+
+#: src/Modules/Compare/Module.php:33
+msgid "Side by side product comparison, up to 4 products, differences highlighted."
+msgstr ""
+
+#: src/Modules/Compare/Module.php:86
+msgid "Compare page"
+msgstr ""
+
+#: src/Modules/Compare/Module.php:86
+msgid "Page containing the [webgram_compare] shortcode."
+msgstr ""
+
+#: src/Modules/Compare/Module.php:87
+#: src/Modules/Wishlist/Module.php:90
+msgid "Button on product cards"
+msgstr ""
+
+#: src/Modules/Compare/Module.php:88
+#: src/Modules/Wishlist/Module.php:91
+msgid "Button on the product page"
+msgstr ""
+
+#: src/Modules/Compare/Module.php:89
+msgid "Floating compare bar"
+msgstr ""
+
+#: src/Modules/Compare/Module.php:89
+msgid "Small bar at the bottom of the screen while products are selected."
+msgstr ""
+
+#: src/Modules/Compare/Module.php:90
+msgid "Highlight differences by default"
+msgstr ""
+
+#: src/Modules/Compare/Module.php:91
+msgid "Rows"
+msgstr ""
+
+#: src/Modules/Compare/Module.php:92
+#: src/Modules/Compare/Table.php:48
+#: templates/invoice/invoice.php:118
+#: templates/wishlist/table.php:43
+#: templates/wishlist/table.php:53
+msgid "Price"
+msgstr ""
+
+#: src/Modules/Compare/Module.php:93
+#: src/Modules/Compare/Table.php:51
+#: src/Modules/Integrations/Testimonials.php:44
+#: templates/reviews/form-fields.php:18
+msgid "Rating"
+msgstr ""
+
+#: src/Modules/Compare/Module.php:94
+#: src/Modules/Compare/Table.php:54
+msgid "Availability"
+msgstr ""
+
+#: src/Modules/Compare/Module.php:95
+#: src/Modules/Compare/Table.php:57
+#: templates/invoice/invoice.php:116
+msgid "SKU"
+msgstr ""
+
+#: src/Modules/Compare/Module.php:96
+msgid "Short description"
+msgstr ""
+
+#: src/Modules/Compare/Module.php:97
+msgid "Weight and dimensions"
+msgstr ""
+
+#: src/Modules/Compare/Module.php:98
+msgid "Product attributes"
+msgstr ""
+
+#: src/Modules/Compare/Module.php:108
+msgid "Webgram Compare"
+msgstr ""
+
+#: src/Modules/Compare/Module.php:118
+#: src/Modules/Compare/Module.php:145
+msgid "Added to compare"
+msgstr ""
+
+#: src/Modules/Compare/Module.php:119
+#: src/Modules/Compare/Module.php:145
+msgid "Removed from compare"
+msgstr ""
+
+#. translators: %d: maximum products
+#: src/Modules/Compare/Module.php:120
+#: src/Modules/Compare/Module.php:145
+#, php-format
+msgid "You can compare up to %d products."
+msgstr ""
+
+#. translators: %d: maximum products
+#: src/Modules/Compare/Module.php:121
+#: templates/compare/button.php:12
+msgid "Add to compare"
+msgstr ""
+
+#: src/Modules/Compare/Module.php:122
+#: templates/compare/button.php:12
+#: templates/compare/table.php:34
+msgid "Remove from compare"
+msgstr ""
+
+#: src/Modules/Compare/Module.php:132
+#: src/Modules/QuickView/Module.php:55
+#: src/Modules/Reviews/Module.php:82
+#: src/Modules/Wishlist/Module.php:133
+msgid "Product not found."
+msgstr ""
+
+#: src/Modules/Compare/Module.php:157
+#: src/Modules/Integrations/Sections.php:58
+#: src/Modules/Wishlist/Module.php:158
+#: src/Modules/WooEnhancements/Admin/ProductPanel.php:64
+#: src/Modules/WooEnhancements/Module.php:81
+msgid "Label"
+msgstr ""
+
+#: src/Modules/Compare/Module.php:158
+#: src/Modules/Wishlist/Module.php:159
+msgid "Show label under icon"
+msgstr ""
+
+#: src/Modules/Compare/Module.php:159
+#: src/Modules/Wishlist/Module.php:160
+msgid "Item count badge"
+msgstr ""
+
+#: src/Modules/Compare/Table.php:51
+msgid "No reviews"
+msgstr ""
+
+#: src/Modules/Compare/Table.php:54
+#: templates/wishlist/table.php:54
+msgid "In stock"
+msgstr ""
+
+#: src/Modules/Compare/Table.php:54
+msgid "Out of stock"
+msgstr ""
+
+#: src/Modules/Compare/Table.php:60
+#: templates/slider/admin-slides.php:58
+msgid "Description"
+msgstr ""
+
+#: src/Modules/Compare/Table.php:63
+#: src/Modules/WooEnhancements/Specifications.php:61
+msgid "Weight"
+msgstr ""
+
+#: src/Modules/Compare/Table.php:64
+#: src/Modules/WooEnhancements/Specifications.php:64
+msgid "Dimensions"
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:23
+msgid "Coupons"
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:27
+msgid "Coupon box on product pages with copy to clipboard, and the cart offer progress with milestones."
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:70
+msgid "Product coupon box"
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:70
+msgid "Choose the coupon per product in the Webgram tab of the product data box. A default coupon applies to products without one."
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:71
+msgid "Default coupon code"
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:71
+msgid "Leave empty for none."
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:72
+msgid "Copy button label"
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:72
+#: src/Modules/Coupons/Module.php:138
+#: src/Modules/Coupons/Module.php:151
+msgid "Copy code"
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:73
+msgid "Cart offer progress"
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:73
+msgid "Milestones shown in the cart drawer. Amount thresholds use the cart subtotal; quantity thresholds use the item count."
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:74
+msgid "Show offer progress"
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:75
+msgid "Include free shipping threshold from shipping zones"
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:76
+msgid "Manual milestones"
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:76
+msgid "One per line: type (amount or qty) | threshold | label | coupon code (optional, auto applied when reached)."
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:77
+msgid "Auto apply milestone coupons"
+msgstr ""
+
+#. translators: %s: percent
+#: src/Modules/Coupons/Module.php:117
+#, php-format
+msgid "FLAT %s%% OFF"
+msgstr ""
+
+#. translators: %s: amount
+#: src/Modules/Coupons/Module.php:118
+#, php-format
+msgid "FLAT %s OFF"
+msgstr ""
+
+#. translators: %s: amount
+#: src/Modules/Coupons/Module.php:119
+msgid "FREE SHIPPING"
+msgstr ""
+
+#. translators: %s: amount
+#: src/Modules/Coupons/Module.php:119
+msgid "SPECIAL OFFER"
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:165
+msgid "Use default coupon"
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:170
+msgid "Coupon shown on the product page"
+msgstr ""
+
+#. translators: %s: milestone label
+#: src/Modules/Coupons/OfferProgress.php:86
+#, php-format
+msgid "Unlocked %s"
+msgstr ""
+
+#. translators: %s: coupon code
+#: src/Modules/Coupons/OfferProgress.php:86
+#, php-format
+msgid "Code: %s"
+msgstr ""
+
+#. translators: 1: items, 2: label
+#: src/Modules/Coupons/OfferProgress.php:89
+#, php-format
+msgid "Add %1$d more to get %2$s"
+msgid_plural "Add %1$d more to get %2$s"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: amount, 2: label
+#: src/Modules/Coupons/OfferProgress.php:89
+#, php-format
+msgid "Add %1$s more to get %2$s"
+msgstr ""
+
+#. translators: 1: amount, 2: label
+#: src/Modules/Coupons/OfferProgress.php:90
+msgid "Or"
+msgstr ""
+
+#: src/Modules/Coupons/OfferProgress.php:124
+msgid "Free shipping"
+msgstr ""
+
+#: src/Modules/Emails/Module.php:21
+msgid "Branded Emails"
+msgstr ""
+
+#: src/Modules/Emails/Module.php:25
+msgid "Logo, colors and layout for every WooCommerce email, preview and test send, invoice attachments."
+msgstr ""
+
+#: src/Modules/Emails/Module.php:59
+msgid "Use Webgram email templates"
+msgstr ""
+
+#: src/Modules/Emails/Module.php:59
+msgid "Off restores the WooCommerce default header, footer and styles."
+msgstr ""
+
+#: src/Modules/Emails/Module.php:60
+#: src/Modules/Invoice/Module.php:77
+msgid "Logo"
+msgstr ""
+
+#: src/Modules/Emails/Module.php:61
+msgid "Logo width (px)"
+msgstr ""
+
+#: src/Modules/Emails/Module.php:62
+msgid "Header background"
+msgstr ""
+
+#: src/Modules/Emails/Module.php:63
+msgid "Header text color"
+msgstr ""
+
+#: src/Modules/Emails/Module.php:64
+msgid "Page background"
+msgstr ""
+
+#: src/Modules/Emails/Module.php:65
+msgid "Content background"
+msgstr ""
+
+#: src/Modules/Emails/Module.php:66
+#: src/Modules/Invoice/Module.php:106
+#: templates/slider/admin-slides.php:68
+msgid "Text color"
+msgstr ""
+
+#: src/Modules/Emails/Module.php:67
+msgid "Link color"
+msgstr ""
+
+#: src/Modules/Emails/Module.php:68
+msgid "Button color"
+msgstr ""
+
+#: src/Modules/Emails/Module.php:69
+msgid "Button text color"
+msgstr ""
+
+#: src/Modules/Emails/Module.php:70
+msgid "Button radius (px)"
+msgstr ""
+
+#: src/Modules/Emails/Module.php:71
+msgid "Layout width (px)"
+msgstr ""
+
+#: src/Modules/Emails/Module.php:72
+msgid "Font family"
+msgstr ""
+
+#: src/Modules/Emails/Module.php:73
+msgid "Footer text"
+msgstr ""
+
+#: src/Modules/Emails/Module.php:73
+msgid "Placeholders: {site_title}, {site_url}, {year}. Empty keeps the WooCommerce footer text."
+msgstr ""
+
+#: src/Modules/Emails/Module.php:74
+msgid "Social links (one per line: Label|URL)"
+msgstr ""
+
+#: src/Modules/Emails/Module.php:75
+msgid "Attach the invoice PDF to"
+msgstr ""
+
+#: src/Modules/Emails/Module.php:75
+msgid "Comma separated WooCommerce email ids: customer_completed_order, customer_invoice, customer_processing_order. Needs the Invoice module."
+msgstr ""
+
+#: src/Modules/Emails/Preview.php:22
+#: src/Modules/Emails/Preview.php:75
+#: src/Modules/Emails/Preview.php:98
+msgid "Email preview"
+msgstr ""
+
+#. translators: %s: email
+#: src/Modules/Emails/Preview.php:77
+#, php-format
+msgid "Test email sent to %s."
+msgstr ""
+
+#: src/Modules/Emails/Preview.php:80
+msgid "Create at least one order to preview emails with real content."
+msgstr ""
+
+#: src/Modules/Emails/Preview.php:84
+msgid "Email type"
+msgstr ""
+
+#: src/Modules/Emails/Preview.php:87
+msgid "disabled"
+msgstr ""
+
+#: src/Modules/Emails/Preview.php:92
+msgid "Open in new tab"
+msgstr ""
+
+#: src/Modules/Emails/Preview.php:93
+msgid "Send test to admin"
+msgstr ""
+
+#. translators: %s: order number
+#: src/Modules/Emails/Preview.php:95
+#, php-format
+msgid "Sample order #%s"
+msgstr ""
+
+#: src/Modules/Emails/Preview.php:113
+msgid "Nothing to preview."
+msgstr ""
+
+#: src/Modules/Emails/Preview.php:131
+msgid "Test"
+msgstr ""
+
+#: src/Modules/Instagram/Api.php:62
+msgid "Instagram returned an unreadable response."
+msgstr ""
+
+#: src/Modules/Instagram/Api.php:98
+msgid "Instagram did not return a refreshed token."
+msgstr ""
+
+#: src/Modules/Instagram/Module.php:26
+#: src/Modules/Instagram/Module.php:232
+#: src/Modules/Instagram/Module.php:253
+#: src/Modules/Instagram/Settings.php:35
+msgid "Instagram Feed"
+msgstr ""
+
+#: src/Modules/Instagram/Module.php:30
+msgid "Show your Instagram posts using a Meta access token, with a manual gallery fallback."
+msgstr ""
+
+#: src/Modules/Instagram/Module.php:65
+msgid "Instagram settings"
+msgstr ""
+
+#: src/Modules/Instagram/Module.php:65
+#: src/Modules/SiteTools/Module.php:74
+msgid "Open Theme Settings"
+msgstr ""
+
+#: src/Modules/Instagram/Module.php:69
+#: src/Modules/Instagram/Settings.php:29
+msgid "Manual posts"
+msgstr ""
+
+#: src/Modules/Instagram/Module.php:69
+msgid "One post per line: image URL or attachment ID | link | caption"
+msgstr ""
+
+#: src/Modules/Instagram/Module.php:74
+msgid "Every 30 days (Webgram)"
+msgstr ""
+
+#. translators: %s: error
+#: src/Modules/Instagram/Module.php:107
+#, php-format
+msgid "Last error: %s"
+msgstr ""
+
+#. translators: %s: username
+#: src/Modules/Instagram/Module.php:110
+#, php-format
+msgid "Connected as @%s"
+msgstr ""
+
+#. translators: %s: username
+#: src/Modules/Instagram/Module.php:110
+#: src/Modules/Notifications/Module.php:123
+msgid "Not tested yet."
+msgstr ""
+
+#: src/Modules/Instagram/Module.php:120
+msgid "Account ID or access token is missing."
+msgstr ""
+
+#. translators: %s: error
+#: src/Modules/Instagram/Module.php:139
+#, php-format
+msgid "Webgram Instagram feed: %s. The feed falls back to manual posts until the connection works."
+msgstr ""
+
+#: src/Modules/Instagram/Module.php:237
+#: src/Modules/Instagram/Module.php:259
+#: src/Modules/Instagram/Settings.php:41
+msgid "Follow Us"
+msgstr ""
+
+#: src/Modules/Instagram/Module.php:250
+msgid "Webgram Instagram Feed"
+msgstr ""
+
+#: src/Modules/Instagram/Module.php:253
+#: src/Modules/Integrations/Sections.php:18
+#: src/Modules/Integrations/Sections.php:78
+#: src/Modules/Reels/Module.php:187
+#: src/Modules/SiteTools/Settings.php:66
+#: src/Modules/SiteTools/Settings.php:111
+msgid "Title"
+msgstr ""
+
+#: src/Modules/Instagram/Module.php:254
+msgid "Posts"
+msgstr ""
+
+#: src/Modules/Instagram/Module.php:255
+#: src/Modules/Instagram/Settings.php:37
+#: src/Modules/Integrations/ProductParts.php:61
+#: src/Modules/Integrations/ProductParts.php:64
+#: src/Modules/Integrations/Sections.php:33
+#: src/Modules/Integrations/Sections.php:56
+#: src/Modules/Integrations/Sections.php:70
+#: src/Modules/Integrations/Sections.php:79
+msgid "Columns"
+msgstr ""
+
+#: src/Modules/Instagram/Module.php:256
+#: src/Modules/Instagram/Settings.php:38
+#: src/Modules/Integrations/Sections.php:34
+#: src/Modules/Invoice/Module.php:99
+#: src/Modules/Reels/Module.php:192
+#: src/Modules/SiteTools/Layouts/PostType.php:57
+msgid "Layout"
+msgstr ""
+
+#: src/Modules/Instagram/Module.php:256
+#: src/Modules/Instagram/Settings.php:38
+#: src/Modules/Reels/Module.php:192
+msgid "Grid"
+msgstr ""
+
+#: src/Modules/Instagram/Module.php:256
+#: src/Modules/Instagram/Settings.php:38
+#: src/Modules/Integrations/Sections.php:34
+#: src/Modules/Slider/Module.php:21
+#: src/Modules/Slider/Module.php:81
+#: src/Modules/Slider/PostType.php:30
+msgid "Slider"
+msgstr ""
+
+#: src/Modules/Instagram/Module.php:257
+msgid "Caption on hover"
+msgstr ""
+
+#: src/Modules/Instagram/Module.php:258
+msgid "Follow link"
+msgstr ""
+
+#: src/Modules/Instagram/Module.php:259
+msgid "Follow text"
+msgstr ""
+
+#: src/Modules/Instagram/Settings.php:14
+msgid "Instagram feed"
+msgstr ""
+
+#: src/Modules/Instagram/Settings.php:17
+msgid "Show your latest posts through the Instagram Graph API (Business or Creator account connected to a Facebook Page) or curate them manually."
+msgstr ""
+
+#: src/Modules/Instagram/Settings.php:20
+#: src/Modules/Instagram/Settings.php:22
+#: src/Modules/Integrations/Sections.php:28
+#: src/Modules/Integrations/Sections.php:53
+#: src/Modules/Reels/PostType.php:110
+#: src/Modules/WooEnhancements/Module.php:84
+msgid "Source"
+msgstr ""
+
+#: src/Modules/Instagram/Settings.php:22
+msgid "Instagram Graph API (access token)"
+msgstr ""
+
+#: src/Modules/Instagram/Settings.php:22
+msgid "Manual gallery"
+msgstr ""
+
+#: src/Modules/Instagram/Settings.php:23
+msgid "Meta retired the Instagram Basic Display API in December 2024. API mode needs an Instagram Business or Creator account linked to a Facebook Page, its Instagram Business Account ID and a long-lived access token from a Meta app."
+msgstr ""
+
+#: src/Modules/Instagram/Settings.php:24
+msgid "Instagram Business Account ID"
+msgstr ""
+
+#: src/Modules/Instagram/Settings.php:25
+msgid "Long-lived access token"
+msgstr ""
+
+#: src/Modules/Instagram/Settings.php:25
+msgid "Stored encrypted. Instagram Login tokens are refreshed automatically every 30 days; Facebook Login tokens last 60 days and must be regenerated."
+msgstr ""
+
+#: src/Modules/Instagram/Settings.php:26
+#: src/Modules/Notifications/Settings.php:36
+msgid "Graph API version"
+msgstr ""
+
+#: src/Modules/Instagram/Settings.php:27
+msgid "Cache posts for (hours)"
+msgstr ""
+
+#. translators: %s: url
+#: src/Modules/Instagram/Settings.php:28
+#: src/Modules/Notifications/Settings.php:39
+msgid "Connection"
+msgstr ""
+
+#. translators: %s: url
+#: src/Modules/Instagram/Settings.php:28
+#: src/Modules/Notifications/Settings.php:39
+msgid "Test connection"
+msgstr ""
+
+#: src/Modules/Instagram/Settings.php:29
+#: src/Modules/Integrations/Sections.php:78
+#: templates/wishlist/table.php:41
+#: templates/wishlist/table.php:51
+msgid "Image"
+msgstr ""
+
+#: src/Modules/Instagram/Settings.php:29
+#: src/Modules/Integrations/Sections.php:78
+msgid "Link"
+msgstr ""
+
+#: src/Modules/Instagram/Settings.php:29
+msgid "Caption"
+msgstr ""
+
+#: src/Modules/Instagram/Settings.php:33
+msgid "Display defaults"
+msgstr ""
+
+#: src/Modules/Instagram/Settings.php:35
+msgid "Section title"
+msgstr ""
+
+#: src/Modules/Instagram/Settings.php:36
+msgid "Posts to show"
+msgstr ""
+
+#: src/Modules/Instagram/Settings.php:39
+msgid "Show caption on hover"
+msgstr ""
+
+#: src/Modules/Instagram/Settings.php:40
+msgid "\"Follow us\" link"
+msgstr ""
+
+#: src/Modules/Instagram/Settings.php:41
+msgid "\"Follow us\" text"
+msgstr ""
+
+#: src/Modules/Integrations/Elementor/Loader.php:21
+msgid "Webgram Product Layout"
+msgstr ""
+
+#: src/Modules/Integrations/Elementor/SectionWidget.php:49
+msgid "Content"
+msgstr ""
+
+#: src/Modules/Integrations/Elementor/SectionWidget.php:54
+msgid "This widget has no options. Configure it in Webgram > Settings."
+msgstr ""
+
+#. translators: %s: widget title
+#: src/Modules/Integrations/Elementor/SectionWidget.php:139
+#, php-format
+msgid "%s: nothing to show yet. Check the widget options or the module settings."
+msgstr ""
+
+#: src/Modules/Integrations/Module.php:23
+msgid "Elementor and Gutenberg"
+msgstr ""
+
+#: src/Modules/Integrations/Module.php:27
+msgid "Webgram widgets, blocks and shortcodes for homepage sections and product layouts. Elementor stays optional."
+msgstr ""
+
+#: src/Modules/Integrations/Module.php:66
+msgid "Register Elementor widgets"
+msgstr ""
+
+#: src/Modules/Integrations/Module.php:66
+msgid "Only applies when Elementor is active."
+msgstr ""
+
+#: src/Modules/Integrations/Module.php:67
+msgid "Register Gutenberg blocks"
+msgstr ""
+
+#: src/Modules/Integrations/ProductParts.php:38
+msgid "Product Title"
+msgstr ""
+
+#: src/Modules/Integrations/ProductParts.php:41
+msgid "HTML tag"
+msgstr ""
+
+#: src/Modules/Integrations/ProductParts.php:42
+msgid "Product Price"
+msgstr ""
+
+#: src/Modules/Integrations/ProductParts.php:43
+msgid "Product Rating"
+msgstr ""
+
+#: src/Modules/Integrations/ProductParts.php:44
+msgid "Product Short Description"
+msgstr ""
+
+#: src/Modules/Integrations/ProductParts.php:45
+msgid "Product Add To Cart"
+msgstr ""
+
+#: src/Modules/Integrations/ProductParts.php:46
+msgid "Product Gallery"
+msgstr ""
+
+#: src/Modules/Integrations/ProductParts.php:53
+msgid "Product Meta"
+msgstr ""
+
+#: src/Modules/Integrations/ProductParts.php:54
+msgid "Product Stock"
+msgstr ""
+
+#: src/Modules/Integrations/ProductParts.php:55
+msgid "Product Data Tabs"
+msgstr ""
+
+#: src/Modules/Integrations/ProductParts.php:56
+msgid "Product Description"
+msgstr ""
+
+#: src/Modules/Integrations/ProductParts.php:59
+msgid "Related Products"
+msgstr ""
+
+#: src/Modules/Integrations/ProductParts.php:61
+#: src/Modules/Integrations/ProductParts.php:64
+#: src/Modules/Integrations/Sections.php:32
+#: src/Modules/Reels/PostType.php:109
+msgid "Products"
+msgstr ""
+
+#: src/Modules/Integrations/ProductParts.php:62
+msgid "Upsell Products"
+msgstr ""
+
+#: src/Modules/Integrations/ProductParts.php:65
+msgid "Breadcrumb"
+msgstr ""
+
+#: src/Modules/Integrations/ProductParts.php:66
+msgid "Webgram Product Section"
+msgstr ""
+
+#: src/Modules/Integrations/ProductParts.php:68
+msgid "Section"
+msgstr ""
+
+#: src/Modules/Integrations/ProductParts.php:68
+msgid "Coupon box"
+msgstr ""
+
+#: src/Modules/Integrations/ProductParts.php:68
+msgid "Contact seller"
+msgstr ""
+
+#: src/Modules/Integrations/ProductParts.php:68
+msgid "Delivery check"
+msgstr ""
+
+#: src/Modules/Integrations/ProductParts.php:68
+#: src/Modules/WooEnhancements/Admin/ProductPanel.php:59
+#: src/Modules/WooEnhancements/Module.php:83
+#: src/Modules/WooEnhancements/Specifications.php:76
+msgid "Specifications"
+msgstr ""
+
+#: src/Modules/Integrations/ProductParts.php:68
+msgid "Payment strip"
+msgstr ""
+
+#: src/Modules/Integrations/ProductParts.php:68
+msgid "Trust seals"
+msgstr ""
+
+#: src/Modules/Integrations/ProductParts.php:68
+msgid "Share"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:19
+#: src/Modules/Reels/Module.php:188
+msgid "Subtitle"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:20
+msgid "Heading align"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:20
+msgid "Center with ornament"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:20
+#: templates/slider/admin-slides.php:64
+msgid "Left"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:21
+msgid "\"View all\" text"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:21
+msgid "View All"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:22
+msgid "\"View all\" link"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:28
+#: src/Modules/Reviews/Module.php:115
+#: src/Modules/Reviews/Module.php:309
+msgid "Newest"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:28
+msgid "Best selling"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:28
+msgid "Trending"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:28
+msgid "On sale"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:28
+#: src/Modules/Integrations/Sections.php:48
+msgid "Featured"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:28
+msgid "Top rated"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:28
+msgid "Category"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:28
+msgid "Tag"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:28
+msgid "Selected products"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:28
+msgid "Random"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:29
+#: src/Modules/Integrations/Sections.php:54
+msgid "Categories"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:30
+msgid "Tags"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:31
+msgid "Product IDs (comma separated)"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:34
+msgid "Grid (slider on mobile)"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:34
+msgid "Dark band with big title"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:35
+msgid "Band title line 1"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:35
+msgid "BEST"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:36
+msgid "Band title line 2 (script)"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:36
+msgid "Sellers"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:37
+msgid "Only in stock"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:43
+msgid "Webgram Product Grid"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:43
+msgid "Our Products"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:44
+msgid "Webgram Product Slider"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:44
+msgid "New Arrivals"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:45
+msgid "Webgram Trending Products"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:45
+msgid "Trending Products"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:46
+msgid "Webgram Best Sellers"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:46
+msgid "Best Sellers"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:47
+msgid "Webgram Mega Saver Packs"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:47
+msgid "Mega Saver Packs"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:48
+msgid "Webgram Featured Products"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:50
+msgid "Webgram Categories"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:52
+msgid "Shop by Category"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:53
+msgid "Top level categories"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:53
+msgid "Selected categories"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:53
+msgid "All categories"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:55
+msgid "Number of items"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:57
+msgid "Shape"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:57
+msgid "Circle"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:57
+msgid "Square"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:57
+msgid "Rounded"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:58
+msgid "Ribbon over the image"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:58
+msgid "Below the image"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:59
+msgid "Hide empty categories"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:60
+msgid "Show product count"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:65
+msgid "Webgram Coupons Row"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:67
+msgid "Offers for You"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:68
+msgid "Coupon codes (comma separated, empty for all live coupons)"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:69
+msgid "Maximum coupons"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:75
+msgid "Webgram Trust Badges"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:78
+msgid "Badges"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:80
+msgid "Grayscale until hover"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:85
+msgid "Webgram Testimonials"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:87
+msgid "Trusted by Families"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:88
+#: src/Modules/Integrations/Testimonials.php:23
+msgid "Testimonials"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:89
+msgid "Specific testimonials (IDs, comma separated)"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:90
+msgid "Visible cards"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:91
+#: src/Modules/WooEnhancements/Location.php:184
+msgid "Style"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:91
+msgid "Dark band"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:91
+msgid "Light"
+msgstr ""
+
+#: src/Modules/Integrations/Sections.php:92
+msgid "Show stars"
+msgstr ""
+
+#: src/Modules/Integrations/Testimonials.php:23
+msgid "Testimonial"
+msgstr ""
+
+#: src/Modules/Integrations/Testimonials.php:23
+msgid "Add testimonial"
+msgstr ""
+
+#: src/Modules/Integrations/Testimonials.php:35
+msgid "Testimonial details"
+msgstr ""
+
+#: src/Modules/Integrations/Testimonials.php:43
+msgid "Label (age, city, role)"
+msgstr ""
+
+#: src/Modules/Integrations/Testimonials.php:43
+msgid "34, Mumbai"
+msgstr ""
+
+#: src/Modules/Integrations/Testimonials.php:49
+msgid "Product ID (optional)"
+msgstr ""
+
+#: src/Modules/Integrations/Testimonials.php:49
+msgid "Shows the product name as a link."
+msgstr ""
+
+#: src/Modules/Integrations/Testimonials.php:50
+msgid "Use the title for the reviewer name, the editor for the quote and the featured image for the photo."
+msgstr ""
+
+#: src/Modules/Invoice/Admin.php:25
+#: src/Modules/Invoice/Admin.php:32
+#: src/Modules/Invoice/Module.php:228
+msgid "Invoice"
+msgstr ""
+
+#: src/Modules/Invoice/Admin.php:45
+msgid "Download"
+msgstr ""
+
+#: src/Modules/Invoice/Admin.php:45
+msgid "Regenerate PDF"
+msgstr ""
+
+#: src/Modules/Invoice/Admin.php:47
+msgid "No invoice number yet."
+msgstr ""
+
+#: src/Modules/Invoice/Admin.php:47
+msgid "Generate invoice"
+msgstr ""
+
+#: src/Modules/Invoice/Admin.php:50
+msgid "dompdf is not installed (run composer install in the plugin folder); invoices open as printable HTML until then."
+msgstr ""
+
+#: src/Modules/Invoice/Admin.php:77
+msgid "Invoice generated."
+msgstr ""
+
+#: src/Modules/Invoice/Admin.php:77
+msgid "The invoice could not be generated. Check the WooCommerce logs (source webgram-core)."
+msgstr ""
+
+#: src/Modules/Invoice/Admin.php:81
+msgid "Download invoices (zip)"
+msgstr ""
+
+#: src/Modules/Invoice/Admin.php:121
+msgid "The download has expired. Run the bulk action again."
+msgstr ""
+
+#. translators: %s: payment method
+#: src/Modules/Invoice/InvoiceData.php:34
+#, php-format
+msgid "Payment pending via %s"
+msgstr ""
+
+#. translators: %s: payment method
+#: src/Modules/Invoice/InvoiceData.php:34
+msgid "Payment pending"
+msgstr ""
+
+#. translators: %s: payment method
+#: src/Modules/Invoice/InvoiceData.php:36
+#, php-format
+msgid "Paid via %s"
+msgstr ""
+
+#. translators: %s: payment method
+#: src/Modules/Invoice/InvoiceData.php:36
+msgid "Paid"
+msgstr ""
+
+#. translators: %s: transaction id
+#: src/Modules/Invoice/InvoiceData.php:37
+#, php-format
+msgid "Transaction ID: %s"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:24
+msgid "Invoices"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:28
+msgid "GST ready PDF invoices with configurable numbering, download from admin, My Account and emails."
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:76
+msgid "Store details"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:78
+msgid "Legal name"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:79
+msgid "Tagline"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:80
+msgid "Address"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:81
+#: src/Modules/WooEnhancements/BulkInquiry.php:134
+#: src/Modules/WooEnhancements/BulkInquiry.php:193
+#: templates/woo-enhancements/bulk-inquiry.php:39
+msgid "Phone"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:82
+#: src/Modules/Notifications/Channels/EmailChannel.php:23
+#: src/Modules/Notifications/Settings.php:24
+#: src/Modules/Reviews/Module.php:276
+#: src/Modules/WooEnhancements/BulkInquiry.php:135
+#: src/Modules/WooEnhancements/BulkInquiry.php:193
+#: templates/woo-enhancements/bulk-inquiry.php:40
+msgid "Email"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:83
+msgid "Website"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:84
+#: templates/invoice/invoice.php:163
+msgid "GSTIN"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:85
+msgid "PAN (optional)"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:86
+msgid "CIN (optional)"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:87
+msgid "Support line"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:87
+msgid "If you have any questions about this invoice, contact us at the email or phone above."
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:88
+msgid "Footer note"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:89
+msgid "Social handles (one per line)"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:90
+msgid "Numbering"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:91
+msgid "Format"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:91
+msgid "Placeholders: {prefix} {number} {suffix} {yyyy} {yy} {mm} {fy}. Example: WG-{fy}-{number} gives WG-2026-27-000123."
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:92
+msgid "Prefix"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:93
+msgid "Suffix"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:94
+msgid "Number padding (digits)"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:95
+msgid "Starting number"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:96
+msgid "Restart numbering every year"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:97
+msgid "Year type"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:97
+msgid "Financial year (April to March)"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:97
+msgid "Calendar year"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:98
+msgid "Assign number when"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:98
+msgid "Payment completes"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:98
+msgid "Order reaches Processing or Completed"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:98
+msgid "Manually only"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:100
+msgid "Product thumbnails"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:101
+msgid "SKU column"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:102
+msgid "HSN column (adds an HSN field to products)"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:103
+msgid "Shipping address block"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:104
+msgid "Zebra rows"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:107
+msgid "Disclaimer"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:107
+msgid "This is a computer generated invoice and does not require a signature."
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:235
+msgid "Download invoice"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:251
+msgid "HSN / SAC code"
+msgstr ""
+
+#: src/Modules/Invoice/Module.php:251
+msgid "Printed on invoices when the HSN column is on."
+msgstr ""
+
+#: src/Modules/Invoice/Rest/InvoiceController.php:51
+msgid "Order not found."
+msgstr ""
+
+#: src/Modules/Invoice/Rest/InvoiceController.php:56
+msgid "The invoice is not available for this order yet."
+msgstr ""
+
+#: src/Modules/Notifications/Admin/LogPage.php:30
+#: src/Modules/Notifications/Admin/LogPage.php:102
+msgid "Notifications log"
+msgstr ""
+
+#: src/Modules/Notifications/Admin/LogPage.php:55
+msgid "Notification queued again."
+msgstr ""
+
+#: src/Modules/Notifications/Admin/LogPage.php:67
+msgid "Notification queued."
+msgstr ""
+
+#. translators: 1: number, 2: quality
+#: src/Modules/Notifications/Admin/LogPage.php:77
+#, php-format
+msgid "Connected: %1$s (quality %2$s)"
+msgstr ""
+
+#. translators: %s: error
+#: src/Modules/Notifications/Admin/LogPage.php:77
+#, php-format
+msgid "WhatsApp connection failed: %s"
+msgstr ""
+
+#. translators: %d: count
+#: src/Modules/Notifications/Admin/LogPage.php:85
+#, php-format
+msgid "%d templates synced from Meta."
+msgstr ""
+
+#: src/Modules/Notifications/Admin/LogPage.php:105
+msgid "All statuses"
+msgstr ""
+
+#: src/Modules/Notifications/Admin/LogPage.php:106
+msgid "All channels"
+msgstr ""
+
+#: src/Modules/Notifications/Admin/LogPage.php:107
+#: templates/analytics/dashboard.php:63
+msgid "All events"
+msgstr ""
+
+#: src/Modules/Notifications/Admin/LogPage.php:108
+msgid "Order ID"
+msgstr ""
+
+#: src/Modules/Notifications/Admin/LogPage.php:109
+msgid "Filter"
+msgstr ""
+
+#. translators: %d: rows
+#: src/Modules/Notifications/Admin/LogPage.php:110
+#, php-format
+msgid "%d entry"
+msgid_plural "%d entries"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Modules/Notifications/Admin/LogPage.php:113
+msgid "Order"
+msgstr ""
+
+#: src/Modules/Notifications/Admin/LogPage.php:113
+msgid "Event"
+msgstr ""
+
+#: src/Modules/Notifications/Admin/LogPage.php:113
+msgid "Channel"
+msgstr ""
+
+#: src/Modules/Notifications/Admin/LogPage.php:113
+msgid "Recipient"
+msgstr ""
+
+#: src/Modules/Notifications/Admin/LogPage.php:113
+#: src/Modules/Notifications/Settings.php:32
+#: src/Modules/WooEnhancements/BulkInquiry.php:170
+#: src/Modules/WooEnhancements/BulkInquiry.php:198
+msgid "Status"
+msgstr ""
+
+#: src/Modules/Notifications/Admin/LogPage.php:113
+msgid "Attempts"
+msgstr ""
+
+#: src/Modules/Notifications/Admin/LogPage.php:113
+msgid "Error"
+msgstr ""
+
+#: src/Modules/Notifications/Admin/LogPage.php:116
+msgid "No notifications yet."
+msgstr ""
+
+#: src/Modules/Notifications/Admin/LogPage.php:129
+msgid "Resend"
+msgstr ""
+
+#: src/Modules/Notifications/Admin/LogPage.php:143
+msgid "Notifications"
+msgstr ""
+
+#: src/Modules/Notifications/Channels/SmsChannel.php:14
+msgid "SMS (coming later)"
+msgstr ""
+
+#: src/Modules/Notifications/Channels/WhatsAppBspChannel.php:14
+msgid "WhatsApp via BSP (coming later)"
+msgstr ""
+
+#: src/Modules/Notifications/Channels/WhatsAppCloudChannel.php:22
+msgid "WhatsApp (Meta Cloud API)"
+msgstr ""
+
+#: src/Modules/Notifications/Channels/WhatsAppCloudChannel.php:109
+msgid "Phone Number ID or access token missing."
+msgstr ""
+
+#: src/Modules/Notifications/Channels/WhatsAppCloudChannel.php:122
+msgid "WABA ID or credentials missing."
+msgstr ""
+
+#: src/Modules/Notifications/Events.php:17
+#: src/Modules/WooEnhancements/TrackOrder.php:69
+msgid "Order placed"
+msgstr ""
+
+#: src/Modules/Notifications/Events.php:18
+msgid "Payment successful"
+msgstr ""
+
+#: src/Modules/Notifications/Events.php:19
+msgid "Processing"
+msgstr ""
+
+#: src/Modules/Notifications/Events.php:20
+#: src/Modules/WooEnhancements/TrackOrder.php:72
+msgid "Shipped"
+msgstr ""
+
+#: src/Modules/Notifications/Events.php:21
+#: src/Modules/WooEnhancements/TrackOrder.php:73
+msgid "Out for delivery"
+msgstr ""
+
+#: src/Modules/Notifications/Events.php:22
+msgid "Delivered (completed)"
+msgstr ""
+
+#: src/Modules/Notifications/Events.php:23
+msgid "Cancelled"
+msgstr ""
+
+#: src/Modules/Notifications/Events.php:24
+msgid "Payment failed"
+msgstr ""
+
+#: src/Modules/Notifications/Events.php:25
+#: templates/invoice/invoice.php:155
+msgid "Refunded"
+msgstr ""
+
+#: src/Modules/Notifications/Events.php:62
+#: src/Modules/Notifications/Events.php:73
+msgctxt "Order status"
+msgid "Shipped"
+msgstr ""
+
+#: src/Modules/Notifications/Events.php:62
+#, php-format
+msgid "Shipped <span class=\"count\">(%s)</span>"
+msgid_plural "Shipped <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Modules/Notifications/Events.php:64
+#: src/Modules/Notifications/Events.php:75
+msgctxt "Order status"
+msgid "Out for delivery"
+msgstr ""
+
+#: src/Modules/Notifications/Events.php:64
+#, php-format
+msgid "Out for delivery <span class=\"count\">(%s)</span>"
+msgid_plural "Out for delivery <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Modules/Notifications/Events.php:83
+msgid "Change status to shipped"
+msgstr ""
+
+#: src/Modules/Notifications/Events.php:85
+msgid "Change status to out for delivery"
+msgstr ""
+
+#: src/Modules/Notifications/Module.php:34
+msgid "Order Notifications"
+msgstr ""
+
+#: src/Modules/Notifications/Module.php:38
+msgid "Email and WhatsApp order updates (placed, paid, shipped, out for delivery, delivered, cancelled, refunded) with consent, queue, retries and a delivery log."
+msgstr ""
+
+#: src/Modules/Notifications/OptIn.php:35
+#: src/Modules/Notifications/OptIn.php:80
+#: src/Modules/Notifications/Settings.php:60
+msgid "Send order updates on WhatsApp"
+msgstr ""
+
+#: src/Modules/Notifications/OptIn.php:93
+msgid "WhatsApp updates"
+msgstr ""
+
+#: src/Modules/Notifications/OptIn.php:93
+msgid "Consented"
+msgstr ""
+
+#: src/Modules/Notifications/OptIn.php:93
+msgid "Declined"
+msgstr ""
+
+#: src/Modules/Notifications/OptIn.php:93
+msgid "Not asked"
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:14
+msgid "Default country for phone numbers"
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:14
+msgid "Two letter code used when an order has no billing country."
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:15
+msgid "Add the \"Out for delivery\" order status"
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:16
+msgid "Keep the notification log for (days)"
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:17
+msgid "Channels"
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:18
+msgid "Email channel"
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:18
+msgid "WooCommerce keeps sending its own emails; the matrix below turns them on or off per event. Shipped and Out for delivery emails are sent by Webgram with the Emails module branding."
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:19
+msgid "WhatsApp channel (Meta Cloud API)"
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:20
+msgid "Events"
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:20
+msgid "Which events send on which channel. WhatsApp also needs customer consent and a mapped template."
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:31
+msgid "WhatsApp Cloud API"
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:31
+msgid "Uses your own Meta WhatsApp Business account. Webgram never relays or bills messages. Message charges, if any, are billed by Meta to your WhatsApp Business account according to Meta's pricing."
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:33
+msgid "Phone Number ID"
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:34
+msgid "WhatsApp Business Account ID"
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:35
+msgid "Access token"
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:35
+msgid "System user token with whatsapp_business_messaging permission. Stored encrypted."
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:37
+msgid "App secret (webhook signature)"
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:38
+msgid "Webhook verify token"
+msgstr ""
+
+#. translators: %s: url
+#: src/Modules/Notifications/Settings.php:38
+#, php-format
+msgid "Webhook URL to register in the Meta app: %s"
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:40
+msgid "Templates"
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:40
+msgid "Sync templates from Meta"
+msgstr ""
+
+#. translators: %d: count
+#: src/Modules/Notifications/Settings.php:40
+#, php-format
+msgid "%d templates synced. Recommended template texts: docs/whatsapp-templates.md in the plugin folder."
+msgstr ""
+
+#. translators: %d: count
+#: src/Modules/Notifications/Settings.php:41
+msgid "Default template language"
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:42
+msgid "WhatsApp template per event"
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:42
+msgid "Pick the approved Meta template and list the body parameters in order, for example {customer_name}, {order_number}, {order_total}. Variables: "
+msgstr ""
+
+#. translators: %s: event
+#: src/Modules/Notifications/Settings.php:46
+#, php-format
+msgid "%s: template"
+msgstr ""
+
+#. translators: %s: event
+#: src/Modules/Notifications/Settings.php:47
+#, php-format
+msgid "%s: parameters"
+msgstr ""
+
+#. translators: %s: event
+#: src/Modules/Notifications/Settings.php:48
+#, php-format
+msgid "%s: attach invoice PDF (document header)"
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:53
+msgid "Email texts for shipping events"
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:54
+msgid "Shipped: subject"
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:55
+msgid "Shipped: body"
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:56
+msgid "Out for delivery: subject"
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:57
+msgid "Out for delivery: body"
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:58
+msgid "Consent"
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:59
+msgid "Show the WhatsApp consent checkbox at checkout"
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:60
+msgid "Checkbox label"
+msgstr ""
+
+#: src/Modules/Notifications/Settings.php:61
+msgid "Checked by default"
+msgstr ""
+
+#: src/Modules/Notifications/Templates.php:91
+msgid "Not mapped (no WhatsApp message)"
+msgstr ""
+
+#: src/Modules/Notifications/Templates.php:104
+msgid "Your order {order_number} has shipped"
+msgstr ""
+
+#: src/Modules/Notifications/Templates.php:104
+msgid "Your order {order_number} is out for delivery"
+msgstr ""
+
+#: src/Modules/Notifications/Templates.php:108
+msgid ""
+"Hi {customer_name},\n"
+"\n"
+"Good news: your order {order_number} from {store_name} is on its way.\n"
+"Carrier: {carrier}\n"
+"Tracking: {tracking_number} {tracking_url}\n"
+"\n"
+"Thank you for shopping with us."
+msgstr ""
+
+#: src/Modules/Notifications/Templates.php:109
+msgid ""
+"Hi {customer_name},\n"
+"\n"
+"Your order {order_number} is out for delivery today. Please keep your phone reachable.\n"
+"\n"
+"Thank you for shopping with {store_name}."
+msgstr ""
+
+#: src/Modules/QuickView/Module.php:21
+msgid "Quick View"
+msgstr ""
+
+#: src/Modules/QuickView/Module.php:25
+msgid "Product quick view modal from product cards."
+msgstr ""
+
+#: src/Modules/QuickView/Module.php:69
+msgid "Show gallery thumbnails"
+msgstr ""
+
+#: src/Modules/QuickView/Module.php:70
+msgid "Show short description"
+msgstr ""
+
+#: src/Modules/QuickView/Module.php:71
+msgid "Show SKU and categories"
+msgstr ""
+
+#. translators: %s: product name
+#: src/Modules/QuickView/Module.php:84
+#, php-format
+msgid "Quick view %s"
+msgstr ""
+
+#. translators: %s: product name
+#: src/Modules/QuickView/Module.php:85
+#: templates/quick-view/shell.php:12
+msgid "Quick view"
+msgstr ""
+
+#: src/Modules/Reels/Module.php:22
+msgid "Product Reels"
+msgstr ""
+
+#: src/Modules/Reels/Module.php:26
+msgid "Vertical video reels linked to products, with a full screen viewer and add to cart."
+msgstr ""
+
+#: src/Modules/Reels/Module.php:58
+msgid "Autoplay muted in viewport"
+msgstr ""
+
+#: src/Modules/Reels/Module.php:59
+msgid "Show product mini card on reels"
+msgstr ""
+
+#: src/Modules/Reels/Module.php:60
+msgid "Mute toggle on cards"
+msgstr ""
+
+#: src/Modules/Reels/Module.php:61
+msgid "Reels per row (default)"
+msgstr ""
+
+#: src/Modules/Reels/Module.php:62
+msgid "Show related reels on product pages"
+msgstr ""
+
+#: src/Modules/Reels/Module.php:62
+msgid "Reels linked to the product, below the fold (Webgram theme section order)."
+msgstr ""
+
+#: src/Modules/Reels/Module.php:63
+msgid "Upload size limit for reel videos (MB)"
+msgstr ""
+
+#: src/Modules/Reels/Module.php:63
+msgid "0 uses the WordPress limit."
+msgstr ""
+
+#: src/Modules/Reels/Module.php:70
+msgid "Added to cart"
+msgstr ""
+
+#: src/Modules/Reels/Module.php:70
+msgid "Mute"
+msgstr ""
+
+#: src/Modules/Reels/Module.php:70
+#: templates/reels/row.php:28
+#: templates/reels/viewer.php:22
+msgid "Unmute"
+msgstr ""
+
+#: src/Modules/Reels/Module.php:70
+#: templates/quick-view/shell.php:15
+#: templates/reels/viewer.php:14
+#: templates/reels/viewer.php:27
+#: templates/reviews/block.php:62
+#: templates/site-tools/promo-popup.php:16
+#: templates/woo-enhancements/bulk-inquiry.php:21
+#: templates/woo-enhancements/location-modal.php:17
+msgid "Close"
+msgstr ""
+
+#: src/Modules/Reels/Module.php:70
+msgid "View product"
+msgstr ""
+
+#: src/Modules/Reels/Module.php:173
+msgid "See it in action"
+msgstr ""
+
+#: src/Modules/Reels/Module.php:184
+msgid "Webgram Reels"
+msgstr ""
+
+#: src/Modules/Reels/Module.php:187
+msgid "Products Reels"
+msgstr ""
+
+#: src/Modules/Reels/Module.php:189
+msgid "Reel category slugs (comma separated)"
+msgstr ""
+
+#: src/Modules/Reels/Module.php:190
+#: src/Modules/Reels/PostType.php:30
+#: templates/reels/viewer.php:12
+msgid "Reels"
+msgstr ""
+
+#: src/Modules/Reels/Module.php:191
+msgid "Visible on desktop"
+msgstr ""
+
+#: src/Modules/Reels/Module.php:192
+msgid "Row (slider)"
+msgstr ""
+
+#: src/Modules/Reels/Module.php:193
+msgid "Show product mini card"
+msgstr ""
+
+#: src/Modules/Reels/PostType.php:30
+#: src/Modules/Reels/PostType.php:61
+msgid "Reel"
+msgstr ""
+
+#: src/Modules/Reels/PostType.php:30
+msgid "Add reel"
+msgstr ""
+
+#: src/Modules/Reels/PostType.php:40
+msgid "Reel categories"
+msgstr ""
+
+#: src/Modules/Reels/PostType.php:40
+msgid "Reel category"
+msgstr ""
+
+#: src/Modules/Reels/PostType.php:105
+msgid "Poster"
+msgstr ""
+
+#: src/Modules/Reels/PostType.php:130
+msgid "Upload"
+msgstr ""
+
+#: src/Modules/Reels/PostType.php:130
+msgid "External"
+msgstr ""
+
+#: src/Modules/Reviews/AdminColumn.php:15
+msgid "Review extras"
+msgstr ""
+
+#: src/Modules/Reviews/AdminColumn.php:30
+msgid "Recommends"
+msgstr ""
+
+#: src/Modules/Reviews/AdminColumn.php:30
+msgid "Does not recommend"
+msgstr ""
+
+#. translators: %d: votes
+#: src/Modules/Reviews/AdminColumn.php:33
+#, php-format
+msgid "%d helpful vote"
+msgid_plural "%d helpful votes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Modules/Reviews/Media.php:23
+msgid "One of the files could not be uploaded."
+msgstr ""
+
+#. translators: %s: size in MB
+#: src/Modules/Reviews/Media.php:26
+#, php-format
+msgid "Each file must be smaller than %s MB."
+msgstr ""
+
+#: src/Modules/Reviews/Media.php:36
+msgid "Only JPG, PNG, WEBP images and MP4 videos are allowed."
+msgstr ""
+
+#. translators: %d: maximum files
+#. translators: %d: files
+#: src/Modules/Reviews/Media.php:64
+#: templates/reviews/form-fields.php:38
+#, php-format
+msgid "You can attach up to %d files."
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:25
+msgid "Advanced Reviews"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:29
+msgid "Rating summary, photo and video reviews, sorting, filtering, helpful votes and load more, built on WooCommerce reviews."
+msgstr ""
+
+#. translators: %s: plugin name
+#: src/Modules/Reviews/Module.php:55
+#, php-format
+msgid "Webgram Reviews is standing down because %s is active. Turn off \"Stand down when a review plugin is active\" in Webgram > Settings > Reviews to use both."
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:113
+msgid "Use Webgram review form"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:113
+msgid "Adds title, star input, photo and video upload, recommendation and consent to the review form."
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:114
+msgid "Reviews per page"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:115
+msgid "Default sort"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:115
+#: src/Modules/Reviews/Module.php:309
+msgid "Most helpful"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:115
+msgid "Highest rating"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:115
+msgid "With photos first"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:116
+msgid "Show rating summary with bars"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:117
+msgid "Show star filter chips"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:118
+msgid "Show sort dropdown"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:119
+msgid "Show \"Was this helpful?\" votes"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:120
+msgid "Guests can vote helpful"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:121
+msgid "Ask \"Would you recommend this product?\""
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:122
+msgid "Show review photos and videos"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:123
+msgid "Maximum files per review"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:123
+msgid "0 disables uploads."
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:124
+msgid "Maximum file size (MB)"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:125
+msgid "Allow MP4 video"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:126
+msgid "Require publication consent checkbox"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:127
+msgid "Reviews per hour per visitor"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:128
+msgid "Stand down when a review plugin is active"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:128
+msgid "Judge.me, YITH Advanced Reviews or Customer Reviews for WooCommerce."
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:166
+msgid "Webgram Reviews"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:166
+#: src/Modules/WooEnhancements/BulkInquiry.php:136
+#: src/Modules/WooEnhancements/BulkInquiry.php:193
+#: templates/invoice/invoice.php:115
+#: templates/wishlist/table.php:42
+#: templates/wishlist/table.php:52
+#: templates/woo-enhancements/bulk-inquiry.php:29
+#: templates/woo-enhancements/bulk-inquiry.php:34
+msgid "Product"
+msgstr ""
+
+#. translators: %s: human time
+#: src/Modules/Reviews/Module.php:190
+#, php-format
+msgid "%s ago"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:205
+msgid "Voting is disabled."
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:208
+msgid "Please log in to vote."
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:212
+msgid "Review not found."
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:215
+msgid "Too many votes. Please try again later."
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:220
+msgid "You already voted."
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:227
+msgid "Thanks for your feedback."
+msgstr ""
+
+#. translators: 1: first index, 2: last index, 3: total
+#: src/Modules/Reviews/Module.php:245
+#, php-format
+msgid "Showing %1$d-%2$d of %3$d reviews"
+msgstr ""
+
+#. translators: 1: first index, 2: last index, 3: total
+#: src/Modules/Reviews/Module.php:245
+msgid "No reviews yet"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:264
+msgid "Add a review"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:264
+msgid "Be the first to review"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:265
+#, php-format
+msgid "Leave a reply to %s"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:269
+msgid "Submit review"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:275
+#: src/Modules/WooEnhancements/BulkInquiry.php:132
+#: src/Modules/WooEnhancements/BulkInquiry.php:193
+msgid "Name"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:285
+#: templates/reviews/form-fields.php:16
+msgid "Your rating"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:286
+msgid "Rate"
+msgstr ""
+
+#. translators: %d: stars
+#: src/Modules/Reviews/Module.php:288
+#: templates/reviews/form-fields.php:23
+#, php-format
+msgid "%d star"
+msgid_plural "%d stars"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Modules/Reviews/Module.php:292
+#: templates/reviews/form-fields.php:34
+msgid "Your review"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:309
+msgid "Oldest"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:309
+msgid "Highest"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:309
+msgid "Lowest"
+msgstr ""
+
+#: src/Modules/Reviews/Module.php:309
+msgid "With photos"
+msgstr ""
+
+#: src/Modules/Reviews/Submission.php:65
+msgid "You have submitted several reviews recently. Please try again in an hour."
+msgstr ""
+
+#: src/Modules/Reviews/Submission.php:69
+msgid "The review title is too long (120 characters maximum)."
+msgstr ""
+
+#: src/Modules/Reviews/Submission.php:72
+msgid "Please confirm that your review can be published."
+msgstr ""
+
+#: src/Modules/Reviews/Submission.php:83
+msgid "Review not submitted"
+msgstr ""
+
+#: src/Modules/SiteTools/AgeVerify.php:31
+#: src/Modules/SiteTools/Settings.php:70
+msgid "Yes, I am"
+msgstr ""
+
+#: src/Modules/SiteTools/AgeVerify.php:32
+#: src/Modules/SiteTools/Settings.php:71
+msgid "No, leave"
+msgstr ""
+
+#: src/Modules/SiteTools/Blocks.php:35
+#: src/Modules/SiteTools/Blocks.php:39
+#: src/Modules/SiteTools/Settings.php:189
+msgid "HTML Blocks"
+msgstr ""
+
+#: src/Modules/SiteTools/Blocks.php:36
+#: src/Modules/SiteTools/Settings.php:43
+msgid "HTML Block"
+msgstr ""
+
+#: src/Modules/SiteTools/Blocks.php:37
+msgid "Add HTML Block"
+msgstr ""
+
+#: src/Modules/SiteTools/Blocks.php:38
+msgid "Edit HTML Block"
+msgstr ""
+
+#: src/Modules/SiteTools/Blocks.php:104
+#: src/Modules/Slider/PostType.php:103
+msgid "Shortcode"
+msgstr ""
+
+#: src/Modules/SiteTools/CookieNotice.php:29
+#: src/Modules/SiteTools/Settings.php:89
+msgid "Accept"
+msgstr ""
+
+#: src/Modules/SiteTools/CookieNotice.php:30
+#: src/Modules/SiteTools/Settings.php:91
+msgid "Reject"
+msgstr ""
+
+#: src/Modules/SiteTools/CookieNotice.php:32
+#: src/Modules/SiteTools/Settings.php:93
+msgid "Learn more"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/Conditions.php:18
+msgid "Entire site"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/Conditions.php:19
+msgid "Front page"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/Conditions.php:20
+msgid "Shop page"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/Conditions.php:21
+msgid "Products (ids)"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/Conditions.php:22
+msgid "Product categories (ids or slugs)"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/Conditions.php:23
+msgid "Product tags (ids or slugs)"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/Conditions.php:24
+msgid "Brands (ids or slugs)"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/Conditions.php:25
+msgid "Pages (ids)"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/Conditions.php:26
+msgid "Posts (ids)"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/Conditions.php:27
+msgid "Post types (slugs)"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/Conditions.php:28
+msgid "Blog views"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/Conditions.php:29
+msgid "Search results"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/Conditions.php:30
+#: src/Modules/SiteTools/Layouts/PostType.php:42
+msgid "404 page"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:36
+msgid "Shop archive"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:37
+msgid "Single product"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:38
+#: src/Modules/SiteTools/Settings.php:29
+msgid "Cart"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:39
+#: src/Modules/SiteTools/Settings.php:29
+msgid "Checkout"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:40
+msgid "Thank you"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:41
+#: src/Modules/SiteTools/Settings.php:29
+msgid "My account"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:43
+msgid "Blog archive"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:44
+msgid "Single post"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:45
+msgid "Header"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:46
+msgid "Footer"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:56
+#: src/Modules/SiteTools/Layouts/PostType.php:60
+#: src/Modules/SiteTools/Settings.php:175
+msgid "Layouts"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:58
+msgid "Add Layout"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:59
+msgid "Edit Layout"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:78
+msgid "Layout settings"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:79
+msgid "Display conditions"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:89
+#: src/Modules/SiteTools/Layouts/PostType.php:161
+msgid "Replaces"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:95
+msgid "Priority"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:97
+msgid "Higher wins when several layouts match."
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:98
+#: src/Modules/SiteTools/Settings.php:51
+msgid "Devices"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:99
+#: src/Modules/SiteTools/Settings.php:28
+msgid "Desktop"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:99
+#: src/Modules/SiteTools/Settings.php:28
+msgid "Tablet"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:99
+#: src/Modules/SiteTools/Settings.php:28
+msgid "Mobile"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:102
+msgid "Visitors"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:104
+msgid "Everyone"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:105
+msgid "Logged in only"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:106
+msgid "Guests only"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:116
+msgid "The layout applies when at least one \"Include\" rule matches and no \"Exclude\" rule matches. Values are comma separated ids or slugs; leave empty for \"all\"."
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:118
+msgid "Rule"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:118
+msgid "Target"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:118
+msgid "Values"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:124
+msgid "Include"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:125
+msgid "Exclude"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:128
+msgid "Unused"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:162
+msgid "Conditions"
+msgstr ""
+
+#: src/Modules/SiteTools/Layouts/PostType.php:180
+msgid "Not assigned"
+msgstr ""
+
+#: src/Modules/SiteTools/Maintenance.php:107
+msgid "Maintenance mode is ON"
+msgstr ""
+
+#: src/Modules/SiteTools/Maintenance.php:107
+msgid "Coming soon mode is ON"
+msgstr ""
+
+#: src/Modules/SiteTools/Module.php:23
+msgid "Site Tools"
+msgstr ""
+
+#: src/Modules/SiteTools/Module.php:27
+msgid "Layouts, HTML Blocks, promo popup, age verification, cookie notice, maintenance mode, white label and custom JS."
+msgstr ""
+
+#: src/Modules/SiteTools/Module.php:74
+msgid "Site Tools settings"
+msgstr ""
+
+#: src/Modules/SiteTools/Module.php:74
+msgid "Promo popup, age verification, cookie notice, maintenance, white label and custom JS are configured in the Webgram Theme Settings panel."
+msgstr ""
+
+#: src/Modules/SiteTools/Portfolio.php:30
+msgid "Portfolio categories"
+msgstr ""
+
+#: src/Modules/SiteTools/Portfolio.php:30
+msgid "Portfolio category"
+msgstr ""
+
+#: src/Modules/SiteTools/Portfolio.php:40
+#: src/Modules/SiteTools/Settings.php:217
+msgid "Portfolio"
+msgstr ""
+
+#: src/Modules/SiteTools/Portfolio.php:40
+msgid "Portfolio item"
+msgstr ""
+
+#: src/Modules/SiteTools/Portfolio.php:40
+msgid "Add portfolio item"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:29
+msgid "Homepage"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:29
+msgid "Shop and categories"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:29
+msgid "Product pages"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:29
+msgid "Blog"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:29
+#: src/Modules/SiteTools/Settings.php:52
+msgid "Pages"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:29
+msgid "Everything else"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:36
+msgid "Promo popup"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:42
+msgid "Enable promo popup"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:43
+msgid "Manage HTML Blocks"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:44
+msgid "Or simple content"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:44
+msgid "Used when no HTML Block is selected. Basic HTML allowed."
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:45
+msgid "Side image"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:46
+msgid "Width"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:47
+msgid "Trigger"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:47
+msgid "After a delay"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:47
+msgid "After scrolling"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:47
+msgid "Exit intent (desktop)"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:48
+msgid "Delay"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:49
+msgid "Scroll depth"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:50
+msgid "Show again"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:50
+msgid "Once per session"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:50
+msgid "Once per day"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:50
+msgid "Once per week"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:50
+msgid "Every page load"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:59
+msgid "Age verify popup"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:65
+msgid "Enable age verification"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:66
+msgid "Are you over 18?"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:67
+#: src/Modules/SiteTools/Settings.php:88
+#: src/Modules/SiteTools/Settings.php:112
+msgid "Text"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:67
+msgid "You must be of legal age to enter this website."
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:68
+msgid "Minimum age"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:69
+msgid "Input"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:69
+msgid "Yes / No buttons"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:69
+#: templates/site-tools/age-verify.php:23
+msgid "Date of birth"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:70
+msgid "Confirm label"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:71
+msgid "Decline label"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:72
+msgid "Redirect on decline"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:73
+msgid "Remember for"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:73
+#: src/Modules/SiteTools/Settings.php:95
+msgid "days"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:74
+#: src/Modules/SiteTools/Settings.php:114
+msgid "Background image"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:81
+msgid "Cookie law info"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:87
+msgid "Show cookie notice"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:88
+msgid "We use cookies to improve your experience and analyze traffic. By continuing you agree to our cookie policy."
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:89
+msgid "Accept button"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:90
+msgid "Show reject button (GDPR)"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:91
+msgid "Reject button"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:92
+msgid "Policy page"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:93
+msgid "Policy link label"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:94
+msgid "Position"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:94
+msgid "Bottom bar"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:94
+msgid "Bottom left card"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:94
+msgid "Bottom right card"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:94
+msgid "Top bar"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:95
+msgid "Remember choice for"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:102
+msgid "Maintenance"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:108
+msgid "Mode"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:108
+msgid "Off"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:108
+msgid "Coming soon (200)"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:108
+msgid "Maintenance (503)"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:109
+msgid "Show this page"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:109
+msgid "A page built with Elementor or Gutenberg. Leave empty to use the block or the simple content below."
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:110
+msgid "Or HTML Block"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:111
+msgid "We are launching soon"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:112
+msgid "Our store is getting a fresh look. Please check back shortly."
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:113
+msgid "Countdown to (date and time)"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:113
+msgid "Site timezone. Leave empty to hide the countdown."
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:115
+msgid "Roles that can still browse"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:115
+msgid "Administrators always bypass."
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:122
+msgid "White label"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:127
+msgid "Renames the Webgram panel for your clients. Attribution in code and licensing is not affected."
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:129
+msgid "Panel name"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:130
+msgid "Panel logo"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:131
+msgid "Hide from clients"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:131
+msgid "System status page"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:131
+msgid "Import / Export page"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:131
+msgid "Modules page"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:138
+msgid "API integrations"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:143
+msgid "Location and maps"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:145
+msgid "Reverse geocoding (\"Use my current location\")"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:145
+msgid "None (button hidden)"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:145
+msgid "OpenStreetMap Nominatim (free, attribution required)"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:146
+msgid "Contact email for Nominatim"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:146
+msgid "Nominatim usage policy asks for a contact address and allows at most one request per second. Not for heavy traffic."
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:147
+msgid "Google Maps API key (optional, future use)"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:151
+msgid "Module credentials"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:153
+msgid "Instagram, WhatsApp, AI providers"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:153
+msgid "Open Core Settings"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:153
+msgid "Each module keeps its own credentials on the Core Settings screen. Secrets are stored encrypted."
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:160
+msgid "Custom JS"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:165
+msgid "Only users with the unfiltered_html capability can save scripts. Printed with wp_add_inline_script."
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:167
+msgid "Header scripts"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:168
+msgid "Footer scripts"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:180
+msgid "A Layout is an Elementor or Gutenberg template that replaces a theme template (shop, product, cart, checkout, thank you, account, 404, blog, header, footer) when its conditions match."
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:182
+msgid "Manage layouts"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:182
+msgid "Open Layouts"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:194
+msgid "Reusable content blocks for the header builder, footer, mega menu, product page positions, popups and empty states. Shortcode: [webgram_block id=\"\"]."
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:196
+msgid "Manage blocks"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:196
+msgid "Open HTML Blocks"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:203
+#: src/Modules/SiteTools/Settings.php:223
+msgid "Help page"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:208
+#: src/Modules/SiteTools/Settings.php:228
+msgid "Shown by the theme \"Help\" page template as an accordion, with contact cards from the Contact seller settings."
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:210
+#: src/Modules/SiteTools/Settings.php:230
+msgid "FAQ entries"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:210
+#: src/Modules/SiteTools/Settings.php:230
+msgid "One entry per block separated by a blank line: first line is the question, the following lines are the answer."
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:237
+msgid "Enable portfolio post type"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:237
+msgid "Adds a Portfolio post type with categories. Save permalinks after enabling."
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:238
+msgid "URL slug"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:239
+msgid "Items per page"
+msgstr ""
+
+#: src/Modules/Slider/Module.php:25
+msgid "Responsive hero slider with per-device images, overlays, CTAs and animations."
+msgstr ""
+
+#: src/Modules/Slider/Module.php:78
+msgid "Webgram Slider"
+msgstr ""
+
+#: src/Modules/Slider/PostType.php:29
+#: src/Modules/Slider/PostType.php:33
+msgid "Sliders"
+msgstr ""
+
+#: src/Modules/Slider/PostType.php:31
+msgid "Add slider"
+msgstr ""
+
+#: src/Modules/Slider/PostType.php:32
+msgid "Edit slider"
+msgstr ""
+
+#: src/Modules/Slider/PostType.php:55
+#: src/Modules/Slider/PostType.php:102
+msgid "Slides"
+msgstr ""
+
+#: src/Modules/Slider/PostType.php:56
+msgid "Slider settings"
+msgstr ""
+
+#: src/Modules/Slider/PostType.php:57
+msgid "Use this slider"
+msgstr ""
+
+#: src/Modules/Slider/PostType.php:81
+msgid "Shortcode:"
+msgstr ""
+
+#: src/Modules/Slider/PostType.php:81
+msgid "Also available as the \"Webgram Slider\" Elementor widget and Gutenberg block."
+msgstr ""
+
+#: src/Modules/VoiceSearch/Engines/ServerSttEngine.php:19
+msgid "Server transcription (coming later)"
+msgstr ""
+
+#: src/Modules/VoiceSearch/Engines/WebSpeechEngine.php:16
+msgid "Browser speech recognition (Web Speech API)"
+msgstr ""
+
+#: src/Modules/VoiceSearch/Module.php:21
+msgid "Voice Search"
+msgstr ""
+
+#: src/Modules/VoiceSearch/Module.php:25
+msgid "Microphone button in the search bar and assistant, using the browser speech recognition."
+msgstr ""
+
+#: src/Modules/VoiceSearch/Module.php:58
+msgid "Engine"
+msgstr ""
+
+#: src/Modules/VoiceSearch/Module.php:59
+msgid "Language"
+msgstr ""
+
+#: src/Modules/VoiceSearch/Module.php:60
+msgid "Search automatically when speech ends"
+msgstr ""
+
+#: src/Modules/VoiceSearch/Module.php:61
+msgid "Show in the header search"
+msgstr ""
+
+#: src/Modules/VoiceSearch/Module.php:62
+msgid "Show in the AI assistant"
+msgstr ""
+
+#: src/Modules/VoiceSearch/Module.php:95
+#: src/Modules/VoiceSearch/Module.php:113
+#: src/Modules/VoiceSearch/Module.php:114
+msgid "Search by voice"
+msgstr ""
+
+#: src/Modules/VoiceSearch/Module.php:95
+msgid "Listening"
+msgstr ""
+
+#: src/Modules/VoiceSearch/Module.php:95
+msgid "Stop listening"
+msgstr ""
+
+#: src/Modules/VoiceSearch/Module.php:95
+msgid "Microphone access was denied."
+msgstr ""
+
+#: src/Modules/VoiceSearch/Module.php:95
+msgid "Could not hear you. Please try again."
+msgstr ""
+
+#: src/Modules/Wishlist/Module.php:30
+#: src/Modules/Wishlist/Module.php:99
+#: src/Modules/Wishlist/Module.php:153
+#: src/Modules/Wishlist/Module.php:158
+#: src/Modules/Wishlist/Module.php:172
+#: templates/wishlist/button.php:18
+msgid "Wishlist"
+msgstr ""
+
+#: src/Modules/Wishlist/Module.php:34
+msgid "Save products for later, guest support with merge on login, share link."
+msgstr ""
+
+#: src/Modules/Wishlist/Module.php:89
+msgid "Wishlist page"
+msgstr ""
+
+#: src/Modules/Wishlist/Module.php:89
+msgid "Page containing the [webgram_wishlist] shortcode."
+msgstr ""
+
+#: src/Modules/Wishlist/Module.php:91
+msgid "Next to Add to cart"
+msgstr ""
+
+#: src/Modules/Wishlist/Module.php:91
+msgid "Gallery corner (Webgram theme)"
+msgstr ""
+
+#: src/Modules/Wishlist/Module.php:92
+msgid "Share link on the wishlist page"
+msgstr ""
+
+#: src/Modules/Wishlist/Module.php:93
+msgid "Share link validity (days)"
+msgstr ""
+
+#: src/Modules/Wishlist/Module.php:94
+msgid "Require login to save items"
+msgstr ""
+
+#: src/Modules/Wishlist/Module.php:94
+msgid "Off: guests keep a signed cookie list that merges into their account on login."
+msgstr ""
+
+#: src/Modules/Wishlist/Module.php:104
+msgid "Webgram Wishlist"
+msgstr ""
+
+#: src/Modules/Wishlist/Module.php:115
+#: src/Modules/Wishlist/Module.php:146
+msgid "Added to wishlist"
+msgstr ""
+
+#: src/Modules/Wishlist/Module.php:116
+#: src/Modules/Wishlist/Module.php:146
+msgid "Removed from wishlist"
+msgstr ""
+
+#: src/Modules/Wishlist/Module.php:117
+#: src/Modules/Wishlist/Module.php:146
+msgid "Your wishlist is full."
+msgstr ""
+
+#: src/Modules/Wishlist/Module.php:118
+#: src/Modules/Wishlist/Module.php:129
+msgid "Please log in to save items."
+msgstr ""
+
+#: src/Modules/Wishlist/Module.php:119
+#: templates/wishlist/button.php:12
+msgid "Add to wishlist"
+msgstr ""
+
+#: src/Modules/Wishlist/Module.php:120
+#: templates/wishlist/button.php:12
+#: templates/wishlist/table.php:62
+msgid "Remove from wishlist"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Admin/PincodesPage.php:25
+#: src/Modules/WooEnhancements/Admin/PincodesPage.php:39
+msgid "Pincodes"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Admin/PincodesPage.php:41
+#, php-format
+msgid "%1$d pincodes imported or updated, %2$d rows skipped as invalid."
+msgstr ""
+
+#: src/Modules/WooEnhancements/Admin/PincodesPage.php:43
+msgid "The file could not be read. Upload a UTF-8 CSV under 8 MB."
+msgstr ""
+
+#: src/Modules/WooEnhancements/Admin/PincodesPage.php:45
+msgid "Pincode table cleared."
+msgstr ""
+
+#: src/Modules/WooEnhancements/Admin/PincodesPage.php:48
+#, php-format
+msgid "Rows in the offline table: %d."
+msgstr ""
+
+#: src/Modules/WooEnhancements/Admin/PincodesPage.php:48
+#, php-format
+msgid "Delivery data mode: %s."
+msgstr ""
+
+#: src/Modules/WooEnhancements/Admin/PincodesPage.php:50
+msgid "Import CSV"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Admin/PincodesPage.php:51
+msgid "Columns: pincode, city, state, deliverable (1/0), cod (1/0), eta_days. A header row is optional. Existing pincodes are updated."
+msgstr ""
+
+#: src/Modules/WooEnhancements/Admin/PincodesPage.php:51
+msgid "Download sample"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Admin/PincodesPage.php:56
+msgid "Import"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Admin/PincodesPage.php:59
+msgid "Clear table"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Admin/PincodesPage.php:60
+msgid "Delete every imported pincode? This cannot be undone."
+msgstr ""
+
+#: src/Modules/WooEnhancements/Admin/PincodesPage.php:63
+msgid "Clear all pincodes"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Admin/ProductPanel.php:43
+msgid "Theme default"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Admin/ProductPanel.php:54
+msgid "Card chips attribute"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Admin/ProductPanel.php:54
+msgid "Attribute shown as chips under the price on product cards."
+msgstr ""
+
+#: src/Modules/WooEnhancements/Admin/ProductPanel.php:55
+msgid "Product video URL"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Admin/ProductPanel.php:55
+msgid "MP4, YouTube or Vimeo. Shown as a gallery slide."
+msgstr ""
+
+#: src/Modules/WooEnhancements/Admin/ProductPanel.php:59
+msgid "Extra rows merged with WooCommerce attributes."
+msgstr ""
+
+#: src/Modules/WooEnhancements/Admin/ProductPanel.php:65
+msgid "Value"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Admin/ProductPanel.php:71
+msgid "Add row"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Admin/ProductPanel.php:75
+msgid "Contact phone (override)"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Admin/ProductPanel.php:76
+msgid "WhatsApp number (override)"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Admin/ProductPanel.php:77
+msgid "Chat URL (override)"
+msgstr ""
+
+#: src/Modules/WooEnhancements/BulkInquiry.php:54
+msgid "Bulk inquiries"
+msgstr ""
+
+#: src/Modules/WooEnhancements/BulkInquiry.php:54
+#: src/Modules/WooEnhancements/BulkInquiry.php:170
+msgid "Inquiry"
+msgstr ""
+
+#: src/Modules/WooEnhancements/BulkInquiry.php:54
+msgid "Inquiries"
+msgstr ""
+
+#: src/Modules/WooEnhancements/BulkInquiry.php:73
+msgid "Submission rejected."
+msgstr ""
+
+#: src/Modules/WooEnhancements/BulkInquiry.php:76
+msgid "Please enter your name."
+msgstr ""
+
+#: src/Modules/WooEnhancements/BulkInquiry.php:80
+msgid "Please enter a valid phone number with country code."
+msgstr ""
+
+#: src/Modules/WooEnhancements/BulkInquiry.php:83
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: src/Modules/WooEnhancements/BulkInquiry.php:86
+msgid "Please enter the quantity you need."
+msgstr ""
+
+#: src/Modules/WooEnhancements/BulkInquiry.php:97
+msgid "Too many requests. Please try again later."
+msgstr ""
+
+#: src/Modules/WooEnhancements/BulkInquiry.php:122
+msgid "Could not save your request. Please try again."
+msgstr ""
+
+#: src/Modules/WooEnhancements/BulkInquiry.php:126
+#: src/Modules/WooEnhancements/Module.php:98
+msgid "Thank you. Our team will contact you shortly with a quote."
+msgstr ""
+
+#: src/Modules/WooEnhancements/BulkInquiry.php:133
+#: src/Modules/WooEnhancements/BulkInquiry.php:193
+msgid "Company"
+msgstr ""
+
+#: src/Modules/WooEnhancements/BulkInquiry.php:137
+#: src/Modules/WooEnhancements/BulkInquiry.php:170
+#: src/Modules/WooEnhancements/BulkInquiry.php:193
+#: templates/invoice/invoice.php:119
+#: templates/woo-enhancements/bulk-inquiry.php:41
+msgid "Quantity"
+msgstr ""
+
+#. translators: %s: site name
+#: src/Modules/WooEnhancements/BulkInquiry.php:143
+#, php-format
+msgid "[%s] New bulk inquiry"
+msgstr ""
+
+#: src/Modules/WooEnhancements/BulkInquiry.php:184
+msgid "Contacted"
+msgstr ""
+
+#: src/Modules/WooEnhancements/BulkInquiry.php:184
+msgid "Quoted"
+msgstr ""
+
+#: src/Modules/WooEnhancements/BulkInquiry.php:184
+msgid "Won"
+msgstr ""
+
+#: src/Modules/WooEnhancements/BulkInquiry.php:184
+msgid "Lost"
+msgstr ""
+
+#: src/Modules/WooEnhancements/BulkInquiry.php:188
+msgid "Inquiry details"
+msgstr ""
+
+#: src/Modules/WooEnhancements/BuyNow.php:35
+#: src/Modules/WooEnhancements/Module.php:79
+#: src/Modules/WooEnhancements/Module.php:81
+msgid "Buy now"
+msgstr ""
+
+#: src/Modules/WooEnhancements/CartRecommendations.php:62
+msgid "You may also like"
+msgstr ""
+
+#: src/Modules/WooEnhancements/CartRecommendations.php:72
+msgid "Call us"
+msgstr ""
+
+#: src/Modules/WooEnhancements/CartRecommendations.php:75
+msgid "Chat on WhatsApp"
+msgstr ""
+
+#: src/Modules/WooEnhancements/CartRecommendations.php:75
+msgid "Hi, I need help with my order"
+msgstr ""
+
+#: src/Modules/WooEnhancements/CartRecommendations.php:78
+msgid "Email support"
+msgstr ""
+
+#: src/Modules/WooEnhancements/ContactSeller.php:36
+#: src/Modules/WooEnhancements/Module.php:93
+msgid "Call us at"
+msgstr ""
+
+#: src/Modules/WooEnhancements/ContactSeller.php:37
+#: src/Modules/WooEnhancements/Module.php:94
+msgid "Buy on Chat"
+msgstr ""
+
+#: src/Modules/WooEnhancements/ContactSeller.php:38
+#: src/Modules/WooEnhancements/Module.php:95
+msgid "Ask for Bulk Qty Quote"
+msgstr ""
+
+#. translators: 1: product name, 2: product URL
+#: src/Modules/WooEnhancements/ContactSeller.php:62
+#, php-format
+msgid "Hi, I am interested in %1$s (%2$s)"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Location.php:41
+#: src/Modules/WooEnhancements/Location.php:61
+#: src/Modules/WooEnhancements/PincodeChecker.php:30
+msgid "Too many requests. Please wait a moment."
+msgstr ""
+
+#: src/Modules/WooEnhancements/Location.php:66
+msgid "Invalid coordinates."
+msgstr ""
+
+#: src/Modules/WooEnhancements/Location.php:70
+msgid "We could not detect your area. Please enter your pincode."
+msgstr ""
+
+#: src/Modules/WooEnhancements/Location.php:169
+#: src/Modules/WooEnhancements/Location.php:205
+#: src/Modules/WooEnhancements/Module.php:75
+msgid "Select location"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Location.php:178
+msgid "Deliver to (location)"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Location.php:183
+msgid "Small label"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Location.php:183
+#: src/Modules/WooEnhancements/Location.php:203
+#: src/Modules/WooEnhancements/Location.php:234
+#: src/Modules/WooEnhancements/Module.php:74
+msgid "Deliver to"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Location.php:184
+msgid "Pill"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Location.php:184
+msgid "Plain"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:19
+msgid "WooCommerce Enhancements"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:23
+msgid "Pincode delivery check and location picker, Buy Now, recently viewed, specifications table, bulk inquiry, contact seller and track order."
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:68
+msgid "Pincode and location"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:68
+msgid "Header \"Deliver to\" picker and product page delivery check."
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:69
+msgid "Delivery data"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:69
+msgid "All pincodes deliverable"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:69
+msgid "Imported pincode list"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:69
+msgid "Import a CSV of pincodes"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:70
+msgid "Default delivery time (days)"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:71
+msgid "Cash on delivery available by default"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:72
+msgid "Treat pincodes missing from the list as deliverable"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:73
+msgid "Show \"Deliver to\" pill in the header"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:73
+msgid "Themes with a header builder place the element themselves."
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:74
+msgid "Pill label"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:75
+msgid "Pill value when empty"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:76
+msgid "Show \"Check delivery details\" on product pages"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:77
+msgid "Delivery check title"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:77
+#: src/Modules/WooEnhancements/PincodeChecker.php:52
+msgid "Check Delivery Details"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:78
+msgid "Current location button"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:78
+msgid "The reverse geocoding adapter is chosen under API integrations (Site Tools)."
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:80
+msgid "Buy now button"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:82
+msgid "Empty the cart before Buy now"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:84
+msgid "Attributes plus custom rows"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:84
+msgid "Attributes only"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:84
+msgid "Custom rows only"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:85
+msgid "Contact seller cards"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:86
+msgid "Phone number"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:87
+msgid "WhatsApp number"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:87
+msgid "With country code. Opens a wa.me chat with the product name prefilled."
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:88
+msgid "Chat URL (if not WhatsApp)"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:89
+msgid "Support email (help page)"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:90
+msgid "Show call card"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:91
+msgid "Show chat card"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:92
+msgid "Show bulk quote card"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:93
+msgid "Call card text"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:94
+msgid "Chat card text"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:95
+msgid "Bulk card text"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:96
+msgid "Bulk inquiry"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:96
+msgid "Shortcode [webgram_bulk_inquiry] for the Bulk Order page."
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:97
+msgid "Notify email"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:97
+msgid "Defaults to the admin email."
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:98
+msgid "Success message"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:99
+msgid "Benefits list (one per line)"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:99
+msgid ""
+"Wholesale pricing on large quantities\n"
+"Dedicated account manager\n"
+"GST invoice and doorstep delivery\n"
+"Custom packaging on request"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:100
+#: templates/woo-enhancements/track-order.php:17
+msgid "Track order"
+msgstr ""
+
+#: src/Modules/WooEnhancements/Module.php:100
+msgid "Shortcode [webgram_track_order]. Customers enter the order number and the email or phone used at checkout."
+msgstr ""
+
+#: src/Modules/WooEnhancements/PincodeChecker.php:78
+msgid "Pincode"
+msgstr ""
+
+#: src/Modules/WooEnhancements/PincodeChecker.php:79
+msgid "ZIP code"
+msgstr ""
+
+#: src/Modules/WooEnhancements/PincodeChecker.php:80
+msgid "Postal code"
+msgstr ""
+
+#. translators: %s: field label (Pincode, ZIP code)
+#: src/Modules/WooEnhancements/PincodeChecker.php:114
+#, php-format
+msgid "Please enter a valid %s."
+msgstr ""
+
+#. translators: %s: date
+#: src/Modules/WooEnhancements/PincodeChecker.php:145
+#, php-format
+msgid "Delivery by %s"
+msgstr ""
+
+#: src/Modules/WooEnhancements/PincodeChecker.php:146
+msgid "Available for delivery"
+msgstr ""
+
+#: src/Modules/WooEnhancements/PincodeChecker.php:148
+msgid "COD available"
+msgstr ""
+
+#. translators: %s: field label
+#: src/Modules/WooEnhancements/PincodeChecker.php:152
+#, php-format
+msgid "Not deliverable to this %s"
+msgstr ""
+
+#: src/Modules/WooEnhancements/RecentlyViewed.php:58
+msgid "Recently viewed"
+msgstr ""
+
+#: src/Modules/WooEnhancements/TrackOrder.php:70
+msgid "Confirmed"
+msgstr ""
+
+#: src/Modules/WooEnhancements/TrackOrder.php:71
+msgid "Packed"
+msgstr ""
+
+#: src/Modules/WooEnhancements/TrackOrder.php:74
+msgid "Delivered"
+msgstr ""
+
+#: src/Modules/WooEnhancements/TrackOrder.php:96
+msgid "Too many attempts. Please try again in an hour."
+msgstr ""
+
+#: src/Modules/WooEnhancements/TrackOrder.php:109
+msgid "We could not find an order with those details. Check the order number and the email or phone used at checkout."
+msgstr ""
+
+#: src/Support/Assets.php:77
+msgid "Loading"
+msgstr ""
+
+#. translators: %s: assistant name
+#: templates/ai-assistant/launcher.php:12
+#, php-format
+msgid "Chat with %s"
+msgstr ""
+
+#. translators: %s: assistant name
+#: templates/ai-assistant/launcher.php:12
+msgid "our assistant"
+msgstr ""
+
+#: templates/ai-assistant/window.php:27
+msgid "Mute notification sound"
+msgstr ""
+
+#: templates/ai-assistant/window.php:39
+msgid "Your message"
+msgstr ""
+
+#: templates/analytics/dashboard.php:15
+msgid "Webgram Analytics"
+msgstr ""
+
+#. translators: %d: percent
+#: templates/analytics/dashboard.php:16
+#, php-format
+msgid "First party events stored on this site. Sampling: %d%% of visitors. No IP addresses are stored."
+msgstr ""
+
+#: templates/analytics/dashboard.php:18
+msgid "The events table does not exist yet. Deactivate and activate Webgram Core, or enable the Analytics module again, to create it."
+msgstr ""
+
+#: templates/analytics/dashboard.php:21
+msgid "Last 7 days"
+msgstr ""
+
+#: templates/analytics/dashboard.php:22
+msgid "Last 30 days"
+msgstr ""
+
+#: templates/analytics/dashboard.php:46
+msgid "No data yet."
+msgstr ""
+
+#: templates/analytics/dashboard.php:71
+msgid "No events in this period."
+msgstr ""
+
+#. translators: %s: product name
+#: templates/compare/bar.php:17
+#, php-format
+msgid "Remove %s from compare"
+msgstr ""
+
+#. translators: 1: selected count, 2: maximum
+#: templates/compare/bar.php:21
+#, php-format
+msgid "%1$d of %2$d selected"
+msgstr ""
+
+#: templates/compare/button.php:18
+msgid "Comparing"
+msgstr ""
+
+#: templates/compare/table.php:16
+msgid "Nothing to compare yet"
+msgstr ""
+
+#. translators: %d: maximum products
+#: templates/compare/table.php:17
+#, php-format
+msgid "Add up to %d products from the shop to compare them side by side."
+msgstr ""
+
+#. translators: %d: maximum products
+#: templates/compare/table.php:18
+msgid "Browse products"
+msgstr ""
+
+#: templates/compare/table.php:24
+msgid "Highlight differences"
+msgstr ""
+
+#: templates/compare/table.php:31
+msgid "Feature"
+msgstr ""
+
+#: templates/compare/table.php:51
+#: templates/wishlist/table.php:45
+msgid "Actions"
+msgstr ""
+
+#: templates/coupons/box.php:16
+msgid "Use code"
+msgstr ""
+
+#: templates/coupons/box.php:18
+#: templates/sections/coupons.php:26
+msgid "Code copied"
+msgstr ""
+
+#: templates/instagram/feed.php:29
+msgid "View on Instagram"
+msgstr ""
+
+#: templates/invoice/invoice.php:87
+msgid "INVOICE"
+msgstr ""
+
+#: templates/invoice/invoice.php:90
+#: templates/invoice/invoice.php:106
+msgid "Order Date"
+msgstr ""
+
+#: templates/invoice/invoice.php:91
+msgid "Payment Date"
+msgstr ""
+
+#: templates/invoice/invoice.php:92
+msgid "Order Status"
+msgstr ""
+
+#: templates/invoice/invoice.php:101
+msgid "Billing Address"
+msgstr ""
+
+#: templates/invoice/invoice.php:102
+msgid "Shipping Address"
+msgstr ""
+
+#: templates/invoice/invoice.php:102
+msgid "Same as billing"
+msgstr ""
+
+#: templates/invoice/invoice.php:103
+msgid "Order Information"
+msgstr ""
+
+#: templates/invoice/invoice.php:104
+msgid "Invoice Number"
+msgstr ""
+
+#: templates/invoice/invoice.php:105
+msgid "Order Number"
+msgstr ""
+
+#: templates/invoice/invoice.php:107
+msgid "Payment Method"
+msgstr ""
+
+#: templates/invoice/invoice.php:108
+msgid "Shipping Method"
+msgstr ""
+
+#: templates/invoice/invoice.php:117
+msgid "HSN"
+msgstr ""
+
+#: templates/invoice/invoice.php:120
+msgid "Total"
+msgstr ""
+
+#. translators: %s: amount
+#: templates/invoice/invoice.php:130
+#, php-format
+msgid "Discount: %s"
+msgstr ""
+
+#: templates/invoice/invoice.php:145
+msgid "Payment Information"
+msgstr ""
+
+#: templates/invoice/invoice.php:146
+msgid "Notes"
+msgstr ""
+
+#: templates/invoice/invoice.php:150
+msgid "Subtotal"
+msgstr ""
+
+#: templates/invoice/invoice.php:151
+msgid "Discount"
+msgstr ""
+
+#: templates/invoice/invoice.php:152
+msgid "Free"
+msgstr ""
+
+#: templates/invoice/invoice.php:153
+msgid "Fees"
+msgstr ""
+
+#: templates/invoice/invoice.php:156
+msgid "Grand Total"
+msgstr ""
+
+#: templates/invoice/invoice.php:163
+msgid "PAN"
+msgstr ""
+
+#: templates/invoice/invoice.php:163
+msgid "CIN"
+msgstr ""
+
+#: templates/invoice/invoice.php:164
+msgid "Need Help?"
+msgstr ""
+
+#: templates/invoice/invoice.php:165
+msgid "Stay connected"
+msgstr ""
+
+#. translators: %s: date time
+#: templates/invoice/invoice.php:171
+#, php-format
+msgid "Invoice generated on %s"
+msgstr ""
+
+#: templates/quick-view/modal.php:42
+msgid "View full details"
+msgstr ""
+
+#: templates/reels/admin.php:16
+msgid "Uploaded video (MP4, 9:16)"
+msgstr ""
+
+#: templates/reels/admin.php:17
+msgid "External URL"
+msgstr ""
+
+#: templates/reels/admin.php:22
+msgid "Choose video"
+msgstr ""
+
+#: templates/reels/admin.php:26
+msgid "External video URL"
+msgstr ""
+
+#. translators: %s: list
+#: templates/reels/admin.php:28
+#, php-format
+msgid "Supported: %s"
+msgstr ""
+
+#: templates/reels/admin.php:30
+msgid "Poster image (required, 9:16)"
+msgstr ""
+
+#: templates/reels/admin.php:34
+msgid "Choose poster"
+msgstr ""
+
+#: templates/reels/admin.php:37
+msgid "Products (up to 5)"
+msgstr ""
+
+#: templates/reels/admin.php:43
+msgid "Hold Ctrl or Cmd to select several. The first product shows on the card; all of them appear in the viewer sheet."
+msgstr ""
+
+#: templates/reels/admin.php:44
+msgid "CTA text"
+msgstr ""
+
+#: templates/reels/admin.php:45
+msgid "CTA link"
+msgstr ""
+
+#. translators: %s: reel title
+#: templates/reels/row.php:20
+#, php-format
+msgid "Play reel: %s"
+msgstr ""
+
+#. translators: %s: product
+#: templates/reels/row.php:42
+#: templates/woo-enhancements/cart-recommendations.php:29
+#, php-format
+msgid "Add %s to cart"
+msgstr ""
+
+#: templates/reels/viewer.php:15
+msgid "Previous reel"
+msgstr ""
+
+#: templates/reels/viewer.php:16
+msgid "Next reel"
+msgstr ""
+
+#: templates/reels/viewer.php:23
+msgid "Products in this reel"
+msgstr ""
+
+#: templates/reels/viewer.php:27
+msgid "Shop this reel"
+msgstr ""
+
+#: templates/reviews/block.php:19
+#: templates/reviews/summary.php:32
+msgid "Write a review"
+msgstr ""
+
+#: templates/reviews/block.php:26
+msgid "Customer Reviews"
+msgstr ""
+
+#: templates/reviews/block.php:31
+msgid "Sort by:"
+msgstr ""
+
+#: templates/reviews/block.php:42
+msgid "Filter reviews"
+msgstr ""
+
+#: templates/reviews/block.php:43
+msgid "All"
+msgstr ""
+
+#: templates/reviews/block.php:49
+msgid "With media"
+msgstr ""
+
+#: templates/reviews/block.php:56
+msgid "Load more reviews"
+msgstr ""
+
+#: templates/reviews/block.php:56
+msgid "View All Reviews"
+msgstr ""
+
+#: templates/reviews/block.php:59
+msgid "Review media"
+msgstr ""
+
+#: templates/reviews/block.php:64
+#: templates/woo-enhancements/cart-recommendations.php:16
+msgid "Previous"
+msgstr ""
+
+#: templates/reviews/block.php:65
+#: templates/woo-enhancements/cart-recommendations.php:17
+msgid "Next"
+msgstr ""
+
+#: templates/reviews/form-fields.php:30
+msgid "Review title"
+msgstr ""
+
+#: templates/reviews/form-fields.php:31
+msgid "Sum it up in a few words"
+msgstr ""
+
+#: templates/reviews/form-fields.php:35
+msgid "What did you like or dislike? How did you use it?"
+msgstr ""
+
+#. translators: %d: MB
+#: templates/reviews/form-fields.php:38
+#, php-format
+msgid "Each file must be smaller than %d MB."
+msgstr ""
+
+#: templates/reviews/form-fields.php:42
+msgid "Add photos or a video"
+msgstr ""
+
+#: templates/reviews/form-fields.php:42
+msgid "Add photos"
+msgstr ""
+
+#. translators: 1: files, 2: MB
+#: templates/reviews/form-fields.php:43
+#, php-format
+msgid "Up to %1$d files, %2$d MB each"
+msgstr ""
+
+#: templates/reviews/form-fields.php:51
+msgid "Would you recommend this product?"
+msgstr ""
+
+#: templates/reviews/form-fields.php:52
+msgid "Yes"
+msgstr ""
+
+#: templates/reviews/form-fields.php:53
+msgid "No"
+msgstr ""
+
+#: templates/reviews/form-fields.php:58
+msgid "I confirm this review is my own experience and may be published."
+msgstr ""
+
+#: templates/reviews/form.php:17
+msgid "Only logged in customers who have purchased this product may leave a review."
+msgstr ""
+
+#: templates/reviews/item-extras.php:17
+msgid "Recommends this product"
+msgstr ""
+
+#: templates/reviews/item-extras.php:17
+msgid "Does not recommend this product"
+msgstr ""
+
+#: templates/reviews/item-extras.php:23
+msgid "Play review video"
+msgstr ""
+
+#: templates/reviews/item-extras.php:23
+msgid "Open review photo"
+msgstr ""
+
+#: templates/reviews/item-extras.php:36
+msgid "Was this helpful?"
+msgstr ""
+
+#: templates/reviews/item-extras.php:37
+msgid "Mark as helpful"
+msgstr ""
+
+#: templates/reviews/item.php:21
+msgid "Verified Buyer"
+msgstr ""
+
+#: templates/reviews/list.php:14
+msgid "No reviews match this filter yet."
+msgstr ""
+
+#. translators: %s: rating
+#: templates/reviews/stars.php:15
+#, php-format
+msgid "Rated %s out of 5"
+msgstr ""
+
+#: templates/reviews/summary.php:18
+msgid "out of 5"
+msgstr ""
+
+#. translators: %s: count
+#: templates/reviews/summary.php:19
+#, php-format
+msgid "(%s Review)"
+msgid_plural "(%s Reviews)"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: stars, 2: count
+#: templates/reviews/summary.php:23
+#, php-format
+msgid "Show %1$d star reviews (%2$d)"
+msgstr ""
+
+#. translators: %d: stars
+#: templates/reviews/summary.php:24
+#, php-format
+msgid "%d Star"
+msgstr ""
+
+#. translators: %d: products
+#: templates/sections/categories.php:29
+#, php-format
+msgid "%d product"
+msgid_plural "%d products"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: amount
+#: templates/sections/coupons.php:20
+#, php-format
+msgid "On orders above %s"
+msgstr ""
+
+#. translators: %s: date
+#: templates/sections/coupons.php:23
+#, php-format
+msgid "Valid till %s"
+msgstr ""
+
+#. translators: %s: code
+#: templates/sections/coupons.php:26
+#, php-format
+msgid "Copy code %s"
+msgstr ""
+
+#: templates/sections/coupons.php:28
+msgid "Copy"
+msgstr ""
+
+#. translators: %d: stars
+#: templates/sections/testimonials.php:31
+#, php-format
+msgid "%d out of 5 stars"
+msgstr ""
+
+#. translators: %d: minimum age
+#: templates/site-tools/age-verify.php:26
+#, php-format
+msgid "You must be at least %d years old."
+msgstr ""
+
+#: templates/site-tools/cookie-notice.php:12
+msgid "Cookie notice"
+msgstr ""
+
+#: templates/site-tools/maintenance.php:34
+msgid "Days"
+msgstr ""
+
+#: templates/site-tools/maintenance.php:34
+msgid "Minutes"
+msgstr ""
+
+#: templates/site-tools/maintenance.php:34
+msgid "Seconds"
+msgstr ""
+
+#: templates/site-tools/promo-popup.php:13
+msgid "Special offer"
+msgstr ""
+
+#: templates/slider/admin-settings.php:15
+msgid "Autoplay"
+msgstr ""
+
+#: templates/slider/admin-settings.php:16
+msgid "Delay (ms)"
+msgstr ""
+
+#: templates/slider/admin-settings.php:17
+msgid "Pause on hover"
+msgstr ""
+
+#: templates/slider/admin-settings.php:18
+msgid "Loop"
+msgstr ""
+
+#: templates/slider/admin-settings.php:19
+msgid "Arrows (shown on hover)"
+msgstr ""
+
+#: templates/slider/admin-settings.php:20
+msgid "Dots"
+msgstr ""
+
+#: templates/slider/admin-settings.php:21
+msgid "Lazy load slides after the first"
+msgstr ""
+
+#: templates/slider/admin-settings.php:22
+msgid "Full screen width"
+msgstr ""
+
+#: templates/slider/admin-settings.php:23
+msgid "Effect"
+msgstr ""
+
+#: templates/slider/admin-settings.php:25
+#: templates/slider/admin-slides.php:66
+msgid "Fade"
+msgstr ""
+
+#: templates/slider/admin-settings.php:26
+#: templates/slider/admin-slides.php:41
+msgid "Slide"
+msgstr ""
+
+#: templates/slider/admin-settings.php:28
+msgid "Height"
+msgstr ""
+
+#: templates/slider/admin-settings.php:30
+msgid "Aspect ratio"
+msgstr ""
+
+#: templates/slider/admin-settings.php:31
+msgid "Fixed pixels"
+msgstr ""
+
+#: templates/slider/admin-settings.php:32
+msgid "Full viewport"
+msgstr ""
+
+#: templates/slider/admin-settings.php:34
+msgid "Ratio desktop (W:H)"
+msgstr ""
+
+#: templates/slider/admin-settings.php:35
+msgid "Ratio mobile (W:H)"
+msgstr ""
+
+#: templates/slider/admin-settings.php:36
+msgid "Fixed height (px)"
+msgstr ""
+
+#: templates/slider/admin-slides.php:24
+msgid "Choose"
+msgstr ""
+
+#: templates/slider/admin-slides.php:43
+msgid "Move up"
+msgstr ""
+
+#: templates/slider/admin-slides.php:44
+msgid "Move down"
+msgstr ""
+
+#: templates/slider/admin-slides.php:45
+msgid "Collapse"
+msgstr ""
+
+#: templates/slider/admin-slides.php:46
+msgid "Remove slide"
+msgstr ""
+
+#: templates/slider/admin-slides.php:51
+msgid "Desktop image"
+msgstr ""
+
+#: templates/slider/admin-slides.php:52
+msgid "Tablet image (optional)"
+msgstr ""
+
+#: templates/slider/admin-slides.php:53
+msgid "Mobile image (optional)"
+msgstr ""
+
+#: templates/slider/admin-slides.php:56
+msgid "Small text above heading"
+msgstr ""
+
+#: templates/slider/admin-slides.php:57
+msgid "Heading"
+msgstr ""
+
+#: templates/slider/admin-slides.php:59
+msgid "Button text"
+msgstr ""
+
+#: templates/slider/admin-slides.php:60
+msgid "Button link"
+msgstr ""
+
+#: templates/slider/admin-slides.php:61
+msgid "Second button text"
+msgstr ""
+
+#: templates/slider/admin-slides.php:62
+msgid "Second button link"
+msgstr ""
+
+#: templates/slider/admin-slides.php:63
+msgid "Benefit icons row (one per line: icon|Text, up to 4)"
+msgstr ""
+
+#: templates/slider/admin-slides.php:64
+msgid "Text align"
+msgstr ""
+
+#: templates/slider/admin-slides.php:64
+msgid "Center"
+msgstr ""
+
+#: templates/slider/admin-slides.php:64
+msgid "Right"
+msgstr ""
+
+#: templates/slider/admin-slides.php:65
+msgid "Vertical position"
+msgstr ""
+
+#: templates/slider/admin-slides.php:65
+msgid "Top"
+msgstr ""
+
+#: templates/slider/admin-slides.php:65
+msgid "Middle"
+msgstr ""
+
+#: templates/slider/admin-slides.php:65
+msgid "Bottom"
+msgstr ""
+
+#: templates/slider/admin-slides.php:66
+msgid "Content animation"
+msgstr ""
+
+#: templates/slider/admin-slides.php:66
+msgid "Slide up"
+msgstr ""
+
+#: templates/slider/admin-slides.php:66
+msgid "Zoom"
+msgstr ""
+
+#: templates/slider/admin-slides.php:67
+msgid "Overlay color and opacity"
+msgstr ""
+
+#: templates/slider/admin-slides.php:82
+msgid "Add slide"
+msgstr ""
+
+#. translators: 1: index, 2: total
+#: templates/slider/slider.php:24
+#, php-format
+msgid "Slide %1$d of %2$d"
+msgstr ""
+
+#: templates/slider/slider.php:86
+msgid "Previous slide"
+msgstr ""
+
+#: templates/slider/slider.php:87
+msgid "Next slide"
+msgstr ""
+
+#: templates/wishlist/button.php:18
+msgid "Saved"
+msgstr ""
+
+#: templates/wishlist/table.php:14
+msgid "This shared wishlist link is invalid or has expired."
+msgstr ""
+
+#: templates/wishlist/table.php:16
+msgid "You are viewing a shared wishlist."
+msgstr ""
+
+#: templates/wishlist/table.php:22
+msgid "Your wishlist is empty"
+msgstr ""
+
+#: templates/wishlist/table.php:23
+msgid "Tap the heart on any product to save it here."
+msgstr ""
+
+#: templates/wishlist/table.php:24
+msgid "Continue shopping"
+msgstr ""
+
+#. translators: %d: number of items
+#: templates/wishlist/table.php:29
+#, php-format
+msgid "%d item"
+msgid_plural "%d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/wishlist/table.php:32
+msgid "Link copied"
+msgstr ""
+
+#: templates/wishlist/table.php:34
+msgid "Share wishlist"
+msgstr ""
+
+#: templates/wishlist/table.php:44
+#: templates/wishlist/table.php:54
+msgid "Stock"
+msgstr ""
+
+#: templates/woo-enhancements/bulk-inquiry.php:20
+msgid "Ask for a bulk quote"
+msgstr ""
+
+#: templates/woo-enhancements/bulk-inquiry.php:30
+msgid "Start typing a product name"
+msgstr ""
+
+#: templates/woo-enhancements/bulk-inquiry.php:37
+msgid "Your name"
+msgstr ""
+
+#: templates/woo-enhancements/bulk-inquiry.php:38
+msgid "Company (optional)"
+msgstr ""
+
+#: templates/woo-enhancements/bulk-inquiry.php:46
+msgid "Request quote"
+msgstr ""
+
+#. translators: %s: product
+#: templates/woo-enhancements/cart-recommendations.php:29
+msgid "ADD"
+msgstr ""
+
+#: templates/woo-enhancements/contact-cards.php:31
+msgid "Buying in bulk?"
+msgstr ""
+
+#: templates/woo-enhancements/location-modal.php:16
+msgid "Select delivery location"
+msgstr ""
+
+#. translators: %s: Pincode or Postal code
+#: templates/woo-enhancements/location-modal.php:20
+#, php-format
+msgid "Enter your %s"
+msgstr ""
+
+#: templates/woo-enhancements/location-modal.php:23
+msgid "Apply"
+msgstr ""
+
+#: templates/woo-enhancements/location-modal.php:29
+msgid "or"
+msgstr ""
+
+#: templates/woo-enhancements/location-modal.php:32
+msgid "Use my current location"
+msgstr ""
+
+#. translators: %s: field label
+#: templates/woo-enhancements/pincode-checker.php:18
+#, php-format
+msgid "Enter %s"
+msgstr ""
+
+#. translators: %s: field label
+#: templates/woo-enhancements/pincode-checker.php:19
+msgid "Check"
+msgstr ""
+
+#: templates/woo-enhancements/track-order.php:14
+msgid "Order number"
+msgstr ""
+
+#: templates/woo-enhancements/track-order.php:15
+msgid "Email or phone used at checkout"
+msgstr ""
+
+#: webgram-core.php:30
+msgid "Webgram Core requires PHP 8.1 or newer. The plugin has not been loaded."
+msgstr ""
+
+#: assets/blocks/editor.js:30
+msgid "Change image"
+msgstr ""
+
+#: assets/blocks/editor.js:36
+msgid "Comma separated slugs"
+msgstr ""
+
+#: assets/blocks/editor.js:54
+msgid "Add item"
+msgstr ""
+
+#: assets/blocks/editor.js:71
+msgid "Options"
+msgstr ""
+
+#: assets/blocks/editor.js:71
+msgid "No options for this block."
+msgstr ""
+
+#: assets/blocks/editor.js:72
+msgid "Nothing to show yet. Check the block options or the module settings."
+msgstr ""

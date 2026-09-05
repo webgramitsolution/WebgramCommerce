@@ -262,7 +262,7 @@ final class Module extends BaseModule {
 		$commenter = wp_get_current_commenter();
 		$args      = [
 			'title_reply'          => $product->get_review_count() ? __( 'Add a review', 'webgram-core' ) : __( 'Be the first to review', 'webgram-core' ),
-			'title_reply_to'       => __( 'Leave a reply to %s', 'webgram-core' ),
+			'title_reply_to'       => /* translators: %s: placeholder value. */ __( 'Leave a reply to %s', 'webgram-core' ),
 			'title_reply_before'   => '<span id="reply-title" class="comment-reply-title ' . esc_attr( Helpers::css_class( 'review-form__title' ) ) . '">',
 			'title_reply_after'    => '</span>',
 			'comment_notes_after'  => '',

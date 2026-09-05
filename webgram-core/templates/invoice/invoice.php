@@ -72,15 +72,33 @@ td, th { vertical-align: top; }
 	<table class="head">
 		<tr>
 			<td style="width:34%" class="brand">
-				<?php if ( $d['store']['logo'] ) : ?><img src="<?php echo esc_url( $d['store']['logo'] ); ?>" alt=""><br><?php endif; ?>
+				<?php
+				if ( $d['store']['logo'] ) :
+?>
+<img src="<?php echo esc_url( $d['store']['logo'] ); ?>" alt=""><br><?php endif; ?>
 				<div class="name"><?php echo esc_html( $d['store']['name'] ); ?></div>
-				<?php if ( $d['store']['tagline'] ) : ?><div class="tag"><?php echo esc_html( $d['store']['tagline'] ); ?></div><?php endif; ?>
+				<?php
+				if ( $d['store']['tagline'] ) :
+?>
+<div class="tag"><?php echo esc_html( $d['store']['tagline'] ); ?></div><?php endif; ?>
 			</td>
 			<td style="width:33%" class="contact">
-				<?php if ( $d['store']['address'] ) : ?><div><?php echo $icon( '<path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo nl2br( esc_html( $d['store']['address'] ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div><?php endif; ?>
-				<?php if ( $d['store']['phone'] ) : ?><div><?php echo $icon( '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2z"/>' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo esc_html( $d['store']['phone'] ); ?></div><?php endif; ?>
-				<?php if ( $d['store']['email'] ) : ?><div><?php echo $icon( '<path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/>' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo esc_html( $d['store']['email'] ); ?></div><?php endif; ?>
-				<?php if ( $d['store']['website'] ) : ?><div><?php echo $icon( '<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/>' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo esc_html( preg_replace( '#^https?://#', '', $d['store']['website'] ) ); ?></div><?php endif; ?>
+				<?php
+				if ( $d['store']['address'] ) :
+?>
+<div><?php echo $icon( '<path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo nl2br( esc_html( $d['store']['address'] ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div><?php endif; ?>
+				<?php
+				if ( $d['store']['phone'] ) :
+?>
+<div><?php echo $icon( '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2z"/>' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo esc_html( $d['store']['phone'] ); ?></div><?php endif; ?>
+				<?php
+				if ( $d['store']['email'] ) :
+?>
+<div><?php echo $icon( '<path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/>' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo esc_html( $d['store']['email'] ); ?></div><?php endif; ?>
+				<?php
+				if ( $d['store']['website'] ) :
+?>
+<div><?php echo $icon( '<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/>' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo esc_html( preg_replace( '#^https?://#', '', $d['store']['website'] ) ); ?></div><?php endif; ?>
 			</td>
 			<td style="width:33%">
 				<div class="box">
@@ -113,8 +131,14 @@ td, th { vertical-align: top; }
 			<tr>
 				<th style="width:5%">#</th>
 				<th><?php esc_html_e( 'Product', 'webgram-core' ); ?></th>
-				<?php if ( $d['show']['sku'] ) : ?><th style="width:11%"><?php esc_html_e( 'SKU', 'webgram-core' ); ?></th><?php endif; ?>
-				<?php if ( $d['show']['hsn'] ) : ?><th style="width:9%"><?php esc_html_e( 'HSN', 'webgram-core' ); ?></th><?php endif; ?>
+				<?php
+				if ( $d['show']['sku'] ) :
+?>
+<th style="width:11%"><?php esc_html_e( 'SKU', 'webgram-core' ); ?></th><?php endif; ?>
+				<?php
+				if ( $d['show']['hsn'] ) :
+?>
+<th style="width:9%"><?php esc_html_e( 'HSN', 'webgram-core' ); ?></th><?php endif; ?>
 				<th class="num" style="width:13%"><?php esc_html_e( 'Price', 'webgram-core' ); ?></th>
 				<th class="center" style="width:8%"><?php esc_html_e( 'Quantity', 'webgram-core' ); ?></th>
 				<th class="num" style="width:14%"><?php esc_html_e( 'Total', 'webgram-core' ); ?></th>
@@ -126,12 +150,29 @@ td, th { vertical-align: top; }
 					<td><?php echo (int) ( $i + 1 ); ?></td>
 					<td>
 						<table><tr>
-							<?php if ( $item['image'] ) : ?><td style="width:46pt"><img src="<?php echo esc_url( $item['image'] ); ?>" alt=""></td><?php endif; ?>
-							<td><div class="pname"><?php echo esc_html( $item['name'] ); ?></div><?php if ( $item['variation'] ) : ?><div class="pvar"><?php echo esc_html( $item['variation'] ); ?></div><?php endif; ?><?php if ( $item['discount'] > 0 ) : ?><div class="pvar"><?php echo esc_html( sprintf( /* translators: %s: amount */ __( 'Discount: %s', 'webgram-core' ), $money( $item['discount'] ) ) ); ?></div><?php endif; ?></td>
+							<?php
+							if ( $item['image'] ) :
+?>
+<td style="width:46pt"><img src="<?php echo esc_url( $item['image'] ); ?>" alt=""></td><?php endif; ?>
+							<td><div class="pname"><?php echo esc_html( $item['name'] ); ?></div>
+							<?php
+							if ( $item['variation'] ) :
+?>
+<div class="pvar"><?php echo esc_html( $item['variation'] ); ?></div><?php endif; ?>
+<?php
+if ( $item['discount'] > 0 ) :
+?>
+<div class="pvar"><?php echo esc_html( sprintf( /* translators: %s: amount */ __( 'Discount: %s', 'webgram-core' ), $money( $item['discount'] ) ) ); ?></div><?php endif; ?></td>
 						</tr></table>
 					</td>
-					<?php if ( $d['show']['sku'] ) : ?><td><?php echo esc_html( $item['sku'] ?: '-' ); ?></td><?php endif; ?>
-					<?php if ( $d['show']['hsn'] ) : ?><td><?php echo esc_html( $item['hsn'] ?: '-' ); ?></td><?php endif; ?>
+					<?php
+					if ( $d['show']['sku'] ) :
+?>
+<td><?php echo esc_html( $item['sku'] ?: '-' ); ?></td><?php endif; ?>
+					<?php
+					if ( $d['show']['hsn'] ) :
+?>
+<td><?php echo esc_html( $item['hsn'] ?: '-' ); ?></td><?php endif; ?>
 					<td class="num"><?php echo esc_html( $money( $item['unit_price'] ) ); ?></td>
 					<td class="center"><?php echo (int) $item['qty']; ?></td>
 					<td class="num"><?php echo esc_html( $money( $item['total'] ) ); ?></td>
@@ -148,11 +189,23 @@ td, th { vertical-align: top; }
 			<td>
 				<table class="totals">
 					<tr><td><?php esc_html_e( 'Subtotal', 'webgram-core' ); ?></td><td class="num"><?php echo esc_html( $money( $d['totals']['subtotal'] ) ); ?></td></tr>
-					<?php if ( $d['totals']['discount'] > 0 ) : ?><tr><td><?php esc_html_e( 'Discount', 'webgram-core' ); ?><?php echo $d['totals']['coupon'] ? ' (' . esc_html( $d['totals']['coupon'] ) . ')' : ''; ?></td><td class="num neg">-<?php echo esc_html( $money( $d['totals']['discount'] ) ); ?></td></tr><?php endif; ?>
+					<?php
+					if ( $d['totals']['discount'] > 0 ) :
+?>
+<tr><td><?php esc_html_e( 'Discount', 'webgram-core' ); ?><?php echo $d['totals']['coupon'] ? ' (' . esc_html( $d['totals']['coupon'] ) . ')' : ''; ?></td><td class="num neg">-<?php echo esc_html( $money( $d['totals']['discount'] ) ); ?></td></tr><?php endif; ?>
 					<tr><td><?php esc_html_e( 'Shipping', 'webgram-core' ); ?></td><td class="num"><?php echo esc_html( $d['totals']['shipping'] > 0 ? $money( $d['totals']['shipping'] ) : __( 'Free', 'webgram-core' ) ); ?></td></tr>
-					<?php if ( $d['totals']['fees'] > 0 ) : ?><tr><td><?php esc_html_e( 'Fees', 'webgram-core' ); ?></td><td class="num"><?php echo esc_html( $money( $d['totals']['fees'] ) ); ?></td></tr><?php endif; ?>
-					<?php foreach ( $d['totals']['taxes'] as $tax ) : ?><tr><td><?php echo esc_html( $tax['label'] ); ?><?php echo $tax['rate'] > 0 ? ' (' . esc_html( rtrim( rtrim( number_format( $tax['rate'], 2, '.', '' ), '0' ), '.' ) ) . '%)' : ''; ?></td><td class="num"><?php echo esc_html( $money( $tax['amount'] ) ); ?></td></tr><?php endforeach; ?>
-					<?php if ( $d['totals']['refunded'] > 0 ) : ?><tr><td><?php esc_html_e( 'Refunded', 'webgram-core' ); ?></td><td class="num neg">-<?php echo esc_html( $money( $d['totals']['refunded'] ) ); ?></td></tr><?php endif; ?>
+					<?php
+					if ( $d['totals']['fees'] > 0 ) :
+?>
+<tr><td><?php esc_html_e( 'Fees', 'webgram-core' ); ?></td><td class="num"><?php echo esc_html( $money( $d['totals']['fees'] ) ); ?></td></tr><?php endif; ?>
+					<?php
+					foreach ( $d['totals']['taxes'] as $tax_line ) :
+?>
+<tr><td><?php echo esc_html( $tax_line['label'] ); ?><?php echo $tax_line['rate'] > 0 ? ' (' . esc_html( rtrim( rtrim( number_format( $tax_line['rate'], 2, '.', '' ), '0' ), '.' ) ) . '%)' : ''; ?></td><td class="num"><?php echo esc_html( $money( $tax_line['amount'] ) ); ?></td></tr><?php endforeach; ?>
+					<?php
+					if ( $d['totals']['refunded'] > 0 ) :
+?>
+<tr><td><?php esc_html_e( 'Refunded', 'webgram-core' ); ?></td><td class="num neg">-<?php echo esc_html( $money( $d['totals']['refunded'] ) ); ?></td></tr><?php endif; ?>
 					<tr class="grand"><td><?php esc_html_e( 'Grand Total', 'webgram-core' ); ?></td><td class="num"><?php echo esc_html( $money( $d['totals']['total'] ) ); ?></td></tr>
 				</table>
 			</td>

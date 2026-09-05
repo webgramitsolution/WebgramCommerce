@@ -35,16 +35,25 @@ $webgram_count = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
 				<?php foreach ( $webgram_items as $webgram_item ) : ?>
 					<li class="wg-cart__item" data-key="<?php echo esc_attr( $webgram_item['key'] ); ?>">
 						<div class="wg-cart__thumb">
-							<?php if ( $webgram_item['url'] ) : ?><a href="<?php echo esc_url( $webgram_item['url'] ); ?>" tabindex="-1"><?php endif; ?>
+							<?php
+							if ( $webgram_item['url'] ) :
+?>
+<a href="<?php echo esc_url( $webgram_item['url'] ); ?>" tabindex="-1"><?php endif; ?>
 							<?php echo $webgram_item['image']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- WooCommerce image output. ?>
-							<?php if ( $webgram_item['url'] ) : ?></a><?php endif; ?>
+							<?php
+							if ( $webgram_item['url'] ) :
+?>
+</a><?php endif; ?>
 						</div>
 						<div class="wg-cart__info">
 							<div class="wg-cart__row">
 								<span class="wg-cart__name"><?php echo $webgram_item['url'] ? '<a href="' . esc_url( $webgram_item['url'] ) . '">' . wp_kses_post( $webgram_item['name'] ) . '</a>' : wp_kses_post( $webgram_item['name'] ); ?></span>
 								<span class="wg-cart__price"><?php echo wp_kses_post( $webgram_item['subtotal'] ); ?></span>
 							</div>
-							<?php if ( $webgram_item['meta'] ) : ?><div class="wg-cart__meta"><?php echo wp_kses_post( $webgram_item['meta'] ); ?></div><?php endif; ?>
+							<?php
+							if ( $webgram_item['meta'] ) :
+?>
+<div class="wg-cart__meta"><?php echo wp_kses_post( $webgram_item['meta'] ); ?></div><?php endif; ?>
 							<div class="wg-cart__row wg-cart__row--actions">
 								<?php if ( $webgram_item['sold_individually'] ) : ?>
 									<span class="wg-cart__qty-fixed">&times; 1</span>
@@ -102,8 +111,14 @@ $webgram_count = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
 				<span class="wg-cart__checkout-main"><?php echo esc_html( (string) webgram_option( 'cart_drawer_button' ) ); ?></span>
 				<?php if ( webgram_option( 'cart_drawer_subline' ) || webgram_option( 'cart_drawer_payments' ) ) : ?>
 					<span class="wg-cart__checkout-sub">
-						<?php if ( webgram_option( 'cart_drawer_subline' ) ) : ?><span><?php echo esc_html( (string) webgram_option( 'cart_drawer_subline' ) ); ?></span><?php endif; ?>
-						<?php foreach ( (array) webgram_option( 'cart_drawer_payments' ) as $webgram_pay ) { webgram_payment_icon( (string) $webgram_pay ); } ?>
+						<?php
+						if ( webgram_option( 'cart_drawer_subline' ) ) :
+?>
+<span><?php echo esc_html( (string) webgram_option( 'cart_drawer_subline' ) ); ?></span><?php endif; ?>
+						<?php
+						foreach ( (array) webgram_option( 'cart_drawer_payments' ) as $webgram_pay ) {
+webgram_payment_icon( (string) $webgram_pay ); }
+?>
 					</span>
 				<?php endif; ?>
 				<?php webgram_icon( 'chevron-right', 'wg-cart__checkout-arrow' ); ?>

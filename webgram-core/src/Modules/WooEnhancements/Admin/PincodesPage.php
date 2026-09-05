@@ -38,14 +38,14 @@ final class PincodesPage {
 		<div class="wrap wgc-admin">
 			<h1><?php esc_html_e( 'Pincodes', 'webgram-core' ); ?></h1>
 			<?php if ( 'imported' === $notice ) : ?>
-				<div class="notice notice-success is-dismissible"><p><?php printf( esc_html__( '%1$d pincodes imported or updated, %2$d rows skipped as invalid.', 'webgram-core' ), (int) $n, (int) $s ); ?></p></div>
+				<div class="notice notice-success is-dismissible"><p><?php printf( /* translators: %s: placeholder value. */ esc_html__( '%1$d pincodes imported or updated, %2$d rows skipped as invalid.', 'webgram-core' ), (int) $n, (int) $s ); ?></p></div>
 			<?php elseif ( 'invalid' === $notice ) : ?>
 				<div class="notice notice-error is-dismissible"><p><?php esc_html_e( 'The file could not be read. Upload a UTF-8 CSV under 8 MB.', 'webgram-core' ); ?></p></div>
 			<?php elseif ( 'cleared' === $notice ) : ?>
 				<div class="notice notice-success is-dismissible"><p><?php esc_html_e( 'Pincode table cleared.', 'webgram-core' ); ?></p></div>
 			<?php endif; ?>
 
-			<p><?php printf( esc_html__( 'Rows in the offline table: %d.', 'webgram-core' ), (int) $count ); ?> <?php printf( esc_html__( 'Delivery data mode: %s.', 'webgram-core' ), esc_html( (string) $this->module->settings()->get( 'pincode_mode', 'all' ) ) ); ?></p>
+			<p><?php printf( /* translators: %s: placeholder value. */ esc_html__( 'Rows in the offline table: %d.', 'webgram-core' ), (int) $count ); ?> <?php printf( /* translators: %s: placeholder value. */ esc_html__( 'Delivery data mode: %s.', 'webgram-core' ), esc_html( (string) $this->module->settings()->get( 'pincode_mode', 'all' ) ) ); ?></p>
 
 			<h2><?php esc_html_e( 'Import CSV', 'webgram-core' ); ?></h2>
 			<p class="description"><?php esc_html_e( 'Columns: pincode, city, state, deliverable (1/0), cod (1/0), eta_days. A header row is optional. Existing pincodes are updated.', 'webgram-core' ); ?> <a href="<?php echo esc_url( WEBGRAM_CORE_URL . 'data/pincodes-sample.csv' ); ?>"><?php esc_html_e( 'Download sample', 'webgram-core' ); ?></a></p>

@@ -34,7 +34,10 @@ if ( $max_value && $min_value === $max_value ) {
 			aria-label="<?php esc_attr_e( 'Product quantity', 'webgram' ); ?>"
 			<?php echo $min_value ? 'min="' . esc_attr( $min_value ) . '"' : ''; ?>
 			<?php echo $max_value ? 'max="' . esc_attr( $max_value ) . '"' : ''; ?>
-			<?php if ( ! empty( $step ) ) : ?>step="<?php echo esc_attr( $step ); ?>"<?php endif; ?>
+			<?php
+			if ( ! empty( $step ) ) :
+?>
+step="<?php echo esc_attr( $step ); ?>"<?php endif; ?>
 			placeholder="<?php echo esc_attr( $placeholder ?? '' ); ?>"
 			inputmode="<?php echo esc_attr( $inputmode ?? 'numeric' ); ?>"
 			autocomplete="off">

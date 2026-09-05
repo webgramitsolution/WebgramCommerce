@@ -86,7 +86,8 @@ final class ModulesPage {
 				<?php wp_nonce_field( 'webgram_core_save_modules' ); ?>
 
 				<div class="wgc-modules">
-				<?php foreach ( $modules as $id => $module ) :
+				<?php
+				foreach ( $modules as $id => $module ) :
 					$enabled     = $manager->is_enabled_in_settings( $id );
 					$implemented = $module->is_implemented();
 					$blocked     = $manager->blocked_reason( $id );
@@ -101,9 +102,9 @@ final class ModulesPage {
 						</div>
 						<p><?php echo esc_html( $module->description() ); ?></p>
 						<?php if ( ! $implemented ) : ?>
-							<span class="wgc-badge wgc-badge--muted"><?php printf( esc_html__( 'Coming in phase %d', 'webgram-core' ), (int) $module->phase() ); ?></span>
+							<span class="wgc-badge wgc-badge--muted"><?php printf( /* translators: %s: placeholder value. */ esc_html__( 'Coming in phase %d', 'webgram-core' ), (int) $module->phase() ); ?></span>
 						<?php elseif ( $blocked ) : ?>
-							<span class="wgc-badge wgc-badge--warn"><?php printf( esc_html__( 'Needs: %s', 'webgram-core' ), esc_html( $blocked ) ); ?></span>
+							<span class="wgc-badge wgc-badge--warn"><?php printf( /* translators: %s: placeholder value. */ esc_html__( 'Needs: %s', 'webgram-core' ), esc_html( $blocked ) ); ?></span>
 						<?php elseif ( $enabled ) : ?>
 							<span class="wgc-badge wgc-badge--ok"><?php esc_html_e( 'Active', 'webgram-core' ); ?></span>
 						<?php endif; ?>

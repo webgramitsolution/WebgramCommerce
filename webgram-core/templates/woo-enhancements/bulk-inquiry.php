@@ -28,7 +28,11 @@ $wgc_uid   = wp_unique_id( 'wgc-bulk-' );
 			<?php elseif ( $args['products'] ) : ?>
 				<p class="<?php echo esc_attr( Helpers::css_class( 'field' ) ); ?>"><label for="<?php echo esc_attr( $wgc_uid ); ?>-product"><?php esc_html_e( 'Product', 'webgram-core' ); ?></label>
 					<input id="<?php echo esc_attr( $wgc_uid ); ?>-product" type="text" name="product_name" list="<?php echo esc_attr( $wgc_uid ); ?>-list" placeholder="<?php esc_attr_e( 'Start typing a product name', 'webgram-core' ); ?>" required>
-					<datalist id="<?php echo esc_attr( $wgc_uid ); ?>-list"><?php foreach ( $args['products'] as $wgc_id => $wgc_title ) : ?><option value="<?php echo esc_attr( $wgc_title ); ?>"></option><?php endforeach; ?></datalist>
+					<datalist id="<?php echo esc_attr( $wgc_uid ); ?>-list">
+					<?php
+					foreach ( $args['products'] as $wgc_id => $wgc_title ) :
+?>
+<option value="<?php echo esc_attr( $wgc_title ); ?>"></option><?php endforeach; ?></datalist>
 				</p>
 			<?php else : ?>
 				<p class="<?php echo esc_attr( Helpers::css_class( 'field' ) ); ?>"><label for="<?php echo esc_attr( $wgc_uid ); ?>-product"><?php esc_html_e( 'Product', 'webgram-core' ); ?></label><input id="<?php echo esc_attr( $wgc_uid ); ?>-product" type="text" name="product_name" required></p>

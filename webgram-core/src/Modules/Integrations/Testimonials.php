@@ -43,10 +43,10 @@ final class Testimonials {
 		printf( '<p><label>%s<br><input type="text" name="wg_label" value="%s" class="widefat" placeholder="%s"></label></p>', esc_html__( 'Label (age, city, role)', 'webgram-core' ), esc_attr( $label ), esc_attr__( '34, Mumbai', 'webgram-core' ) );
 		echo '<p><label>' . esc_html__( 'Rating', 'webgram-core' ) . '<br><select name="wg_rating">';
 		for ( $i = 5; $i >= 1; $i-- ) {
-			printf( '<option value="%d" %s>%d</option>', $i, selected( $rating, $i, false ), $i );
+			printf( '<option value="%d" %s>%d</option>', (int) $i, selected( $rating, $i, false ), (int) $i );
 		}
 		echo '</select></label></p>';
-		printf( '<p><label>%s<br><input type="number" name="wg_product_id" value="%d" class="small-text" min="0"></label> <span class="description">%s</span></p>', esc_html__( 'Product ID (optional)', 'webgram-core' ), $product, esc_html__( 'Shows the product name as a link.', 'webgram-core' ) );
+		printf( '<p><label>%s<br><input type="number" name="wg_product_id" value="%d" class="small-text" min="0"></label> <span class="description">%s</span></p>', esc_html__( 'Product ID (optional)', 'webgram-core' ), (int) $product, esc_html__( 'Shows the product name as a link.', 'webgram-core' ) );
 		echo '<p class="description">' . esc_html__( 'Use the title for the reviewer name, the editor for the quote and the featured image for the photo.', 'webgram-core' ) . '</p>';
 	}
 
@@ -55,7 +55,7 @@ final class Testimonials {
 			return;
 		}
 		update_post_meta( $post_id, '_wg_label', sanitize_text_field( wp_unslash( $_POST['wg_label'] ?? '' ) ) );
-		update_post_meta( $post_id, '_wg_rating', max( 1, min( 5, (int) ( $_POST['wg_rating'] ?? 5 ) ) ) );
+		update_post_meta( $post_id, '_wg_rating', max( 1, min( 5, isset( $_POST['wg_rating'] ) ? absint( $_POST['wg_rating'] ) : 5 ) ) );
 		update_post_meta( $post_id, '_wg_product_id', absint( $_POST['wg_product_id'] ?? 0 ) );
 	}
 

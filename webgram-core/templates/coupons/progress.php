@@ -16,7 +16,10 @@ use Webgram\Core\Support\Helpers;
 		<?php $wgc_n = count( $args['milestones'] ); ?>
 		<?php foreach ( $args['milestones'] as $wgc_i => $wgc_m ) : ?>
 			<span class="<?php echo esc_attr( Helpers::css_class( 'progress__node', $wgc_m['done'] ? 'is-done' : '' ) ); ?>" style="inset-inline-start:<?php echo esc_attr( (string) ( ( $wgc_i + 1 ) / $wgc_n * 100 ) ); ?>%" title="<?php echo esc_attr( $wgc_m['label'] ); ?>">
-				<?php if ( $wgc_m['done'] ) : ?><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><?php endif; ?>
+				<?php
+				if ( $wgc_m['done'] ) :
+?>
+<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><?php endif; ?>
 			</span>
 		<?php endforeach; ?>
 	</div>

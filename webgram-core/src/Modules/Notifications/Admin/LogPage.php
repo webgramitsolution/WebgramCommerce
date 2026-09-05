@@ -51,7 +51,7 @@ final class LogPage {
 
 	public function resend(): void {
 		$this->guard( 'webgram_core_notification_resend' );
-		$this->queue->resend( (int) ( $_GET['id'] ?? 0 ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$this->queue->resend( isset( $_GET['id'] ) ? absint( $_GET['id'] ) : 0 ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$this->flash( 'success', __( 'Notification queued again.', 'webgram-core' ) );
 		wp_safe_redirect( wp_get_referer() ?: admin_url( 'admin.php?page=' . self::SLUG ) );
 		exit;
@@ -59,7 +59,7 @@ final class LogPage {
 
 	public function resend_event(): void {
 		$this->guard( 'webgram_core_notification_event' );
-		$order = wc_get_order( (int) ( $_GET['order_id'] ?? 0 ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$order = wc_get_order( isset( $_GET['order_id'] ) ? absint( $_GET['order_id'] ) : 0 ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$event = sanitize_key( wp_unslash( $_GET['event'] ?? '' ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$chan  = sanitize_key( wp_unslash( $_GET['channel'] ?? '' ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( $order instanceof \WC_Order && isset( Events::all()[ $event ] ) && $this->module->channel( $chan ) ) {
@@ -92,8 +92,8 @@ final class LogPage {
 			return;
 		}
 		// phpcs:disable WordPress.Security.NonceVerification.Recommended
-		$filters = [ 'status' => sanitize_key( wp_unslash( $_GET['status'] ?? '' ) ), 'channel' => sanitize_key( wp_unslash( $_GET['channel'] ?? '' ) ), 'event' => sanitize_key( wp_unslash( $_GET['event'] ?? '' ) ), 'order_id' => (int) ( $_GET['order_id'] ?? 0 ) ];
-		$page    = max( 1, (int) ( $_GET['paged'] ?? 1 ) );
+		$filters = [ 'status' => sanitize_key( wp_unslash( $_GET['status'] ?? '' ) ), 'channel' => sanitize_key( wp_unslash( $_GET['channel'] ?? '' ) ), 'event' => sanitize_key( wp_unslash( $_GET['event'] ?? '' ) ), 'order_id' => isset( $_GET['order_id'] ) ? absint( $_GET['order_id'] ) : 0 ];
+		$page    = max( 1, isset( $_GET['paged'] ) ? absint( $_GET['paged'] ) : 1 );
 		// phpcs:enable
 		$list  = $this->log->list( $filters, $page );
 		$pages = (int) ceil( $list['total'] / 25 );
@@ -102,9 +102,21 @@ final class LogPage {
 			<h1><?php esc_html_e( 'Notifications log', 'webgram-core' ); ?></h1>
 			<form method="get" style="margin:12px 0;display:flex;gap:8px;flex-wrap:wrap;align-items:center">
 				<input type="hidden" name="page" value="<?php echo esc_attr( self::SLUG ); ?>">
-				<select name="status"><option value=""><?php esc_html_e( 'All statuses', 'webgram-core' ); ?></option><?php foreach ( Log::STATUSES as $s ) : ?><option value="<?php echo esc_attr( $s ); ?>" <?php selected( $filters['status'], $s ); ?>><?php echo esc_html( ucfirst( $s ) ); ?></option><?php endforeach; ?></select>
-				<select name="channel"><option value=""><?php esc_html_e( 'All channels', 'webgram-core' ); ?></option><?php foreach ( $this->module->channels() as $c ) : ?><option value="<?php echo esc_attr( $c->id() ); ?>" <?php selected( $filters['channel'], $c->id() ); ?>><?php echo esc_html( $c->label() ); ?></option><?php endforeach; ?></select>
-				<select name="event"><option value=""><?php esc_html_e( 'All events', 'webgram-core' ); ?></option><?php foreach ( Events::all() as $e => $def ) : ?><option value="<?php echo esc_attr( $e ); ?>" <?php selected( $filters['event'], $e ); ?>><?php echo esc_html( $def['label'] ); ?></option><?php endforeach; ?></select>
+				<select name="status"><option value=""><?php esc_html_e( 'All statuses', 'webgram-core' ); ?></option>
+				<?php
+				foreach ( Log::STATUSES as $s ) :
+?>
+<option value="<?php echo esc_attr( $s ); ?>" <?php selected( $filters['status'], $s ); ?>><?php echo esc_html( ucfirst( $s ) ); ?></option><?php endforeach; ?></select>
+				<select name="channel"><option value=""><?php esc_html_e( 'All channels', 'webgram-core' ); ?></option>
+				<?php
+				foreach ( $this->module->channels() as $c ) :
+?>
+<option value="<?php echo esc_attr( $c->id() ); ?>" <?php selected( $filters['channel'], $c->id() ); ?>><?php echo esc_html( $c->label() ); ?></option><?php endforeach; ?></select>
+				<select name="event"><option value=""><?php esc_html_e( 'All events', 'webgram-core' ); ?></option>
+				<?php
+				foreach ( Events::all() as $e => $def ) :
+?>
+<option value="<?php echo esc_attr( $e ); ?>" <?php selected( $filters['event'], $e ); ?>><?php echo esc_html( $def['label'] ); ?></option><?php endforeach; ?></select>
 				<input type="number" name="order_id" placeholder="<?php esc_attr_e( 'Order ID', 'webgram-core' ); ?>" value="<?php echo $filters['order_id'] ? (int) $filters['order_id'] : ''; ?>" class="small-text">
 				<button class="button"><?php esc_html_e( 'Filter', 'webgram-core' ); ?></button>
 				<span class="description"><?php echo esc_html( sprintf( /* translators: %d: rows */ _n( '%d entry', '%d entries', $list['total'], 'webgram-core' ), $list['total'] ) ); ?></span>
@@ -126,7 +138,11 @@ final class LogPage {
 							<td><span class="wgc-badge wgc-badge--<?php echo esc_attr( in_array( $row['status'], [ 'sent', 'delivered', 'read' ], true ) ? 'ok' : ( 'failed' === $row['status'] ? 'warn' : 'muted' ) ); ?>"><?php echo esc_html( $row['status'] ); ?></span></td>
 							<td><?php echo (int) $row['attempts']; ?></td>
 							<td><?php echo esc_html( trim( (string) $row['error_code'] . ' ' . (string) $row['error_message'] ) ); ?></td>
-							<td><?php if ( in_array( $row['status'], [ 'failed', 'skipped', 'sent' ], true ) ) : ?><a class="button button-small" href="<?php echo esc_url( $retry ); ?>"><?php echo esc_html( 'failed' === $row['status'] ? __( 'Retry', 'webgram-core' ) : __( 'Resend', 'webgram-core' ) ); ?></a><?php endif; ?></td>
+							<td>
+							<?php
+							if ( in_array( $row['status'], [ 'failed', 'skipped', 'sent' ], true ) ) :
+?>
+<a class="button button-small" href="<?php echo esc_url( $retry ); ?>"><?php echo esc_html( 'failed' === $row['status'] ? __( 'Retry', 'webgram-core' ) : __( 'Resend', 'webgram-core' ) ); ?></a><?php endif; ?></td>
 						</tr>
 					<?php endforeach; ?>
 				</tbody>

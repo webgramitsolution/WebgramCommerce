@@ -16,9 +16,9 @@ $wgc_row = static function ( int $i, array $s ): void {
 		printf(
 			'<div class="wgc-slide-field"><label>%1$s</label><div class="wgc-image-field"><input type="hidden" name="wg_slides[%2$d][%3$s]" value="%4$d"><img src="%5$s" alt="" %6$s><button type="button" class="button wgc-image-select">%7$s</button> <button type="button" class="button-link wgc-image-remove" %6$s>%8$s</button></div></div>',
 			esc_html( $label ),
-			$i,
+			(int) $i,
 			esc_attr( $key ),
-			$id,
+			(int) $id,
 			esc_url( (string) $src ),
 			$src ? '' : 'hidden',
 			esc_html__( 'Choose', 'webgram-core' ),
@@ -26,10 +26,10 @@ $wgc_row = static function ( int $i, array $s ): void {
 		);
 	};
 	$text = static function ( string $key, string $label, string $type = 'text' ) use ( $i, $s ): void {
-		printf( '<div class="wgc-slide-field"><label>%1$s</label><input type="%2$s" name="wg_slides[%3$d][%4$s]" value="%5$s" class="widefat"></div>', esc_html( $label ), esc_attr( $type ), $i, esc_attr( $key ), esc_attr( (string) ( $s[ $key ] ?? '' ) ) );
+		printf( '<div class="wgc-slide-field"><label>%1$s</label><input type="%2$s" name="wg_slides[%3$d][%4$s]" value="%5$s" class="widefat"></div>', esc_html( $label ), esc_attr( $type ), (int) $i, esc_attr( $key ), esc_attr( (string) ( $s[ $key ] ?? '' ) ) );
 	};
 	$select = static function ( string $key, string $label, array $choices ) use ( $i, $s ): void {
-		printf( '<div class="wgc-slide-field"><label>%1$s</label><select name="wg_slides[%2$d][%3$s]">', esc_html( $label ), $i, esc_attr( $key ) );
+		printf( '<div class="wgc-slide-field"><label>%1$s</label><select name="wg_slides[%2$d][%3$s]">', esc_html( $label ), (int) $i, esc_attr( $key ) );
 		foreach ( $choices as $val => $lab ) {
 			printf( '<option value="%s" %s>%s</option>', esc_attr( $val ), selected( (string) ( $s[ $key ] ?? '' ), $val, false ), esc_html( $lab ) );
 		}

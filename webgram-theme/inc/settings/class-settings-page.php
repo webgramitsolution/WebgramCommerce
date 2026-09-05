@@ -107,7 +107,10 @@ final class Webgram_Settings_Page {
 						<a class="wg-settings__tab<?php echo $id === $current ? ' is-active' : ''; ?>" href="<?php echo esc_url( add_query_arg( [ 'page' => self::MENU, 'tab' => $id ], admin_url( 'admin.php' ) ) ); ?>">
 							<?php echo webgram_icon( (string) ( $t['icon'] ?? 'settings' ), '', false ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 							<span><?php echo esc_html( $t['label'] ); ?></span>
-							<?php if ( 'core' === $t['owner'] ) : ?><em><?php esc_html_e( 'Core', 'webgram' ); ?></em><?php endif; ?>
+							<?php
+							if ( 'core' === $t['owner'] ) :
+?>
+<em><?php esc_html_e( 'Core', 'webgram' ); ?></em><?php endif; ?>
 						</a>
 					<?php endforeach; ?>
 				</nav>
