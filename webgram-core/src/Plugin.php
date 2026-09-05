@@ -55,6 +55,7 @@ final class Plugin {
 			( new Admin\ModulesPage( $this ) )->register();
 			( new Admin\SettingsPage( $this ) )->register();
 			( new Admin\Notices( $this ) )->register();
+			( new Admin\PageSetup( $this ) )->register();
 		}
 
 		$this->assets()->register_hooks();

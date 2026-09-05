@@ -51,6 +51,19 @@ final class Crypto {
 		return str_starts_with( $value, self::PREFIX );
 	}
 
+	/**
+	 * HMAC signature for values that leave the server (signed cookies, share tokens). Uses the same key material as
+	 * encryption, falling back to the WordPress auth salt when no key material is defined.
+	 */
+	public function sign( string $data ): string {
+		try {
+			$key = $this->key();
+		} catch ( \RuntimeException $e ) {
+			$key = function_exists( 'wp_salt' ) ? wp_salt( 'auth' ) : '';
+		}
+		return hash_hmac( 'sha256', $data, 'webgram-core-sign|' . $key );
+	}
+
 	/** Masks a secret for display: first 4 and last 4 characters visible. */
 	public static function mask( string $secret ): string {
 		$len = strlen( $secret );

@@ -211,12 +211,12 @@ final class Webgram_WC_Product {
 		if ( ! comments_open() && ! $product->get_review_count() ) {
 			return;
 		}
+		echo '<div class="wg-product__reviews wg-section-ornament" id="reviews-anchor">';
 		if ( has_action( 'webgram/product/reviews' ) ) {
-			do_action( 'webgram/product/reviews', $product ); // Core Reviews module (Phase 4).
-			return;
+			do_action( 'webgram/product/reviews', $product ); // Core Reviews module.
+		} else {
+			comments_template();
 		}
-		echo '<div class="wg-product__reviews" id="reviews-anchor">';
-		comments_template();
 		echo '</div>';
 	}
 

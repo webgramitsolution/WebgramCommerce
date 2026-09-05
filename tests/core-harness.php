@@ -205,5 +205,48 @@ check('cart recommendations pick: cross sells first, cart items excluded, dedupe
 $faqs = Webgram\Core\Modules\SiteTools\Module::parse_faqs("How long is delivery?\nUsually 3 to 5 days.\nMetro cities faster.\n\n\nOnly a question\n\nReturns?\r\n7 day returns.");
 check('help faqs parse: blank line blocks, first line question, single lines dropped', count($faqs)===2 && $faqs[0]['q']==='How long is delivery?' && $faqs[0]['a']==="Usually 3 to 5 days.\nMetro cities faster." && $faqs[1]['a']==='7 day returns.');
 check('help faqs parse: empty input', Webgram\Core\Modules\SiteTools\Module::parse_faqs('')===[]);
+
+// Phase 4: lists (wishlist, compare), share tokens, reviews maths, media validation, compat, schema, compare table
+if ( ! defined( 'MB_IN_BYTES' ) ) { define( 'MB_IN_BYTES', 1048576 ); }
+if ( ! function_exists( 'number_format_i18n' ) ) { function number_format_i18n( $n, $d = 0 ) { return number_format( (float) $n, $d ); } }
+use Webgram\Core\Support\Lists\ProductList;
+use Webgram\Core\Support\Lists\CookieStorage;
+use Webgram\Core\Support\Lists\ShareToken;
+use Webgram\Core\Modules\Reviews\Summary;
+use Webgram\Core\Modules\Reviews\Query;
+use Webgram\Core\Modules\Reviews\Media;
+use Webgram\Core\Modules\Reviews\Compat;
+use Webgram\Core\Modules\Reviews\Schema;
+use Webgram\Core\Modules\Compare\Table;
+check('phase 4 modules implemented, blocked only by WooCommerce', $m->get('reviews')->is_implemented() && $m->get('wishlist')->is_implemented() && $m->get('compare')->is_implemented() && $m->blocked_reason('wishlist') === 'woocommerce');
+$mem = new class implements Webgram\Core\Support\Lists\StorageInterface { public array $ids = []; public function get(): array { return $this->ids; } public function set(array $ids): void { $this->ids = $ids; } };
+$list = new ProductList($mem, 3);
+check('product list: add prepends, dedupes, toggles, caps at max', $list->add(5) && $list->add(6) && $list->ids() === [6,5] && $list->toggle(5) === 'removed' && $list->toggle(7) === 'added' && $list->add(8) && $list->toggle(9) === 'full' && $list->count() === 3 && $list->is_full());
+$list->merge([5, 8, 11]);
+check('product list: merge keeps existing first and respects cap', $list->ids() === [8,7,6]);
+check('product list normalize drops junk and dupes', ProductList::normalize(['3','x',0,-2,3,'4']) === [3,4]);
+$signer = fn(string $p) => hash_hmac('sha256', $p, 'k');
+$packed = CookieStorage::pack([12, 7], $signer);
+check('cookie storage round trip', CookieStorage::unpack($packed, $signer) === [12,7]);
+check('cookie storage rejects tampering and foreign key', CookieStorage::unpack(substr($packed, 0, -1) . 'x', $signer) === [] && CookieStorage::unpack($packed, fn($p) => hash_hmac('sha256', $p, 'other')) === [] && CookieStorage::unpack('', $signer) === []);
+$tok = ShareToken::create([3, 4], 2000, $signer);
+check('share token parses before expiry, rejects after and when tampered', ShareToken::parse($tok, 1999, $signer) === [3,4] && ShareToken::parse($tok, 2001, $signer) === null && ShareToken::parse('a.b', 1, $signer) === null && ShareToken::parse(str_replace('.', 'x.', $tok), 1, $signer) === null);
+$sum = Summary::compute([5 => 200, 4 => 40, 3 => 10, 1 => 6]);
+check('summary compute: average, total, ordered rows with percents', $sum['total'] === 256 && $sum['average'] === 4.7 && $sum['rows'][0]['stars'] === 5 && $sum['rows'][0]['percent'] === 78 && $sum['rows'][3]['count'] === 0 && count($sum['rows']) === 5);
+check('summary compute empty and given average', Summary::compute([])['average'] === 0.0 && Summary::compute([5 => 1], 4.25)['average'] === 4.3);
+check('summary showing labels', Summary::showing(1, 4, 256) === ['from' => 1, 'to' => 4, 'total' => 256] && Summary::showing(3, 4, 10) === ['from' => 9, 'to' => 10, 'total' => 10] && Summary::showing(1, 4, 0)['to'] === 0);
+$p = Query::params(['sort' => 'evil', 'stars' => '9', 'media' => '1', 'page' => '0', 'per_page' => '500'], 4);
+check('query params normalized', $p === ['sort' => 'newest', 'stars' => 0, 'media' => true, 'page' => 1, 'per_page' => 50]);
+$a = Query::args(12, Query::params(['sort' => 'highest', 'stars' => 4, 'page' => 2], 4));
+check('query args: rating filter, rating sort clause, offset', $a['post_id'] === 12 && $a['offset'] === 4 && $a['meta_query']['rating_filter']['value'] === 4 && isset($a['meta_query']['rating_sort']) && $a['orderby'] === ['rating_sort' => 'DESC', 'comment_date_gmt' => 'DESC']);
+$a = Query::args(12, Query::params(['sort' => 'helpful'], 4));
+check('query args: helpful sort uses EXISTS or NOT EXISTS so unvoted reviews stay', isset($a['meta_query'][0]['helpful_sort'], $a['meta_query'][0]['helpful_none']) && $a['orderby']['helpful_sort'] === 'DESC');
+check('query args: newest has no meta query', Query::args(1, Query::params([], 4))['meta_query'] === []);
+$mimes = Media::IMAGE_MIMES + Media::VIDEO_MIMES;
+check('media validate: ok jpg, bad ext, oversize, wrong mime, no file', Media::validate('a.JPG', 'image/jpeg', 1000, 0, $mimes, 8 * MB_IN_BYTES) === '' && Media::validate('a.exe', 'image/jpeg', 1000, 0, $mimes, 8 * MB_IN_BYTES) !== '' && Media::validate('a.png', 'image/png', 9 * MB_IN_BYTES, 0, $mimes, 8 * MB_IN_BYTES) !== '' && Media::validate('a.mp4', 'video/mp4', 10, 0, Media::IMAGE_MIMES, 8 * MB_IN_BYTES) !== '' && Media::validate('', '', 0, 4, $mimes, 1) === '');
+check('compat detects known review plugins', Compat::detect(['woocommerce/woocommerce.php', 'judgeme-product-reviews-woocommerce/judgeme.php']) === 'Judge.me' && Compat::detect(['customer-reviews-woocommerce/ivole.php']) !== '' && Compat::detect(['woocommerce/woocommerce.php']) === '');
+$schema = Schema::merge(['description' => 'x', 'image' => ['keep']], 'Great', '<p>Body</p>', ['a.jpg']);
+check('schema merge adds name and reviewBody, never overwrites', $schema['name'] === 'Great' && $schema['reviewBody'] === 'Body' && $schema['image'] === ['keep'] && Schema::merge(['name' => 'Old'], 'New', '', ['b.jpg'])['name'] === 'Old' && Schema::merge([], '', '', ['b.jpg'])['image'] === ['b.jpg']);
+check('compare table: differences and attribute union', Table::differs(['Red', ' red ']) === false && Table::differs(['Red', 'Blue']) && Table::differs(['', 'x']) && Table::attribute_labels([['Color' => 'Red', 'Size' => 'M'], ['Size' => 'L', 'Material' => 'Cotton']]) === ['Color', 'Size', 'Material']);
 echo "\n" . ($fail ? "$fail FAILURE(S)" : "ALL PASSED") . "\n";
 exit($fail ? 1 : 0);
