@@ -4,7 +4,7 @@ Resume instructions: read CLAUDE.md, this file, then the current phase in docs/B
 
 ## Current phase
 
-Phase 7: invoice, emails, notifications (WhatsApp), analytics.
+Phase 8: hardening, compatibility matrix, RTL, i18n, accessibility, packaging, docs.
 
 ## Completed
 
@@ -15,7 +15,8 @@ Phase 7: invoice, emails, notifications (WhatsApp), analytics.
 - Phase 4: Core Advanced Reviews (summary, sort and filters, load more, media uploads, helpful votes, admin column, schema, shortcode, third-party stand down), Wishlist and Compare (signed cookie or user meta storage, merge on login, header icons, card and product buttons, pages with share link and difference highlight, compare bar, page setup notices). Report: docs/phases/phase-4-reviews-wishlist-compare.md.
 - Phase 5: ProductQuery and trending score, Slider module (wg_slider, Swiper renderer), Instagram module (Graph API and manual), Integrations registry with Elementor widgets, Gutenberg blocks and shortcodes for all sections, testimonials CPT, product layout widgets, theme presentational sections, carousel module, Sync tokens to Elementor, demo homepage content. Report: docs/phases/phase-5-homepage-integrations.md.
 - Phase 6: Reels module (post type, sources, row, viewer, product sheet, events), Voice Search (Web Speech engine, mic in search and assistant), AI Shopping Assistant (rule based, Anthropic, OpenAI, Gemini providers with tools, conversation tables, REST, privacy, launcher and chat window). Report: docs/phases/phase-6-reels-voice-assistant.md.
+- Phase 7: Analytics (events table, collector, dashboard), Invoice (sequence, numbering, data builder, dompdf and HTML generators, storage, REST, admin, account and thank you buttons), Emails (branding templates, preview, attachments), Notifications (channels, events, templates, opt in, queue, log, webhook, admin log). Report: docs/phases/phase-7-invoice-emails-notifications-analytics.md.
 
 ## Next task
 
-Phase 7, task 1: Core `Analytics` module first (table `wg_events` through `EventRepository`, collector REST `POST webgram/v1/events` batched and sampled with nonce, server side `webgram_core/analytics/event` listener, client `WebgramCore.track` and `wg:track` listener, `webgram_core/trending/views` provider, retention cron, reports page), then `Invoice` (sequence table, numbering format, `InvoiceData::from_order`, dompdf generator, storage, REST download with ownership check, admin actions, settings), `Emails` (branding settings, template hooks, preview, invoice attachment), `Notifications` (channels, events, templates, opt in, queue, log, WhatsApp Cloud API with test connection and webhook).
+Phase 8, task 1: hardening pass (PHPCS with WordPress-Extra and WooCommerce rulesets when available, security review of every write path, escaping audit), then compatibility matrix doc, RTL CSS build, i18n pot files for both text domains, accessibility pass, packaging scripts (theme zip, Core zip with Composer vendor, child theme), demo importer, documentation (`docs/` user guide and developer hooks reference), final report and the complete not tested list.

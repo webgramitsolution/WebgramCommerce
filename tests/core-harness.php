@@ -330,5 +330,50 @@ $sys = Assistant::system_prompt('Demo Store', 'INR', 'We ship from Mumbai.', 'Ma
 check('assistant system prompt includes name, store, currency, rules and notes', str_starts_with($sys, 'You are Maya, the shopping assistant of the online store "Demo Store"') && str_contains($sys, 'Prices are in INR') && str_ends_with($sys, 'We ship from Mumbai.'));
 check('assistant history mapping skips empty assistant rows and tool rows', Assistant::history_to_messages([['role' => 'user', 'content' => 'a'], ['role' => 'assistant', 'content' => ''], ['role' => 'tool', 'content' => 'x'], ['role' => 'assistant', 'content' => 'b']]) === [['role' => 'user', 'content' => 'a'], ['role' => 'assistant', 'content' => 'b']]);
 check('assistant product collection dedupes across tool results and caps', count(Assistant::collect_products([['products' => [['id' => 1], ['id' => 2]]], ['products' => [['id' => 2], ['id' => 3]]]])) === 3 && count(Assistant::collect_products([['products' => array_map(fn($i) => ['id' => $i], range(1, 10))]], 6)) === 6);
+
+// Phase 7: invoice numbering and data helpers, email branding, analytics, notifications helpers
+use Webgram\Core\Modules\Invoice\Numbering;
+use Webgram\Core\Modules\Invoice\InvoiceData;
+use Webgram\Core\Modules\Invoice\Storage as InvoiceStorage;
+use Webgram\Core\Modules\Emails\Branding;
+use Webgram\Core\Modules\Analytics\Collector;
+use Webgram\Core\Modules\Analytics\Reports;
+use Webgram\Core\Modules\Notifications\Events as NotifEvents;
+use Webgram\Core\Modules\Notifications\Templates as NotifTemplates;
+use Webgram\Core\Modules\Notifications\OptIn;
+use Webgram\Core\Modules\Notifications\PhoneNumber;
+use Webgram\Core\Modules\Notifications\Queue as NotifQueue;
+use Webgram\Core\Modules\Notifications\Log as NotifLog;
+use Webgram\Core\Modules\Notifications\Channels\WhatsAppCloudChannel;
+use Webgram\Core\Modules\Notifications\Channels\EmailChannel;
+use Webgram\Core\Modules\Notifications\Rest\WhatsAppController;
+if ( ! function_exists( 'is_email' ) ) { function is_email( $e ) { return (bool) filter_var( $e, FILTER_VALIDATE_EMAIL ); } }
+if ( ! function_exists( '_x' ) ) { function _x( $s, $c, $d = null ) { return $s; } }
+check('phase 7 modules implemented and blocked only by WooCommerce', $m->get('invoice')->is_implemented() && $m->get('emails')->is_implemented() && $m->get('notifications')->is_implemented() && $m->get('analytics')->is_implemented() && $m->blocked_reason('invoice') === 'woocommerce');
+$d = new DateTimeImmutable('2026-09-04 10:00:00', new DateTimeZone('UTC'));
+check('invoice financial year and period start', Numbering::financial_year($d) === '2026-27' && Numbering::financial_year(new DateTimeImmutable('2026-02-10')) === '2025-26' && Numbering::financial_year($d, 1) === '2026' && Numbering::period_start($d, true) === '2026-04-01 00:00:00' && Numbering::period_start(new DateTimeImmutable('2026-02-10'), true) === '2025-04-01 00:00:00' && Numbering::period_start($d, false) === '2026-01-01 00:00:00');
+check('invoice number format placeholders, padding and sanitizing', Numbering::format('{prefix}{fy}-{number}', 123, 6, $d, 'WG-') === 'WG-2026-27-000123' && Numbering::format('INV/{yyyy}/{mm}/{number}{suffix}', 7, 3, $d, '', '-A') === 'INV/2026/09/007-A' && Numbering::format('', 1, 4, $d, 'X') === 'X2026-27-0001' && Numbering::format('{prefix} {number}', 5, 0, $d, 'A B') === 'A-B-5');
+$taxes = InvoiceData::classify_taxes([['label' => 'CGST 9%', 'amount' => 9.0, 'rate' => 9], ['label' => 'SGST', 'amount' => 9.0], ['label' => 'Tax', 'amount' => 1.0]]);
+check('invoice tax classification and payment line', $taxes[0]['kind'] === 'CGST' && $taxes[1]['kind'] === 'SGST' && $taxes[2]['kind'] === 'other' && InvoiceData::payment_line('Razorpay (UPI)', 'pay_123', true) === 'Paid via Razorpay (UPI) (Transaction ID: pay_123)' && InvoiceData::payment_line('COD', '', false) === 'Payment pending via COD');
+check('invoice storage filename', InvoiceStorage::filename('WG-2026-27/000123') === 'invoice-WG-2026-27-000123.pdf' && InvoiceStorage::filename('a b', 'html') === 'invoice-a-b.html');
+$bt = Branding::tokens(['header_bg' => '#ABCDEF', 'button_radius' => '99', 'width' => '100', 'font' => 'georgia', 'text_color' => 'red']);
+check('email branding tokens: validated colors, clamped sizes, font stack, social links', $bt['header_bg'] === '#abcdef' && $bt['button_radius'] === 40 && $bt['width'] === 480 && str_contains($bt['font'], 'Georgia') && $bt['text_color'] === '#1f2937' && Branding::social_links("Instagram|https://instagram.com/x\nbad line\nX|ftp://no") === [['label' => 'Instagram', 'url' => 'https://instagram.com/x']] && str_contains(Branding::css($bt), '#template_header{background-color:#abcdef'));
+$ev = Collector::validate([['event' => 'reel_play', 'object_type' => 'reel', 'object_id' => '12', 'meta' => ['email' => 'x@y', 'source' => '<b>row</b>', 'n' => 3]], ['event' => 'evil'], 'junk', ['event' => 'chat_open']], Collector::ALLOWED, 20);
+check('analytics batch validation: unknown events dropped, personal keys removed, html stripped, junk skipped', count($ev) === 2 && count(Collector::validate([['event' => 'chat_open'], ['event' => 'chat_open']], Collector::ALLOWED, 1)) === 1 && $ev[0]['object_id'] === 12 && $ev[0]['meta'] === ['source' => 'row', 'n' => 3] && $ev[1]['event'] === 'chat_open');
+$series = Reports::series(['2026-09-03' => 4, '2026-09-04' => 8], 3, '2026-09-04');
+check('analytics report series fills missing days and scales to 100', count($series) === 3 && $series[0]['n'] === 0 && $series[1]['pct'] === 50 && $series[2]['pct'] === 100 && $series[2]['day'] === '2026-09-04');
+check('notification events from statuses including third party shipped', NotifEvents::event_for_status('wc-shipped') === 'shipped' && NotifEvents::event_for_status('dispatched', ['dispatched']) === 'shipped' && NotifEvents::event_for_status('out-for-delivery') === 'out_for_delivery' && NotifEvents::event_for_status('completed') === 'completed' && NotifEvents::event_for_status('on-hold') === '');
+check('notification template params and fill', NotifTemplates::parse_params('{customer_name}, order_number , {nope}') === ['customer_name', 'order_number'] && NotifTemplates::params(['order_number', 'eta'], ['order_number' => '55']) === ['55', ''] && NotifTemplates::fill('Hi {customer_name}, order {order_number}', ['customer_name' => 'Asha', 'order_number' => '9']) === 'Hi Asha, order 9');
+check('whatsapp consent resolution', OptIn::consented('yes', 'no') && ! OptIn::consented('no', 'yes') && OptIn::consented('', 'yes') && ! OptIn::consented('', ''));
+check('phone normalization with billing country and default', PhoneNumber::normalize('098765 43210', 'IN') === '+919876543210' && PhoneNumber::normalize('+44 7911 123456', 'IN') === '+447911123456' && PhoneNumber::normalize('abc', 'IN') === '');
+$pl = WhatsAppCloudChannel::payload('+919876543210', 'wg_order_shipped', 'en', ['Asha', '55'], ['url' => 'https://s/inv.pdf', 'filename' => 'inv.pdf']);
+check('whatsapp payload: template with document header and ordered body params', $pl['to'] === '919876543210' && $pl['type'] === 'template' && $pl['template']['name'] === 'wg_order_shipped' && $pl['template']['components'][0]['type'] === 'header' && $pl['template']['components'][1]['parameters'][1]['text'] === '55');
+check('whatsapp send response parsing and retry classification', WhatsAppCloudChannel::parse_send_response(200, ['messages' => [['id' => 'wamid.1']]])['provider_message_id'] === 'wamid.1' && WhatsAppCloudChannel::parse_send_response(500, [])['retryable'] && ! WhatsAppCloudChannel::parse_send_response(400, ['error' => ['code' => 132001, 'message' => 'Template not found']])['retryable'] && WhatsAppCloudChannel::parse_send_response(0, ['error' => ['code' => 'network', 'message' => 'timeout']])['retryable']);
+check('whatsapp redaction and template parsing', WhatsAppCloudChannel::redact('token EAAabcdefghijklmnop failed for 919876543210') === 'token EAA[redacted] failed for [number]' && WhatsAppCloudChannel::parse_templates(['data' => [['name' => 'Wg_Order_Shipped', 'language' => 'en', 'status' => 'approved'], 'junk']]) === [['name' => 'wg_order_shipped', 'language' => 'en', 'status' => 'APPROVED', 'category' => '']]);
+check('queue backoff and retry rules', NotifQueue::backoff(1) === 60 && NotifQueue::backoff(2) === 300 && NotifQueue::backoff(3) === 1800 && NotifQueue::should_retry(['ok' => false, 'retryable' => true], 1) && ! NotifQueue::should_retry(['ok' => false, 'retryable' => true], 3) && ! NotifQueue::should_retry(['ok' => false, 'retryable' => false], 1) && ! NotifQueue::should_retry(['ok' => true], 1));
+check('log masking of phone and email', NotifLog::mask('+919876543210') === '********3210' && NotifLog::mask('asha@example.com') === 'as**@example.com');
+$body = '{"entry":[{"changes":[{"value":{"statuses":[{"id":"wamid.1","status":"delivered"},{"id":"wamid.2","status":"failed","errors":[{"code":131026,"title":"Undeliverable"}]}]}}]}]}';
+check('webhook signature and status parsing', WhatsAppController::verify_signature($body, 'sha256=' . hash_hmac('sha256', $body, 'secret'), 'secret') && ! WhatsAppController::verify_signature($body, 'sha256=bad', 'secret') && ! WhatsAppController::verify_signature($body, 'sha256=' . hash_hmac('sha256', $body, ''), '') && WhatsAppController::parse_statuses(json_decode($body, true)) === [['id' => 'wamid.1', 'status' => 'delivered', 'error_code' => '', 'error_message' => ''], ['id' => 'wamid.2', 'status' => 'failed', 'error_code' => '131026', 'error_message' => 'Undeliverable']]);
+check('email channel defers WooCommerce covered events', EmailChannel::handled_by_woocommerce('completed') && ! EmailChannel::handled_by_woocommerce('shipped'));
 echo "\n" . ($fail ? "$fail FAILURE(S)" : "ALL PASSED") . "\n";
 exit($fail ? 1 : 0);

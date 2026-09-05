@@ -4,7 +4,7 @@ Tags: woocommerce, reviews, wishlist, invoice, whatsapp, slider, reels, ai
 Requires at least: 6.4
 Tested up to: 6.6
 Requires PHP: 8.1
-Stable tag: 0.7.0
+Stable tag: 0.8.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,6 +17,12 @@ Webgram Core adds modular ecommerce features to WooCommerce: advanced reviews, w
 The plugin works with any theme and is designed for Webgram Theme.
 
 == Changelog ==
+
+= 0.8.0 =
+* Analytics module: first party events table, batched REST collector with sampling, server side events, trending views, retention, privacy export and erase, dashboard with inline SVG bars.
+* Invoice module: gap free numbering with financial year formats, normalized order data with CGST, SGST and IGST labels, A4 template rendered by dompdf (Composer) with an HTML fallback, protected storage, REST download with ownership check, admin actions, bulk zip, My Account and thank you buttons, HSN field.
+* Emails module: branded WooCommerce header, footer and styles through template hooks, preview and test send page, invoice attachments.
+* Notifications module: order events with Shipped and Out for delivery statuses, email and WhatsApp Cloud API channels, consent at checkout and My Account, template mapping with Meta sync, background queue with retries, delivery log with admin page, webhook for delivery states.
 
 = 0.7.0 =
 * Reels module: wg_reel post type with categories, upload or external sources (MP4, YouTube Shorts, Vimeo, Cloudflare Stream, Bunny), 9:16 cards with muted autoplay and product mini card, full screen viewer with product sheet and add to cart, analytics events, shortcode, widget and block.

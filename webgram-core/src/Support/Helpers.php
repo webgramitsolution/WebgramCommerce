@@ -42,9 +42,12 @@ final class Helpers {
 			if ( is_array( $code ) ) {
 				$code = reset( $code );
 			}
-			return (string) $code;
+			if ( '' !== (string) $code ) {
+				return (string) $code;
+			}
 		}
-		return '';
+		$fallback = [ 'IN' => '91', 'US' => '1', 'CA' => '1', 'GB' => '44', 'AE' => '971', 'SA' => '966', 'AU' => '61', 'DE' => '49', 'FR' => '33', 'SG' => '65', 'MY' => '60', 'BD' => '880', 'LK' => '94', 'NP' => '977', 'PK' => '92', 'ID' => '62', 'ZA' => '27', 'NG' => '234', 'KE' => '254', 'NZ' => '64', 'IE' => '353', 'NL' => '31', 'IT' => '39', 'ES' => '34', 'BR' => '55', 'MX' => '52', 'JP' => '81', 'CN' => '86', 'QA' => '974', 'KW' => '965', 'OM' => '968', 'BH' => '973' ];
+		return $fallback[ strtoupper( $country ) ] ?? '';
 	}
 
 	public static function bool( mixed $value ): bool {

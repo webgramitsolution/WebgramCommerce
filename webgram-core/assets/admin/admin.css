@@ -34,3 +34,12 @@
 .wgc-slide__grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px}
 .wgc-slide-field label{display:block;font-weight:600;margin-bottom:4px;font-size:12px}
 .wgc-slide-field--full{grid-column:1/-1}
+/* Analytics dashboard */
+.wgc-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:16px 0}
+.wgc-card{background:#fff;border:1px solid #dcdcde;border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:6px}
+.wgc-card__label{font-size:12px;color:#646970}
+.wgc-card__value{font-size:26px;line-height:1}
+.wgc-card__bars{width:100%;height:32px;fill:#a0181f;opacity:.85}
+.wgc-tables{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;margin:16px 0}
+.wgc-table h2{font-size:14px;margin:0 0 8px}
+.wgc-num{text-align:end;width:80px}

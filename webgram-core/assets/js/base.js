@@ -50,5 +50,26 @@
 		document.dispatchEvent(new CustomEvent('wg:' + event, { detail: detail }));
 	}
 
-	window.WebgramCore = { config: cfg, ajax: ajax, rest: rest, on: on, emit: emit };
+	/* Analytics: track(event, objectType, objectId, meta) queues events; the Analytics module flushes them in batches. */
+	var queue = [];
+	var flushTimer = null;
+	function flush(useBeacon) {
+		if (!queue.length || !cfg.analytics || !cfg.analytics.enabled) { queue = []; return; }
+		var batch = queue.splice(0, 20);
+		var url = (cfg.restUrl || '/wp-json/webgram/v1/') + 'events';
+		var body = JSON.stringify({ events: batch, _wpnonce: cfg.restNonce || '' });
+		if (useBeacon && navigator.sendBeacon) { navigator.sendBeacon(url, new Blob([body], { type: 'application/json' })); return; }
+		fetch(url, { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json', 'X-WP-Nonce': cfg.restNonce || '' }, body: body, keepalive: true }).catch(function () {});
+	}
+	function track(event, objectType, objectId, meta) {
+		if (!event || !cfg.analytics || !cfg.analytics.enabled) { return; }
+		if (cfg.analytics.sample && Math.random() * 100 > cfg.analytics.sample) { return; }
+		queue.push({ event: String(event).slice(0, 48), object_type: objectType ? String(objectType).slice(0, 24) : '', object_id: parseInt(objectId, 10) || 0, meta: meta && typeof meta === 'object' ? meta : {} });
+		clearTimeout(flushTimer);
+		flushTimer = setTimeout(function () { flush(false); }, 1500);
+	}
+	on('track', function (d) { if (d && d.event) { track(d.event, d.object_type, d.object_id, d.meta || Object.keys(d).reduce(function (m, k) { if (['event', 'object_type', 'object_id'].indexOf(k) === -1) { m[k] = d[k]; } return m; }, {})); } });
+	window.addEventListener('pagehide', function () { flush(true); });
+
+	window.WebgramCore = { config: cfg, ajax: ajax, rest: rest, on: on, emit: emit, track: track };
 })();
