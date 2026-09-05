@@ -52,6 +52,9 @@ final class DemoContent {
 		if ( $modules->is_active( 'coupons' ) && class_exists( 'WC_Coupon' ) ) {
 			$this->lines[] = sprintf( /* translators: %d: count. */ __( '%d coupons.', 'webgram-core' ), $this->coupons() );
 		}
+		if ( $modules->is_active( 'instagram' ) ) {
+			$this->lines[] = sprintf( /* translators: %d: count. */ __( '%d Instagram posts.', 'webgram-core' ), $this->instagram( $image ) );
+		}
 		foreach ( [ 'wishlist', 'compare' ] as $key ) {
 			if ( $modules->is_active( $key ) && $this->page_setup->create_page( $key ) > 0 ) {
 				$this->lines[] = sprintf( /* translators: %s: page name. */ __( '%s page ready.', 'webgram-core' ), ucfirst( $key ) );
@@ -144,6 +147,27 @@ final class DemoContent {
 			++$count;
 		}
 		return $count;
+	}
+
+	/** Manual Instagram gallery from the demo images, so the feed works without an API token. */
+	private function instagram( callable $image ): int {
+		$settings = $this->plugin->settings( 'instagram' );
+		$existing = (array) $settings->get( 'manual_items', [] );
+		if ( $existing ) {
+			return count( $existing );
+		}
+		$items = [];
+		for ( $i = 1; $i <= 6; $i++ ) {
+			$id = (int) $image( 'insta-' . $i );
+			if ( $id > 0 ) {
+				$items[] = [ 'image' => $id, 'link' => '', 'caption' => '' ];
+			}
+		}
+		if ( $items ) {
+			$settings->set( 'mode', 'manual' );
+			$settings->set( 'manual_items', $items );
+		}
+		return count( $items );
 	}
 
 	private function coupons(): int {
