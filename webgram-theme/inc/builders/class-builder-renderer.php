@@ -137,11 +137,15 @@ final class Webgram_Builder_Renderer {
 			if ( $has ) {
 				$style = sprintf( '--wg-footer-padding:%dpx', (int) ( $w['settings']['padding'] ?? 64 ) );
 				printf(
-					'<div class="wg-footer__widgets%s%s" style="%s"><div class="wg-container"><div class="wg-footer__grid wg-footer__grid--%d">',
+					'<div class="wg-footer__widgets%s%s%s%s" style="%s" data-wg-component="footer-collapse"><div class="wg-container"><div class="wg-footer__grid wg-footer__grid--%d wg-footer__grid--tablet-%d wg-footer__grid--mobile-%d">',
 					! empty( $w['settings']['first_wide'] ) ? ' wg-footer__widgets--first-wide' : '',
 					'center' === ( $w['settings']['align'] ?? 'start' ) ? ' wg-footer__widgets--center' : '',
+					webgram_option( 'footer_headings_divider' ) ? ' wg-footer__widgets--divider' : '',
+					! empty( $w['settings']['mobile_collapse'] ) ? ' wg-footer__widgets--collapse' : '',
 					esc_attr( $style ),
-					(int) $columns
+					(int) $columns,
+					max( 1, min( 3, (int) ( $w['settings']['columns_tablet'] ?? 2 ) ) ),
+					max( 1, min( 2, (int) ( $w['settings']['columns_mobile'] ?? 1 ) ) )
 				);
 				for ( $i = 1; $i <= $columns; $i++ ) {
 					echo '<div class="wg-footer__col">';

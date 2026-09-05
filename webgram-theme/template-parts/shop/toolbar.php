@@ -1,6 +1,6 @@
 <?php
 /**
- * Shop toolbar: filters button (off-canvas), result count, sort, grid/list toggle. $args: view, columns.
+ * Shop toolbar: filters button (off-canvas), result count, sort, grid/list toggle. $args: view.
  *
  * @package Webgram
  */

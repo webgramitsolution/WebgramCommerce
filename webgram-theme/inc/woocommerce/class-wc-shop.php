@@ -1,6 +1,6 @@
 <?php
 /**
- * Shop archive (spec 4.5): category banner, subcategory chips, toolbar (count, sort, grid/list, columns), filters
+ * Shop archive (spec 4.5): category banner, subcategory chips, toolbar (count, sort, grid/list), filters
  * sidebar or off-canvas drawer, per-device columns, pagination / load more / infinite, AJAX. Hooks only, no
  * archive-product.php override.
  *
@@ -146,11 +146,11 @@ final class Webgram_WC_Shop {
 		if ( ! webgram_option( 'shop_toolbar' ) ) {
 			return;
 		}
-		webgram_part( 'shop/toolbar', [ 'view' => self::view(), 'columns' => self::columns() ] );
+		webgram_part( 'shop/toolbar', [ 'view' => self::view() ] );
 	}
 
 	public static function loop_start( string $html ): string {
-		$style = sprintf( '--wg-cols-desktop:%d;--wg-cols-tablet:%d;--wg-cols-mobile:%d', self::columns(), max( 1, (int) webgram_option_device( 'shop_columns', 'tablet' ) ), max( 1, (int) webgram_option_device( 'shop_columns', 'mobile' ) ) );
+		$style = sprintf( '--wg-cols-desktop:%d;--wg-cols-tablet:%d;--wg-cols-mobile:%d;--wg-shop-gap-desktop:%dpx;--wg-shop-gap-tablet:%dpx;--wg-shop-gap-mobile:%dpx', self::columns(), max( 1, (int) webgram_option_device( 'shop_columns', 'tablet' ) ), max( 1, (int) webgram_option_device( 'shop_columns', 'mobile' ) ), (int) webgram_option_device( 'shop_gap', 'desktop' ), (int) webgram_option_device( 'shop_gap', 'tablet' ), (int) webgram_option_device( 'shop_gap', 'mobile' ) );
 		return str_replace( '<ul class="products', '<ul style="' . esc_attr( $style ) . '" data-wg-products class="products wg-products wg-products--' . esc_attr( self::view() ), $html );
 	}
 
@@ -193,7 +193,7 @@ final class Webgram_WC_Shop {
 		}
 		$offcanvas = 'offcanvas' === webgram_option( 'shop_filters' ) || 'full-width' === webgram_layout();
 		if ( $offcanvas ) {
-			echo '<div id="wg-filters" class="wg-drawer wg-drawer--left wg-drawer--filters" data-wg-component="drawer" data-wg-drawer="filters" hidden><div class="wg-drawer__head"><span class="wg-drawer__title">' . esc_html__( 'Filters', 'webgram' ) . '</span><button class="wg-icon-btn wg-icon-btn--no-label" type="button" data-wg-close="drawer">' . webgram_icon( 'close', '', false ) . '<span class="wg-sr-only">' . esc_html__( 'Close', 'webgram' ) . '</span></button></div><div class="wg-drawer__body">'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo '<div id="wg-filters" class="wg-drawer wg-drawer--left wg-drawer--filters" data-wg-component="drawer" data-wg-drawer="filters" role="dialog" aria-modal="true" aria-label="' . esc_attr__( 'Filters', 'webgram' ) . '" hidden><div class="wg-drawer__head"><span class="wg-drawer__title">' . esc_html__( 'Filters', 'webgram' ) . '</span><button class="wg-icon-btn wg-icon-btn--no-label" type="button" data-wg-close="drawer">' . webgram_icon( 'close', '', false ) . '<span class="wg-sr-only">' . esc_html__( 'Close', 'webgram' ) . '</span></button></div><div class="wg-drawer__body">'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		} else {
 			echo '<aside class="wg-sidebar wg-sidebar--shop wg-filters" data-wg-component="filters"' . ( webgram_option( 'sidebar_sticky' ) ? ' data-sticky="1"' : '' ) . '>';
 		}

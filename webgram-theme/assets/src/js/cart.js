@@ -81,15 +81,57 @@ document.addEventListener('submit', (e) => {
 	const form = e.target.closest('[data-wg-cart-coupon]');
 	if (!form) return;
 	e.preventDefault();
-	const code = (qs('[name="coupon_code"]', form).value || '').trim();
-	if (!code || !window.jQuery) { if (code && cartCfg.url) window.location.href = `${cartCfg.url}?coupon_code=${encodeURIComponent(code)}`; return; }
-	// WooCommerce has no public AJAX for coupons outside the cart page: apply through the cart page endpoint then refresh fragments.
+	const field = qs('[name="coupon_code"]', form);
+	const code = (field.value || '').trim();
+	if (!code) return;
+	if (!cartCfg.url) { window.location.href = `?coupon_code=${encodeURIComponent(code)}`; return; }
+	// WooCommerce has no public AJAX for coupons outside the cart page: post to the cart page, read its notices, then refresh fragments.
 	const body = new FormData();
 	body.append('coupon_code', code);
 	body.append('apply_coupon', '1');
-	fetch(cartCfg.url || window.location.href, { method: 'POST', body, credentials: 'same-origin' })
-		.then(() => window.jQuery(document.body).trigger('wc_fragment_refresh'))
-		.then(() => toast(i18n.applied || 'Coupon applied'));
+	form.classList.add('is-loading');
+	fetch(cartCfg.url, { method: 'POST', body, credentials: 'same-origin' })
+		.then((r) => r.text())
+		.then((html) => {
+			const doc = new DOMParser().parseFromString(html, 'text/html');
+			const error = qs('.woocommerce-error li, .woocommerce-error, .wc-block-components-notice-banner.is-error', doc);
+			const ok = qs('.woocommerce-message, .wc-block-components-notice-banner.is-success', doc);
+			const text = (error || ok) ? (error || ok).textContent.trim().replace(/\s+/g, ' ') : (i18n.applied || 'Coupon applied');
+			form.classList.toggle('has-error', !!error);
+			field.setAttribute('aria-invalid', error ? 'true' : 'false');
+			toast(text);
+			if (!error) { field.value = ''; }
+			if (window.jQuery) { window.jQuery(document.body).trigger('wc_fragment_refresh'); } else if (!error) { window.location.reload(); }
+		})
+		.catch(() => toast(i18n.error || 'Error'))
+		.then(() => form.classList.remove('is-loading'));
+});
+
+// Cart page: quantity steppers and automatic update through WooCommerce's own cart script (no extra endpoint).
+let cartPageTimer = null;
+function requestCartPageUpdate() {
+	clearTimeout(cartPageTimer);
+	cartPageTimer = setTimeout(() => {
+		const btn = qs('.woocommerce-cart-form [name="update_cart"]');
+		if (!btn) return;
+		btn.disabled = false;
+		if (window.jQuery) { window.jQuery(btn).trigger('click'); } else { btn.click(); }
+	}, 500);
+}
+document.addEventListener('click', (e) => {
+	const btn = e.target.closest('.woocommerce-cart-form .wg-qty__btn');
+	if (!btn) return;
+	const input = qs('input.qty', btn.closest('.wg-qty'));
+	if (!input) return;
+	const step = parseFloat(input.step) || 1;
+	const min = parseFloat(input.min) || 0;
+	const max = parseFloat(input.max) || Infinity;
+	const dir = btn.classList.contains('wg-qty__btn--plus') ? 1 : -1;
+	input.value = Math.min(max, Math.max(min, (parseFloat(input.value) || 0) + dir * step));
+	input.dispatchEvent(new Event('change', { bubbles: true }));
+});
+document.addEventListener('change', (e) => {
+	if (e.target.matches('.woocommerce-cart-form input.qty')) requestCartPageUpdate();
 });
 
 // Open the drawer after add to cart (or toast), based on the theme setting.

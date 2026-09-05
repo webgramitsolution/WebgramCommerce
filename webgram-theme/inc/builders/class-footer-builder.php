@@ -139,6 +139,9 @@ final class Webgram_Footer_Builder {
 				'first_wide' => [ 'label' => __( 'First column wider (brand column)', 'webgram' ), 'type' => 'switch', 'default' => true ],
 				'padding'    => [ 'label' => __( 'Vertical padding', 'webgram' ), 'type' => 'number', 'min' => 16, 'max' => 160, 'unit' => 'px', 'default' => 64 ],
 				'align'      => [ 'label' => __( 'Text alignment', 'webgram' ), 'type' => 'radio', 'choices' => [ 'start' => __( 'Start', 'webgram' ), 'center' => __( 'Center', 'webgram' ) ], 'default' => 'start' ],
+				'columns_tablet' => [ 'label' => __( 'Columns on tablet', 'webgram' ), 'type' => 'select', 'choices' => [ '1' => '1', '2' => '2', '3' => '3' ], 'default' => '2' ],
+				'columns_mobile' => [ 'label' => __( 'Columns on mobile', 'webgram' ), 'type' => 'select', 'choices' => [ '1' => '1', '2' => '2' ], 'default' => '1' ],
+				'mobile_collapse' => [ 'label' => __( 'Collapse columns into accordions on mobile', 'webgram' ), 'type' => 'switch', 'default' => false ],
 			];
 		}
 		return [

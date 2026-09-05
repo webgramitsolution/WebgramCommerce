@@ -16,6 +16,7 @@ final class Webgram_WC_Product {
 			return;
 		}
 		add_action( 'wp', [ self::class, 'hooks' ] );
+		add_filter( 'webgram_core/recently_viewed/count', static fn( int $count ): int => (int) webgram_option( 'product_recent_count' ) > 0 ? (int) webgram_option( 'product_recent_count' ) : $count );
 		add_filter( 'woocommerce_product_tabs', [ self::class, 'tabs' ], 98 );
 		add_filter( 'body_class', [ self::class, 'body_class' ] );
 	}
@@ -90,6 +91,11 @@ final class Webgram_WC_Product {
 				case 'related':
 					if ( (int) webgram_option( 'product_related_count' ) > 0 ) {
 						add_action( 'woocommerce_after_single_product_summary', [ self::class, 'related' ], $priority );
+					}
+					break;
+				case 'cross_sells':
+					if ( (int) webgram_option( 'product_cross_sells_count' ) > 0 ) {
+						add_action( 'woocommerce_after_single_product_summary', [ self::class, 'cross_sells' ], $priority );
 					}
 					break;
 				case 'reviews':
@@ -204,6 +210,34 @@ final class Webgram_WC_Product {
 		echo '<div class="wg-product__related wg-section-ornament">';
 		woocommerce_output_related_products();
 		echo '</div>';
+	}
+
+	/** Cross-sells linked on the product (WooCommerce only shows them in the cart); rendered with the theme card. */
+	public static function cross_sells(): void {
+		global $product;
+		if ( ! $product instanceof WC_Product ) {
+			return;
+		}
+		$ids = array_slice( array_map( 'intval', (array) $product->get_cross_sell_ids() ), 0, max( 1, (int) webgram_option( 'product_cross_sells_count' ) ) );
+		if ( ! $ids ) {
+			return;
+		}
+		$products = array_filter( array_map( 'wc_get_product', $ids ), static fn( $p ) => $p instanceof WC_Product && $p->is_visible() );
+		if ( ! $products ) {
+			return;
+		}
+		echo '<section class="wg-product__cross-sells wg-section-ornament up-sells"><h2>' . esc_html( (string) apply_filters( 'webgram/product/cross_sells_heading', __( 'Frequently bought together', 'webgram' ) ) ) . '</h2>';
+		wc_set_loop_prop( 'name', 'cross-sells' );
+		wc_set_loop_prop( 'columns', min( 5, count( $products ) ) );
+		woocommerce_product_loop_start();
+		foreach ( $products as $cross ) {
+			$GLOBALS['post'] = get_post( $cross->get_id() ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+			setup_postdata( $GLOBALS['post'] );
+			wc_get_template_part( 'content', 'product' );
+		}
+		woocommerce_product_loop_end();
+		wp_reset_postdata();
+		echo '</section>';
 	}
 
 	public static function reviews(): void {

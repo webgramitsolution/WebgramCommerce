@@ -54,3 +54,42 @@ register('preloader', (el) => {
 	if (document.readyState === 'complete') done(); else window.addEventListener('load', done);
 	setTimeout(done, 4000);
 });
+
+/** Blog "Load more": fetches the next archive page and appends its cards, keeping the button's href on the following page. */
+register('blog-load-more', (wrap) => {
+	const btn = qs('[data-wg-blog-load-more]', wrap);
+	if (!btn) return;
+	btn.addEventListener('click', (e) => {
+		e.preventDefault();
+		if (btn.classList.contains('is-loading')) return;
+		const label = btn.textContent;
+		btn.classList.add('is-loading');
+		btn.setAttribute('aria-busy', 'true');
+		btn.textContent = btn.dataset.loading || label;
+		fetch(btn.href, { credentials: 'same-origin' })
+			.then((r) => r.text())
+			.then((html) => {
+				const doc = new DOMParser().parseFromString(html, 'text/html');
+				const target = qs(btn.dataset.target || '.wg-posts');
+				const incoming = qs(btn.dataset.target || '.wg-posts', doc);
+				if (target && incoming) {
+					Array.from(incoming.children).forEach((child) => target.appendChild(child));
+					document.dispatchEvent(new CustomEvent('wg:content-updated', { detail: { root: target } }));
+				}
+				const next = qs('[data-wg-blog-load-more]', doc);
+				if (next) { btn.href = next.href; } else { wrap.remove(); }
+			})
+			.catch(() => { window.location.href = btn.href; })
+			.finally(() => { btn.classList.remove('is-loading'); btn.removeAttribute('aria-busy'); btn.textContent = label; });
+	});
+});
+
+/** Footer accordions on mobile (footer builder "collapse columns" option). */
+register('footer-collapse', (root) => {
+	root.addEventListener('click', (e) => {
+		const head = e.target.closest('.wg-footer__heading, .wg-widget__title');
+		if (!head || window.matchMedia('(min-width: 768px)').matches) return;
+		head.classList.toggle('is-open');
+		head.setAttribute('aria-expanded', head.classList.contains('is-open') ? 'true' : 'false');
+	});
+});

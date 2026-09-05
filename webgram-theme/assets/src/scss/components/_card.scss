@@ -16,6 +16,7 @@
   @media (hover: none) { &__dots { display: flex; } }
 
   &__badges { position: absolute; top: var(--wg-space-3); inset-inline-start: var(--wg-space-3); display: flex; flex-direction: column; align-items: flex-start; gap: 4px; z-index: 2; pointer-events: none; }
+  &--badge-top-right &__badges { inset-inline-start: auto; inset-inline-end: var(--wg-space-3); align-items: flex-end; }
   &__actions { position: absolute; top: var(--wg-space-3); inset-inline-end: var(--wg-space-3); display: flex; flex-direction: column; gap: var(--wg-space-2); z-index: 2; opacity: 0; transform: translateX(6px); transition: opacity var(--wg-transition-fast), transform var(--wg-transition-fast);
     &:empty { display: none; }
     > * { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border: 0; border-radius: 50%; background: var(--wg-color-surface); color: var(--wg-color-heading); box-shadow: var(--wg-shadow-md); cursor: pointer; .wg-icon { width: 18px; height: 18px; } &:hover, &.is-active { color: var(--wg-color-primary); } }

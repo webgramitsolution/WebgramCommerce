@@ -60,6 +60,7 @@ $webgram_includes = [
 	'inc/admin/class-theme-dashboard.php',
 	'inc/admin/class-plugin-installer.php',
 	'inc/admin/class-demo-importer.php',
+	'inc/admin/class-page-metabox.php',
 ];
 
 foreach ( $webgram_includes as $webgram_file ) {

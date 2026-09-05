@@ -28,6 +28,14 @@ return [
 				'shop_layout'    => [ 'label' => __( 'Shop', 'webgram' ), 'type' => 'select', 'choices' => [ 'sidebar-left' => __( 'Filters on the left', 'webgram' ), 'sidebar-right' => __( 'Filters on the right', 'webgram' ), 'full-width' => __( 'No sidebar', 'webgram' ) ] ],
 			],
 		],
+		'spacing' => [
+			'label'  => __( 'Spacing and borders', 'webgram' ),
+			'fields' => [
+				'spacing_scale' => [ 'label' => __( 'Spacing scale', 'webgram' ), 'type' => 'radio', 'choices' => [ 'compact' => __( 'Compact', 'webgram' ), 'default' => __( 'Default', 'webgram' ), 'relaxed' => __( 'Relaxed', 'webgram' ) ], 'description' => __( 'Scales every gap, padding and section space in the theme.', 'webgram' ) ],
+				'section_gap'   => [ 'label' => __( 'Space between homepage sections', 'webgram' ), 'type' => 'dimensions', 'min' => 24, 'max' => 160, 'unit' => 'px' ],
+				'border_width'  => [ 'label' => __( 'Border width', 'webgram' ), 'type' => 'range', 'min' => 0, 'max' => 3, 'unit' => 'px' ],
+			],
+		],
 		'sidebar' => [
 			'label'  => __( 'Sidebar', 'webgram' ),
 			'fields' => [

@@ -51,6 +51,8 @@ final class Module extends BaseModule {
 		add_action( 'webgram_core/register_assets', [ $this, 'register_module_assets' ] );
 		add_filter( 'webgram/header/elements', [ $this, 'header_element' ] );
 		add_filter( 'webgram/header/link_url', [ $this, 'link_url' ], 10, 2 );
+		add_filter( 'webgram/header/link_count', [ $this, 'link_count' ], 10, 2 );
+		add_action( 'webgram/mobile_menu/account_links', [ $this, 'drawer_link' ] );
 		add_filter( 'woocommerce_add_to_cart_fragments', [ $this, 'count_fragment' ] );
 		add_filter( 'webgram_core/frontend_data', [ $this, 'frontend_data' ] );
 		add_filter( 'webgram_core/page_setup/pages', [ $this, 'page_request' ] );
@@ -178,6 +180,10 @@ final class Module extends BaseModule {
 			! empty( $settings['show_label'] ) ? '<span class="wg-icon-btn__label">' . esc_html( $label ) . '</span>' : '<span class="wg-sr-only">' . esc_html( $label ) . '</span>',
 			! isset( $settings['show_count'] ) || ! empty( $settings['show_count'] ) ? '<span class="wg-icon-btn__count wg-wishlist-count" data-count="' . esc_attr( (string) $count ) . '">' . esc_html( (string) $count ) . '</span>' : ''
 		);
+	}
+
+	protected function list_icon(): string {
+		return self::HEART;
 	}
 
 	private const HEART = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>';

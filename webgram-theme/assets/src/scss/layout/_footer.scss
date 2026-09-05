@@ -6,15 +6,19 @@
   ul { list-style: none; padding: 0; margin: 0; }
   &__widgets { padding-block: var(--wg-footer-padding, 64px); }
   &__grid { display: grid; gap: var(--wg-space-8); grid-template-columns: 1fr;
-    @include up(sm) { grid-template-columns: repeat(2, 1fr); }
+    &--mobile-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    @include up(md) { @for $i from 1 through 3 { &--tablet-#{$i} { grid-template-columns: repeat(#{$i}, minmax(0, 1fr)); } } }
     @include up(lg) {
       @for $i from 1 through 6 { &--#{$i} { grid-template-columns: repeat(#{$i}, minmax(0, 1fr)); } }
     }
   }
+  &__widgets--collapse { @include down(md) { .wg-footer__col { gap: 0; border-bottom: var(--wg-border-width) solid rgba(255, 255, 255, .12); } .wg-footer__heading, .wg-widget__title { cursor: pointer; padding-block: var(--wg-space-3); margin: 0; display: flex; justify-content: space-between; align-items: center; &::after { content: "+"; font-weight: var(--wg-fw-normal); margin: 0; width: auto; height: auto; background: none; } &.is-open::after { content: "\2212"; } } .wg-footer__el, .widget > :not(.wg-widget__title) { display: none; padding-bottom: var(--wg-space-3); } .is-open ~ *, .wg-widget__title.is-open ~ * { display: block; } } }
   &__widgets--first-wide &__grid { @include up(lg) { @for $i from 2 through 6 { &--#{$i} { grid-template-columns: 1.5fr repeat(#{$i - 1}, minmax(0, 1fr)); } } } }
   &__widgets--center { text-align: center; .wg-footer__el { justify-content: center; } .wg-social { justify-content: center; } }
   &__col { display: flex; flex-direction: column; gap: var(--wg-space-4); min-width: 0; }
   &__el { display: block; }
+  &__widgets--divider .wg-footer__heading::after, &__widgets--divider .wg-widget__title::after { content: ""; display: block; width: 32px; height: 2px; margin-top: var(--wg-space-2); background: var(--wg-color-primary); }
+  &__widgets--center .wg-footer__heading::after, &__widgets--center .wg-widget__title::after { margin-inline: auto; }
   &__heading, .wg-widget__title { margin: 0 0 var(--wg-space-3); color: inherit; font-size: var(--wg-fs-md); font-weight: var(--wg-fw-bold); font-family: var(--wg-font-heading);
     body.wg-footer-divider & { padding-bottom: 10px; position: relative; &::after { content: ""; position: absolute; inset-inline-start: 0; bottom: 0; width: 36px; height: 2px; background: var(--wg-color-accent); } }
   }

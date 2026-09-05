@@ -51,7 +51,8 @@ $webgram_wc = class_exists( 'WooCommerce' );
 				if ( '' === $webgram_href ) {
 					continue 2;
 				}
-				$webgram_badge = '<span class="wg-bottom-nav__badge wg-' . esc_attr( $webgram_action ) . '-count" data-count="0"></span>';
+				$webgram_count = (int) apply_filters( 'webgram/header/link_count', 0, $webgram_action );
+				$webgram_badge = '<span class="wg-bottom-nav__badge wg-' . esc_attr( $webgram_action ) . '-count" data-count="' . esc_attr( (string) $webgram_count ) . '">' . esc_html( (string) $webgram_count ) . '</span>';
 				break;
 			default:
 				$webgram_href = (string) ( $webgram_item['link'] ?? '' );

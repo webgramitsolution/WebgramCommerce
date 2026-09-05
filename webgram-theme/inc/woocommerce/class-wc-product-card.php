@@ -69,7 +69,7 @@ final class Webgram_WC_Product_Card {
 
 	private static function image( WC_Product $product, array $args ): string {
 		$attr = [ 'class' => 'wg-card__img' ];
-		if ( $args['lazy'] ) {
+		if ( $args['lazy'] && webgram_option( 'perf_lazy_load' ) ) {
 			$attr['loading'] = 'lazy';
 		}
 		$id = $product->get_image_id();
@@ -252,7 +252,7 @@ final class Webgram_WC_Product_Card {
 	}
 
 	private static function classes( WC_Product $product, array $args ): string {
-		$classes = [ 'wg-card', 'wg-card--' . $args['variant'], 'wg-card--' . $product->get_type(), 'wg-card--ratio-' . (string) webgram_option( 'card_image_ratio' ), 'wg-card--hover-' . $args['hover'], 'wg-card--actions-' . (string) webgram_option( 'card_actions_position' ), 'wg-card--rating-' . (string) webgram_option( 'card_rating_position' ) ];
+		$classes = [ 'wg-card', 'wg-card--' . $args['variant'], 'wg-card--' . $product->get_type(), 'wg-card--ratio-' . (string) webgram_option( 'card_image_ratio' ), 'wg-card--hover-' . $args['hover'], 'wg-card--actions-' . (string) webgram_option( 'card_actions_position' ), 'wg-card--rating-' . (string) webgram_option( 'card_rating_position' ), 'wg-card--badge-' . (string) webgram_option( 'card_badge_position' ) ];
 		if ( $product->is_on_sale() ) {
 			$classes[] = 'is-on-sale';
 		}

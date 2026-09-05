@@ -20,6 +20,8 @@ return [
 				'blog_columns'        => [ 'label' => __( 'Columns', 'webgram' ), 'type' => 'range', 'min' => 1, 'max' => 4 ],
 				'blog_meta'           => [ 'label' => __( 'Meta shown', 'webgram' ), 'type' => 'multicheck', 'choices' => [ 'date' => __( 'Date', 'webgram' ), 'author' => __( 'Author', 'webgram' ), 'category' => __( 'Category', 'webgram' ), 'comments' => __( 'Comments', 'webgram' ) ] ],
 				'blog_excerpt_length' => [ 'label' => __( 'Excerpt length (words)', 'webgram' ), 'type' => 'number', 'min' => 10, 'max' => 80 ],
+				'blog_featured_image' => [ 'label' => __( 'Show featured images', 'webgram' ), 'type' => 'switch', 'description' => __( 'Applies to post cards and the single post header.', 'webgram' ) ],
+				'blog_pagination'     => [ 'label' => __( 'Pagination', 'webgram' ), 'type' => 'select', 'choices' => [ 'numbers' => __( 'Page numbers', 'webgram' ), 'load_more' => __( 'Load more button', 'webgram' ) ] ],
 			],
 		],
 		'single' => [

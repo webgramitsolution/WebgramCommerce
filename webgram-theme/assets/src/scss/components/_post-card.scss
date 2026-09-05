@@ -4,7 +4,16 @@
   @include up(md) { grid-template-columns: repeat(2, 1fr); }
   @include up(lg) { @for $i from 1 through 5 { &--cols-#{$i} { grid-template-columns: repeat(#{$i}, 1fr); } } }
   &--list { grid-template-columns: 1fr !important; }
+  &--masonry { @include up(md) { display: block; column-gap: var(--wg-space-6); column-count: 2; > * { break-inside: avoid; margin-bottom: var(--wg-space-6); } }
+    @include up(lg) { @for $i from 1 through 5 { &.wg-posts--cols-#{$i} { column-count: $i; } } } }
 }
+.wg-post-card--list { @include up(md) { flex-direction: row; .wg-post-card__media { flex: 0 0 40%; aspect-ratio: 4/3; } .wg-post-card__body { flex: 1; display: flex; flex-direction: column; justify-content: center; } } }
+.wg-post-meta { display: flex; flex-wrap: wrap; gap: var(--wg-space-3); font-size: var(--wg-fs-xs); color: var(--wg-color-text-muted); margin-bottom: var(--wg-space-2);
+  &__item + &__item::before { content: "\00b7"; margin-inline-end: var(--wg-space-3); opacity: .6; }
+  a { color: inherit; &:hover { color: var(--wg-color-primary); } }
+}
+.wg-related-posts { margin-top: var(--wg-space-12); }
+.wg-load-more-wrap { display: flex; justify-content: center; margin-top: var(--wg-space-8); .is-loading { opacity: .6; pointer-events: none; } }
 .wg-post-card { display: flex; flex-direction: column; border: var(--wg-border-width) solid var(--wg-color-border); border-radius: var(--wg-card-radius); overflow: hidden; background: var(--wg-color-surface);
   &__media { aspect-ratio: 16/10; overflow: hidden; img { width: 100%; height: 100%; object-fit: cover; } }
   &__body { padding: var(--wg-space-5); }

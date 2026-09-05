@@ -24,6 +24,7 @@ return [
 			'label'  => __( 'Grid', 'webgram' ),
 			'fields' => [
 				'shop_columns'          => [ 'label' => __( 'Columns', 'webgram' ), 'type' => 'dimensions', 'min' => 1, 'max' => 6 ],
+				'shop_gap'              => [ 'label' => __( 'Space between products', 'webgram' ), 'type' => 'dimensions', 'min' => 4, 'max' => 48, 'unit' => 'px' ],
 				'shop_per_page'         => [ 'label' => __( 'Products per page', 'webgram' ), 'type' => 'number', 'min' => 4, 'max' => 100 ],
 				'shop_toolbar'          => [ 'label' => __( 'Toolbar (count, sort, view)', 'webgram' ), 'type' => 'switch' ],
 				'shop_grid_list_toggle' => [ 'label' => __( 'Grid / list toggle', 'webgram' ), 'type' => 'switch', 'show_if' => [ 'shop_toolbar', '==', true ] ],

@@ -11,8 +11,9 @@ defined( 'ABSPATH' ) || exit;
 $product = $args['product'];
 $options = $args['args'];
 $rating  = $args['rating'] > 0 ? Webgram_WC_Product_Card::rating_pill( (float) $args['rating'], (int) $args['reviews'] ) : '';
+$chips   = $args['chips'];
 ?>
-<article class="<?php echo esc_attr( $args['classes'] ); ?>" data-wg-component="product-card" data-product-id="<?php echo esc_attr( (string) $product->get_id() ); ?>">
+<article class="<?php echo esc_attr( $args['classes'] ); ?>" data-wg-component="product-card" data-product-id="<?php echo esc_attr( (string) $product->get_id() ); ?>"<?php echo $args['gallery'] ? ' data-gallery="' . esc_attr( (string) wp_json_encode( $args['gallery'] ) ) . '" data-interval="' . esc_attr( (string) webgram_option( 'card_slideshow_interval' ) ) . '"' : ''; ?>>
 	<div class="wg-card__media">
 		<a class="wg-card__link" href="<?php echo esc_url( $args['permalink'] ); ?>" aria-label="<?php echo esc_attr( $args['title'] ); ?>" tabindex="-1">
 			<?php echo $args['image']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
@@ -48,6 +49,7 @@ $rating  = $args['rating'] > 0 ? Webgram_WC_Product_Card::rating_pill( (float) $
 			<?php echo $rating; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		</div>
 		<div class="wg-card__excerpt"><?php echo wp_kses_post( wp_trim_words( $product->get_short_description() ?: $product->get_description(), 30 ) ); ?></div>
+		<?php webgram_part( 'cards/card-chips', [ 'chips' => $chips, 'permalink' => $args['permalink'] ] ); ?>
 		<?php do_action( 'webgram/product_card/after_price', $product ); ?>
 		<div class="wg-card__buttons">
 			<?php

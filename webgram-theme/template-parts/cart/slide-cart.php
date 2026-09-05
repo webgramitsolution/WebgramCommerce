@@ -7,6 +7,6 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
-<div id="wg-slide-cart" class="wg-drawer wg-drawer--right wg-drawer--cart" data-wg-component="slide-cart" data-wg-drawer="slide-cart" hidden>
+<div id="wg-slide-cart" class="wg-drawer wg-drawer--right wg-drawer--cart" data-wg-component="slide-cart" data-wg-drawer="slide-cart" role="dialog" aria-modal="true" aria-label="<?php esc_attr_e( 'Shopping cart', 'webgram' ); ?>" hidden>
 	<?php webgram_part( 'cart/drawer-content' ); ?>
 </div>

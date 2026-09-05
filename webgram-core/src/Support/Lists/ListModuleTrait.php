@@ -11,6 +11,7 @@ defined( 'ABSPATH' ) || exit;
  */
 trait ListModuleTrait {
 
+
 	private ?ProductList $list = null;
 
 	public function list(): ProductList {
@@ -51,9 +52,44 @@ trait ListModuleTrait {
 	}
 
 	public function count_fragment( array $fragments ): array {
-		$count = $this->list()->count();
-		$fragments[ '.wg-' . static::LIST_KEY . '-count' ] = '<span class="wg-icon-btn__count wg-' . static::LIST_KEY . '-count" data-count="' . esc_attr( (string) $count ) . '">' . esc_html( (string) $count ) . '</span>';
+		$count = (string) $this->list()->count();
+		$key   = static::LIST_KEY;
+		$fragments[ '.wg-icon-btn__count.wg-' . $key . '-count' ]   = '<span class="wg-icon-btn__count wg-' . $key . '-count" data-count="' . esc_attr( $count ) . '">' . esc_html( $count ) . '</span>';
+		$fragments[ '.wg-bottom-nav__badge.wg-' . $key . '-count' ] = '<span class="wg-bottom-nav__badge wg-' . $key . '-count" data-count="' . esc_attr( $count ) . '">' . esc_html( $count ) . '</span>';
+		$fragments[ '.wg-drawer__count.wg-' . $key . '-count' ]     = '<span class="wg-drawer__count wg-' . $key . '-count" data-count="' . esc_attr( $count ) . '">' . esc_html( $count ) . '</span>';
 		return $fragments;
+	}
+
+	/** Theme bottom navbar badge and drawer link ask for the current count by list id (webgram/header/link_count). */
+	public function link_count( int $count, string $id ): int {
+		return static::LIST_KEY === $id ? $this->list()->count() : $count;
+	}
+
+	/** Link with count inside the theme mobile drawer (webgram/mobile_menu/account_links). */
+	public function drawer_link(): void {
+		$url = $this->page_url();
+		if ( '' === $url ) {
+			return;
+		}
+		$count = (string) $this->list()->count();
+		printf(
+			'<li><a href="%s" data-wgc-list-link="%s">%s<span>%s</span> <span class="wg-drawer__count wg-%s-count" data-count="%s">%s</span></a></li>',
+			esc_url( $url ),
+			esc_attr( static::LIST_KEY ),
+			$this->icon_html( 'wishlist' === static::LIST_KEY ? 'heart' : 'compare', $this->list_icon() ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- SVG.
+			esc_html( $this->list_label() ),
+			esc_attr( static::LIST_KEY ),
+			esc_attr( $count ),
+			esc_html( $count )
+		);
+	}
+
+	/** Inline SVG used when the theme has no icon set. */
+	abstract protected function list_icon(): string;
+
+	/** Human label for links, overridable per module. */
+	protected function list_label(): string {
+		return 'wishlist' === static::LIST_KEY ? __( 'Wishlist', 'webgram-core' ) : __( 'Compare', 'webgram-core' );
 	}
 
 	/** @return \WC_Product[] */

@@ -43,6 +43,8 @@ return [
 					'color_bg_alt'     => __( 'Alternate background (cream)', 'webgram' ),
 					'color_surface'    => __( 'Cards and surfaces', 'webgram' ),
 					'color_border'     => __( 'Borders', 'webgram' ),
+					'color_link'       => __( 'Links', 'webgram' ),
+					'color_link_hover' => __( 'Links (hover)', 'webgram' ),
 				]
 			),
 		],

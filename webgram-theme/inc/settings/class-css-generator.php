@@ -59,6 +59,17 @@ final class Webgram_CSS_Generator {
 		$t['wg-container-max'] = (int) webgram_option( 'container_width' ) . 'px';
 		$t['wg-btn-radius']    = (int) webgram_option( 'button_radius' ) . 'px';
 
+		$factor = match ( (string) webgram_option( 'spacing_scale' ) ) {
+			'compact' => 0.85,
+			'relaxed' => 1.2,
+			default   => 1.0,
+		};
+		foreach ( [ 1 => 4, 2 => 8, 3 => 12, 4 => 16, 5 => 20, 6 => 24, 8 => 32, 10 => 40, 12 => 48, 16 => 64 ] as $step => $px ) {
+			$t[ 'wg-space-' . $step ] = (string) round( $px * $factor ) . 'px';
+		}
+		$t['wg-section-gap']  = (int) webgram_option_device( 'section_gap' ) . 'px';
+		$t['wg-border-width'] = max( 0, min( 3, (int) webgram_option( 'border_width' ) ) ) . 'px';
+
 		$radius = match ( (string) webgram_option( 'radius_scale' ) ) {
 			'sharp'   => [ '0', '0', '0', '0' ],
 			'soft'    => [ '2px', '4px', '6px', '8px' ],
@@ -109,6 +120,7 @@ final class Webgram_CSS_Generator {
 		foreach ( [ 1, 2, 3, 4, 5, 6 ] as $level ) {
 			$t[ 'wg-fs-h' . $level ] = webgram_option_device( 'font_size_h' . $level, $device ) . 'px';
 		}
+		$t['wg-section-gap'] = (int) webgram_option_device( 'section_gap', $device ) . 'px';
 		return (array) apply_filters( 'webgram/tokens_' . $device, $t );
 	}
 

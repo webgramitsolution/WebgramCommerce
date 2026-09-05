@@ -19,6 +19,10 @@ final class Module extends BaseModule {
 	public const LIST_KEY = 'compare';
 	public const LIST_MAX = 4;
 
+	protected function list_icon(): string {
+		return self::ICON;
+	}
+
 	private const ICON = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>';
 
 	public function id(): string {
@@ -50,6 +54,8 @@ final class Module extends BaseModule {
 		add_action( 'webgram_core/register_assets', [ $this, 'register_module_assets' ] );
 		add_filter( 'webgram/header/elements', [ $this, 'header_element' ] );
 		add_filter( 'webgram/header/link_url', [ $this, 'link_url' ], 10, 2 );
+		add_filter( 'webgram/header/link_count', [ $this, 'link_count' ], 10, 2 );
+		add_action( 'webgram/mobile_menu/account_links', [ $this, 'drawer_link' ] );
 		add_filter( 'woocommerce_add_to_cart_fragments', [ $this, 'count_fragment' ] );
 		add_filter( 'woocommerce_add_to_cart_fragments', [ $this, 'bar_fragment' ] );
 		add_filter( 'webgram_core/frontend_data', [ $this, 'frontend_data' ] );

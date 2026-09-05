@@ -22,9 +22,9 @@ $rating  = wc_review_ratings_enabled() ? (float) $product->get_average_rating() 
 ?>
 <del class="wg-price__regular"><?php echo wp_kses_post( $parts['regular'] ); ?></del><?php endif; ?>
 			<?php
-			if ( $save && ! $product->is_type( 'variable' ) ) :
+			if ( $save && (int) $save['percent'] > 0 ) :
 ?>
-<span class="wg-price__percent"><?php echo esc_html( (string) $save['percent'] ); ?>% <?php esc_html_e( 'OFF', 'webgram' ); ?></span><?php endif; ?>
+<span class="wg-price__percent"><?php echo $product->is_type( 'variable' ) ? esc_html( sprintf( /* translators: %d: percent. */ __( 'Up to %d%% OFF', 'webgram' ), (int) $save['percent'] ) ) : esc_html( (string) $save['percent'] ) . '% ' . esc_html__( 'OFF', 'webgram' ); ?></span><?php endif; ?>
 		<?php else : ?>
 			<?php echo wp_kses_post( $parts['html'] ); ?>
 		<?php endif; ?>

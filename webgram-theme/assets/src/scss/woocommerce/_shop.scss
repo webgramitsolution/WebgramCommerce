@@ -1,9 +1,9 @@
 @use "../abstracts/breakpoints" as *;
 @use "../abstracts/mixins" as *;
 // Shop archive layout, toolbar, subcategory chips, filters, load more.
-.wg-products, .woocommerce ul.products.wg-products { grid-template-columns: repeat(var(--wg-cols-mobile, 2), minmax(0, 1fr)); gap: var(--wg-space-4);
-  @include up(md) { grid-template-columns: repeat(var(--wg-cols-tablet, 3), minmax(0, 1fr)); }
-  @include up(lg) { grid-template-columns: repeat(var(--wg-cols-desktop, 5), minmax(0, 1fr)); gap: var(--wg-space-5); }
+.wg-products, .woocommerce ul.products.wg-products { grid-template-columns: repeat(var(--wg-cols-mobile, 2), minmax(0, 1fr)); gap: var(--wg-shop-gap-mobile, var(--wg-space-4));
+  @include up(md) { grid-template-columns: repeat(var(--wg-cols-tablet, 3), minmax(0, 1fr)); gap: var(--wg-shop-gap-tablet, var(--wg-space-4)); }
+  @include up(lg) { grid-template-columns: repeat(var(--wg-cols-desktop, 5), minmax(0, 1fr)); gap: var(--wg-shop-gap-desktop, var(--wg-space-5)); }
   &--list { grid-template-columns: 1fr !important; }
   &.is-loading { opacity: .5; pointer-events: none; }
 }

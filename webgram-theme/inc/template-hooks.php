@@ -170,3 +170,22 @@ function webgram_bulk_order_whatsapp_fallback( string $url ): string {
 	}
 	return '';
 }
+
+/** Blog: excerpt length from Theme Settings (frontend only). */
+add_filter( 'excerpt_length', 'webgram_excerpt_length', 20 );
+function webgram_excerpt_length( int $length ): int {
+	if ( is_admin() ) {
+		return $length;
+	}
+	$setting = (int) webgram_option( 'blog_excerpt_length' );
+	return $setting > 0 ? $setting : $length;
+}
+
+/** Performance: the lazy loading switch controls WordPress native lazy loading for every image. */
+add_filter( 'wp_lazy_loading_enabled', 'webgram_lazy_loading_enabled', 20 );
+function webgram_lazy_loading_enabled( bool $default ): bool {
+	return webgram_option( 'perf_lazy_load' ) ? $default : false;
+}
+
+/** Blog archives: "Load more" pagination swaps the numbered pagination for a button handled by main.js. */
+add_filter( 'webgram/blog/pagination_type', static fn(): string => (string) webgram_option( 'blog_pagination' ) );

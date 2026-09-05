@@ -33,6 +33,23 @@ function webgram_is_woo_page(): bool {
 	return is_woocommerce() || is_cart() || is_checkout() || is_account_page();
 }
 
+/** Context key for the Page title tab visibility list: page, post, blog, shop, search. */
+function webgram_page_title_type(): string {
+	if ( is_search() ) {
+		return 'search';
+	}
+	if ( function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() ) ) {
+		return 'shop';
+	}
+	if ( is_singular( 'post' ) ) {
+		return 'post';
+	}
+	if ( is_page() ) {
+		return 'page';
+	}
+	return 'blog';
+}
+
 /** Page layout id for the current view: container, full-width, sidebar-left, sidebar-right. */
 function webgram_layout(): string {
 	$layout = '';

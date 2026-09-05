@@ -1,11 +1,17 @@
 @use "../abstracts/breakpoints" as *;
 @use "../abstracts/mixins" as *;
 .wg-page-title { background: var(--wg-title-bg, var(--wg-color-bg-alt)); color: var(--wg-title-color, var(--wg-color-heading)); margin: calc(-1 * var(--wg-space-6)) 0 var(--wg-space-8); position: relative;
-  &.has-image { background-image: var(--wg-title-image); background-size: cover; background-position: center; &::before { content: ""; position: absolute; inset: 0; background: rgba(17, 24, 39, .45); } .wg-page-title__inner { position: relative; } }
+  &.has-image { background-image: var(--wg-title-image); background-size: var(--wg-title-bg-size, cover); background-position: var(--wg-title-bg-position, center); background-repeat: no-repeat; &::before { content: ""; position: absolute; inset: 0; background: var(--wg-title-overlay, #111827); opacity: var(--wg-title-overlay-opacity, .45); } .wg-page-title__inner { position: relative; } }
+  &.is-fixed { @include up(lg) { background-attachment: fixed; } }
+  &--minimal { background: transparent; color: var(--wg-color-heading); margin-block: 0 var(--wg-space-6); .wg-page-title__inner { min-height: 0; padding-block: var(--wg-space-4) 0; } }
+  &--overlay { &.has-image { color: #fff; } .wg-page-title__inner { align-items: center; text-align: center; } &.wg-page-title--large .wg-page-title__inner { min-height: 360px; } }
   &__inner { display: flex; flex-direction: column; gap: var(--wg-space-2); justify-content: center; }
   &--small &__inner { min-height: 90px; padding-block: var(--wg-space-4); }
   &--medium &__inner { min-height: 150px; padding-block: var(--wg-space-6); }
   &--large &__inner { min-height: 240px; padding-block: var(--wg-space-10); }
+  &--mobile-small &__inner { @include down(md) { min-height: 70px; padding-block: var(--wg-space-3); } }
+  &--mobile-medium &__inner { @include down(md) { min-height: 120px; padding-block: var(--wg-space-5); } }
+  &--crumb-desktop .wg-breadcrumb { @include down(md) { display: none; } }
   &--center &__inner { align-items: center; text-align: center; }
   &__heading { margin: 0; color: inherit; font-size: var(--wg-fs-h1); }
   &__description { max-width: 70ch; color: inherit; opacity: .85; p:last-child { margin: 0; } }
