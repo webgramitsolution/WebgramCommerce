@@ -15,6 +15,10 @@ get_header( 'shop' );
 
 do_action( 'woocommerce_before_main_content' );
 
+$webgram_has_sidebar = in_array( webgram_layout(), [ 'sidebar-left', 'sidebar-right' ], true );
+if ( $webgram_has_sidebar ) {
+	echo '<div class="' . esc_attr( webgram_content_classes() ) . ' wg-content--product"><div class="wg-main">';
+}
 while ( have_posts() ) :
 	the_post();
 	$webgram_layout = 'layout' === webgram_option( 'product_layout' ) ? webgram_layout_id( 'single_product' ) : 0;
@@ -47,6 +51,11 @@ while ( have_posts() ) :
 	<?php do_action( 'woocommerce_after_single_product' ); ?>
 	<?php
 endwhile;
+if ( $webgram_has_sidebar ) {
+	echo '</div>';
+	get_sidebar();
+	echo '</div>';
+}
 
 do_action( 'woocommerce_after_main_content' );
 

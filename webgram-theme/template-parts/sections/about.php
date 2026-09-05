@@ -22,7 +22,7 @@ $webgram_image = (int) ( $args['image'] ?? 0 );
 		<?php endif; ?>
 		<?php webgram_part( 'sections/benefits', [ 'items' => (array) ( $args['items'] ?? [] ), 'columns' => 3, 'style' => 'cards' ] ); ?>
 		<?php if ( ! empty( $args['button_text'] ) ) : ?>
-			<a class="wg-btn wg-btn--primary wg-about__cta" href="<?php echo esc_url( (string) ( $args['button_url'] ?? '#' ) ); ?>"><?php echo esc_html( (string) $args['button_text'] ); ?><?php webgram_icon( 'arrow-right' ); ?></a>
+			<a class="wg-btn wg-btn--primary wg-about__cta" href="<?php echo esc_url( (string) ( $args['button_url'] ?? '#' ) ); ?>" data-wg-cta="about"><?php echo esc_html( (string) $args['button_text'] ); ?><?php webgram_icon( 'arrow-right' ); ?></a>
 		<?php endif; ?>
 	</div>
 </section>

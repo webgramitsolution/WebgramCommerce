@@ -46,6 +46,7 @@ final class Module extends BaseModule {
 		add_action( 'webgram_core/product_panel/save', [ $this, 'panel_save' ] );
 		add_action( 'webgram_core/register_assets', [ $this, 'register_module_assets' ] );
 		( new OfferProgress( $this ) )->register();
+		add_action( 'woocommerce_add_to_cart', [ $this, 'apply_pending' ], 20 );
 		( new class( $this ) extends AjaxHandler {
 			public function __construct( private Module $module ) {}
 			protected function action(): string {
@@ -54,10 +55,79 @@ final class Module extends BaseModule {
 			protected function fields(): array {
 				return [];
 			}
+			/** Offer progress data plus rendered markup; the cart page JS refreshes the bar after WooCommerce updates the cart. */
 			protected function handle( array $input ): void {
-				$this->success( ( new OfferProgress( $this->module ) )->data() );
+				$progress = new OfferProgress( $this->module );
+				$data     = $progress->data();
+				$this->success( $data + [ 'html' => $data['milestones'] ? \webgram_core()->view( 'coupons/progress', $data, false ) : '' ] );
 			}
 		} )->register();
+		( new class( $this ) extends AjaxHandler {
+			public function __construct( private Module $module ) {}
+			protected function action(): string {
+				return 'coupon_apply';
+			}
+			protected function fields(): array {
+				return [ 'code' => 'text' ];
+			}
+			protected function handle( array $input ): void {
+				$result = $this->module->apply( (string) ( $input['code'] ?? '' ) );
+				if ( ! $result['ok'] ) {
+					$this->error( $result['message'] );
+				}
+				$this->success( $result + [ 'fragments' => function_exists( 'WC' ) && WC()->cart ? apply_filters( 'woocommerce_add_to_cart_fragments', [] ) : [] ] );
+			}
+		} )->register();
+	}
+
+	/**
+	 * Applies a coupon from the product box. With items in the cart it is applied at once; with an empty cart it is
+	 * remembered in the session and applied on the next add to cart. Returns ok, message, state (applied|pending).
+	 *
+	 * @return array{ok: bool, message: string, state: string}
+	 */
+	public function apply( string $code ): array {
+		$code = wc_format_coupon_code( $code );
+		if ( '' === $code || ! function_exists( 'WC' ) || ! WC()->cart ) {
+			return [ 'ok' => false, 'message' => __( 'Enter a coupon code.', 'webgram-core' ), 'state' => 'error' ];
+		}
+		$coupon = new \WC_Coupon( $code );
+		if ( ! $coupon->get_id() || ! self::is_live( $coupon ) ) {
+			return [ 'ok' => false, 'message' => __( 'This coupon is not valid right now.', 'webgram-core' ), 'state' => 'error' ];
+		}
+		if ( WC()->cart->has_discount( $code ) ) {
+			return [ 'ok' => true, 'message' => __( 'Coupon already applied.', 'webgram-core' ), 'state' => 'applied' ];
+		}
+		if ( WC()->cart->is_empty() ) {
+			if ( WC()->session ) {
+				WC()->session->set( 'webgram_pending_coupon', $code );
+			}
+			return [ 'ok' => true, 'message' => __( 'Coupon saved. It applies when you add this product to the cart.', 'webgram-core' ), 'state' => 'pending' ];
+		}
+		wc_clear_notices();
+		$applied = WC()->cart->apply_coupon( $code );
+		$errors  = wc_get_notices( 'error' );
+		wc_clear_notices();
+		if ( ! $applied ) {
+			return [ 'ok' => false, 'message' => $errors ? wp_strip_all_tags( (string) ( $errors[0]['notice'] ?? '' ) ) : __( 'This coupon cannot be applied to your cart.', 'webgram-core' ), 'state' => 'error' ];
+		}
+		WC()->cart->calculate_totals();
+		return [ 'ok' => true, 'message' => __( 'Coupon applied to your cart.', 'webgram-core' ), 'state' => 'applied' ];
+	}
+
+	/** Applies the coupon remembered by apply() once the first product lands in the cart. */
+	public function apply_pending(): void {
+		if ( ! function_exists( 'WC' ) || ! WC()->session || ! WC()->cart ) {
+			return;
+		}
+		$code = (string) WC()->session->get( 'webgram_pending_coupon', '' );
+		if ( '' === $code ) {
+			return;
+		}
+		WC()->session->set( 'webgram_pending_coupon', '' );
+		if ( ! WC()->cart->has_discount( $code ) ) {
+			WC()->cart->apply_coupon( $code );
+		}
 	}
 
 	public function register_module_assets( \Webgram\Core\Support\Assets $assets ): void {
@@ -70,6 +140,11 @@ final class Module extends BaseModule {
 			[ 'id' => 'h_box', 'label' => __( 'Product coupon box', 'webgram-core' ), 'type' => 'heading', 'description' => __( 'Choose the coupon per product in the Webgram tab of the product data box. A default coupon applies to products without one.', 'webgram-core' ) ],
 			[ 'id' => 'default_coupon', 'label' => __( 'Default coupon code', 'webgram-core' ), 'type' => 'text', 'default' => '', 'description' => __( 'Leave empty for none.', 'webgram-core' ) ],
 			[ 'id' => 'copy_label', 'label' => __( 'Copy button label', 'webgram-core' ), 'type' => 'text', 'default' => __( 'Copy code', 'webgram-core' ) ],
+			[ 'id' => 'show_apply', 'label' => __( 'Apply button (adds the coupon to the cart without leaving the page)', 'webgram-core' ), 'type' => 'checkbox', 'default' => true ],
+			[ 'id' => 'apply_label', 'label' => __( 'Apply button label', 'webgram-core' ), 'type' => 'text', 'default' => __( 'Apply', 'webgram-core' ) ],
+			[ 'id' => 'box_style', 'label' => __( 'Box style', 'webgram-core' ), 'type' => 'select', 'options' => [ 'soft' => __( 'Soft (tinted background, dashed border)', 'webgram-core' ), 'outline' => __( 'Outline', 'webgram-core' ), 'solid' => __( 'Solid', 'webgram-core' ), 'ticket' => __( 'Ticket (cut corners)', 'webgram-core' ) ], 'default' => 'soft' ],
+			[ 'id' => 'box_color', 'label' => __( 'Box accent color', 'webgram-core' ), 'type' => 'color', 'default' => '#15803d' ],
+			[ 'id' => 'show_icon', 'label' => __( 'Show icon', 'webgram-core' ), 'type' => 'checkbox', 'default' => true ],
 			[ 'id' => 'h_progress', 'label' => __( 'Cart offer progress', 'webgram-core' ), 'type' => 'heading', 'description' => __( 'Milestones shown in the cart drawer. Amount thresholds use the cart subtotal; quantity thresholds use the item count.', 'webgram-core' ) ],
 			[ 'id' => 'progress_enabled', 'label' => __( 'Show offer progress', 'webgram-core' ), 'type' => 'checkbox', 'default' => true ],
 			[ 'id' => 'progress_free_shipping', 'label' => __( 'Include free shipping threshold from shipping zones', 'webgram-core' ), 'type' => 'checkbox', 'default' => true ],
@@ -136,8 +211,19 @@ final class Module extends BaseModule {
 				'code'       => $coupon->get_code(),
 				'headline'   => self::headline( $coupon->get_discount_type(), (float) $coupon->get_amount(), $coupon->get_free_shipping(), (string) $coupon->get_description() ),
 				'copy_label' => (string) $this->settings()->get( 'copy_label', __( 'Copy code', 'webgram-core' ) ),
-			]
+			] + $this->box_design()
 		);
+	}
+
+	/** Design and apply settings shared by the product box and the shortcode. */
+	public function box_design(): array {
+		return [
+			'style'       => (string) $this->settings()->get( 'box_style', 'soft' ),
+			'color'       => (string) sanitize_hex_color( (string) $this->settings()->get( 'box_color', '#15803d' ) ) ?: '#15803d',
+			'show_icon'   => Helpers::bool( $this->settings()->get( 'show_icon', true ) ),
+			'show_apply'  => Helpers::bool( $this->settings()->get( 'show_apply', true ) ) && function_exists( 'WC' ),
+			'apply_label' => (string) $this->settings()->get( 'apply_label', __( 'Apply', 'webgram-core' ) ),
+		];
 	}
 
 	public function shortcode( array|string $atts ): string {
@@ -148,7 +234,7 @@ final class Module extends BaseModule {
 				return '';
 			}
 			\webgram_core()->assets()->enqueue_module( 'coupons' );
-			return $this->view( 'box', [ 'code' => $coupon->get_code(), 'headline' => self::headline( $coupon->get_discount_type(), (float) $coupon->get_amount(), $coupon->get_free_shipping(), (string) $coupon->get_description() ), 'copy_label' => (string) $this->settings()->get( 'copy_label', __( 'Copy code', 'webgram-core' ) ) ], false );
+			return $this->view( 'box', [ 'code' => $coupon->get_code(), 'headline' => self::headline( $coupon->get_discount_type(), (float) $coupon->get_amount(), $coupon->get_free_shipping(), (string) $coupon->get_description() ), 'copy_label' => (string) $this->settings()->get( 'copy_label', __( 'Copy code', 'webgram-core' ) ) ] + $this->box_design(), false );
 		}
 		$product = wc_get_product( (int) $atts['product_id'] ?: get_the_ID() );
 		if ( ! $product ) {

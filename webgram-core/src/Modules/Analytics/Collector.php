@@ -9,7 +9,7 @@ defined( 'ABSPATH' ) || exit;
 /** POST /events: batched client events, nonce protected, validated and sampled server side too. */
 final class Collector extends RestController {
 
-	public const ALLOWED = [ 'product_view', 'reel_impression', 'reel_play', 'reel_complete', 'reel_product_click', 'reel_add_to_cart', 'chat_open', 'chat_message', 'chat_product_click', 'chat_add_to_cart', 'wishlist_add', 'compare_add', 'review_helpful', 'search', 'voice_search', 'coupon_copy', 'quick_view', 'buy_now', 'add_to_cart' ];
+	public const ALLOWED = [ 'product_view', 'reel_impression', 'reel_play', 'reel_complete', 'reel_product_click', 'reel_add_to_cart', 'chat_open', 'chat_message', 'chat_product_click', 'chat_add_to_cart', 'wishlist_add', 'compare_add', 'review_helpful', 'search', 'voice_search', 'coupon_copy', 'quick_view', 'buy_now', 'add_to_cart', 'purchase', 'cta_click', 'checkout_start' ];
 	public const MAX_BATCH = 20;
 
 	public function __construct( private Module $module ) {}

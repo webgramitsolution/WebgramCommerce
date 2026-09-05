@@ -70,6 +70,12 @@
 	}
 	on('track', function (d) { if (d && d.event) { track(d.event, d.object_type, d.object_id, d.meta || Object.keys(d).reduce(function (m, k) { if (['event', 'object_type', 'object_id'].indexOf(k) === -1) { m[k] = d[k]; } return m; }, {})); } });
 	window.addEventListener('pagehide', function () { flush(true); });
+	/* CTA clicks: any link or button carrying data-wg-cta="label" (theme sections, slider, banners, popups). */
+	document.addEventListener('click', function (e) {
+		var cta = e.target.closest('[data-wg-cta]');
+		if (!cta) { return; }
+		track('cta_click', 'cta', 0, { label: String(cta.getAttribute('data-wg-cta') || '').slice(0, 60), href: String(cta.getAttribute('href') || '').slice(0, 120) });
+	});
 
 	/* Keeps Tab and Shift+Tab inside an open dialog. Call from a keydown handler while the dialog is visible. */
 	function trapFocus(container, e) {

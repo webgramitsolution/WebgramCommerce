@@ -61,6 +61,7 @@ $webgram_includes = [
 	'inc/admin/class-plugin-installer.php',
 	'inc/admin/class-demo-importer.php',
 	'inc/admin/class-page-metabox.php',
+	'inc/admin/class-sidebars.php',
 ];
 
 foreach ( $webgram_includes as $webgram_file ) {

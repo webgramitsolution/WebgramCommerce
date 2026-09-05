@@ -91,6 +91,21 @@
 		});
 	}
 
+	if (window.jQuery) {
+		window.jQuery(document.body).on('added_to_cart', function (e, fragments, hash, button) {
+			var data = cfg.wishlist || {};
+			var row = button && button.length ? button.closest('[data-wgc-wishlist-row]') : null;
+			if (!data.moveToCart || !row || !row.length) { return; }
+			var id = parseInt(row.attr('data-wgc-wishlist-row'), 10);
+			cfg.wishlist = Object.assign({}, data, { ids: (data.ids || []).filter(function (x) { return x !== id; }) });
+			syncButtons('wishlist', cfg.wishlist.ids);
+			setCount('wishlist', cfg.wishlist.ids.length);
+			row.remove();
+			var page = document.querySelector('[data-wgc-wishlist-page]');
+			if (page && !page.querySelector('tbody tr')) { window.location.reload(); }
+		});
+	}
+
 	document.addEventListener('click', function (e) {
 		var btn = e.target.closest('[data-wgc-wishlist], [data-wgc-compare]');
 		if (btn) {

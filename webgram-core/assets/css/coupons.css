@@ -8,3 +8,20 @@
 .wgc-progress__bar{position:relative;height:6px;border-radius:999px;background:#e5e7eb;margin:8px 8px 22px}.wgc-progress__fill{display:block;height:100%;border-radius:999px;background:var(--wgc-color-primary,#a0181f);transition:width .4s}
 .wgc-progress__node{position:absolute;top:50%;width:20px;height:20px;border-radius:50%;background:#fff;border:2px solid #d1d5db;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;color:#fff}.wgc-progress__node.is-done{background:var(--wgc-color-primary,#a0181f);border-color:var(--wgc-color-primary,#a0181f)}
 .wgc-progress__labels{display:flex;justify-content:space-between;font-size:11px;color:#6b7280}.wgc-progress__labels span{flex:1;text-align:right}.wgc-progress__labels span.is-done{color:#111827;font-weight:600}
+
+.wgc-coupon-box{--wgc-coupon-color:#15803d;flex-wrap:wrap;border-color:color-mix(in srgb,var(--wgc-coupon-color) 45%,#fff);background:color-mix(in srgb,var(--wgc-coupon-color) 8%,#fff)}
+.wgc-coupon-box__icon,.wgc-coupon-box__copy{color:var(--wgc-coupon-color);border-color:var(--wgc-coupon-color)}
+.wgc-coupon-box__code{border-color:color-mix(in srgb,var(--wgc-coupon-color) 45%,#fff)}
+.wgc-coupon-box__actions{display:flex;gap:8px;align-items:center}
+.wgc-coupon-box__apply{padding:6px 14px;border:1px solid var(--wgc-coupon-color);border-radius:6px;background:var(--wgc-coupon-color);color:#fff;font-weight:600;cursor:pointer;font-size:13px}
+.wgc-coupon-box__message{display:block;font-size:12px;margin-top:2px;min-height:0}
+.wgc-coupon-box.is-applied .wgc-coupon-box__message,.wgc-coupon-box.is-pending .wgc-coupon-box__message{color:var(--wgc-coupon-color)}
+.wgc-coupon-box.is-error{border-color:#dc2626}.wgc-coupon-box.is-error .wgc-coupon-box__message{color:#dc2626}
+.wgc-coupon-box--outline{background:transparent;border-style:solid}
+.wgc-coupon-box--solid{background:var(--wgc-coupon-color);border-color:var(--wgc-coupon-color);color:#fff}
+.wgc-coupon-box--solid .wgc-coupon-box__text strong,.wgc-coupon-box--solid .wgc-coupon-box__icon,.wgc-coupon-box--solid .wgc-coupon-box__message{color:#fff}
+.wgc-coupon-box--solid .wgc-coupon-box__code{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.4);color:#fff}
+.wgc-coupon-box--solid .wgc-coupon-box__apply{background:#fff;color:var(--wgc-coupon-color)}
+.wgc-coupon-box--solid .wgc-coupon-box__copy{background:transparent;color:#fff;border-color:rgba(255,255,255,.6)}
+.wgc-coupon-box--ticket{border-style:solid;border-radius:12px;mask:radial-gradient(circle at 0 50%,transparent 9px,#000 10px) 0 0/100% 100%,radial-gradient(circle at 100% 50%,transparent 9px,#000 10px) 0 0/100% 100%;mask-composite:intersect;-webkit-mask-composite:source-in;padding-inline:22px}
+@media (max-width:480px){.wgc-coupon-box__actions{width:100%;justify-content:flex-end}}

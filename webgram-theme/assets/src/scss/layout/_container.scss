@@ -10,3 +10,8 @@ body.wg-site-boxed { background: var(--wg-boxed-bg, #f3f4f6); .wg-site { max-wid
 .wg-main { min-width: 0; }
 .wg-widget { margin-bottom: var(--wg-space-8); &__title { font-size: var(--wg-fs-md); margin-bottom: var(--wg-space-3); } }
 .wg-section { padding-block: var(--wg-section-padding-y); &--alt { background: var(--wg-color-bg-alt); } }
+
+.wg-sidebar-toggle { display: none; margin-bottom: var(--wg-space-4); @include down(lg) { display: inline-flex; } }
+.wg-sidebar--offcanvas { @include up(lg) { position: static; transform: none; visibility: visible; width: auto; box-shadow: none; background: transparent; display: block; &[hidden] { display: block; } .wg-sidebar__head { display: none; } }
+  @include down(lg) { .wg-sidebar__body { padding: var(--wg-space-4); overflow: auto; } } }
+body.wg-sidebar-mobile-hide .wg-sidebar:not(.wg-sidebar--shop) { @include down(lg) { display: none; } }

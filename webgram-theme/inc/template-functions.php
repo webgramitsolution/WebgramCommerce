@@ -33,6 +33,13 @@ function webgram_is_woo_page(): bool {
 	return is_woocommerce() || is_cart() || is_checkout() || is_account_page();
 }
 
+/** Body class carrying the mobile sidebar mode so CSS can hide stacked sidebars. */
+add_filter( 'body_class', 'webgram_sidebar_body_class' );
+function webgram_sidebar_body_class( array $classes ): array {
+	$classes[] = 'wg-sidebar-mobile-' . sanitize_html_class( (string) webgram_option( 'sidebar_mobile' ) );
+	return $classes;
+}
+
 /** Context key for the Page title tab visibility list: page, post, blog, shop, search. */
 function webgram_page_title_type(): string {
 	if ( is_search() ) {
@@ -62,7 +69,7 @@ function webgram_layout(): string {
 		if ( function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() ) ) {
 			$layout = (string) webgram_option( 'shop_layout' );
 		} elseif ( function_exists( 'is_product' ) && is_product() ) {
-			$layout = 'container';
+			$layout = (string) webgram_option( 'product_page_layout' );
 		} elseif ( is_single() && ! webgram_option( 'blog_sidebar_single' ) ) {
 			$layout = 'container';
 		} elseif ( is_home() || is_archive() || is_search() || is_single() ) {

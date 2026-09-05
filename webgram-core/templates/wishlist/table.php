@@ -54,7 +54,7 @@ use Webgram\Core\Support\Helpers;
 						<td data-title="<?php esc_attr_e( 'Stock', 'webgram-core' ); ?>"><?php echo wp_kses_post( wc_get_stock_html( $wgc_product ) ?: '<span class="wgc-in-stock">' . esc_html__( 'In stock', 'webgram-core' ) . '</span>' ); ?></td>
 						<td class="wgc-col-actions">
 							<?php if ( $wgc_product->is_purchasable() && $wgc_product->is_in_stock() ) : ?>
-								<a href="<?php echo esc_url( $wgc_product->add_to_cart_url() ); ?>" data-quantity="1" class="wg-btn wg-btn--primary wg-btn--sm button product_type_<?php echo esc_attr( $wgc_product->get_type() ); ?><?php echo $wgc_product->supports( 'ajax_add_to_cart' ) ? ' ajax_add_to_cart add_to_cart_button' : ''; ?>" data-product_id="<?php echo (int) $wgc_product->get_id(); ?>" data-product_sku="<?php echo esc_attr( $wgc_product->get_sku() ); ?>" rel="nofollow"><?php echo esc_html( $wgc_product->add_to_cart_text() ); ?></a>
+								<a href="<?php echo esc_url( add_query_arg( 'wg_from_wishlist', 1, $wgc_product->add_to_cart_url() ) ); ?>" data-quantity="1" class="wg-btn wg-btn--primary wg-btn--sm button product_type_<?php echo esc_attr( $wgc_product->get_type() ); ?><?php echo $wgc_product->supports( 'ajax_add_to_cart' ) ? ' ajax_add_to_cart add_to_cart_button' : ''; ?>" data-product_id="<?php echo (int) $wgc_product->get_id(); ?>" data-product_sku="<?php echo esc_attr( $wgc_product->get_sku() ); ?>" data-wg_from_wishlist="1" rel="nofollow"><?php echo esc_html( $wgc_product->add_to_cart_text() ); ?></a>
 							<?php else : ?>
 								<a href="<?php echo esc_url( $wgc_product->get_permalink() ); ?>" class="wg-btn wg-btn--outline wg-btn--sm"><?php esc_html_e( 'View', 'webgram-core' ); ?></a>
 							<?php endif; ?>

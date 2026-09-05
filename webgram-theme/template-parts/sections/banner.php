@@ -34,7 +34,7 @@ $webgram_tag    = $webgram_url && empty( $args['button_text'] ) ? 'a' : 'div';
 				<p class="wg-banner__text"><?php echo esc_html( (string) $args['text'] ); ?></p>
 			<?php endif; ?>
 			<?php if ( ! empty( $args['button_text'] ) ) : ?>
-				<a class="wg-btn wg-btn--primary" href="<?php echo esc_url( $webgram_url ?: '#' ); ?>"><?php echo esc_html( (string) $args['button_text'] ); ?></a>
+				<a class="wg-btn wg-btn--primary" href="<?php echo esc_url( $webgram_url ?: '#' ); ?>" data-wg-cta="banner"><?php echo esc_html( (string) $args['button_text'] ); ?></a>
 			<?php endif; ?>
 		</div>
 	<?php endif; ?>

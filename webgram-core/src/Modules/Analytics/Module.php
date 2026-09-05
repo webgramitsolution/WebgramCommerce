@@ -60,6 +60,10 @@ final class Module extends BaseModule {
 		add_action( 'webgram_core_daily_maintenance', [ $this, 'retention' ] );
 		add_action( 'init', [ $this, 'schedule' ] );
 		add_action( 'wp', [ $this, 'product_view' ] );
+		add_action( 'template_redirect', [ $this, 'search_event' ] );
+		add_action( 'woocommerce_add_to_cart', [ $this, 'add_to_cart_event' ], 10, 6 );
+		add_action( 'woocommerce_thankyou', [ $this, 'purchase_event' ] );
+		add_action( 'woocommerce_before_checkout_form', [ $this, 'checkout_start_event' ] );
 		add_filter( 'wp_privacy_personal_data_exporters', [ $this, 'exporter' ] );
 		add_filter( 'wp_privacy_personal_data_erasers', [ $this, 'eraser' ] );
 		if ( is_admin() ) {
@@ -135,6 +139,45 @@ final class Module extends BaseModule {
 		if ( $batch ) {
 			$this->repo()->insert_many( array_map( fn( array $e ) => $e + [ 'user_id' => get_current_user_id(), 'session_hash' => $this->session_hash() ], $batch ) );
 		}
+	}
+
+	/** Search result pages: the term is kept short and never joined to a user. */
+	public function search_event(): void {
+		if ( is_admin() || wp_doing_ajax() || ! is_search() || ! $this->enabled() ) {
+			return;
+		}
+		$term = trim( (string) get_search_query( false ) );
+		if ( '' === $term || strlen( $term ) > 80 ) {
+			return;
+		}
+		$this->server_event( 'search', [ 'object_type' => 'search', 'term' => mb_strtolower( $term ), 'results' => (int) $GLOBALS['wp_query']->found_posts, 'product' => isset( $_GET['post_type'] ) && 'product' === $_GET['post_type'] ? 1 : 0 ], 'analytics' ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	}
+
+	/** Every add to cart (classic, AJAX and Store API) with the product and quantity. */
+	public function add_to_cart_event( string $cart_item_key, int $product_id, int $quantity, int $variation_id ): void {
+		$this->server_event( 'add_to_cart', [ 'product_id' => $variation_id ?: $product_id, 'parent_id' => $product_id, 'qty' => $quantity, 'buy_now' => ! empty( $_REQUEST['wg_buy_now'] ) ? 1 : 0 ], 'analytics' ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( ! empty( $_REQUEST['wg_buy_now'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$this->server_event( 'buy_now', [ 'product_id' => $variation_id ?: $product_id ], 'analytics' );
+		}
+	}
+
+	/** One purchase event per order, recorded on the thank you page (totals only, no customer data). */
+	public function purchase_event( $order_id ): void {
+		$order = wc_get_order( (int) $order_id );
+		if ( ! $order || $order->get_meta( '_wg_analytics_purchase' ) ) {
+			return;
+		}
+		$order->update_meta_data( '_wg_analytics_purchase', time() );
+		$order->save_meta_data();
+		$this->server_event( 'purchase', [ 'object_type' => 'order', 'object_id' => $order->get_id(), 'total' => (float) $order->get_total(), 'items' => (int) $order->get_item_count(), 'currency' => $order->get_currency(), 'payment' => (string) $order->get_payment_method() ], 'analytics' );
+	}
+
+	/** Checkout page reached with items in the cart (funnel step before purchase). */
+	public function checkout_start_event(): void {
+		if ( ! function_exists( 'WC' ) || ! WC()->cart || WC()->cart->is_empty() || ! $this->enabled() ) {
+			return;
+		}
+		$this->server_event( 'checkout_start', [ 'object_type' => 'cart', 'items' => (int) WC()->cart->get_cart_contents_count(), 'subtotal' => (float) WC()->cart->get_subtotal() ], 'analytics' );
 	}
 
 	/** Product page views recorded server side (works without JavaScript), sampled like the client. */

@@ -67,7 +67,7 @@ use Webgram\Core\Support\Helpers;
 						<?php if ( $wgc_slide['cta_text'] || $wgc_slide['cta2_text'] ) : ?>
 							<div class="<?php echo esc_attr( Helpers::css_class( 'slide__actions' ) ); ?>">
 								<?php if ( $wgc_slide['cta_text'] ) : ?>
-									<a class="wg-btn wg-btn--primary <?php echo esc_attr( Helpers::css_class( 'slide__cta' ) ); ?>" href="<?php echo esc_url( $wgc_slide['cta_url'] ?: '#' ); ?>"><?php echo esc_html( $wgc_slide['cta_text'] ); ?></a>
+									<a class="wg-btn wg-btn--primary <?php echo esc_attr( Helpers::css_class( 'slide__cta' ) ); ?>" href="<?php echo esc_url( $wgc_slide['cta_url'] ?: '#' ); ?>" data-wg-cta="slider"><?php echo esc_html( $wgc_slide['cta_text'] ); ?></a>
 								<?php endif; ?>
 								<?php if ( $wgc_slide['cta2_text'] ) : ?>
 									<a class="wg-btn wg-btn--outline <?php echo esc_attr( Helpers::css_class( 'slide__cta', 'wgc-slide__cta--secondary' ) ); ?>" href="<?php echo esc_url( $wgc_slide['cta2_url'] ?: '#' ); ?>"><?php echo esc_html( $wgc_slide['cta2_text'] ); ?></a>

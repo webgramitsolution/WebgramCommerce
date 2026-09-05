@@ -188,7 +188,7 @@ final class Webgram_WC_Shop {
 
 	/** Filters sidebar markup (sidebar or off-canvas). Called by Webgram_WC_Setup::wrapper_end. */
 	public static function filters(): void {
-		if ( ! self::is_archive() || ( ! is_active_sidebar( 'sidebar-shop' ) && ! has_action( 'webgram/shop/filters' ) ) ) {
+		if ( ! self::is_archive() || ( ! is_active_sidebar( Webgram_Sidebars::for_context( 'shop' ) ) && ! has_action( 'webgram/shop/filters' ) ) ) {
 			return;
 		}
 		$offcanvas = 'offcanvas' === webgram_option( 'shop_filters' ) || 'full-width' === webgram_layout();
@@ -198,7 +198,7 @@ final class Webgram_WC_Shop {
 			echo '<aside class="wg-sidebar wg-sidebar--shop wg-filters" data-wg-component="filters"' . ( webgram_option( 'sidebar_sticky' ) ? ' data-sticky="1"' : '' ) . '>';
 		}
 		do_action( 'webgram/shop/filters_before' );
-		dynamic_sidebar( 'sidebar-shop' );
+		dynamic_sidebar( Webgram_Sidebars::for_context( 'shop' ) );
 		do_action( 'webgram/shop/filters' );
 		echo $offcanvas ? '</div></div>' : '</aside>';
 	}

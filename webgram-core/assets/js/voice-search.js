@@ -54,6 +54,7 @@
 						input.value = finalText.trim();
 						input.dispatchEvent(new Event('input', { bubbles: true }));
 						Core.emit('voice:result', { input: input, text: finalText.trim() });
+						Core.track('voice_search', 'search', 0, { length: finalText.trim().length });
 						if (cfg.autoSubmit) {
 							var form = input.closest('form');
 							if (form && form.getAttribute('role') === 'search') { form.requestSubmit ? form.requestSubmit() : form.submit(); }

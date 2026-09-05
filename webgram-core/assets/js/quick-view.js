@@ -13,6 +13,7 @@
 	function load(id) {
 		content.innerHTML = '<div class="wgc-quick-view__loading">' + ((core.config.i18n && core.config.i18n.loading) || 'Loading') + '...</div>';
 		open();
+		core.track('quick_view', 'product', id);
 		core.ajax('quick_view', { product_id: id }).then(function (json) {
 			content.innerHTML = json.data.html;
 			var $ = window.jQuery;

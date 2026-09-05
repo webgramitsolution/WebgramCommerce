@@ -65,6 +65,10 @@ final class Module extends BaseModule {
 			add_action( 'woocommerce_after_add_to_cart_button', [ $this, 'product_button' ], 5 );
 		} elseif ( 'gallery' === $position ) {
 			add_action( 'webgram/product/gallery_actions', [ $this, 'gallery_button' ] );
+			add_action( 'webgram_core/quick_view/before_cart', [ $this, 'gallery_button' ] );
+		}
+		if ( Helpers::bool( $this->settings()->get( 'move_to_cart', true ) ) ) {
+			add_action( 'woocommerce_add_to_cart', [ $this, 'remove_after_add' ], 10, 2 );
 		}
 
 		( new class( $this ) extends AjaxHandler {
@@ -91,6 +95,7 @@ final class Module extends BaseModule {
 			[ 'id' => 'page_id', 'label' => __( 'Wishlist page', 'webgram-core' ), 'type' => 'page', 'default' => 0, 'description' => __( 'Page containing the [webgram_wishlist] shortcode.', 'webgram-core' ) ],
 			[ 'id' => 'card_button', 'label' => __( 'Button on product cards', 'webgram-core' ), 'type' => 'checkbox', 'default' => true ],
 			[ 'id' => 'product_position', 'label' => __( 'Button on the product page', 'webgram-core' ), 'type' => 'select', 'options' => [ 'after_cart' => __( 'Next to Add to cart', 'webgram-core' ), 'gallery' => __( 'Gallery corner (Webgram theme)', 'webgram-core' ), 'none' => __( 'Hidden', 'webgram-core' ) ], 'default' => 'after_cart' ],
+			[ 'id' => 'move_to_cart', 'label' => __( 'Move to cart: remove an item from the wishlist once it is added to the cart', 'webgram-core' ), 'type' => 'checkbox', 'default' => true ],
 			[ 'id' => 'show_share', 'label' => __( 'Share link on the wishlist page', 'webgram-core' ), 'type' => 'checkbox', 'default' => true ],
 			[ 'id' => 'share_days', 'label' => __( 'Share link validity (days)', 'webgram-core' ), 'type' => 'number', 'min' => 1, 'max' => 365, 'default' => 30 ],
 			[ 'id' => 'require_login', 'label' => __( 'Require login to save items', 'webgram-core' ), 'type' => 'checkbox', 'default' => false, 'description' => __( 'Off: guests keep a signed cookie list that merges into their account on login.', 'webgram-core' ) ],
@@ -112,6 +117,7 @@ final class Module extends BaseModule {
 			'ids'          => $this->list()->ids(),
 			'url'          => $this->page_url(),
 			'requireLogin' => Helpers::bool( $this->settings()->get( 'require_login', false ) ) && ! is_user_logged_in(),
+			'moveToCart'   => Helpers::bool( $this->settings()->get( 'move_to_cart', true ) ),
 			'loginUrl'     => function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'myaccount' ) : wp_login_url(),
 			'i18n'         => [
 				'added'   => __( 'Added to wishlist', 'webgram-core' ),
@@ -209,6 +215,16 @@ final class Module extends BaseModule {
 		global $product;
 		if ( $product instanceof \WC_Product ) {
 			$this->button( $product, 'product' );
+		}
+	}
+
+	/** Move to cart: adds from the wishlist page (flagged by the JS) drop the item from the list. */
+	public function remove_after_add( string $cart_item_key, int $product_id ): void {
+		if ( empty( $_REQUEST['wg_from_wishlist'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			return;
+		}
+		if ( $this->list()->has( $product_id ) ) {
+			$this->list()->remove( $product_id );
 		}
 	}
 

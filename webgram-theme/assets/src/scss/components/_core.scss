@@ -108,11 +108,20 @@ body.wgc-age-locked { overflow: hidden; }
 .wg-notice { padding: var(--wg-space-3) var(--wg-space-4); border-radius: var(--wg-radius-md); background: var(--wg-color-bg-alt); border-inline-start: 3px solid var(--wg-color-primary); &--info { border-color: var(--wg-color-secondary); } }
 
 // Coupons (product box, toast, cart offer progress), quick view, badges from Core
-.wg-coupon-box { display: flex; align-items: center; gap: var(--wg-space-3); padding: 12px 14px; border-radius: var(--wg-radius-md); background: #ecfdf5; border: 1px dashed #86efac;
-  .wgc-coupon-box__icon { color: var(--wg-color-success); flex: none; }
+.wg-coupon-box { --wgc-coupon-color: var(--wg-color-success); display: flex; flex-wrap: wrap; align-items: center; gap: var(--wg-space-3); padding: 12px 14px; border-radius: var(--wg-radius-md); background: color-mix(in srgb, var(--wgc-coupon-color) 8%, var(--wg-color-surface)); border: 1px dashed color-mix(in srgb, var(--wgc-coupon-color) 45%, var(--wg-color-surface));
+  .wgc-coupon-box__icon { color: var(--wgc-coupon-color); flex: none; }
   &__text { display: flex; flex-direction: column; flex: 1; min-width: 0; font-size: var(--wg-fs-sm); strong { color: var(--wg-color-heading); font-weight: var(--wg-fw-bold); } span { color: var(--wg-color-text); } }
-  &__code { display: inline-block; margin-inline-start: 4px; padding: 1px 8px; border-radius: var(--wg-radius-sm); background: var(--wg-color-surface); border: 1px solid #86efac; font-family: var(--wg-font-body); font-weight: var(--wg-fw-bold); letter-spacing: .06em; color: var(--wg-color-heading); }
-  &__copy.wg-btn { border-color: var(--wg-color-success); color: var(--wg-color-success); background: var(--wg-color-surface); gap: 6px; flex: none; &:hover, &.is-copied { background: var(--wg-color-success); color: #fff; } }
+  &__code { display: inline-block; margin-inline-start: 4px; padding: 1px 8px; border-radius: var(--wg-radius-sm); background: var(--wg-color-surface); border: 1px solid color-mix(in srgb, var(--wgc-coupon-color) 45%, var(--wg-color-surface)); font-family: var(--wg-font-body); font-weight: var(--wg-fw-bold); letter-spacing: .06em; color: var(--wg-color-heading); }
+  &__message { display: block; font-size: var(--wg-fs-xs); margin-top: 2px; &:empty { display: none; } }
+  &__actions { display: flex; gap: var(--wg-space-2); align-items: center; flex: none; }
+  &__apply.wg-btn { background: var(--wgc-coupon-color); border-color: var(--wgc-coupon-color); color: #fff; }
+  &__copy.wg-btn { border-color: var(--wgc-coupon-color); color: var(--wgc-coupon-color); background: var(--wg-color-surface); gap: 6px; flex: none; &:hover, &.is-copied { background: var(--wgc-coupon-color); color: #fff; } }
+  &.is-applied &__message, &.is-pending &__message { color: var(--wgc-coupon-color); }
+  &.is-error { border-color: var(--wg-color-danger); .wg-coupon-box__message { color: var(--wg-color-danger); } }
+  &.wgc-coupon-box--outline { background: transparent; border-style: solid; }
+  &.wgc-coupon-box--solid { background: var(--wgc-coupon-color); border-color: var(--wgc-coupon-color); color: #fff; .wg-coupon-box__text strong, .wg-coupon-box__text span, .wg-coupon-box__message, .wgc-coupon-box__icon { color: #fff; } .wg-coupon-box__code { background: rgba(255, 255, 255, .15); border-color: rgba(255, 255, 255, .4); color: #fff; } .wg-coupon-box__apply.wg-btn { background: #fff; color: var(--wgc-coupon-color); } .wg-coupon-box__copy.wg-btn { background: transparent; color: #fff; border-color: rgba(255, 255, 255, .6); } }
+  &.wgc-coupon-box--ticket { border-style: solid; padding-inline: 22px; mask: radial-gradient(circle at 0 50%, transparent 9px, #000 10px), radial-gradient(circle at 100% 50%, transparent 9px, #000 10px); mask-composite: intersect; }
+  @include down(sm) { .wg-coupon-box__actions { width: 100%; justify-content: flex-end; } }
 }
 .wg-toast { position: fixed; inset-inline-start: 50%; bottom: 32px; transform: translate(-50%, 20px); padding: 10px 18px; border-radius: var(--wg-radius-pill); background: var(--wg-color-heading); color: #fff; font-size: var(--wg-fs-sm); font-weight: var(--wg-fw-medium); opacity: 0; transition: opacity var(--wg-transition-base), transform var(--wg-transition-base); z-index: 1500; box-shadow: var(--wg-shadow-lg);
   &.is-visible { opacity: 1; transform: translate(-50%, 0); }

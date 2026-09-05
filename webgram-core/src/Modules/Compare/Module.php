@@ -64,8 +64,12 @@ final class Module extends BaseModule {
 		add_action( 'webgram/product_card/actions', [ $this, 'card_button' ], 20 );
 		add_action( 'wp_footer', [ $this, 'bar' ], 35 );
 		add_filter( 'webgram_core/elementor/widgets', [ $this, 'widget_definition' ] );
-		if ( Helpers::bool( $this->settings()->get( 'product_button', true ) ) ) {
+		$position = (string) $this->settings()->get( 'product_position', Helpers::bool( $this->settings()->get( 'product_button', true ) ) ? 'after_cart' : 'none' );
+		if ( 'after_cart' === $position ) {
 			add_action( 'woocommerce_after_add_to_cart_button', [ $this, 'product_button' ], 6 );
+		} elseif ( 'gallery' === $position ) {
+			add_action( 'webgram/product/gallery_actions', [ $this, 'gallery_button' ] );
+			add_action( 'webgram_core/quick_view/before_cart', [ $this, 'gallery_button' ] );
 		}
 
 		( new class( $this ) extends AjaxHandler {
@@ -91,7 +95,7 @@ final class Module extends BaseModule {
 		return [
 			[ 'id' => 'page_id', 'label' => __( 'Compare page', 'webgram-core' ), 'type' => 'page', 'default' => 0, 'description' => __( 'Page containing the [webgram_compare] shortcode.', 'webgram-core' ) ],
 			[ 'id' => 'card_button', 'label' => __( 'Button on product cards', 'webgram-core' ), 'type' => 'checkbox', 'default' => true ],
-			[ 'id' => 'product_button', 'label' => __( 'Button on the product page', 'webgram-core' ), 'type' => 'checkbox', 'default' => true ],
+			[ 'id' => 'product_position', 'label' => __( 'Button on the product page', 'webgram-core' ), 'type' => 'select', 'options' => [ 'after_cart' => __( 'Next to Add to cart', 'webgram-core' ), 'gallery' => __( 'Gallery corner (Webgram theme)', 'webgram-core' ), 'none' => __( 'Hidden', 'webgram-core' ) ], 'default' => 'after_cart' ],
 			[ 'id' => 'show_bar', 'label' => __( 'Floating compare bar', 'webgram-core' ), 'type' => 'checkbox', 'default' => true, 'description' => __( 'Small bar at the bottom of the screen while products are selected.', 'webgram-core' ) ],
 			[ 'id' => 'highlight', 'label' => __( 'Highlight differences by default', 'webgram-core' ), 'type' => 'checkbox', 'default' => true ],
 			[ 'id' => 'rows', 'label' => __( 'Rows', 'webgram-core' ), 'type' => 'heading' ],
@@ -207,6 +211,13 @@ final class Module extends BaseModule {
 		global $product;
 		if ( $product instanceof \WC_Product ) {
 			$this->button( $product, 'product' );
+		}
+	}
+
+	public function gallery_button( $product = null ): void {
+		global $product;
+		if ( $product instanceof \WC_Product ) {
+			$this->button( $product, 'gallery' );
 		}
 	}
 
