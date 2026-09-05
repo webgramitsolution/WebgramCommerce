@@ -37,7 +37,7 @@
 			modal.querySelectorAll('[data-wgc-qv-thumb]').forEach(function (t) { t.classList.toggle('is-active', t === thumb); });
 		}
 	});
-	document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) close(); });
+	document.addEventListener('keydown', function (e) { if (modal.hidden) return; if (e.key === 'Escape') { close(); return; } core.trapFocus(modal, e); });
 	if (window.jQuery) {
 		window.jQuery(document.body).on('added_to_cart', function () { if (!modal.hidden) setTimeout(close, 400); });
 	}

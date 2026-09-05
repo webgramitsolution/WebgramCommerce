@@ -146,7 +146,8 @@
 	}
 
 	function onKey(e) {
-		if (e.key === 'Escape') { closeViewer(); }
+		if (e.key === 'Escape') { closeViewer(); return; }
+		if (e.key === 'Tab') { window.WebgramCore.trapFocus(viewer, e); return; }
 		if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { show(state.index + 1); }
 		if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { show(state.index - 1); }
 	}

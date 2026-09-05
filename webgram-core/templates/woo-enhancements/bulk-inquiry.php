@@ -27,7 +27,7 @@ $wgc_uid   = wp_unique_id( 'wgc-bulk-' );
 				<p class="<?php echo esc_attr( Helpers::css_class( 'bulk-form__product' ) ); ?>"><?php echo esc_html( $args['product']->get_name() ); ?></p>
 			<?php elseif ( $args['products'] ) : ?>
 				<p class="<?php echo esc_attr( Helpers::css_class( 'field' ) ); ?>"><label for="<?php echo esc_attr( $wgc_uid ); ?>-product"><?php esc_html_e( 'Product', 'webgram-core' ); ?></label>
-					<input id="<?php echo esc_attr( $wgc_uid ); ?>-product" type="text" name="product_name" list="<?php echo esc_attr( $wgc_uid ); ?>-list" placeholder="<?php esc_attr_e( 'Start typing a product name', 'webgram-core' ); ?>" required>
+					<input id="<?php echo esc_attr( $wgc_uid ); ?>-product" type="text" name="product_name" aria-describedby="<?php echo esc_attr( $wgc_uid ); ?>-message" list="<?php echo esc_attr( $wgc_uid ); ?>-list" placeholder="<?php esc_attr_e( 'Start typing a product name', 'webgram-core' ); ?>" required>
 					<datalist id="<?php echo esc_attr( $wgc_uid ); ?>-list">
 					<?php
 					foreach ( $args['products'] as $wgc_id => $wgc_title ) :
@@ -35,18 +35,18 @@ $wgc_uid   = wp_unique_id( 'wgc-bulk-' );
 <option value="<?php echo esc_attr( $wgc_title ); ?>"></option><?php endforeach; ?></datalist>
 				</p>
 			<?php else : ?>
-				<p class="<?php echo esc_attr( Helpers::css_class( 'field' ) ); ?>"><label for="<?php echo esc_attr( $wgc_uid ); ?>-product"><?php esc_html_e( 'Product', 'webgram-core' ); ?></label><input id="<?php echo esc_attr( $wgc_uid ); ?>-product" type="text" name="product_name" required></p>
+				<p class="<?php echo esc_attr( Helpers::css_class( 'field' ) ); ?>"><label for="<?php echo esc_attr( $wgc_uid ); ?>-product"><?php esc_html_e( 'Product', 'webgram-core' ); ?></label><input id="<?php echo esc_attr( $wgc_uid ); ?>-product" type="text" name="product_name" aria-describedby="<?php echo esc_attr( $wgc_uid ); ?>-message" required></p>
 			<?php endif; ?>
 			<div class="<?php echo esc_attr( Helpers::css_class( 'bulk-form__grid' ) ); ?>">
-				<p class="<?php echo esc_attr( Helpers::css_class( 'field' ) ); ?>"><label for="<?php echo esc_attr( $wgc_uid ); ?>-name"><?php esc_html_e( 'Your name', 'webgram-core' ); ?></label><input id="<?php echo esc_attr( $wgc_uid ); ?>-name" type="text" name="name" autocomplete="name" required></p>
+				<p class="<?php echo esc_attr( Helpers::css_class( 'field' ) ); ?>"><label for="<?php echo esc_attr( $wgc_uid ); ?>-name"><?php esc_html_e( 'Your name', 'webgram-core' ); ?></label><input id="<?php echo esc_attr( $wgc_uid ); ?>-name" type="text" name="name" aria-describedby="<?php echo esc_attr( $wgc_uid ); ?>-message" autocomplete="name" required></p>
 				<p class="<?php echo esc_attr( Helpers::css_class( 'field' ) ); ?>"><label for="<?php echo esc_attr( $wgc_uid ); ?>-company"><?php esc_html_e( 'Company (optional)', 'webgram-core' ); ?></label><input id="<?php echo esc_attr( $wgc_uid ); ?>-company" type="text" name="company" autocomplete="organization"></p>
-				<p class="<?php echo esc_attr( Helpers::css_class( 'field' ) ); ?>"><label for="<?php echo esc_attr( $wgc_uid ); ?>-phone"><?php esc_html_e( 'Phone', 'webgram-core' ); ?></label><input id="<?php echo esc_attr( $wgc_uid ); ?>-phone" type="tel" name="phone" autocomplete="tel" required></p>
-				<p class="<?php echo esc_attr( Helpers::css_class( 'field' ) ); ?>"><label for="<?php echo esc_attr( $wgc_uid ); ?>-email"><?php esc_html_e( 'Email', 'webgram-core' ); ?></label><input id="<?php echo esc_attr( $wgc_uid ); ?>-email" type="email" name="email" autocomplete="email" required></p>
-				<p class="<?php echo esc_attr( Helpers::css_class( 'field' ) ); ?>"><label for="<?php echo esc_attr( $wgc_uid ); ?>-qty"><?php esc_html_e( 'Quantity', 'webgram-core' ); ?></label><input id="<?php echo esc_attr( $wgc_uid ); ?>-qty" type="number" name="quantity" min="1" step="1" value="50" required></p>
+				<p class="<?php echo esc_attr( Helpers::css_class( 'field' ) ); ?>"><label for="<?php echo esc_attr( $wgc_uid ); ?>-phone"><?php esc_html_e( 'Phone', 'webgram-core' ); ?></label><input id="<?php echo esc_attr( $wgc_uid ); ?>-phone" type="tel" name="phone" aria-describedby="<?php echo esc_attr( $wgc_uid ); ?>-message" autocomplete="tel" required></p>
+				<p class="<?php echo esc_attr( Helpers::css_class( 'field' ) ); ?>"><label for="<?php echo esc_attr( $wgc_uid ); ?>-email"><?php esc_html_e( 'Email', 'webgram-core' ); ?></label><input id="<?php echo esc_attr( $wgc_uid ); ?>-email" type="email" name="email" aria-describedby="<?php echo esc_attr( $wgc_uid ); ?>-message" autocomplete="email" required></p>
+				<p class="<?php echo esc_attr( Helpers::css_class( 'field' ) ); ?>"><label for="<?php echo esc_attr( $wgc_uid ); ?>-qty"><?php esc_html_e( 'Quantity', 'webgram-core' ); ?></label><input id="<?php echo esc_attr( $wgc_uid ); ?>-qty" type="number" name="quantity" aria-describedby="<?php echo esc_attr( $wgc_uid ); ?>-message" min="1" step="1" value="50" required></p>
 			</div>
 			<p class="<?php echo esc_attr( Helpers::css_class( 'field' ) ); ?>"><label for="<?php echo esc_attr( $wgc_uid ); ?>-msg"><?php esc_html_e( 'Message', 'webgram-core' ); ?></label><textarea id="<?php echo esc_attr( $wgc_uid ); ?>-msg" name="message" rows="3"></textarea></p>
 			<p class="<?php echo esc_attr( Helpers::css_class( 'bulk-form__hp' ) ); ?>" aria-hidden="true" style="position:absolute;left:-9999px"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></p>
-			<p class="<?php echo esc_attr( Helpers::css_class( 'bulk-form__message' ) ); ?>" data-wgc-bulk-message aria-live="polite"></p>
+			<p class="<?php echo esc_attr( Helpers::css_class( 'bulk-form__message' ) ); ?>" id="<?php echo esc_attr( $wgc_uid ); ?>-message" data-wgc-bulk-message aria-live="polite" role="status"></p>
 			<button type="submit" class="<?php echo esc_attr( Helpers::css_class( 'btn', 'wgc-btn--primary wg-btn wg-btn--primary wg-btn--block' ) ); ?>"><?php esc_html_e( 'Request quote', 'webgram-core' ); ?></button>
 		</form>
 <?php if ( $wgc_modal ) : ?>

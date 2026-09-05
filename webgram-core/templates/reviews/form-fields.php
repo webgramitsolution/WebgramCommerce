@@ -37,13 +37,13 @@ use Webgram\Core\Support\Helpers;
 <?php if ( (int) $args['max_files'] > 0 ) : ?>
 	<div class="<?php echo esc_attr( Helpers::css_class( 'review-form__media' ) ); ?>" data-wgc-review-media data-max="<?php echo (int) $args['max_files']; ?>" data-max-mb="<?php echo (int) $args['max_mb']; ?>" data-error-count="<?php echo esc_attr( sprintf( /* translators: %d: files */ __( 'You can attach up to %d files.', 'webgram-core' ), (int) $args['max_files'] ) ); ?>" data-error-size="<?php echo esc_attr( sprintf( /* translators: %d: MB */ __( 'Each file must be smaller than %d MB.', 'webgram-core' ), (int) $args['max_mb'] ) ); ?>">
 		<label class="<?php echo esc_attr( Helpers::css_class( 'review-form__upload' ) ); ?>">
-			<input type="file" name="wg_review_media[]" multiple accept="<?php echo esc_attr( $args['accept'] ); ?>">
+			<input type="file" name="wg_review_media[]" multiple accept="<?php echo esc_attr( $args['accept'] ); ?>" aria-describedby="wgc-review-media-error">
 			<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
 			<span><?php echo esc_html( $args['allow_video'] ? __( 'Add photos or a video', 'webgram-core' ) : __( 'Add photos', 'webgram-core' ) ); ?></span>
 			<small><?php echo esc_html( sprintf( /* translators: 1: files, 2: MB */ __( 'Up to %1$d files, %2$d MB each', 'webgram-core' ), (int) $args['max_files'], (int) $args['max_mb'] ) ); ?></small>
 		</label>
 		<div class="<?php echo esc_attr( Helpers::css_class( 'review-form__previews' ) ); ?>" data-wgc-review-previews></div>
-		<p class="<?php echo esc_attr( Helpers::css_class( 'review-form__error' ) ); ?>" data-wgc-review-media-error hidden></p>
+		<p class="<?php echo esc_attr( Helpers::css_class( 'review-form__error' ) ); ?>" id="wgc-review-media-error" data-wgc-review-media-error role="alert" hidden></p>
 	</div>
 <?php endif; ?>
 <?php if ( ! empty( $args['show_recommend'] ) ) : ?>

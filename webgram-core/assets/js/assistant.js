@@ -140,6 +140,11 @@
 			if (launcher) { launcher.focus(); }
 		}
 	};
-	document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && document.body.classList.contains('wgc-assistant-open')) { window.WebgramAssistant.close(); } });
+	document.addEventListener('keydown', function (e) {
+		if (!document.body.classList.contains('wgc-assistant-open')) { return; }
+		if (e.key === 'Escape') { window.WebgramAssistant.close(); return; }
+		var root = document.querySelector('[data-wgc-assistant]:not([data-inline])');
+		if (root && window.WebgramCore) { window.WebgramCore.trapFocus(root, e); }
+	});
 	if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); } else { init(); }
 })();

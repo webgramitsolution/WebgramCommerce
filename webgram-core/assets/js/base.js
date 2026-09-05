@@ -71,5 +71,14 @@
 	on('track', function (d) { if (d && d.event) { track(d.event, d.object_type, d.object_id, d.meta || Object.keys(d).reduce(function (m, k) { if (['event', 'object_type', 'object_id'].indexOf(k) === -1) { m[k] = d[k]; } return m; }, {})); } });
 	window.addEventListener('pagehide', function () { flush(true); });
 
-	window.WebgramCore = { config: cfg, ajax: ajax, rest: rest, on: on, emit: emit, track: track };
+	/* Keeps Tab and Shift+Tab inside an open dialog. Call from a keydown handler while the dialog is visible. */
+	function trapFocus(container, e) {
+		if (!container || e.key !== 'Tab') { return; }
+		var items = Array.prototype.filter.call(container.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'), function (el) { return el.offsetParent !== null || el === document.activeElement; });
+		if (!items.length) { e.preventDefault(); return; }
+		var first = items[0], last = items[items.length - 1];
+		if (e.shiftKey && (document.activeElement === first || !container.contains(document.activeElement))) { e.preventDefault(); last.focus(); }
+		else if (!e.shiftKey && (document.activeElement === last || !container.contains(document.activeElement))) { e.preventDefault(); first.focus(); }
+	}
+	window.WebgramCore = { config: cfg, ajax: ajax, rest: rest, on: on, emit: emit, track: track, trapFocus: trapFocus };
 })();
