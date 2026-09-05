@@ -27,7 +27,8 @@ final class Webgram_Setup_Wizard {
 	public static function init(): void {
 		add_action( 'after_switch_theme', [ self::class, 'flag_redirect' ] );
 		add_action( 'admin_init', [ self::class, 'maybe_redirect' ] );
-		add_action( 'admin_menu', [ self::class, 'menu' ], 5 );
+		// After the top level Webgram menu (priority 10): a submenu registered before its parent gets the wrong page hook and WordPress denies access.
+		add_action( 'admin_menu', [ self::class, 'menu' ], 98 );
 		add_action( 'admin_enqueue_scripts', [ self::class, 'assets' ] );
 		add_action( 'wp_ajax_' . self::ACTION, [ self::class, 'ajax' ] );
 		add_action( 'admin_notices', [ self::class, 'notice' ] );
@@ -138,6 +139,10 @@ final class Webgram_Setup_Wizard {
 
 	public static function render(): void {
 		if ( ! current_user_can( 'install_plugins' ) ) {
+			return;
+		}
+		if ( defined( 'DISALLOW_FILE_MODS' ) && DISALLOW_FILE_MODS ) {
+			echo '<div class="wrap wg-admin"><div class="notice notice-error"><p>' . esc_html__( 'This site blocks plugin and theme installation (DISALLOW_FILE_MODS). Install WooCommerce, Webgram Core, Elementor and the child theme through your host, then use Webgram > Demo import.', 'webgram' ) . '</p></div></div>';
 			return;
 		}
 		$status = self::status();
