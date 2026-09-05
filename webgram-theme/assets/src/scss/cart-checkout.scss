@@ -1,0 +1,6 @@
+// Loaded on cart, checkout and My Account pages only.
+@use "abstracts/breakpoints" as *;
+@use "abstracts/mixins" as *;
+@use "woocommerce/cart-page";
+@use "woocommerce/checkout";
+@use "woocommerce/account";

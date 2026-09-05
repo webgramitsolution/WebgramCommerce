@@ -232,6 +232,28 @@ function webgram_defaults(): array {
 				[ 'icon' => 'truck', 'title' => __( 'Shipping', 'webgram' ), 'text' => __( 'Free for bulk orders', 'webgram' ) ],
 			],
 
+			// Cart and checkout.
+			'cart_drawer'             => true,
+			'cart_after_add'          => 'drawer',
+			'cart_drawer_progress'    => true,
+			'cart_drawer_recommend'   => true,
+			'cart_drawer_coupon'      => false,
+			'cart_drawer_savings'     => true,
+			'cart_drawer_note'        => __( 'Apply coupon at next step | Not applicable on combos and gifts', 'webgram' ),
+			'cart_drawer_button'      => __( 'Place order', 'webgram' ),
+			'cart_drawer_subline'     => __( 'Get extra 5% off on prepaid orders', 'webgram' ),
+			'cart_drawer_payments'    => [ 'upi', 'visa', 'mastercard', 'rupay' ],
+			'cart_drawer_view_cart'   => true,
+			'cart_sticky_summary'     => true,
+			'cart_cross_sells'        => 4,
+			'cart_empty_products'     => 4,
+			'checkout_steps'          => true,
+			'checkout_sticky'         => true,
+			'checkout_coupon_place'   => 'summary',
+			'checkout_trust_text'     => __( 'Your payment is encrypted and secure.', 'webgram' ),
+			'thankyou_timeline'       => true,
+			'thankyou_continue'       => true,
+
 			// My account.
 			'login_image'             => 0,
 			'login_image_mobile'      => 0,

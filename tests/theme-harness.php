@@ -49,7 +49,7 @@ check('icon set covers builder and tab icons', count(array_intersect(['settings'
 
 // 3. Settings tabs and defaults consistency
 $tabs = Webgram_Settings::instance()->tabs();
-check('20 theme tabs registered', count($tabs)===20 && isset($tabs['general'],$tabs['single_product'],$tabs['custom_css']));
+check('21 theme tabs registered', count($tabs)===21 && isset($tabs['general'],$tabs['single_product'],$tabs['cart_checkout'],$tabs['custom_css']));
 $fields = Webgram_Settings::instance()->theme_fields();
 $missing = [];
 foreach (array_keys(webgram_defaults()) as $key) { if (!isset($fields[$key])) $missing[] = $key; }
@@ -115,4 +115,13 @@ check('rating pill markup', str_contains($pill,'class="wg-rating-pill"') && str_
 $pill = Webgram_WC_Product_Card::rating_pill(4.53, 196, '#reviews-anchor', true);
 check('rating pill large variant with link and count text', str_starts_with($pill,'<a ') && str_contains($pill,'4.53') && str_contains($pill,'/5') && str_contains($pill,'196 reviews'));
 check('shop and product classes load without WooCommerce', class_exists('Webgram_WC_Shop') && class_exists('Webgram_WC_Product'));
+
+// 7. Cart, checkout and account (Phase 3)
+check('cart, checkout and account classes load without WooCommerce', class_exists('Webgram_WC_Cart') && class_exists('Webgram_WC_Checkout') && class_exists('Webgram_WC_Account'));
+$tl = Webgram_WC_Checkout::timeline('processing', true);
+check('thank you timeline: processing marks 3 of 4, current is processing', count($tl)===4 && $tl[2]['done'] && $tl[2]['current'] && !$tl[3]['done']);
+check('thank you timeline: on-hold unpaid stops at placed, paid reaches payment', Webgram_WC_Checkout::timeline('on-hold', false)[0]['current'] && Webgram_WC_Checkout::timeline('on-hold', true)[1]['current'] && !Webgram_WC_Checkout::timeline('on-hold', true)[2]['done']);
+check('thank you timeline: completed marks all', count(array_filter(Webgram_WC_Checkout::timeline('completed', true), fn($s)=>$s['done']))===4);
+check('split name: first and rest, whitespace collapsed', Webgram_WC_Account::split_name('  Priya   Sharma Rao ')===['Priya','Sharma Rao'] && Webgram_WC_Account::split_name('Priya')===['Priya',''] && Webgram_WC_Account::split_name('')===['','']);
+check('cart drawer defaults registered', webgram_defaults()['cart_drawer']===true && webgram_defaults()['cart_after_add']==='drawer' && isset(webgram_defaults()['checkout_coupon_place']));
 echo "\n".($fail?"$fail FAILURE(S)":"ALL PASSED")."\n"; exit($fail?1:0);

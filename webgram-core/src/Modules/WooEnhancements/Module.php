@@ -48,6 +48,7 @@ final class Module extends BaseModule {
 		( new ContactSeller( $this ) )->register();
 		( new BulkInquiry( $this ) )->register();
 		( new TrackOrder( $this ) )->register();
+		( new CartRecommendations( $this ) )->register();
 		if ( is_admin() ) {
 			( new Admin\PincodesPage( $this ) )->register();
 			( new Admin\ProductPanel( $this ) )->register();
@@ -85,6 +86,7 @@ final class Module extends BaseModule {
 			[ 'id' => 'contact_phone', 'label' => __( 'Phone number', 'webgram-core' ), 'type' => 'text', 'default' => '', 'placeholder' => '+91 98765 43210' ],
 			[ 'id' => 'contact_whatsapp', 'label' => __( 'WhatsApp number', 'webgram-core' ), 'type' => 'text', 'default' => '', 'description' => __( 'With country code. Opens a wa.me chat with the product name prefilled.', 'webgram-core' ) ],
 			[ 'id' => 'contact_chat_url', 'label' => __( 'Chat URL (if not WhatsApp)', 'webgram-core' ), 'type' => 'url', 'default' => '' ],
+			[ 'id' => 'contact_email', 'label' => __( 'Support email (help page)', 'webgram-core' ), 'type' => 'email', 'default' => '' ],
 			[ 'id' => 'contact_show_call', 'label' => __( 'Show call card', 'webgram-core' ), 'type' => 'checkbox', 'default' => true ],
 			[ 'id' => 'contact_show_chat', 'label' => __( 'Show chat card', 'webgram-core' ), 'type' => 'checkbox', 'default' => true ],
 			[ 'id' => 'contact_show_bulk', 'label' => __( 'Show bulk quote card', 'webgram-core' ), 'type' => 'checkbox', 'default' => true ],
@@ -106,7 +108,7 @@ final class Module extends BaseModule {
 
 	public function import( array $core ): void {
 		if ( current_user_can( 'manage_options' ) && ! empty( $core['woo_enhancements'] ) && is_array( $core['woo_enhancements'] ) ) {
-			$allowed = [ 'pincode_mode', 'pincode_default_eta', 'pincode_default_cod', 'pincode_unknown_deliverable', 'location_show_header', 'location_label', 'location_placeholder', 'pincode_show_product', 'pincode_title', 'buy_now_enabled', 'buy_now_label', 'buy_now_empty_cart', 'specs_source', 'contact_phone', 'contact_whatsapp', 'contact_chat_url', 'contact_show_call', 'contact_show_chat', 'contact_show_bulk', 'contact_call_label', 'contact_chat_label', 'contact_bulk_label', 'bulk_notify_email', 'bulk_success', 'bulk_benefits' ];
+			$allowed = [ 'pincode_mode', 'pincode_default_eta', 'pincode_default_cod', 'pincode_unknown_deliverable', 'location_show_header', 'location_label', 'location_placeholder', 'pincode_show_product', 'pincode_title', 'buy_now_enabled', 'buy_now_label', 'buy_now_empty_cart', 'specs_source', 'contact_phone', 'contact_whatsapp', 'contact_chat_url', 'contact_email', 'contact_show_call', 'contact_show_chat', 'contact_show_bulk', 'contact_call_label', 'contact_chat_label', 'contact_bulk_label', 'bulk_notify_email', 'bulk_success', 'bulk_benefits' ];
 			$clean   = [];
 			foreach ( $allowed as $key ) {
 				if ( array_key_exists( $key, $core['woo_enhancements'] ) ) {

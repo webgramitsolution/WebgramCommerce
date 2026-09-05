@@ -3,7 +3,7 @@
  * Plugin Name:       Webgram Core
  * Plugin URI:        https://webgramitsolution.com/webgram-core
  * Description:       Functionality layer for the Webgram WooCommerce ecosystem: reviews, reels, wishlist, compare, AI assistant, invoices, WhatsApp notifications, sliders and more. Works with any theme, designed for Webgram Theme.
- * Version:           0.3.0
+ * Version:           0.4.0
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * WC requires at least: 8.5
@@ -16,7 +16,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'WEBGRAM_CORE_VERSION', '0.3.0' );
+define( 'WEBGRAM_CORE_VERSION', '0.4.0' );
 define( 'WEBGRAM_CORE_DB_VERSION', '0.1.0' );
 define( 'WEBGRAM_CORE_FILE', __FILE__ );
 define( 'WEBGRAM_CORE_PATH', plugin_dir_path( __FILE__ ) );

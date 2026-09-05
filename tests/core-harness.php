@@ -198,5 +198,12 @@ check('bulk inquiry: honeypot rejected', $bi->validate(['website'=>'spam','name'
 check('bulk inquiry: invalid phone rejected, valid accepted with E.164', $bi->validate(['website'=>'','name'=>'A','phone'=>'123','email'=>'a@b.co','quantity'=>5])['ok']===false && $bi->validate(['website'=>'','name'=>'A','phone'=>'98765 43210','email'=>'a@b.co','quantity'=>5])['phone']==='+919876543210');
 check('bulk inquiry: quantity required', $bi->validate(['website'=>'','name'=>'A','phone'=>'9876543210','email'=>'a@b.co','quantity'=>0])['ok']===false);
 
+
+// Phase 3: cart recommendations and help FAQs
+use Webgram\Core\Modules\WooEnhancements\CartRecommendations;
+check('cart recommendations pick: cross sells first, cart items excluded, deduped, capped', CartRecommendations::pick([5,6,'7'],[6,8,9,10],[7],4)===[5,6,8,9] && CartRecommendations::pick([],[0,-1,3],[],5)===[3] && CartRecommendations::pick([],[],[1],3)===[]);
+$faqs = Webgram\Core\Modules\SiteTools\Module::parse_faqs("How long is delivery?\nUsually 3 to 5 days.\nMetro cities faster.\n\n\nOnly a question\n\nReturns?\r\n7 day returns.");
+check('help faqs parse: blank line blocks, first line question, single lines dropped', count($faqs)===2 && $faqs[0]['q']==='How long is delivery?' && $faqs[0]['a']==="Usually 3 to 5 days.\nMetro cities faster." && $faqs[1]['a']==='7 day returns.');
+check('help faqs parse: empty input', Webgram\Core\Modules\SiteTools\Module::parse_faqs('')===[]);
 echo "\n" . ($fail ? "$fail FAILURE(S)" : "ALL PASSED") . "\n";
 exit($fail ? 1 : 0);

@@ -57,6 +57,7 @@ final class Module extends BaseModule {
 		( new Settings( $this ) )->register();
 
 		add_action( 'webgram_core/register_assets', [ $this, 'register_module_assets' ] );
+		add_filter( 'webgram/help/faqs', [ $this, 'help_faqs' ] );
 		add_filter( 'webgram/export_data', [ $this, 'export' ] );
 		add_action( 'webgram/import_data', [ $this, 'import' ] );
 	}
@@ -84,6 +85,23 @@ final class Module extends BaseModule {
 			}
 		}
 		return $out;
+	}
+
+	/** Pure parser: blank-line separated blocks, first line question, rest answer. */
+	public static function parse_faqs( string $text ): array {
+		$out = [];
+		foreach ( preg_split( '/(\r?\n){2,}/', trim( $text ) ) ?: [] as $block ) {
+			$lines = array_values( array_filter( array_map( 'trim', preg_split( '/\r?\n/', $block ) ?: [] ), 'strlen' ) );
+			if ( count( $lines ) < 2 ) {
+				continue;
+			}
+			$out[] = [ 'q' => array_shift( $lines ), 'a' => implode( "\n", $lines ) ];
+		}
+		return $out;
+	}
+
+	public function help_faqs( array $faqs ): array {
+		return array_merge( $faqs, self::parse_faqs( (string) $this->settings()->get( 'help_faqs', '' ) ) );
 	}
 
 	public function export( array $data ): array {

@@ -4,14 +4,15 @@ Resume instructions: read CLAUDE.md, this file, then the current phase in docs/B
 
 ## Current phase
 
-Phase 3: cart drawer, cart page, checkout, thank you, My Account, split login/register, track order, bulk order, help pages.
+Phase 4: reviews (Core Reviews module), wishlist, compare.
 
 ## Completed
 
 - Phase 0 foundation (main branch).
 - Phase 1: Theme Settings panel, header and footer builders, mega menu, mobile menu, Core site_tools and pincode/location picker. Report: docs/phases/phase-1-settings-header.md.
 - Phase 2: product card, shop archive, product detail page, Core WooEnhancements (Buy Now, recently viewed, specifications, video, contact seller, bulk inquiry, track order, product panel), Badges, Quick View, Coupons. Report: docs/phases/phase-2-shop-product.md.
+- Phase 3: slide cart drawer with savings line, offer progress and Core recommendations, cart page, checkout with summary coupon and steps, thank you timeline, My Account icons and cards, split login/register with server validation, help page with Core FAQs and contact cards. Report: docs/phases/phase-3-cart-checkout-account.md.
 
 ## Next task
 
-Phase 3, task 1: slide cart drawer (spec 4.8) in `webgram-theme/template-parts/cart/slide-cart.php`, `inc/woocommerce/class-wc-cart.php` (fragments, `wc-ajax=webgram_cart_update`), `assets/src/js/slide-cart.js`, `assets/src/scss/cart-checkout.scss`; Core recommendations provider (`webgram_core/cart/recommendations`).
+Phase 4, task 1: Core `Reviews` module data layer (comment meta `_wg_title`, `_wg_media`, `_wg_recommend`, `_wg_helpful`, `_wg_helpful_voters`, private media until approval), settings tab, then form, summary, list, AJAX endpoints, admin column, schema, shortcode; then Wishlist and Compare storage (`UserMetaStorage`, signed `CookieStorage`), AJAX toggles, header counts, card buttons, pages and shortcodes.

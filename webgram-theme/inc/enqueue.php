@@ -37,6 +37,15 @@ function webgram_enqueue_assets(): void {
 
 	wp_enqueue_script( 'webgram-main', WEBGRAM_URI . '/assets/js/main.js', [], webgram_asset_version( 'js/main.js' ), [ 'in_footer' => true, 'strategy' => 'defer' ] );
 
+	// Cart drawer script everywhere WooCommerce is active (needed after AJAX add to cart), deferred.
+	if ( class_exists( 'WooCommerce' ) && webgram_option( 'cart_drawer' ) ) {
+		wp_enqueue_script( 'webgram-cart', WEBGRAM_URI . '/assets/js/cart.js', [ 'webgram-main' ], webgram_asset_version( 'js/cart.js' ), [ 'in_footer' => true, 'strategy' => 'defer' ] );
+	}
+	if ( class_exists( 'WooCommerce' ) && ( is_cart() || is_checkout() || is_account_page() ) ) {
+		wp_enqueue_style( 'webgram-cart-checkout', WEBGRAM_URI . '/assets/css/cart-checkout' . $rtl . '.css', [ 'webgram-woocommerce' ], webgram_asset_version( 'css/cart-checkout.css' ) );
+		wp_enqueue_script( 'webgram-checkout', WEBGRAM_URI . '/assets/js/checkout.js', [ 'webgram-main' ], webgram_asset_version( 'js/checkout.js' ), [ 'in_footer' => true, 'strategy' => 'defer' ] );
+	}
+
 	// Page specific bundles: shop archive and single product only load where they render.
 	if ( function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() || ( is_search() && 'product' === get_query_var( 'post_type' ) ) ) ) {
 		wp_enqueue_style( 'webgram-shop', WEBGRAM_URI . '/assets/css/shop' . $rtl . '.css', [ 'webgram-woocommerce' ], webgram_asset_version( 'css/shop.css' ) );
@@ -71,6 +80,11 @@ function webgram_enqueue_assets(): void {
 					'ajax'       => (bool) webgram_option( 'shop_ajax' ),
 					'pagination' => (string) webgram_option( 'shop_pagination' ),
 				],
+				'cart'       => [
+					'drawer'   => (bool) webgram_option( 'cart_drawer' ),
+					'afterAdd' => (string) webgram_option( 'cart_after_add' ),
+					'url'      => function_exists( 'wc_get_cart_url' ) ? wc_get_cart_url() : '',
+				],
 				'product'    => [
 					'autoSlide'    => (bool) webgram_option( 'product_auto_slide' ),
 					'interval'     => (int) webgram_option( 'product_auto_slide_interval' ),
@@ -93,6 +107,11 @@ function webgram_enqueue_assets(): void {
 					'copied'     => __( 'Code copied', 'webgram' ),
 					'prev'       => __( 'Previous', 'webgram' ),
 					'next'       => __( 'Next', 'webgram' ),
+					'addedToCart' => __( 'Added to cart', 'webgram' ),
+					'viewCart'   => __( 'View cart', 'webgram' ),
+					'removed'    => __( 'Item removed', 'webgram' ),
+					'showPassword' => __( 'Show password', 'webgram' ),
+					'hidePassword' => __( 'Hide password', 'webgram' ),
 				],
 			]
 		)

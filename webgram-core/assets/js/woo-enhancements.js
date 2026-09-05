@@ -174,3 +174,11 @@
 		});
 	});
 })();
+
+/* Cart recommendations arrows (the row lives inside a WooCommerce fragment, so listen on document). */
+document.addEventListener('click', function (e) {
+	var btn = e.target.closest('[data-wgc-reco-prev], [data-wgc-reco-next]');
+	if (!btn) return;
+	var track = btn.closest('[data-wgc-cart-reco]').querySelector('[data-wgc-reco-track]');
+	if (track) track.scrollBy({ left: btn.hasAttribute('data-wgc-reco-next') ? 250 : -250, behavior: 'smooth' });
+});
