@@ -11,10 +11,12 @@ defined( 'ABSPATH' ) || exit;
 use Webgram\Core\Support\Helpers;
 
 $wgc_a = $args['a'];
+// Delay in milliseconds for the theme's carousel script. It only advances where the row actually scrolls.
+$wgc_autoplay = empty( $wgc_a['autoplay'] ) ? 0 : max( 2, (int) ( $wgc_a['autoplay_delay'] ?? 5 ) ) * 1000;
 ?>
 <section class="<?php echo esc_attr( Helpers::css_class( 'testimonials', 'wgc-testimonials--' . $wgc_a['style'] ) ); ?>" style="--wgc-cols:<?php echo (int) $wgc_a['columns']; ?>">
 	<?php webgram_core()->view( 'sections/heading', $args['heading'] ); ?>
-	<div class="<?php echo esc_attr( Helpers::css_class( 'testimonials__row' ) ); ?>" data-wg-component="carousel" data-wg-carousel="dots">
+	<div class="<?php echo esc_attr( Helpers::css_class( 'testimonials__row' ) ); ?>" data-wg-component="carousel" data-wg-carousel="dots"<?php echo $wgc_autoplay ? ' data-wg-carousel-autoplay="' . (int) $wgc_autoplay . '"' : ''; ?>>
 		<?php foreach ( $args['items'] as $wgc_t ) : ?>
 			<article class="<?php echo esc_attr( Helpers::css_class( 'testimonial' ) ); ?>">
 				<?php if ( $wgc_t['photo'] ) : ?>

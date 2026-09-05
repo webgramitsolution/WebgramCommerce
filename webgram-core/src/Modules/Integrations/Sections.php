@@ -90,6 +90,8 @@ final class Sections {
 				'columns'     => [ 'label' => __( 'Visible cards', 'webgram-core' ), 'type' => 'number', 'min' => 1, 'max' => 4, 'default' => 3 ],
 				'style'       => [ 'label' => __( 'Style', 'webgram-core' ), 'type' => 'select', 'options' => [ 'dark' => __( 'Dark band', 'webgram-core' ), 'light' => __( 'Light', 'webgram-core' ) ], 'default' => 'dark' ],
 				'show_rating' => [ 'label' => __( 'Show stars', 'webgram-core' ), 'type' => 'switch', 'default' => true ],
+				'autoplay'    => [ 'label' => __( 'Auto slide on tablet and phone', 'webgram-core' ), 'type' => 'switch', 'default' => true ],
+				'autoplay_delay' => [ 'label' => __( 'Auto slide delay (seconds)', 'webgram-core' ), 'type' => 'number', 'min' => 2, 'max' => 20, 'default' => 5 ],
 			],
 			'render'   => fn( array $a ) => $this->testimonials( $a ),
 		];
