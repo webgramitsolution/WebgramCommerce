@@ -19,6 +19,15 @@
 }
 // Variation chips
 .wg-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+// Card variation buttons: up to three equal columns, cream base, primary when selected.
+.wg-card__chips.wg-chips { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 6px; margin-top: var(--wg-space-2);
+  .wg-chip { min-height: 34px; padding: 6px 4px; border: var(--wg-border-width) solid var(--wg-color-border); border-radius: var(--wg-radius-sm); background: var(--wg-color-bg-alt); color: var(--wg-color-heading); font-size: 13px; font-weight: var(--wg-fw-semibold); width: 100%;
+    &:hover { border-color: var(--wg-color-primary); color: var(--wg-color-primary); }
+    &.is-selected { background: var(--wg-color-primary); border-color: var(--wg-color-primary); color: #fff; }
+    &.is-unavailable { opacity: .45; text-decoration: line-through; }
+  }
+  &.wg-chips--colors, &.wg-chips--images { display: flex; grid-auto-flow: row; }
+}
 .wg-chip { display: inline-flex; align-items: center; justify-content: center; min-height: 24px; padding: 2px 8px; border: 1px solid transparent; border-radius: var(--wg-radius-sm); background: var(--wg-color-secondary); color: #fff; font-size: 11px; font-weight: var(--wg-fw-semibold); line-height: 1.4; cursor: pointer; text-decoration: none; transition: background var(--wg-transition-fast);
   &.is-selected { background: var(--wg-color-primary); }
   &.is-unavailable { opacity: .45; text-decoration: line-through; }

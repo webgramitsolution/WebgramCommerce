@@ -32,11 +32,13 @@ $wgc_loop    = static function () use ( $args, $wgc_cols ): void {
 	<section class="<?php echo esc_attr( Helpers::css_class( 'products', 'wgc-products--band wg-band' ) ); ?>" style="<?php echo esc_attr( $wgc_style ); ?>">
 		<div class="<?php echo esc_attr( Helpers::css_class( 'band__inner' ) ); ?>">
 			<div class="<?php echo esc_attr( Helpers::css_class( 'band__title' ) ); ?>">
+				<svg class="<?php echo esc_attr( Helpers::css_class( 'band__crown' ) ); ?>" viewBox="0 0 24 24" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="M3 8l4.5 3.5L12 4l4.5 7.5L21 8l-1.6 10H4.6L3 8zm2.4 12h13.2v1.6H5.4V20z"/></svg>
 				<span class="<?php echo esc_attr( Helpers::css_class( 'band__line1' ) ); ?>"><?php echo esc_html( $wgc_a['band_line1'] ); ?></span>
 				<span class="<?php echo esc_attr( Helpers::css_class( 'band__line2' ) ); ?>"><?php echo esc_html( $wgc_a['band_line2'] ); ?></span>
 				<?php if ( $args['heading']['subtitle'] ) : ?>
 					<p class="<?php echo esc_attr( Helpers::css_class( 'band__subtitle' ) ); ?>"><?php echo esc_html( $args['heading']['subtitle'] ); ?></p>
 				<?php endif; ?>
+				<svg class="<?php echo esc_attr( Helpers::css_class( 'band__ornament' ) ); ?>" viewBox="0 0 120 12" width="120" height="12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2 6h34M84 6h34"/><path d="M46 6l7-4 7 4-7 4z" fill="currentColor" stroke="none"/><path d="M60 6l7-4 7 4-7 4z" fill="currentColor" stroke="none" opacity=".6"/></svg>
 			</div>
 			<div class="<?php echo esc_attr( Helpers::css_class( 'band__products' ) ); ?>" data-wg-component="carousel" data-wg-carousel="dots">
 				<?php $wgc_loop(); ?>
