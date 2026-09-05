@@ -63,6 +63,9 @@ final class Webgram_Theme_Dashboard {
 				<?php if ( webgram_has_core() ) : ?>
 					<a class="button" href="<?php echo esc_url( admin_url( 'admin.php?page=webgram-core' ) ); ?>"><?php esc_html_e( 'Webgram Core modules', 'webgram' ); ?></a>
 				<?php endif; ?>
+				<?php if ( class_exists( 'Webgram_Elementor_Sync' ) && Webgram_Elementor_Sync::available() ) : ?>
+					<a class="button" href="<?php echo esc_url( Webgram_Elementor_Sync::url() ); ?>"><?php esc_html_e( 'Sync tokens to Elementor', 'webgram' ); ?></a>
+				<?php endif; ?>
 			</p>
 		</div>
 		<?php

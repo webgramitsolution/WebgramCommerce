@@ -43,6 +43,7 @@ function webgram_setup(): void {
 
 	add_image_size( 'webgram-card', 600, 600, true );
 	add_image_size( 'webgram-card-tall', 600, 800, true );
+	add_image_size( 'webgram-card-wide', 800, 500, true );
 	add_image_size( 'webgram-thumb', 120, 120, true );
 
 	// Editor palette mirrors the design tokens so Gutenberg content stays on-brand.

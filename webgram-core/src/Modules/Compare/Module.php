@@ -57,7 +57,7 @@ final class Module extends BaseModule {
 		add_shortcode( 'webgram_compare', [ $this, 'shortcode' ] );
 		add_action( 'webgram/product_card/actions', [ $this, 'card_button' ], 20 );
 		add_action( 'wp_footer', [ $this, 'bar' ], 35 );
-		add_action( 'webgram_core/elementor/widgets', [ $this, 'widget_definition' ] );
+		add_filter( 'webgram_core/elementor/widgets', [ $this, 'widget_definition' ] );
 		if ( Helpers::bool( $this->settings()->get( 'product_button', true ) ) ) {
 			add_action( 'woocommerce_after_add_to_cart_button', [ $this, 'product_button' ], 6 );
 		}

@@ -44,7 +44,7 @@ final class Module extends BaseModule {
 	public function boot(): void {
 		add_action( 'webgram_core/register_assets', [ $this, 'register_module_assets' ] );
 		add_shortcode( 'webgram_reviews', [ $this, 'shortcode' ] );
-		add_action( 'webgram_core/elementor/widgets', [ $this, 'widget_definition' ] );
+		add_filter( 'webgram_core/elementor/widgets', [ $this, 'widget_definition' ] );
 		Schema::register();
 
 		$plugin = Compat::third_party();

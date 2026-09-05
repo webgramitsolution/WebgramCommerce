@@ -22,3 +22,15 @@
 .wgc-admin .wgc-image-field img{display:block;max-width:200px;height:auto;margin:6px 0;border:1px solid #dcdcde}
 .wgc-specs{width:100%;max-width:640px;margin:0 12px}.wgc-specs td{padding:2px 4px}.wgc-specs input{width:100%}.wgc-row-remove{color:#b32d2e;font-size:18px;text-decoration:none}
 .wgc-heading{margin:0;font-size:15px}
+/* Slider admin */
+.wgc-slide{border:1px solid #dcdcde;border-radius:6px;margin-bottom:12px;background:#fff}
+.wgc-slide__bar{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:#f6f7f7;border-bottom:1px solid #dcdcde;cursor:default}
+.wgc-slide__bar .button-link{margin-inline-start:6px;text-decoration:none;font-size:14px}
+.wgc-slide__remove{color:#b32d2e}
+.wgc-slide.is-collapsed .wgc-slide__body{display:none}
+.wgc-slide__body{padding:12px}
+.wgc-slide__images{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px}
+.wgc-slide__images img{max-width:100%;height:80px;object-fit:cover;display:block;margin-bottom:6px;border-radius:4px}
+.wgc-slide__grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px}
+.wgc-slide-field label{display:block;font-weight:600;margin-bottom:4px;font-size:12px}
+.wgc-slide-field--full{grid-column:1/-1}

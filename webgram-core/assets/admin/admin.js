@@ -57,3 +57,46 @@
 		}
 	});
 })();
+/* Slider slides repeater: add, remove, reorder, collapse; media buttons reuse the image-field handler above. */
+(function () {
+	'use strict';
+	var wrap = document.querySelector('[data-wgc-slides]');
+	if (!wrap) { return; }
+	var list = wrap.querySelector('[data-wgc-slides-list]');
+	var tpl = wrap.querySelector('[data-wgc-slide-template]');
+	var max = parseInt(wrap.getAttribute('data-max'), 10) || 12;
+	function reindex() {
+		Array.prototype.forEach.call(list.children, function (row, i) {
+			row.querySelectorAll('[name]').forEach(function (f) { f.name = f.name.replace(/wg_slides\[\d+\]/, 'wg_slides[' + i + ']'); });
+			var idx = row.querySelector('[data-wgc-slide-index]');
+			if (idx) { idx.textContent = i + 1; }
+		});
+	}
+	function initColors(row) {
+		if (window.jQuery && jQuery.fn.wpColorPicker) { jQuery(row).find('.wgc-color-field').wpColorPicker(); }
+	}
+	wrap.addEventListener('click', function (e) {
+		if (e.target.closest('[data-wgc-slide-add]')) {
+			e.preventDefault();
+			if (list.children.length >= max) { return; }
+			var node = tpl.content.firstElementChild.cloneNode(true);
+			list.appendChild(node);
+			reindex();
+			initColors(node);
+			return;
+		}
+		var rm = e.target.closest('[data-wgc-slide-remove]');
+		if (rm) { e.preventDefault(); if (window.confirm(rm.getAttribute('aria-label') + '?')) { rm.closest('[data-wgc-slide]').remove(); reindex(); } return; }
+		var mv = e.target.closest('[data-wgc-slide-move]');
+		if (mv) {
+			e.preventDefault();
+			var row = mv.closest('[data-wgc-slide]');
+			if (mv.getAttribute('data-wgc-slide-move') === 'up' && row.previousElementSibling) { list.insertBefore(row, row.previousElementSibling); }
+			if (mv.getAttribute('data-wgc-slide-move') === 'down' && row.nextElementSibling) { list.insertBefore(row.nextElementSibling, row); }
+			reindex();
+			return;
+		}
+		var tg = e.target.closest('[data-wgc-slide-toggle]');
+		if (tg) { e.preventDefault(); tg.closest('[data-wgc-slide]').classList.toggle('is-collapsed'); }
+	});
+})();

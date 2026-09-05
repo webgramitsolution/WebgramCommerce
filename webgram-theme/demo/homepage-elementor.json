@@ -1,0 +1,379 @@
+{
+  "version": "0.4",
+  "title": "Webgram Homepage",
+  "type": "page",
+  "content": [
+    {
+      "id": "9b227c6",
+      "elType": "container",
+      "settings": {
+        "content_width": "full",
+        "padding": {
+          "unit": "px",
+          "top": "24",
+          "right": "0",
+          "bottom": "24",
+          "left": "0",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "fcb0670",
+          "elType": "widget",
+          "widgetType": "webgram-slider",
+          "settings": {
+            "slider_id": "0"
+          },
+          "elements": []
+        }
+      ],
+      "isInner": false
+    },
+    {
+      "id": "9a7f1ce",
+      "elType": "container",
+      "settings": {
+        "content_width": "full",
+        "padding": {
+          "unit": "px",
+          "top": "24",
+          "right": "0",
+          "bottom": "24",
+          "left": "0",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "7e6961a",
+          "elType": "widget",
+          "widgetType": "webgram-strip",
+          "settings": {
+            "items": [
+              {
+                "icon": "truck",
+                "text": "Free shipping across India on orders above ₹499"
+              },
+              {
+                "icon": "award",
+                "text": "Trusted by 25,000+ homes and businesses"
+              }
+            ]
+          },
+          "elements": []
+        }
+      ],
+      "isInner": false
+    },
+    {
+      "id": "902fc12",
+      "elType": "container",
+      "settings": {
+        "content_width": "boxed",
+        "padding": {
+          "unit": "px",
+          "top": "24",
+          "right": "0",
+          "bottom": "24",
+          "left": "0",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "362233c",
+          "elType": "widget",
+          "widgetType": "webgram-categories",
+          "settings": {
+            "title": "Shop by Category",
+            "source": "top",
+            "count": 8,
+            "columns": 8,
+            "shape": "circle",
+            "label_position": "ribbon"
+          },
+          "elements": []
+        }
+      ],
+      "isInner": false
+    },
+    {
+      "id": "62f800b",
+      "elType": "container",
+      "settings": {
+        "content_width": "boxed",
+        "padding": {
+          "unit": "px",
+          "top": "24",
+          "right": "0",
+          "bottom": "24",
+          "left": "0",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "29fd598",
+          "elType": "widget",
+          "widgetType": "webgram-trending",
+          "settings": {
+            "title": "Trending Products",
+            "source": "trending",
+            "limit": 5,
+            "columns": 5,
+            "layout": "grid",
+            "view_all_text": "View All"
+          },
+          "elements": []
+        }
+      ],
+      "isInner": false
+    },
+    {
+      "id": "28fc8c2",
+      "elType": "container",
+      "settings": {
+        "content_width": "boxed",
+        "padding": {
+          "unit": "px",
+          "top": "24",
+          "right": "0",
+          "bottom": "24",
+          "left": "0",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "7506fc9",
+          "elType": "widget",
+          "widgetType": "webgram-mega_saver",
+          "settings": {
+            "title": "Mega Saver Packs",
+            "source": "tag",
+            "tag": [
+              "mega-saver"
+            ],
+            "limit": 5,
+            "columns": 5,
+            "layout": "grid",
+            "view_all_text": "View All"
+          },
+          "elements": []
+        }
+      ],
+      "isInner": false
+    },
+    {
+      "id": "1c0b118",
+      "elType": "container",
+      "settings": {
+        "content_width": "boxed",
+        "padding": {
+          "unit": "px",
+          "top": "24",
+          "right": "0",
+          "bottom": "24",
+          "left": "0",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "c4164d1",
+          "elType": "widget",
+          "widgetType": "webgram-best_sellers",
+          "settings": {
+            "title": "Best Sellers",
+            "source": "best_selling",
+            "limit": 4,
+            "columns": 4,
+            "layout": "band",
+            "band_line1": "BEST",
+            "band_line2": "Sellers",
+            "view_all_text": "View All"
+          },
+          "elements": []
+        }
+      ],
+      "isInner": false
+    },
+    {
+      "id": "b72933f",
+      "elType": "container",
+      "settings": {
+        "content_width": "boxed",
+        "padding": {
+          "unit": "px",
+          "top": "24",
+          "right": "0",
+          "bottom": "24",
+          "left": "0",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "4fe58e0",
+          "elType": "widget",
+          "widgetType": "webgram-about",
+          "settings": {
+            "title": "About Us",
+            "subtitle": "Crafted with care, delivered with love",
+            "text": "We started with a simple idea: everyday essentials should feel special.",
+            "items": [
+              {
+                "icon": "leaf",
+                "title": "Natural",
+                "text": "Responsibly sourced materials"
+              },
+              {
+                "icon": "award",
+                "title": "Quality first",
+                "text": "Checked before every dispatch"
+              },
+              {
+                "icon": "headset",
+                "title": "Real support",
+                "text": "Chat, call or WhatsApp us"
+              }
+            ],
+            "button_text": "Know More",
+            "button_url": {
+              "url": "/about-us/"
+            }
+          },
+          "elements": []
+        }
+      ],
+      "isInner": false
+    },
+    {
+      "id": "53b894d",
+      "elType": "container",
+      "settings": {
+        "content_width": "boxed",
+        "padding": {
+          "unit": "px",
+          "top": "24",
+          "right": "0",
+          "bottom": "24",
+          "left": "0",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "4aa893e",
+          "elType": "widget",
+          "widgetType": "webgram-blog_grid",
+          "settings": {
+            "title": "From Our Blog",
+            "count": 4,
+            "columns": 4,
+            "link_text": "View All",
+            "link_url": {
+              "url": "/blog/"
+            }
+          },
+          "elements": []
+        }
+      ],
+      "isInner": false
+    },
+    {
+      "id": "565ff34",
+      "elType": "container",
+      "settings": {
+        "content_width": "boxed",
+        "padding": {
+          "unit": "px",
+          "top": "24",
+          "right": "0",
+          "bottom": "24",
+          "left": "0",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "e852065",
+          "elType": "widget",
+          "widgetType": "webgram-testimonials",
+          "settings": {
+            "title": "Trusted by Families",
+            "count": 6,
+            "columns": 3,
+            "style": "dark",
+            "show_rating": "yes"
+          },
+          "elements": []
+        }
+      ],
+      "isInner": false
+    },
+    {
+      "id": "1efb593",
+      "elType": "container",
+      "settings": {
+        "content_width": "boxed",
+        "padding": {
+          "unit": "px",
+          "top": "24",
+          "right": "0",
+          "bottom": "24",
+          "left": "0",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "163bc6f",
+          "elType": "widget",
+          "widgetType": "webgram-instagram",
+          "settings": {
+            "title": "Instagram Feed",
+            "count": 6,
+            "columns": 6,
+            "layout": "grid",
+            "follow_text": "Follow Us"
+          },
+          "elements": []
+        }
+      ],
+      "isInner": false
+    },
+    {
+      "id": "b769b63",
+      "elType": "container",
+      "settings": {
+        "content_width": "boxed",
+        "padding": {
+          "unit": "px",
+          "top": "24",
+          "right": "0",
+          "bottom": "24",
+          "left": "0",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "279e547",
+          "elType": "widget",
+          "widgetType": "webgram-benefits",
+          "settings": {
+            "columns": 5,
+            "style": "row"
+          },
+          "elements": []
+        }
+      ],
+      "isInner": false
+    }
+  ],
+  "page_settings": {
+    "hide_title": "yes"
+  }
+}

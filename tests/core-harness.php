@@ -248,5 +248,43 @@ check('compat detects known review plugins', Compat::detect(['woocommerce/woocom
 $schema = Schema::merge(['description' => 'x', 'image' => ['keep']], 'Great', '<p>Body</p>', ['a.jpg']);
 check('schema merge adds name and reviewBody, never overwrites', $schema['name'] === 'Great' && $schema['reviewBody'] === 'Body' && $schema['image'] === ['keep'] && Schema::merge(['name' => 'Old'], 'New', '', ['b.jpg'])['name'] === 'Old' && Schema::merge([], '', '', ['b.jpg'])['image'] === ['b.jpg']);
 check('compare table: differences and attribute union', Table::differs(['Red', ' red ']) === false && Table::differs(['Red', 'Blue']) && Table::differs(['', 'x']) && Table::attribute_labels([['Color' => 'Red', 'Size' => 'M'], ['Size' => 'L', 'Material' => 'Cotton']]) === ['Color', 'Size', 'Material']);
+
+// Phase 5: product query, trending, slider data, Instagram API mapping, section registry, blocks
+use Webgram\Core\Support\ProductQuery;
+use Webgram\Core\Support\Trending;
+use Webgram\Core\Modules\Slider\Slides;
+use Webgram\Core\Modules\Slider\Renderer as SliderRenderer;
+use Webgram\Core\Modules\Instagram\Api as IgApi;
+use Webgram\Core\Modules\Instagram\Module as IgModule;
+use Webgram\Core\Modules\Integrations\Registry;
+use Webgram\Core\Modules\Integrations\Blocks;
+if ( ! function_exists( 'shortcode_exists' ) ) { function shortcode_exists( $t ) { return false; } }
+check('phase 5 modules implemented and booted without WooCommerce', $m->get('slider')->is_implemented() && $m->get('instagram')->is_implemented() && $m->get('integrations')->is_implemented() && $m->is_active('slider') && $m->is_active('integrations'));
+$pq = ProductQuery::normalize(['source' => 'nope', 'limit' => '999', 'category' => 'Decor, wall-art ', 'ids' => '5,x,7', 'in_stock' => '0']);
+check('product query normalize: unknown source, limit cap, slug lists, ids, in_stock', $pq['source'] === 'recent' && $pq['limit'] === 48 && $pq['category'] === ['decor', 'wall-art'] && $pq['ids'] === [5, 7] && $pq['in_stock'] === false);
+$pa = ProductQuery::args(ProductQuery::normalize(['source' => 'best_selling', 'limit' => 4]));
+check('product query args: best selling orders by total_sales, in stock only', $pa['meta_key'] === 'total_sales' && $pa['orderby'] === 'meta_value_num' && $pa['stock_status'] === 'instock' && $pa['limit'] === 4 && $pa['status'] === 'publish');
+$pa = ProductQuery::args(ProductQuery::normalize(['source' => 'ids', 'ids' => [9, 3]]));
+check('product query args: ids keep order and ignore stock', $pa['include'] === [9, 3] && $pa['orderby'] === 'post__in' && ! isset($pa['stock_status']));
+check('product query args: trending uses trend score meta, empty ids source is safe', ProductQuery::args(ProductQuery::normalize(['source' => 'trending']))['meta_key'] === '_wg_trend_score' && ProductQuery::args(ProductQuery::normalize(['source' => 'ids']))['include'] === [0]);
+$scores = Trending::scores([10 => [0 => 20], 11 => [13 => 20]], [11 => [0 => 2]], 14);
+check('trending scores: recent views beat old views, sales weigh 5x, sorted desc', array_keys($scores)[0] === 10 && $scores[10] === 20.0 && $scores[11] > 10 && $scores[11] < 20);
+$sl = Slides::sanitize([['image' => '12', 'heading' => '<b>Hi</b>', 'align' => 'weird', 'overlay_color' => 'red', 'overlay_opacity' => '250', 'animation' => 'zoom', 'benefits' => "truck|Free ship\nSecure\n\nx|1\ny|2\nz|3"], ['heading' => ''], 'junk']);
+check('slides sanitize: strips html, validates enums, clamps opacity, parses benefits (max 4), drops empty', count($sl) === 1 && $sl[0]['heading'] === 'Hi' && $sl[0]['align'] === 'left' && $sl[0]['overlay_color'] === '' && $sl[0]['overlay_opacity'] === 100 && $sl[0]['animation'] === 'zoom' && count($sl[0]['benefits']) === 4 && $sl[0]['benefits'][1] === ['icon' => 'check', 'text' => 'Secure']);
+$ss = Slides::sanitize_settings(['delay' => '100', 'ratio' => '21 / 9', 'ratio_mobile' => 'bad', 'effect' => 'cube', 'height_mode' => 'viewport']);
+check('slider settings sanitize: delay floor, ratio formats, fallbacks', $ss['delay'] === 1000 && $ss['ratio'] === '21:9' && $ss['ratio_mobile'] === '4:5' && $ss['effect'] === 'fade' && $ss['height_mode'] === 'viewport' && $ss['autoplay'] === false);
+check('slider ratio css and per-device sources fallback', Slides::ratio_css('16:6') === '16 / 6' && SliderRenderer::sources(['image' => 1, 'image_tablet' => 0, 'image_mobile' => 3]) === ['desktop' => 1, 'tablet' => 1, 'mobile' => 3] && SliderRenderer::sources(['image' => 1, 'image_tablet' => 2]) === ['desktop' => 1, 'tablet' => 2, 'mobile' => 2] && str_contains(SliderRenderer::inline_style($ss), '--wgc-slider-ratio:21 / 9;'));
+$ig = IgApi::normalize(['data' => [['id' => '1', 'media_type' => 'VIDEO', 'media_url' => 'https://v/mp4', 'thumbnail_url' => 'https://i/1.jpg', 'permalink' => 'https://instagram.com/p/1', 'caption' => ' Hi '], ['id' => '2', 'media_type' => 'IMAGE', 'media_url' => 'http://insecure/2.jpg', 'permalink' => 'https://instagram.com/p/2'], ['id' => '3', 'media_type' => 'IMAGE', 'media_url' => 'https://i/3.jpg', 'permalink' => 'https://instagram.com/p/3'], 'junk']], 5);
+check('instagram normalize: video uses thumbnail, insecure urls dropped, captions trimmed', count($ig) === 2 && $ig[0]['type'] === 'video' && $ig[0]['image'] === 'https://i/1.jpg' && $ig[0]['caption'] === 'Hi' && $ig[1]['id'] === '3');
+check('instagram media url and limit cap', IgApi::media_url('v21.0', '123', 99) === 'https://graph.facebook.com/v21.0/123/media?fields=' . IgApi::FIELDS . '&limit=50');
+check('instagram manual lines parse', IgModule::parse_lines("45 | https://a.b | Hello\n\nhttps://x/y.jpg\n| skip") === [['image' => '45', 'link' => 'https://a.b', 'caption' => 'Hello'], ['image' => 'https://x/y.jpg', 'link' => '', 'caption' => '']]);
+$controls = Registry::normalize_controls(['limit' => ['type' => 'number', 'min' => 1, 'max' => 10, 'default' => 4], 'on' => ['type' => 'switch', 'default' => true], 'layout' => ['type' => 'select', 'options' => ['grid' => 'G', 'band' => 'B'], 'default' => 'grid'], 'cats' => ['type' => 'category'], 'rows' => ['type' => 'repeater', 'max' => 2, 'fields' => ['t' => ['type' => 'text'], 'n' => ['type' => 'number', 'default' => 1]]], 'bad' => ['type' => 'nope']]);
+$sa = Registry::sanitize_args($controls, ['limit' => '50', 'on' => 'yes', 'layout' => 'evil', 'cats' => 'Decor, Wall Art', 'rows' => [['t' => '<i>a</i>', 'n' => 'x'], ['t' => 'b'], ['t' => 'c']], 'extra' => 1]);
+check('registry sanitize: clamps, switch strings, select fallback, slugs, repeater max and nested defaults, unknown dropped', $sa['limit'] === 10 && $sa['on'] === true && $sa['layout'] === 'grid' && $sa['cats'] === ['decor', 'wall-art'] && count($sa['rows']) === 2 && $sa['rows'][0]['t'] === 'a' && $sa['rows'][0]['n'] === 1 && $sa['rows'][1]['n'] === 1 && ! isset($sa['extra']) && $controls['bad']['type'] === 'text');
+$ba = Blocks::attributes($controls);
+check('block attributes derived from controls', $ba['limit'] === ['type' => 'number', 'default' => 4] && $ba['on'] === ['type' => 'boolean', 'default' => true] && $ba['cats']['type'] === 'array' && $ba['layout'] === ['type' => 'string', 'default' => 'grid'] && isset($ba['align']));
+$reg = webgram_core()->modules()->get('integrations')->registry();
+check('registry collects core, theme-style and module definitions with defaults', isset($reg->all()['product_grid'], $reg->all()['categories'], $reg->all()['testimonials'], $reg->all()['slider'], $reg->all()['instagram'], $reg->all()['product_title']) && $reg->get('trending')['controls']['source']['default'] === 'trending' && $reg->get('best_sellers')['controls']['layout']['default'] === 'band');
+check('registry render of unknown id is empty and unknown control type falls back to text', $reg->render('does_not_exist', []) === '' && Blocks::dashicon('eicon-unknown') === 'layout');
 echo "\n" . ($fail ? "$fail FAILURE(S)" : "ALL PASSED") . "\n";
 exit($fail ? 1 : 0);

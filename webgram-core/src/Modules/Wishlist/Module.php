@@ -56,7 +56,7 @@ final class Module extends BaseModule {
 		add_filter( 'webgram_core/page_setup/pages', [ $this, 'page_request' ] );
 		add_shortcode( 'webgram_wishlist', [ $this, 'shortcode' ] );
 		add_action( 'webgram/product_card/actions', [ $this, 'card_button' ], 10 );
-		add_action( 'webgram_core/elementor/widgets', [ $this, 'widget_definition' ] );
+		add_filter( 'webgram_core/elementor/widgets', [ $this, 'widget_definition' ] );
 
 		$position = (string) $this->settings()->get( 'product_position', 'after_cart' );
 		if ( 'after_cart' === $position ) {

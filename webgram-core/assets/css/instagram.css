@@ -1,0 +1,14 @@
+/* Webgram Core Instagram feed fallback styles. */
+.wgc-instagram__grid{display:grid;grid-template-columns:repeat(var(--wgc-ig-columns,6),1fr);gap:12px}
+@media(max-width:767.98px){.wgc-instagram__grid{grid-template-columns:repeat(3,1fr);gap:8px}}
+.wgc-instagram--slider .wgc-instagram__grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.wgc-instagram--slider .wgc-instagram__tile{flex:0 0 calc((100% - 12px*(var(--wgc-ig-columns,6) - 1))/var(--wgc-ig-columns,6));scroll-snap-align:start}
+.wgc-instagram__tile{position:relative;display:block;aspect-ratio:1;overflow:hidden;border-radius:var(--wgc-radius,8px);background:#f3f4f6}
+.wgc-instagram__tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.wgc-instagram__tile:hover img{transform:scale(1.05)}
+.wgc-instagram__hover{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:12px;background:rgba(0,0,0,.45);color:#fff;opacity:0;transition:opacity .2s;text-align:center;font-size:12px}
+.wgc-instagram__tile:hover .wgc-instagram__hover,.wgc-instagram__tile:focus-visible .wgc-instagram__hover{opacity:1}
+.wgc-instagram__tile.is-video::after{content:"";position:absolute;top:8px;inset-inline-end:8px;width:0;height:0;border-style:solid;border-width:6px 0 6px 10px;border-color:transparent transparent transparent #fff}
+.wgc-section-heading{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 0 24px}
+.wgc-section-heading .wgc-section-heading__title{margin:0;font-size:28px}
+.wgc-instagram__follow{margin-inline-start:auto;display:inline-flex;align-items:center;gap:6px}

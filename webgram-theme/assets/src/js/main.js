@@ -7,6 +7,7 @@ import './modules/menu.js';
 import './modules/search.js';
 import './modules/misc.js';
 import './modules/product-card.js';
+import './modules/carousel.js';
 import { bridgeWooEvents } from './modules/woocommerce.js';
 
 const boot = () => {

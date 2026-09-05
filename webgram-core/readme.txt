@@ -4,7 +4,7 @@ Tags: woocommerce, reviews, wishlist, invoice, whatsapp, slider, reels, ai
 Requires at least: 6.4
 Tested up to: 6.6
 Requires PHP: 8.1
-Stable tag: 0.5.0
+Stable tag: 0.6.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,6 +17,12 @@ Webgram Core adds modular ecommerce features to WooCommerce: advanced reviews, w
 The plugin works with any theme and is designed for Webgram Theme.
 
 == Changelog ==
+
+= 0.6.0 =
+* Slider module: wg_slider post type with per-device images, overlays, CTAs, benefit rows and animations, Swiper renderer with picture sources and priority hint on the first slide, shortcode, widget and block.
+* Instagram module: Graph API mode with encrypted token, cached fetch, monthly refresh and test connection, manual gallery fallback, grid or slider renderer.
+* Integrations module: one registry of section definitions rendered as Elementor widgets (Webgram category), server-rendered Gutenberg blocks and shortcodes; product grid, slider, trending, best sellers band, mega saver, featured, categories, coupons row, trust badges, testimonials (new wg_testimonial post type) and single product layout widgets.
+* ProductQuery helper with cached sources (recent, best selling, trending, on sale, featured, top rated, category, tag, ids) and a daily trending score.
 
 = 0.5.0 =
 * Advanced Reviews: rating summary with distribution bars, sort and star filters, load more, photo and video uploads held private until approval, helpful votes, recommendation, review title, admin column, JSON-LD extension, [webgram_reviews] shortcode, stand down when Judge.me, YITH or CusRev is active.
