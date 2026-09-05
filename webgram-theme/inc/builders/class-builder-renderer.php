@@ -144,8 +144,8 @@ final class Webgram_Builder_Renderer {
 					! empty( $w['settings']['mobile_collapse'] ) ? ' wg-footer__widgets--collapse' : '',
 					esc_attr( $style ),
 					(int) $columns,
-					max( 1, min( 3, (int) ( $w['settings']['columns_tablet'] ?? 2 ) ) ),
-					max( 1, min( 2, (int) ( $w['settings']['columns_mobile'] ?? 1 ) ) )
+					(int) max( 1, min( 3, (int) ( $w['settings']['columns_tablet'] ?? 2 ) ) ),
+					(int) max( 1, min( 2, (int) ( $w['settings']['columns_mobile'] ?? 1 ) ) )
 				);
 				for ( $i = 1; $i <= $columns; $i++ ) {
 					echo '<div class="wg-footer__col">';

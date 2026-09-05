@@ -29,6 +29,10 @@ Legend: nonce = WordPress or WooCommerce nonce checked; cap = capability or owne
 | Bundled Core installer: `install_plugins` + `activate_plugins` + nonce, installs only the zip inside the theme folder | done | `inc/admin/class-plugin-installer.php` |
 | Demo importer: `manage_options` + nonce, reads only files inside `demo/`, never deletes | done | `inc/admin/class-demo-importer.php` |
 | Mega menu fields: `edit_theme_options` on save, `wp_kses_post` for HTML content | done | `inc/mega-menu/class-mega-menu-admin.php` |
+| Sidebars screen: `edit_theme_options` + nonce on create and delete, ids sanitized, hard cap of 20 areas | done | `inc/admin/class-sidebars.php` |
+| Webgram options box: nonce + `edit_post`, layout and title values whitelisted, image id cast | done | `inc/admin/class-page-metabox.php` |
+| Layout template swap: only a Core resolved id is rendered; block output comes through the Core filter | done | `inc/class-layouts.php`, `template-parts/layout.php` |
+| Cart page auto update reuses WooCommerce's own nonce protected cart form | done | `assets/src/js/cart.js` |
 | Output escaping across templates | done, PHPCS zero errors | all `template-parts/`, `woocommerce/` overrides |
 
 ## Core modules
@@ -38,7 +42,7 @@ Legend: nonce = WordPress or WooCommerce nonce checked; cap = capability or owne
 | woo_enhancements | pincode check, location resolve and geocode, bulk inquiry, track order, product panel save, pincode CSV import | x | x | x | x | x | n/a | 60/min, 30/min, 10/min, 5/h, 10/h | Track order requires order id plus billing email or phone match; CSV import limited to `manage_woocommerce`; geocoding provider URL fixed to OpenStreetMap, response validated |
 | badges | product metabox save | x | x | x | x | n/a | n/a | n/a | |
 | quick_view | read only WC-AJAX | x | public | x | x | n/a | n/a | n/a | Product must be published and visible |
-| coupons | product metabox save, cart progress WC-AJAX (read) | x | x | x | x | n/a | n/a | n/a | Coupon codes shown only when the coupon is published and applicable |
+| coupons | product metabox save, cart progress WC-AJAX (read), coupon apply WC-AJAX | x | x | x | x | n/a | n/a | n/a | Coupon codes shown only when the coupon is published and applicable; apply goes through `WC_Cart::apply_coupon()` so WooCommerce validates usage limits and restrictions, and a pending code lives in the WooCommerce session |
 | reviews | submission (multipart), helpful vote, load more, admin bulk approve | x | x | x | x | x | n/a | submission per IP setting, helpful 60/h | Uploads: `wp_check_filetype_and_ext`, allowed mimes and size from settings, attachments private until approval, one vote per hashed IP and review |
 | wishlist, compare | toggle, share | x | ownership | x | x | n/a | n/a | n/a | Guest cookie is HMAC signed with `Crypto::sign()`; tampering yields an empty list; share tokens expire |
 | slider | slide metabox save | x | x | x | x | n/a | n/a | n/a | Image ids cast to int, URLs `esc_url_raw` |
@@ -50,8 +54,8 @@ Legend: nonce = WordPress or WooCommerce nonce checked; cap = capability or owne
 | invoice | generate, regenerate, bulk zip, HSN save, download | x | manager, owner, order key or signed token | x | x | x | n/a | n/a | Files under `uploads/webgram-invoices/` with `index.html` and `.htaccess` deny, nginx snippet in `docs/deploy-hostinger.md`; dompdf remote images limited to the site host |
 | emails | settings, preview, test send | x | x | x | x | n/a | n/a | n/a | Preview only for `manage_woocommerce`; delivery through `wp_mail()` |
 | notifications | settings, test, template sync, resend, webhook | x | x | x | x | x | x | n/a | Webhook verifies `hub.verify_token` and `X-Hub-Signature-256` HMAC with the app secret; consent required for every WhatsApp send; recipients masked in the log |
-| analytics | events collector, dashboard | x | public (nonce) | x | x | x | n/a | 60/min per IP | No IP stored, session hashed, personal keys stripped from meta, allow list of events |
-| site_tools | HTML blocks, layouts, popup, cookie, age verify, maintenance, white label, custom JS | x | x | x | x | n/a | n/a | n/a | Custom JS is stored raw and printed only for `unfiltered_html` capable editors; maintenance mode respects `manage_options` bypass |
+| analytics | events collector, dashboard, server side purchase, add to cart, search and checkout events | x | public (nonce) | x | x | x | n/a | 60/min per IP | No IP stored, session hashed, personal keys stripped from meta, allow list of events; the purchase event stores totals only and is written once per order through order meta |
+| site_tools | HTML blocks, layouts, popups (post type metabox), floating blocks, cookie, age verify, maintenance, white label, custom JS | x | x | x | x | n/a | n/a | n/a | Custom JS is gated by `unfiltered_html` on both the theme panel and the Core fallback save path; popup metabox uses a nonce and `edit_post`, click selectors are capped at 120 characters and used only by `closest()`; maintenance bypass key compares with `hash_equals` and sets an HMAC cookie, IP allowlist matches exact addresses; white label menu rename escapes the label |
 
 ## Dependency audit
 

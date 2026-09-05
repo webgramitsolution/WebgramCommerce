@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-05T08:51:00+00:00\n"
+"POT-Creation-Date: 2026-09-05T10:25:05+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: webgram-core\n"
@@ -50,7 +50,7 @@ msgstr ""
 #: src/Abstracts/AjaxHandler.php:61
 #: src/Admin/ModulesPage.php:126
 #: src/Admin/PageSetup.php:54
-#: src/Admin/SettingsPage.php:215
+#: src/Admin/SettingsPage.php:228
 #: src/Modules/Emails/Preview.php:106
 #: src/Modules/Emails/Preview.php:122
 #: src/Modules/Instagram/Module.php:115
@@ -109,6 +109,7 @@ msgid "Needs: %s"
 msgstr ""
 
 #: src/Admin/ModulesPage.php:109
+#: templates/site-tools/admin-popup.php:17
 msgid "Active"
 msgstr ""
 
@@ -209,30 +210,36 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:181
+#: src/Admin/SettingsPage.php:175
+msgid "Only users with the unfiltered_html capability can edit scripts."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:194
 msgid "Saved. Enter a new value to replace it."
 msgstr ""
 
-#: src/Admin/SettingsPage.php:182
+#: src/Admin/SettingsPage.php:195
 msgid "Clear"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:197
+#: src/Admin/SettingsPage.php:210
+#: templates/site-tools/admin-popup.php:27
 #: assets/blocks/editor.js:30
 msgid "Choose image"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:198
+#: src/Admin/SettingsPage.php:211
 #: src/Modules/WooEnhancements/Admin/ProductPanel.php:66
 #: templates/reels/admin.php:23
 #: templates/reels/admin.php:35
+#: templates/site-tools/admin-popup.php:27
 #: templates/slider/admin-slides.php:25
 #: assets/blocks/editor.js:32
 #: assets/blocks/editor.js:51
 msgid "Remove"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:223
+#: src/Admin/SettingsPage.php:236
 msgid "Unknown settings tab."
 msgstr ""
 
@@ -383,10 +390,12 @@ msgid "Launcher position"
 msgstr ""
 
 #: src/Modules/AiAssistant/Module.php:86
+#: src/Modules/SiteTools/FloatingBlocks.php:35
 msgid "Bottom right"
 msgstr ""
 
 #: src/Modules/AiAssistant/Module.php:86
+#: src/Modules/SiteTools/FloatingBlocks.php:35
 msgid "Bottom left"
 msgstr ""
 
@@ -637,7 +646,7 @@ msgid "Too many requests."
 msgstr ""
 
 #: src/Modules/Analytics/Module.php:23
-#: src/Modules/Analytics/Module.php:167
+#: src/Modules/Analytics/Module.php:210
 #: src/Modules/Analytics/Reports.php:20
 msgid "Analytics"
 msgstr ""
@@ -646,32 +655,32 @@ msgstr ""
 msgid "Reel plays, assistant conversations, wishlist adds and product views stored on your own site, with a simple dashboard."
 msgstr ""
 
-#: src/Modules/Analytics/Module.php:72
+#: src/Modules/Analytics/Module.php:76
 msgid "Collect browser events"
 msgstr ""
 
-#: src/Modules/Analytics/Module.php:72
+#: src/Modules/Analytics/Module.php:76
 msgid "Reel plays, chat opens, product views. No IP addresses are stored; sessions are hashed."
 msgstr ""
 
-#: src/Modules/Analytics/Module.php:73
+#: src/Modules/Analytics/Module.php:77
 msgid "Sampling (percent of visitors)"
 msgstr ""
 
-#: src/Modules/Analytics/Module.php:74
+#: src/Modules/Analytics/Module.php:78
 msgid "Also track logged in staff"
 msgstr ""
 
-#: src/Modules/Analytics/Module.php:75
+#: src/Modules/Analytics/Module.php:79
 msgid "Keep events for (days)"
 msgstr ""
 
-#: src/Modules/Analytics/Module.php:164
-#: src/Modules/Analytics/Module.php:176
+#: src/Modules/Analytics/Module.php:207
+#: src/Modules/Analytics/Module.php:219
 msgid "Webgram analytics events"
 msgstr ""
 
-#: src/Modules/Analytics/Module.php:167
+#: src/Modules/Analytics/Module.php:210
 msgid "Stored events"
 msgstr ""
 
@@ -756,7 +765,8 @@ msgid "Custom text"
 msgstr ""
 
 #: src/Modules/Badges/Module.php:53
-#: src/Modules/Wishlist/Module.php:91
+#: src/Modules/Compare/Module.php:98
+#: src/Modules/Wishlist/Module.php:97
 msgid "Hidden"
 msgstr ""
 
@@ -831,56 +841,67 @@ msgid "Webgram badge"
 msgstr ""
 
 #. translators: 1: selected count, 2: maximum
-#: src/Modules/Compare/Module.php:29
-#: src/Modules/Compare/Module.php:103
-#: src/Modules/Compare/Module.php:123
-#: src/Modules/Compare/Module.php:152
-#: src/Modules/Compare/Module.php:157
-#: src/Modules/Compare/Module.php:171
+#: src/Modules/Compare/Module.php:33
+#: src/Modules/Compare/Module.php:113
+#: src/Modules/Compare/Module.php:133
+#: src/Modules/Compare/Module.php:162
+#: src/Modules/Compare/Module.php:167
+#: src/Modules/Compare/Module.php:181
+#: src/Support/Lists/ListModuleTrait.php:92
 #: templates/compare/bar.php:22
 #: templates/compare/button.php:18
 msgid "Compare"
 msgstr ""
 
-#: src/Modules/Compare/Module.php:33
+#: src/Modules/Compare/Module.php:37
 msgid "Side by side product comparison, up to 4 products, differences highlighted."
 msgstr ""
 
-#: src/Modules/Compare/Module.php:86
+#: src/Modules/Compare/Module.php:96
 msgid "Compare page"
 msgstr ""
 
-#: src/Modules/Compare/Module.php:86
+#: src/Modules/Compare/Module.php:96
 msgid "Page containing the [webgram_compare] shortcode."
 msgstr ""
 
-#: src/Modules/Compare/Module.php:87
-#: src/Modules/Wishlist/Module.php:90
+#: src/Modules/Compare/Module.php:97
+#: src/Modules/Wishlist/Module.php:96
 msgid "Button on product cards"
 msgstr ""
 
-#: src/Modules/Compare/Module.php:88
-#: src/Modules/Wishlist/Module.php:91
+#: src/Modules/Compare/Module.php:98
+#: src/Modules/Wishlist/Module.php:97
 msgid "Button on the product page"
 msgstr ""
 
-#: src/Modules/Compare/Module.php:89
+#: src/Modules/Compare/Module.php:98
+#: src/Modules/Wishlist/Module.php:97
+msgid "Next to Add to cart"
+msgstr ""
+
+#: src/Modules/Compare/Module.php:98
+#: src/Modules/Wishlist/Module.php:97
+msgid "Gallery corner (Webgram theme)"
+msgstr ""
+
+#: src/Modules/Compare/Module.php:99
 msgid "Floating compare bar"
 msgstr ""
 
-#: src/Modules/Compare/Module.php:89
+#: src/Modules/Compare/Module.php:99
 msgid "Small bar at the bottom of the screen while products are selected."
 msgstr ""
 
-#: src/Modules/Compare/Module.php:90
+#: src/Modules/Compare/Module.php:100
 msgid "Highlight differences by default"
 msgstr ""
 
-#: src/Modules/Compare/Module.php:91
+#: src/Modules/Compare/Module.php:101
 msgid "Rows"
 msgstr ""
 
-#: src/Modules/Compare/Module.php:92
+#: src/Modules/Compare/Module.php:102
 #: src/Modules/Compare/Table.php:48
 #: templates/invoice/invoice.php:142
 #: templates/wishlist/table.php:43
@@ -888,91 +909,92 @@ msgstr ""
 msgid "Price"
 msgstr ""
 
-#: src/Modules/Compare/Module.php:93
+#: src/Modules/Compare/Module.php:103
 #: src/Modules/Compare/Table.php:51
 #: src/Modules/Integrations/Testimonials.php:44
 #: templates/reviews/form-fields.php:18
 msgid "Rating"
 msgstr ""
 
-#: src/Modules/Compare/Module.php:94
+#: src/Modules/Compare/Module.php:104
 #: src/Modules/Compare/Table.php:54
 msgid "Availability"
 msgstr ""
 
-#: src/Modules/Compare/Module.php:95
+#: src/Modules/Compare/Module.php:105
 #: src/Modules/Compare/Table.php:57
 #: templates/invoice/invoice.php:137
 msgid "SKU"
 msgstr ""
 
-#: src/Modules/Compare/Module.php:96
+#: src/Modules/Compare/Module.php:106
 msgid "Short description"
 msgstr ""
 
-#: src/Modules/Compare/Module.php:97
+#: src/Modules/Compare/Module.php:107
 msgid "Weight and dimensions"
 msgstr ""
 
-#: src/Modules/Compare/Module.php:98
+#: src/Modules/Compare/Module.php:108
 msgid "Product attributes"
 msgstr ""
 
-#: src/Modules/Compare/Module.php:108
+#: src/Modules/Compare/Module.php:118
 msgid "Webgram Compare"
 msgstr ""
 
-#: src/Modules/Compare/Module.php:118
-#: src/Modules/Compare/Module.php:145
+#: src/Modules/Compare/Module.php:128
+#: src/Modules/Compare/Module.php:155
 msgid "Added to compare"
 msgstr ""
 
-#: src/Modules/Compare/Module.php:119
-#: src/Modules/Compare/Module.php:145
+#: src/Modules/Compare/Module.php:129
+#: src/Modules/Compare/Module.php:155
 msgid "Removed from compare"
 msgstr ""
 
 #. translators: %d: maximum products
-#: src/Modules/Compare/Module.php:120
-#: src/Modules/Compare/Module.php:145
+#: src/Modules/Compare/Module.php:130
+#: src/Modules/Compare/Module.php:155
 #, php-format
 msgid "You can compare up to %d products."
 msgstr ""
 
 #. translators: %d: maximum products
-#: src/Modules/Compare/Module.php:121
+#: src/Modules/Compare/Module.php:131
 #: templates/compare/button.php:12
 msgid "Add to compare"
 msgstr ""
 
-#: src/Modules/Compare/Module.php:122
+#: src/Modules/Compare/Module.php:132
 #: templates/compare/button.php:12
 #: templates/compare/table.php:34
 msgid "Remove from compare"
 msgstr ""
 
-#: src/Modules/Compare/Module.php:132
+#: src/Modules/Compare/Module.php:142
 #: src/Modules/QuickView/Module.php:55
 #: src/Modules/Reviews/Module.php:82
-#: src/Modules/Wishlist/Module.php:133
+#: src/Modules/Wishlist/Module.php:141
 msgid "Product not found."
 msgstr ""
 
-#: src/Modules/Compare/Module.php:157
+#: src/Modules/Compare/Module.php:167
 #: src/Modules/Integrations/Sections.php:58
-#: src/Modules/Wishlist/Module.php:158
+#: src/Modules/SiteTools/FloatingBlocks.php:46
+#: src/Modules/Wishlist/Module.php:166
 #: src/Modules/WooEnhancements/Admin/ProductPanel.php:64
 #: src/Modules/WooEnhancements/Module.php:81
 msgid "Label"
 msgstr ""
 
-#: src/Modules/Compare/Module.php:158
-#: src/Modules/Wishlist/Module.php:159
+#: src/Modules/Compare/Module.php:168
+#: src/Modules/Wishlist/Module.php:167
 msgid "Show label under icon"
 msgstr ""
 
-#: src/Modules/Compare/Module.php:159
-#: src/Modules/Wishlist/Module.php:160
+#: src/Modules/Compare/Module.php:169
+#: src/Modules/Wishlist/Module.php:168
 msgid "Item count badge"
 msgstr ""
 
@@ -1012,87 +1034,154 @@ msgstr ""
 msgid "Coupon box on product pages with copy to clipboard, and the cart offer progress with milestones."
 msgstr ""
 
-#: src/Modules/Coupons/Module.php:70
+#: src/Modules/Coupons/Module.php:92
+msgid "Enter a coupon code."
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:96
+msgid "This coupon is not valid right now."
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:99
+msgid "Coupon already applied."
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:105
+msgid "Coupon saved. It applies when you add this product to the cart."
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:112
+msgid "This coupon cannot be applied to your cart."
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:115
+msgid "Coupon applied to your cart."
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:140
 msgid "Product coupon box"
 msgstr ""
 
-#: src/Modules/Coupons/Module.php:70
+#: src/Modules/Coupons/Module.php:140
 msgid "Choose the coupon per product in the Webgram tab of the product data box. A default coupon applies to products without one."
 msgstr ""
 
-#: src/Modules/Coupons/Module.php:71
+#: src/Modules/Coupons/Module.php:141
 msgid "Default coupon code"
 msgstr ""
 
-#: src/Modules/Coupons/Module.php:71
+#: src/Modules/Coupons/Module.php:141
 msgid "Leave empty for none."
 msgstr ""
 
-#: src/Modules/Coupons/Module.php:72
+#: src/Modules/Coupons/Module.php:142
 msgid "Copy button label"
 msgstr ""
 
-#: src/Modules/Coupons/Module.php:72
-#: src/Modules/Coupons/Module.php:138
-#: src/Modules/Coupons/Module.php:151
+#: src/Modules/Coupons/Module.php:142
+#: src/Modules/Coupons/Module.php:213
+#: src/Modules/Coupons/Module.php:237
 msgid "Copy code"
 msgstr ""
 
-#: src/Modules/Coupons/Module.php:73
+#: src/Modules/Coupons/Module.php:143
+msgid "Apply button (adds the coupon to the cart without leaving the page)"
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:144
+msgid "Apply button label"
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:144
+#: src/Modules/Coupons/Module.php:225
+#: templates/coupons/box.php:26
+#: templates/woo-enhancements/location-modal.php:23
+msgid "Apply"
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:145
+msgid "Box style"
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:145
+msgid "Soft (tinted background, dashed border)"
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:145
+msgid "Outline"
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:145
+msgid "Solid"
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:145
+msgid "Ticket (cut corners)"
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:146
+msgid "Box accent color"
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:147
+msgid "Show icon"
+msgstr ""
+
+#: src/Modules/Coupons/Module.php:148
 msgid "Cart offer progress"
 msgstr ""
 
-#: src/Modules/Coupons/Module.php:73
+#: src/Modules/Coupons/Module.php:148
 msgid "Milestones shown in the cart drawer. Amount thresholds use the cart subtotal; quantity thresholds use the item count."
 msgstr ""
 
-#: src/Modules/Coupons/Module.php:74
+#: src/Modules/Coupons/Module.php:149
 msgid "Show offer progress"
 msgstr ""
 
-#: src/Modules/Coupons/Module.php:75
+#: src/Modules/Coupons/Module.php:150
 msgid "Include free shipping threshold from shipping zones"
 msgstr ""
 
-#: src/Modules/Coupons/Module.php:76
+#: src/Modules/Coupons/Module.php:151
 msgid "Manual milestones"
 msgstr ""
 
-#: src/Modules/Coupons/Module.php:76
+#: src/Modules/Coupons/Module.php:151
 msgid "One per line: type (amount or qty) | threshold | label | coupon code (optional, auto applied when reached)."
 msgstr ""
 
-#: src/Modules/Coupons/Module.php:77
+#: src/Modules/Coupons/Module.php:152
 msgid "Auto apply milestone coupons"
 msgstr ""
 
 #. translators: %s: percent
-#: src/Modules/Coupons/Module.php:117
+#: src/Modules/Coupons/Module.php:192
 #, php-format
 msgid "FLAT %s%% OFF"
 msgstr ""
 
 #. translators: %s: amount
-#: src/Modules/Coupons/Module.php:118
+#: src/Modules/Coupons/Module.php:193
 #, php-format
 msgid "FLAT %s OFF"
 msgstr ""
 
 #. translators: %s: amount
-#: src/Modules/Coupons/Module.php:119
+#: src/Modules/Coupons/Module.php:194
 msgid "FREE SHIPPING"
 msgstr ""
 
 #. translators: %s: amount
-#: src/Modules/Coupons/Module.php:119
+#: src/Modules/Coupons/Module.php:194
 msgid "SPECIAL OFFER"
 msgstr ""
 
-#: src/Modules/Coupons/Module.php:165
+#: src/Modules/Coupons/Module.php:251
 msgid "Use default coupon"
 msgstr ""
 
-#: src/Modules/Coupons/Module.php:170
+#: src/Modules/Coupons/Module.php:256
 msgid "Coupon shown on the product page"
 msgstr ""
 
@@ -1149,6 +1238,7 @@ msgstr ""
 
 #: src/Modules/Emails/Module.php:60
 #: src/Modules/Invoice/Module.php:77
+#: src/Modules/SiteTools/Settings.php:120
 msgid "Logo"
 msgstr ""
 
@@ -1292,7 +1382,7 @@ msgid "Instagram settings"
 msgstr ""
 
 #: src/Modules/Instagram/Module.php:65
-#: src/Modules/SiteTools/Module.php:74
+#: src/Modules/SiteTools/Module.php:75
 msgid "Open Theme Settings"
 msgstr ""
 
@@ -1351,8 +1441,8 @@ msgstr ""
 #: src/Modules/Integrations/Sections.php:18
 #: src/Modules/Integrations/Sections.php:78
 #: src/Modules/Reels/Module.php:187
-#: src/Modules/SiteTools/Settings.php:66
-#: src/Modules/SiteTools/Settings.php:111
+#: src/Modules/SiteTools/Settings.php:70
+#: src/Modules/SiteTools/Settings.php:115
 msgid "Title"
 msgstr ""
 
@@ -1514,6 +1604,7 @@ msgid "Webgram Product Layout"
 msgstr ""
 
 #: src/Modules/Integrations/Elementor/SectionWidget.php:49
+#: templates/site-tools/admin-popup.php:18
 msgid "Content"
 msgstr ""
 
@@ -2293,6 +2384,7 @@ msgstr ""
 #: src/Modules/Notifications/Settings.php:32
 #: src/Modules/WooEnhancements/BulkInquiry.php:170
 #: src/Modules/WooEnhancements/BulkInquiry.php:198
+#: templates/site-tools/admin-popup.php:17
 msgid "Status"
 msgstr ""
 
@@ -3078,52 +3170,186 @@ msgid "Review not submitted"
 msgstr ""
 
 #: src/Modules/SiteTools/AgeVerify.php:31
-#: src/Modules/SiteTools/Settings.php:70
+#: src/Modules/SiteTools/Settings.php:74
 msgid "Yes, I am"
 msgstr ""
 
 #: src/Modules/SiteTools/AgeVerify.php:32
-#: src/Modules/SiteTools/Settings.php:71
+#: src/Modules/SiteTools/Settings.php:75
 msgid "No, leave"
 msgstr ""
 
-#: src/Modules/SiteTools/Blocks.php:35
-#: src/Modules/SiteTools/Blocks.php:39
-#: src/Modules/SiteTools/Settings.php:189
+#: src/Modules/SiteTools/Blocks.php:36
+#: src/Modules/SiteTools/Blocks.php:40
+#: src/Modules/SiteTools/Settings.php:197
 msgid "HTML Blocks"
 msgstr ""
 
-#: src/Modules/SiteTools/Blocks.php:36
-#: src/Modules/SiteTools/Settings.php:43
+#. translators: %d: slot number.
+#: src/Modules/SiteTools/Blocks.php:37
+#: src/Modules/SiteTools/Blocks.php:64
+#: src/Modules/SiteTools/FloatingBlocks.php:45
+#: src/Modules/SiteTools/FloatingBlocks.php:51
+#: templates/site-tools/admin-popup.php:20
 msgid "HTML Block"
 msgstr ""
 
-#: src/Modules/SiteTools/Blocks.php:37
+#: src/Modules/SiteTools/Blocks.php:38
 msgid "Add HTML Block"
 msgstr ""
 
-#: src/Modules/SiteTools/Blocks.php:38
+#: src/Modules/SiteTools/Blocks.php:39
 msgid "Edit HTML Block"
 msgstr ""
 
-#: src/Modules/SiteTools/Blocks.php:104
+#: src/Modules/SiteTools/Blocks.php:60
+msgid "Webgram HTML Block"
+msgstr ""
+
+#: src/Modules/SiteTools/Blocks.php:64
+#: templates/site-tools/admin-popup.php:21
+msgid "Select a block"
+msgstr ""
+
+#: src/Modules/SiteTools/Blocks.php:119
 #: src/Modules/Slider/PostType.php:103
 msgid "Shortcode"
 msgstr ""
 
 #: src/Modules/SiteTools/CookieNotice.php:29
-#: src/Modules/SiteTools/Settings.php:89
+#: src/Modules/SiteTools/Settings.php:93
 msgid "Accept"
 msgstr ""
 
 #: src/Modules/SiteTools/CookieNotice.php:30
-#: src/Modules/SiteTools/Settings.php:91
+#: src/Modules/SiteTools/Settings.php:95
 msgid "Reject"
 msgstr ""
 
 #: src/Modules/SiteTools/CookieNotice.php:32
-#: src/Modules/SiteTools/Settings.php:93
+#: src/Modules/SiteTools/Settings.php:97
 msgid "Learn more"
+msgstr ""
+
+#: src/Modules/SiteTools/FloatingBlocks.php:29
+msgid "Floating Blocks"
+msgstr ""
+
+#: src/Modules/SiteTools/FloatingBlocks.php:35
+#: src/Modules/SiteTools/Settings.php:98
+msgid "Position"
+msgstr ""
+
+#: src/Modules/SiteTools/FloatingBlocks.php:35
+msgid "Middle right"
+msgstr ""
+
+#: src/Modules/SiteTools/FloatingBlocks.php:35
+msgid "Middle left"
+msgstr ""
+
+#: src/Modules/SiteTools/FloatingBlocks.php:36
+msgid "Offset from the edge"
+msgstr ""
+
+#: src/Modules/SiteTools/FloatingBlocks.php:37
+#: src/Modules/SiteTools/Layouts/PostType.php:98
+#: templates/site-tools/admin-popup.php:48
+msgid "Devices"
+msgstr ""
+
+#: src/Modules/SiteTools/FloatingBlocks.php:37
+#: src/Modules/SiteTools/Layouts/PostType.php:99
+#: src/Modules/SiteTools/Settings.php:28
+#: templates/site-tools/admin-popup.php:12
+msgid "Desktop"
+msgstr ""
+
+#: src/Modules/SiteTools/FloatingBlocks.php:37
+#: src/Modules/SiteTools/Layouts/PostType.php:99
+#: src/Modules/SiteTools/Settings.php:28
+#: templates/site-tools/admin-popup.php:12
+msgid "Tablet"
+msgstr ""
+
+#: src/Modules/SiteTools/FloatingBlocks.php:37
+#: src/Modules/SiteTools/Layouts/PostType.php:99
+#: src/Modules/SiteTools/Settings.php:28
+#: templates/site-tools/admin-popup.php:12
+msgid "Mobile"
+msgstr ""
+
+#: src/Modules/SiteTools/FloatingBlocks.php:38
+msgid "Show after scrolling"
+msgstr ""
+
+#: src/Modules/SiteTools/FloatingBlocks.php:38
+msgid "0 shows the buttons at once."
+msgstr ""
+
+#: src/Modules/SiteTools/FloatingBlocks.php:39
+msgid "Show labels next to icons on desktop"
+msgstr ""
+
+#. translators: %d: slot number.
+#: src/Modules/SiteTools/FloatingBlocks.php:44
+#, php-format
+msgid "Button %d"
+msgstr ""
+
+#. translators: %d: slot number.
+#: src/Modules/SiteTools/FloatingBlocks.php:45
+msgid "Type"
+msgstr ""
+
+#. translators: %d: slot number.
+#: src/Modules/SiteTools/FloatingBlocks.php:45
+#: src/Modules/SiteTools/Settings.php:112
+msgid "Off"
+msgstr ""
+
+#. translators: %d: slot number.
+#: src/Modules/SiteTools/FloatingBlocks.php:45
+msgid "WhatsApp chat"
+msgstr ""
+
+#. translators: %d: slot number.
+#: src/Modules/SiteTools/FloatingBlocks.php:45
+msgid "Link with icon"
+msgstr ""
+
+#: src/Modules/SiteTools/FloatingBlocks.php:46
+msgid "Read by screen readers and shown when labels are on."
+msgstr ""
+
+#: src/Modules/SiteTools/FloatingBlocks.php:47
+#: src/Modules/WooEnhancements/Module.php:87
+msgid "WhatsApp number"
+msgstr ""
+
+#: src/Modules/SiteTools/FloatingBlocks.php:48
+msgid "Prefilled message"
+msgstr ""
+
+#: src/Modules/SiteTools/FloatingBlocks.php:49
+msgid "Link URL"
+msgstr ""
+
+#: src/Modules/SiteTools/FloatingBlocks.php:50
+msgid "Icon"
+msgstr ""
+
+#: src/Modules/SiteTools/FloatingBlocks.php:52
+msgid "Background color"
+msgstr ""
+
+#: src/Modules/SiteTools/FloatingBlocks.php:52
+msgid "WhatsApp defaults to the brand green; links to the primary color."
+msgstr ""
+
+#: src/Modules/SiteTools/FloatingBlocks.php:81
+#: src/Modules/WooEnhancements/CartRecommendations.php:75
+msgid "Chat on WhatsApp"
 msgstr ""
 
 #: src/Modules/SiteTools/Layouts/Conditions.php:18
@@ -3189,11 +3415,13 @@ msgstr ""
 
 #: src/Modules/SiteTools/Layouts/PostType.php:38
 #: src/Modules/SiteTools/Settings.php:29
+#: templates/site-tools/admin-popup.php:13
 msgid "Cart"
 msgstr ""
 
 #: src/Modules/SiteTools/Layouts/PostType.php:39
 #: src/Modules/SiteTools/Settings.php:29
+#: templates/site-tools/admin-popup.php:13
 msgid "Checkout"
 msgstr ""
 
@@ -3203,6 +3431,7 @@ msgstr ""
 
 #: src/Modules/SiteTools/Layouts/PostType.php:41
 #: src/Modules/SiteTools/Settings.php:29
+#: templates/site-tools/admin-popup.php:13
 msgid "My account"
 msgstr ""
 
@@ -3224,7 +3453,7 @@ msgstr ""
 
 #: src/Modules/SiteTools/Layouts/PostType.php:56
 #: src/Modules/SiteTools/Layouts/PostType.php:60
-#: src/Modules/SiteTools/Settings.php:175
+#: src/Modules/SiteTools/Settings.php:183
 msgid "Layouts"
 msgstr ""
 
@@ -3255,26 +3484,6 @@ msgstr ""
 
 #: src/Modules/SiteTools/Layouts/PostType.php:97
 msgid "Higher wins when several layouts match."
-msgstr ""
-
-#: src/Modules/SiteTools/Layouts/PostType.php:98
-#: src/Modules/SiteTools/Settings.php:51
-msgid "Devices"
-msgstr ""
-
-#: src/Modules/SiteTools/Layouts/PostType.php:99
-#: src/Modules/SiteTools/Settings.php:28
-msgid "Desktop"
-msgstr ""
-
-#: src/Modules/SiteTools/Layouts/PostType.php:99
-#: src/Modules/SiteTools/Settings.php:28
-msgid "Tablet"
-msgstr ""
-
-#: src/Modules/SiteTools/Layouts/PostType.php:99
-#: src/Modules/SiteTools/Settings.php:28
-msgid "Mobile"
 msgstr ""
 
 #: src/Modules/SiteTools/Layouts/PostType.php:102
@@ -3329,11 +3538,11 @@ msgstr ""
 msgid "Not assigned"
 msgstr ""
 
-#: src/Modules/SiteTools/Maintenance.php:107
+#: src/Modules/SiteTools/Maintenance.php:142
 msgid "Maintenance mode is ON"
 msgstr ""
 
-#: src/Modules/SiteTools/Maintenance.php:107
+#: src/Modules/SiteTools/Maintenance.php:142
 msgid "Coming soon mode is ON"
 msgstr ""
 
@@ -3345,12 +3554,84 @@ msgstr ""
 msgid "Layouts, HTML Blocks, promo popup, age verification, cookie notice, maintenance mode, white label and custom JS."
 msgstr ""
 
-#: src/Modules/SiteTools/Module.php:74
+#: src/Modules/SiteTools/Module.php:75
 msgid "Site Tools settings"
 msgstr ""
 
-#: src/Modules/SiteTools/Module.php:74
+#: src/Modules/SiteTools/Module.php:75
 msgid "Promo popup, age verification, cookie notice, maintenance, white label and custom JS are configured in the Webgram Theme Settings panel."
+msgstr ""
+
+#: src/Modules/SiteTools/Popups.php:107
+#: src/Modules/SiteTools/Popups.php:111
+#: src/Modules/SiteTools/Settings.php:36
+msgid "Popups"
+msgstr ""
+
+#: src/Modules/SiteTools/Popups.php:108
+msgid "Popup"
+msgstr ""
+
+#: src/Modules/SiteTools/Popups.php:109
+#: src/Modules/SiteTools/Settings.php:44
+msgid "Add popup"
+msgstr ""
+
+#: src/Modules/SiteTools/Popups.php:110
+msgid "Edit popup"
+msgstr ""
+
+#: src/Modules/SiteTools/Popups.php:144
+msgid "Promo popup"
+msgstr ""
+
+#: src/Modules/SiteTools/Popups.php:181
+msgid "Popup settings"
+msgstr ""
+
+#: src/Modules/SiteTools/Popups.php:182
+msgid "How it works"
+msgstr ""
+
+#: src/Modules/SiteTools/Popups.php:193
+msgid "Write the popup content in the editor above (or build it with Elementor), or pick an HTML Block. Published popups show on the targeted pages according to their trigger and frequency. Several popups can be active; only one opens at a time."
+msgstr ""
+
+#: src/Modules/SiteTools/Popups.php:211
+#: templates/site-tools/admin-popup.php:30
+msgid "Trigger"
+msgstr ""
+
+#: src/Modules/SiteTools/Popups.php:212
+msgid "Shown on"
+msgstr ""
+
+#. translators: %d: seconds.
+#: src/Modules/SiteTools/Popups.php:221
+#, php-format
+msgid "After %d s"
+msgstr ""
+
+#. translators: %d: percent of the page height.
+#: src/Modules/SiteTools/Popups.php:223
+#, php-format
+msgid "At %d%% scroll"
+msgstr ""
+
+#: src/Modules/SiteTools/Popups.php:224
+msgid "Exit intent"
+msgstr ""
+
+#: src/Modules/SiteTools/Popups.php:225
+msgid "Click"
+msgstr ""
+
+#: src/Modules/SiteTools/Popups.php:226
+msgid "On load"
+msgstr ""
+
+#: src/Modules/SiteTools/Popups.php:229
+msgid "paused"
 msgstr ""
 
 #: src/Modules/SiteTools/Portfolio.php:30
@@ -3362,7 +3643,7 @@ msgid "Portfolio category"
 msgstr ""
 
 #: src/Modules/SiteTools/Portfolio.php:40
-#: src/Modules/SiteTools/Settings.php:217
+#: src/Modules/SiteTools/Settings.php:225
 msgid "Portfolio"
 msgstr ""
 
@@ -3375,432 +3656,417 @@ msgid "Add portfolio item"
 msgstr ""
 
 #: src/Modules/SiteTools/Settings.php:29
+#: templates/site-tools/admin-popup.php:13
 msgid "Homepage"
 msgstr ""
 
 #: src/Modules/SiteTools/Settings.php:29
+#: templates/site-tools/admin-popup.php:13
 msgid "Shop and categories"
 msgstr ""
 
 #: src/Modules/SiteTools/Settings.php:29
+#: templates/site-tools/admin-popup.php:13
 msgid "Product pages"
 msgstr ""
 
 #: src/Modules/SiteTools/Settings.php:29
+#: templates/site-tools/admin-popup.php:13
 msgid "Blog"
 msgstr ""
 
 #: src/Modules/SiteTools/Settings.php:29
-#: src/Modules/SiteTools/Settings.php:52
+#: templates/site-tools/admin-popup.php:13
 msgid "Pages"
 msgstr ""
 
 #: src/Modules/SiteTools/Settings.php:29
+#: templates/site-tools/admin-popup.php:13
 msgid "Everything else"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:36
-msgid "Promo popup"
-msgstr ""
-
-#: src/Modules/SiteTools/Settings.php:42
-msgid "Enable promo popup"
+#: src/Modules/SiteTools/Settings.php:41
+msgid "Popups are posts under Webgram > Popups. Each popup has its own content (editor, Elementor or an HTML Block), trigger (delay, immediately, scroll depth, exit intent or a click on any element), frequency in days, devices and page targeting, including specific post or product ids."
 msgstr ""
 
 #: src/Modules/SiteTools/Settings.php:43
-msgid "Manage HTML Blocks"
+msgid "Manage popups"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:43
+msgid "Open Popups"
 msgstr ""
 
 #: src/Modules/SiteTools/Settings.php:44
-msgid "Or simple content"
+msgid "Create a popup"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:44
-msgid "Used when no HTML Block is selected. Basic HTML allowed."
+#: src/Modules/SiteTools/Settings.php:51
+msgid "Floating blocks"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:45
-msgid "Side image"
+#: src/Modules/SiteTools/Settings.php:56
+msgid "Fixed buttons in a corner of every page: WhatsApp chat, a link with an icon or an HTML Block. The theme adds its own back to top button and floating social sidebar under Theme Settings."
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:46
-msgid "Width"
-msgstr ""
-
-#: src/Modules/SiteTools/Settings.php:47
-msgid "Trigger"
-msgstr ""
-
-#: src/Modules/SiteTools/Settings.php:47
-msgid "After a delay"
-msgstr ""
-
-#: src/Modules/SiteTools/Settings.php:47
-msgid "After scrolling"
-msgstr ""
-
-#: src/Modules/SiteTools/Settings.php:47
-msgid "Exit intent (desktop)"
-msgstr ""
-
-#: src/Modules/SiteTools/Settings.php:48
-msgid "Delay"
-msgstr ""
-
-#: src/Modules/SiteTools/Settings.php:49
-msgid "Scroll depth"
-msgstr ""
-
-#: src/Modules/SiteTools/Settings.php:50
-msgid "Show again"
-msgstr ""
-
-#: src/Modules/SiteTools/Settings.php:50
-msgid "Once per session"
-msgstr ""
-
-#: src/Modules/SiteTools/Settings.php:50
-msgid "Once per day"
-msgstr ""
-
-#: src/Modules/SiteTools/Settings.php:50
-msgid "Once per week"
-msgstr ""
-
-#: src/Modules/SiteTools/Settings.php:50
-msgid "Every page load"
-msgstr ""
-
-#: src/Modules/SiteTools/Settings.php:59
+#: src/Modules/SiteTools/Settings.php:63
 msgid "Age verify popup"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:65
+#: src/Modules/SiteTools/Settings.php:69
 msgid "Enable age verification"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:66
+#: src/Modules/SiteTools/Settings.php:70
 msgid "Are you over 18?"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:67
-#: src/Modules/SiteTools/Settings.php:88
-#: src/Modules/SiteTools/Settings.php:112
+#: src/Modules/SiteTools/Settings.php:71
+#: src/Modules/SiteTools/Settings.php:92
+#: src/Modules/SiteTools/Settings.php:116
 msgid "Text"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:67
+#: src/Modules/SiteTools/Settings.php:71
 msgid "You must be of legal age to enter this website."
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:68
+#: src/Modules/SiteTools/Settings.php:72
 msgid "Minimum age"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:69
+#: src/Modules/SiteTools/Settings.php:73
 msgid "Input"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:69
+#: src/Modules/SiteTools/Settings.php:73
 msgid "Yes / No buttons"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:69
+#: src/Modules/SiteTools/Settings.php:73
 #: templates/site-tools/age-verify.php:23
 msgid "Date of birth"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:70
+#: src/Modules/SiteTools/Settings.php:74
 msgid "Confirm label"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:71
+#: src/Modules/SiteTools/Settings.php:75
 msgid "Decline label"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:72
+#: src/Modules/SiteTools/Settings.php:76
 msgid "Redirect on decline"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:73
+#: src/Modules/SiteTools/Settings.php:77
 msgid "Remember for"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:73
-#: src/Modules/SiteTools/Settings.php:95
+#: src/Modules/SiteTools/Settings.php:77
+#: src/Modules/SiteTools/Settings.php:99
 msgid "days"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:74
-#: src/Modules/SiteTools/Settings.php:114
+#: src/Modules/SiteTools/Settings.php:78
+#: src/Modules/SiteTools/Settings.php:118
 msgid "Background image"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:81
+#: src/Modules/SiteTools/Settings.php:85
 msgid "Cookie law info"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:87
+#: src/Modules/SiteTools/Settings.php:91
 msgid "Show cookie notice"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:88
+#: src/Modules/SiteTools/Settings.php:92
 msgid "We use cookies to improve your experience and analyze traffic. By continuing you agree to our cookie policy."
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:89
+#: src/Modules/SiteTools/Settings.php:93
 msgid "Accept button"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:90
+#: src/Modules/SiteTools/Settings.php:94
 msgid "Show reject button (GDPR)"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:91
+#: src/Modules/SiteTools/Settings.php:95
 msgid "Reject button"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:92
+#: src/Modules/SiteTools/Settings.php:96
 msgid "Policy page"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:93
+#: src/Modules/SiteTools/Settings.php:97
 msgid "Policy link label"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:94
-msgid "Position"
-msgstr ""
-
-#: src/Modules/SiteTools/Settings.php:94
+#: src/Modules/SiteTools/Settings.php:98
 msgid "Bottom bar"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:94
+#: src/Modules/SiteTools/Settings.php:98
 msgid "Bottom left card"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:94
+#: src/Modules/SiteTools/Settings.php:98
 msgid "Bottom right card"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:94
+#: src/Modules/SiteTools/Settings.php:98
 msgid "Top bar"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:95
+#: src/Modules/SiteTools/Settings.php:99
 msgid "Remember choice for"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:102
+#: src/Modules/SiteTools/Settings.php:106
 msgid "Maintenance"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:108
+#: src/Modules/SiteTools/Settings.php:112
 msgid "Mode"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:108
-msgid "Off"
-msgstr ""
-
-#: src/Modules/SiteTools/Settings.php:108
+#: src/Modules/SiteTools/Settings.php:112
 msgid "Coming soon (200)"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:108
+#: src/Modules/SiteTools/Settings.php:112
 msgid "Maintenance (503)"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:109
+#: src/Modules/SiteTools/Settings.php:113
 msgid "Show this page"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:109
+#: src/Modules/SiteTools/Settings.php:113
 msgid "A page built with Elementor or Gutenberg. Leave empty to use the block or the simple content below."
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:110
+#: src/Modules/SiteTools/Settings.php:114
 msgid "Or HTML Block"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:111
+#: src/Modules/SiteTools/Settings.php:115
 msgid "We are launching soon"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:112
+#: src/Modules/SiteTools/Settings.php:116
 msgid "Our store is getting a fresh look. Please check back shortly."
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:113
+#: src/Modules/SiteTools/Settings.php:117
 msgid "Countdown to (date and time)"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:113
+#: src/Modules/SiteTools/Settings.php:117
 msgid "Site timezone. Leave empty to hide the countdown."
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:115
+#: src/Modules/SiteTools/Settings.php:119
 msgid "Roles that can still browse"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:115
+#: src/Modules/SiteTools/Settings.php:119
 msgid "Administrators always bypass."
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:122
-msgid "White label"
+#: src/Modules/SiteTools/Settings.php:120
+msgid "Leave empty to use the site logo."
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:127
-msgid "Renames the Webgram panel for your clients. Attribution in code and licensing is not affected."
+#: src/Modules/SiteTools/Settings.php:121
+msgid "Allowed IP addresses"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:121
+msgid "One per line. Visitors from these addresses see the normal site."
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:122
+msgid "Bypass key"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:122
+msgid "Share a link like https://example.com/?wg_preview=KEY with clients; the browser remembers it for a day."
 msgstr ""
 
 #: src/Modules/SiteTools/Settings.php:129
+msgid "White label"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:134
+msgid "Renames the Webgram panel for your clients. Attribution in code and licensing is not affected."
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:136
 msgid "Panel name"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:130
+#: src/Modules/SiteTools/Settings.php:137
 msgid "Panel logo"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:131
+#: src/Modules/SiteTools/Settings.php:138
 msgid "Hide from clients"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:131
+#: src/Modules/SiteTools/Settings.php:138
 msgid "System status page"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:131
+#: src/Modules/SiteTools/Settings.php:138
 msgid "Import / Export page"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:131
+#: src/Modules/SiteTools/Settings.php:138
 msgid "Modules page"
 msgstr ""
 
 #: src/Modules/SiteTools/Settings.php:138
+msgid "Demo import page"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:138
+msgid "Core Settings page"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:138
+msgid "Analytics page"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:138
+msgid "Hidden pages stay reachable by administrators of a multisite network."
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:139
+msgid "Admin menu icon (dashicon class)"
+msgstr ""
+
+#: src/Modules/SiteTools/Settings.php:146
 msgid "API integrations"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:143
+#: src/Modules/SiteTools/Settings.php:151
 msgid "Location and maps"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:145
+#: src/Modules/SiteTools/Settings.php:153
 msgid "Reverse geocoding (\"Use my current location\")"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:145
+#: src/Modules/SiteTools/Settings.php:153
 msgid "None (button hidden)"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:145
+#: src/Modules/SiteTools/Settings.php:153
 msgid "OpenStreetMap Nominatim (free, attribution required)"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:146
+#: src/Modules/SiteTools/Settings.php:154
 msgid "Contact email for Nominatim"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:146
+#: src/Modules/SiteTools/Settings.php:154
 msgid "Nominatim usage policy asks for a contact address and allows at most one request per second. Not for heavy traffic."
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:147
+#: src/Modules/SiteTools/Settings.php:155
 msgid "Google Maps API key (optional, future use)"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:151
+#: src/Modules/SiteTools/Settings.php:159
 msgid "Module credentials"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:153
+#: src/Modules/SiteTools/Settings.php:161
 msgid "Instagram, WhatsApp, AI providers"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:153
+#: src/Modules/SiteTools/Settings.php:161
 msgid "Open Core Settings"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:153
+#: src/Modules/SiteTools/Settings.php:161
 msgid "Each module keeps its own credentials on the Core Settings screen. Secrets are stored encrypted."
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:160
+#: src/Modules/SiteTools/Settings.php:168
 msgid "Custom JS"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:165
+#: src/Modules/SiteTools/Settings.php:173
 msgid "Only users with the unfiltered_html capability can save scripts. Printed with wp_add_inline_script."
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:167
+#: src/Modules/SiteTools/Settings.php:175
 msgid "Header scripts"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:168
+#: src/Modules/SiteTools/Settings.php:176
 msgid "Footer scripts"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:180
+#: src/Modules/SiteTools/Settings.php:188
 msgid "A Layout is an Elementor or Gutenberg template that replaces a theme template (shop, product, cart, checkout, thank you, account, 404, blog, header, footer) when its conditions match."
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:182
+#: src/Modules/SiteTools/Settings.php:190
 msgid "Manage layouts"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:182
+#: src/Modules/SiteTools/Settings.php:190
 msgid "Open Layouts"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:194
+#: src/Modules/SiteTools/Settings.php:202
 msgid "Reusable content blocks for the header builder, footer, mega menu, product page positions, popups and empty states. Shortcode: [webgram_block id=\"\"]."
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:196
+#: src/Modules/SiteTools/Settings.php:204
 msgid "Manage blocks"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:196
+#: src/Modules/SiteTools/Settings.php:204
 msgid "Open HTML Blocks"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:203
-#: src/Modules/SiteTools/Settings.php:223
+#: src/Modules/SiteTools/Settings.php:211
 msgid "Help page"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:208
-#: src/Modules/SiteTools/Settings.php:228
+#: src/Modules/SiteTools/Settings.php:216
 msgid "Shown by the theme \"Help\" page template as an accordion, with contact cards from the Contact seller settings."
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:210
-#: src/Modules/SiteTools/Settings.php:230
+#: src/Modules/SiteTools/Settings.php:218
 msgid "FAQ entries"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:210
-#: src/Modules/SiteTools/Settings.php:230
+#: src/Modules/SiteTools/Settings.php:218
 msgid "One entry per block separated by a blank line: first line is the question, the following lines are the answer."
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:237
+#: src/Modules/SiteTools/Settings.php:231
 msgid "Enable portfolio post type"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:237
+#: src/Modules/SiteTools/Settings.php:231
 msgid "Adds a Portfolio post type with categories. Save permalinks after enabling."
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:238
+#: src/Modules/SiteTools/Settings.php:232
 msgid "URL slug"
 msgstr ""
 
-#: src/Modules/SiteTools/Settings.php:239
+#: src/Modules/SiteTools/Settings.php:233
 msgid "Items per page"
 msgstr ""
 
@@ -3905,10 +4171,11 @@ msgid "Could not hear you. Please try again."
 msgstr ""
 
 #: src/Modules/Wishlist/Module.php:30
-#: src/Modules/Wishlist/Module.php:99
-#: src/Modules/Wishlist/Module.php:153
-#: src/Modules/Wishlist/Module.php:158
-#: src/Modules/Wishlist/Module.php:172
+#: src/Modules/Wishlist/Module.php:106
+#: src/Modules/Wishlist/Module.php:161
+#: src/Modules/Wishlist/Module.php:166
+#: src/Modules/Wishlist/Module.php:180
+#: src/Support/Lists/ListModuleTrait.php:92
 #: templates/wishlist/button.php:18
 msgid "Wishlist"
 msgstr ""
@@ -3917,68 +4184,64 @@ msgstr ""
 msgid "Save products for later, guest support with merge on login, share link."
 msgstr ""
 
-#: src/Modules/Wishlist/Module.php:89
+#: src/Modules/Wishlist/Module.php:95
 msgid "Wishlist page"
 msgstr ""
 
-#: src/Modules/Wishlist/Module.php:89
+#: src/Modules/Wishlist/Module.php:95
 msgid "Page containing the [webgram_wishlist] shortcode."
 msgstr ""
 
-#: src/Modules/Wishlist/Module.php:91
-msgid "Next to Add to cart"
+#: src/Modules/Wishlist/Module.php:98
+msgid "Move to cart: remove an item from the wishlist once it is added to the cart"
 msgstr ""
 
-#: src/Modules/Wishlist/Module.php:91
-msgid "Gallery corner (Webgram theme)"
-msgstr ""
-
-#: src/Modules/Wishlist/Module.php:92
+#: src/Modules/Wishlist/Module.php:99
 msgid "Share link on the wishlist page"
 msgstr ""
 
-#: src/Modules/Wishlist/Module.php:93
+#: src/Modules/Wishlist/Module.php:100
 msgid "Share link validity (days)"
 msgstr ""
 
-#: src/Modules/Wishlist/Module.php:94
+#: src/Modules/Wishlist/Module.php:101
 msgid "Require login to save items"
 msgstr ""
 
-#: src/Modules/Wishlist/Module.php:94
+#: src/Modules/Wishlist/Module.php:101
 msgid "Off: guests keep a signed cookie list that merges into their account on login."
 msgstr ""
 
-#: src/Modules/Wishlist/Module.php:104
+#: src/Modules/Wishlist/Module.php:111
 msgid "Webgram Wishlist"
 msgstr ""
 
-#: src/Modules/Wishlist/Module.php:115
-#: src/Modules/Wishlist/Module.php:146
+#: src/Modules/Wishlist/Module.php:123
+#: src/Modules/Wishlist/Module.php:154
 msgid "Added to wishlist"
 msgstr ""
 
-#: src/Modules/Wishlist/Module.php:116
-#: src/Modules/Wishlist/Module.php:146
+#: src/Modules/Wishlist/Module.php:124
+#: src/Modules/Wishlist/Module.php:154
 msgid "Removed from wishlist"
 msgstr ""
 
-#: src/Modules/Wishlist/Module.php:117
-#: src/Modules/Wishlist/Module.php:146
+#: src/Modules/Wishlist/Module.php:125
+#: src/Modules/Wishlist/Module.php:154
 msgid "Your wishlist is full."
 msgstr ""
 
-#: src/Modules/Wishlist/Module.php:118
-#: src/Modules/Wishlist/Module.php:129
+#: src/Modules/Wishlist/Module.php:126
+#: src/Modules/Wishlist/Module.php:137
 msgid "Please log in to save items."
 msgstr ""
 
-#: src/Modules/Wishlist/Module.php:119
+#: src/Modules/Wishlist/Module.php:127
 #: templates/wishlist/button.php:12
 msgid "Add to wishlist"
 msgstr ""
 
-#: src/Modules/Wishlist/Module.php:120
+#: src/Modules/Wishlist/Module.php:128
 #: templates/wishlist/button.php:12
 #: templates/wishlist/table.php:62
 msgid "Remove from wishlist"
@@ -4187,10 +4450,6 @@ msgid "Call us"
 msgstr ""
 
 #: src/Modules/WooEnhancements/CartRecommendations.php:75
-msgid "Chat on WhatsApp"
-msgstr ""
-
-#: src/Modules/WooEnhancements/CartRecommendations.php:75
 msgid "Hi, I need help with my order"
 msgstr ""
 
@@ -4369,10 +4628,6 @@ msgstr ""
 
 #: src/Modules/WooEnhancements/Module.php:86
 msgid "Phone number"
-msgstr ""
-
-#: src/Modules/WooEnhancements/Module.php:87
-msgid "WhatsApp number"
 msgstr ""
 
 #: src/Modules/WooEnhancements/Module.php:87
@@ -4673,11 +4928,15 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
-#: templates/coupons/box.php:16
+#: templates/coupons/box.php:21
 msgid "Use code"
 msgstr ""
 
-#: templates/coupons/box.php:18
+#: templates/coupons/box.php:26
+msgid "Applied"
+msgstr ""
+
+#: templates/coupons/box.php:28
 #: templates/sections/coupons.php:26
 msgid "Code copied"
 msgstr ""
@@ -5075,6 +5334,96 @@ msgstr ""
 msgid "%d out of 5 stars"
 msgstr ""
 
+#: templates/site-tools/admin-popup.php:19
+msgid "This post (editor or Elementor)"
+msgstr ""
+
+#: templates/site-tools/admin-popup.php:27
+msgid "Side image"
+msgstr ""
+
+#: templates/site-tools/admin-popup.php:28
+msgid "Width"
+msgstr ""
+
+#: templates/site-tools/admin-popup.php:29
+msgid "Accessible label"
+msgstr ""
+
+#: templates/site-tools/admin-popup.php:29
+#: templates/site-tools/promo-popup.php:13
+msgid "Special offer"
+msgstr ""
+
+#: templates/site-tools/admin-popup.php:32
+msgid "After a delay"
+msgstr ""
+
+#: templates/site-tools/admin-popup.php:32
+msgid "Immediately"
+msgstr ""
+
+#: templates/site-tools/admin-popup.php:32
+msgid "After scrolling"
+msgstr ""
+
+#: templates/site-tools/admin-popup.php:32
+msgid "Exit intent (desktop)"
+msgstr ""
+
+#: templates/site-tools/admin-popup.php:32
+msgid "Click on an element"
+msgstr ""
+
+#: templates/site-tools/admin-popup.php:36
+msgid "Delay (seconds)"
+msgstr ""
+
+#: templates/site-tools/admin-popup.php:37
+msgid "Scroll depth (%)"
+msgstr ""
+
+#: templates/site-tools/admin-popup.php:38
+msgid "Click selector"
+msgstr ""
+
+#: templates/site-tools/admin-popup.php:38
+msgid "CSS selector of the buttons or links that open this popup."
+msgstr ""
+
+#: templates/site-tools/admin-popup.php:40
+msgid "Show again"
+msgstr ""
+
+#: templates/site-tools/admin-popup.php:42
+msgid "After a number of days"
+msgstr ""
+
+#: templates/site-tools/admin-popup.php:43
+msgid "Once per browser session"
+msgstr ""
+
+#: templates/site-tools/admin-popup.php:44
+msgid "Every page load"
+msgstr ""
+
+#: templates/site-tools/admin-popup.php:46
+#: templates/site-tools/maintenance.php:37
+msgid "Days"
+msgstr ""
+
+#: templates/site-tools/admin-popup.php:53
+msgid "Show on"
+msgstr ""
+
+#: templates/site-tools/admin-popup.php:58
+msgid "Also on these post or product ids"
+msgstr ""
+
+#: templates/site-tools/admin-popup.php:59
+msgid "Never on these ids"
+msgstr ""
+
 #. translators: %d: minimum age
 #: templates/site-tools/age-verify.php:26
 #, php-format
@@ -5086,19 +5435,11 @@ msgid "Cookie notice"
 msgstr ""
 
 #: templates/site-tools/maintenance.php:37
-msgid "Days"
-msgstr ""
-
-#: templates/site-tools/maintenance.php:37
 msgid "Minutes"
 msgstr ""
 
 #: templates/site-tools/maintenance.php:37
 msgid "Seconds"
-msgstr ""
-
-#: templates/site-tools/promo-popup.php:13
-msgid "Special offer"
 msgstr ""
 
 #: templates/slider/admin-settings.php:15
@@ -5110,68 +5451,72 @@ msgid "Delay (ms)"
 msgstr ""
 
 #: templates/slider/admin-settings.php:17
-msgid "Pause on hover"
+msgid "Transition speed (ms)"
 msgstr ""
 
 #: templates/slider/admin-settings.php:18
-msgid "Loop"
+msgid "Pause on hover"
 msgstr ""
 
 #: templates/slider/admin-settings.php:19
-msgid "Arrows (shown on hover)"
+msgid "Loop"
 msgstr ""
 
 #: templates/slider/admin-settings.php:20
-msgid "Dots"
+msgid "Arrows (shown on hover)"
 msgstr ""
 
 #: templates/slider/admin-settings.php:21
-msgid "Lazy load slides after the first"
+msgid "Dots"
 msgstr ""
 
 #: templates/slider/admin-settings.php:22
-msgid "Full screen width"
+msgid "Lazy load slides after the first"
 msgstr ""
 
 #: templates/slider/admin-settings.php:23
+msgid "Full screen width"
+msgstr ""
+
+#: templates/slider/admin-settings.php:24
 msgid "Effect"
 msgstr ""
 
-#: templates/slider/admin-settings.php:25
+#: templates/slider/admin-settings.php:26
 #: templates/slider/admin-slides.php:66
 msgid "Fade"
 msgstr ""
 
-#: templates/slider/admin-settings.php:26
+#: templates/slider/admin-settings.php:27
 #: templates/slider/admin-slides.php:41
 msgid "Slide"
 msgstr ""
 
-#: templates/slider/admin-settings.php:28
+#: templates/slider/admin-settings.php:29
 msgid "Height"
 msgstr ""
 
-#: templates/slider/admin-settings.php:30
+#: templates/slider/admin-settings.php:31
 msgid "Aspect ratio"
 msgstr ""
 
-#: templates/slider/admin-settings.php:31
+#: templates/slider/admin-settings.php:32
 msgid "Fixed pixels"
 msgstr ""
 
-#: templates/slider/admin-settings.php:32
+#: templates/slider/admin-settings.php:33
 msgid "Full viewport"
 msgstr ""
 
-#: templates/slider/admin-settings.php:34
+#: templates/slider/admin-settings.php:35
 msgid "Ratio desktop (W:H)"
 msgstr ""
 
-#: templates/slider/admin-settings.php:35
+#: templates/slider/admin-settings.php:36
 msgid "Ratio mobile (W:H)"
 msgstr ""
 
-#: templates/slider/admin-settings.php:36
+#: templates/slider/admin-settings.php:37
 msgid "Fixed height (px)"
 msgstr ""
 
@@ -5379,10 +5724,6 @@ msgstr ""
 #: templates/woo-enhancements/location-modal.php:20
 #, php-format
 msgid "Enter your %s"
-msgstr ""
-
-#: templates/woo-enhancements/location-modal.php:23
-msgid "Apply"
 msgstr ""
 
 #: templates/woo-enhancements/location-modal.php:29

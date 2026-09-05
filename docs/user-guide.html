@@ -32,6 +32,7 @@ ol li,ul li{margin:4px 0}
 <a class="sub" href="#child">Child theme</a>
 <a href="#settings">Theme Settings</a>
 <a href="#header">Header and footer builders</a>
+<a href="#layouts">Layouts, sidebars, popups, floating</a>
 <a href="#megamenu">Mega menu</a>
 <a href="#home">Homepage sections</a>
 <a href="#shop">Shop, product, cart, checkout</a>
@@ -99,6 +100,15 @@ ol li,ul li{margin:4px 0}
 <p><strong>Webgram &gt; Header Builder</strong>: three rows (top, main, bottom) with left, center and right areas, separate layouts for desktop and mobile. Drag elements into areas: logo, menus, search, cart, account, wishlist, compare, deliver to, contact, social, HTML, button, marquee. Each element has its own settings (click the gear). Presets replace the layout in one click: Store, Classic, Minimal, Two row, Centered. Sticky settings apply per row.</p>
 <p><strong>Webgram &gt; Footer Builder</strong>: a widgets row (2 to 6 columns, first column wide option) and a bottom bar with left, center, right areas. Elements: logo, description, menus, social, contact, payment icons, copyright, HTML, newsletter. Widget areas <code>footer-1</code> to <code>footer-6</code> accept normal WordPress widgets too.</p>
 
+<h2 id="layouts">Layouts, sidebars, popups, floating blocks</h2>
+<ul>
+<li><strong>Layouts</strong> (Webgram &gt; Layouts, needs Core): build a template with Elementor or Gutenberg and choose what it replaces: header, footer, shop archive, single product, cart, checkout, thank you, my account, blog archive, single post or 404. Conditions decide where it applies (everywhere, products, categories, tags, brands, pages, posts, post types, logged in or out, device) with include and exclude rules and a priority. Cart, checkout and account layouts should contain the matching WooCommerce shortcode or block.</li>
+<li><strong>Sidebars</strong> (Webgram &gt; Sidebars): create custom widget areas, then assign an area to the blog, pages, shop filters and the product page under Theme Settings &gt; Layout, where you also pick left or right and the mobile behaviour (stack, off-canvas drawer or hide). Any page, post or product can override the layout and sidebar in its <strong>Webgram options</strong> box, which also switches the title band and sets a title background image.</li>
+<li><strong>Popups</strong> (Webgram &gt; Popups, needs Core): each popup is a post. Write it in the editor or Elementor, or pick an HTML Block. Choose the trigger (delay, immediately, scroll depth, exit intent or a click on any element you name by CSS selector), how often it shows again, the devices, the page types and specific post or product ids. Several popups can be active; one opens at a time.</li>
+<li><strong>Floating blocks</strong> (Webgram &gt; Floating Blocks, needs Core): up to three fixed buttons, for example a WhatsApp chat button with a prefilled message, a link with an icon, or an HTML Block, with position, offset, devices and a "show after scrolling" threshold. The theme's own back to top button and floating social sidebar have their position and device options under Theme Settings &gt; General and Social profiles.</li>
+<li><strong>HTML Blocks</strong> can also be placed in the mega menu (panel or column), the cart drawer (above and below the items, and in the empty state), under the product add to cart button and under the summary, on empty archives, and anywhere in a page through the Webgram HTML Block widget, block or <code>[webgram_block id=""]</code>.</li>
+</ul>
+
 <h2 id="megamenu">Mega menu</h2>
 <p>Appearance &gt; Menus: each top level item gets Webgram fields: mega menu on or off, columns, column width, icon, badge text, featured image, description, and an HTML block per column (choose an HTML Block created under Webgram &gt; HTML Blocks). Child items become column groups. The mobile drawer shows the same menu with expandable groups and a Categories tab.</p>
 
@@ -125,7 +135,7 @@ ol li,ul li{margin:4px 0}
 <li><strong>Reviews</strong>: rating summary with distribution bars, sort and star filters, load more, photo and video uploads (held private until approval), helpful votes, recommendation, review title. Media column and bulk approve in Comments. Stands down automatically when Judge.me, YITH Reviews or Customer Reviews is active. Shortcode <code>[webgram_reviews]</code>.</li>
 <li><strong>Wishlist</strong>: guest lists in a signed cookie, merged into the account on login. Header icon with count, card and product buttons, page with share link (<code>[webgram_wishlist]</code>). Create the page from the notice or Demo import.</li>
 <li><strong>Compare</strong>: up to 4 products, floating compare bar, page with sticky first column and difference highlighting (<code>[webgram_compare]</code>).</li>
-<li><strong>Quick view</strong>, <strong>Badges</strong> (rules: new, sale percent, best seller, low stock, sold out, plus a custom badge per product) and <strong>Coupons</strong> (product coupon box with copy, cart offer progress) each have a settings tab.</li>
+<li><strong>Quick view</strong>, <strong>Badges</strong> (rules: new, sale percent, best seller, low stock, sold out, plus a custom badge per product) and <strong>Coupons</strong> each have a settings tab. The coupon box on the product page copies the code and can apply it at once; with an empty cart the coupon is remembered and applied on the next add to cart. Four box styles and an accent color are available.</li>
 </ul>
 
 <h3 id="slider">Slider, reels, Instagram</h3>
@@ -154,10 +164,10 @@ ol li,ul li{margin:4px 0}
 <p>Customers opt in at checkout or in My Account; no message is sent without consent. Messages go from your own Meta account and any charges are billed by Meta to you. Webgram does not relay or bill messages. Email channel: the same event matrix enables or disables WooCommerce emails and adds Shipped and Out for delivery emails. <strong>Webgram &gt; Notifications log</strong> shows every attempt with retry and resend.</p>
 
 <h3 id="analytics">Analytics</h3>
-<p>First party events (product views, reel plays, assistant conversations, wishlist and compare adds, WhatsApp delivery) stored in your database without IP addresses. <strong>Webgram &gt; Analytics</strong> shows cards, 7 or 30 day bars, top reels and products. Sampling, staff tracking and retention are settings. Trending product sections use these views.</p>
+<p>First party events stored in your database without IP addresses: product views, add to cart, buy now, checkout start, purchase, searches, voice searches, quick views, coupon copies, wishlist and compare adds, helpful votes, reel plays, assistant conversations and clicks on any button or link carrying a <code>data-wg-cta</code> attribute (slider, banners, about, floating buttons). <strong>Webgram &gt; Analytics</strong> shows cards, 7 or 30 day bars, top reels and products. Sampling, staff tracking and retention are settings. Trending product sections use these views.</p>
 
 <h3 id="sitetools">Site tools</h3>
-<p>HTML Blocks (reusable content for header, footer, mega menu and layouts), Layouts (hook a block into a position with conditions), promo popup, cookie notice, age verification, maintenance and coming soon modes, white label (rename the Webgram menu and hide branding), custom JS (only for users with <code>unfiltered_html</code>), optional portfolio post type.</p>
+<p>HTML Blocks, Layouts, Popups and Floating blocks (above), cookie notice, age verification, maintenance and coming soon modes (page, block or simple content, countdown, logo, background, roles that can browse, IP allowlist and a bypass key link for clients), white label (panel name, logo, admin menu name and icon, hidden pages), custom JS (only for users with <code>unfiltered_html</code>), and the optional portfolio post type rendered by the theme as Projects with category filter chips (columns and filter under Theme Settings &gt; Other).</p>
 
 <h2 id="translation">Translation and RTL</h2>
 <p>POT files: <code>webgram-theme/languages/webgram.pot</code> and <code>webgram-core/languages/webgram-core.pot</code>. Create translations with Loco Translate or Poedit and place them in <code>wp-content/languages/themes/webgram-{locale}.mo</code> and <code>wp-content/languages/plugins/webgram-core-{locale}.mo</code>. <code>wpml-config.xml</code> in both products tells WPML and Polylang which options and post types to translate. RTL stylesheets load automatically for RTL languages.</p>

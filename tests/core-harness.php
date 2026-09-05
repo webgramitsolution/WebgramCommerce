@@ -121,7 +121,7 @@ check('include all matches', Conditions::matches([['op'=>'include','type'=>'all'
 check('include product ids matches by id', Conditions::matches([['op'=>'include','type'=>'product','value'=>['12','13']]], $ctx) && !Conditions::matches([['op'=>'include','type'=>'product','value'=>['99']]], $ctx));
 check('include category by slug or ancestor id', Conditions::matches([['op'=>'include','type'=>'product_cat','value'=>['decor']]], $ctx) && Conditions::matches([['op'=>'include','type'=>'product_cat','value'=>['2']]], $ctx));
 check('exclude wins over include', !Conditions::matches([['op'=>'include','type'=>'all','value'=>[]],['op'=>'exclude','type'=>'brand','value'=>['9']]], $ctx));
-check('no include rules never matches', !Conditions::matches([['op'=>'exclude','type'=>'all','value'=>[]]], $ctx));
+check('exclude only rules match everything except the excluded target', !Conditions::matches([['op'=>'exclude','type'=>'all','value'=>[]]], $ctx) && Conditions::matches([['op'=>'exclude','type'=>'product','value'=>['99']]], $ctx) && !Conditions::matches([['op'=>'exclude','type'=>'product','value'=>['12']]], $ctx) && !Conditions::matches([], $ctx));
 check('shop flag rule', !Conditions::matches([['op'=>'include','type'=>'shop','value'=>[]]], $ctx) && Conditions::matches([['op'=>'include','type'=>'shop','value'=>[]]], ['shop'=>true]));
 check('device and login gates', Conditions::allowed(['mobile'],'out',$ctx) && !Conditions::allowed(['desktop'],'any',$ctx) && !Conditions::allowed([],'in',$ctx));
 $san = Conditions::sanitize([['op'=>'exclude','type'=>'product_cat','value'=>' Decor, 5 ,'],['type'=>'bogus'],['type'=>'all','op'=>'x'],'junk']);
@@ -375,5 +375,14 @@ check('log masking of phone and email', NotifLog::mask('+919876543210') === '***
 $body = '{"entry":[{"changes":[{"value":{"statuses":[{"id":"wamid.1","status":"delivered"},{"id":"wamid.2","status":"failed","errors":[{"code":131026,"title":"Undeliverable"}]}]}}]}]}';
 check('webhook signature and status parsing', WhatsAppController::verify_signature($body, 'sha256=' . hash_hmac('sha256', $body, 'secret'), 'secret') && ! WhatsAppController::verify_signature($body, 'sha256=bad', 'secret') && ! WhatsAppController::verify_signature($body, 'sha256=' . hash_hmac('sha256', $body, ''), '') && WhatsAppController::parse_statuses(json_decode($body, true)) === [['id' => 'wamid.1', 'status' => 'delivered', 'error_code' => '', 'error_message' => ''], ['id' => 'wamid.2', 'status' => 'failed', 'error_code' => '131026', 'error_message' => 'Undeliverable']]);
 check('email channel defers WooCommerce covered events', EmailChannel::handled_by_woocommerce('completed') && ! EmailChannel::handled_by_woocommerce('shipped'));
+// 16. Popups, floating blocks, maintenance access (Phase 8 audit fixes)
+use Webgram\Core\Modules\SiteTools\Popups;
+use Webgram\Core\Modules\SiteTools\FloatingBlocks;
+use Webgram\Core\Modules\SiteTools\Maintenance;
+$pop = Popups::sanitize(['enabled'=>'1','source'=>'block','block'=>'7','width'=>'99999','trigger'=>'click','selector'=>'.open-offer','frequency'=>'days','days'=>'0','devices'=>['mobile','bogus'],'pages'=>['home','nope','product'],'include'=>'12, 48 x','exclude'=>'3']);
+check('popup sanitize clamps and whitelists', $pop['enabled'] && $pop['source']==='block' && $pop['block']===7 && $pop['width']===1200 && $pop['trigger']==='click' && $pop['selector']==='.open-offer' && $pop['days']===1 && $pop['devices']===['mobile'] && $pop['pages']===['home','product'] && $pop['include']==='12,48' && $pop['exclude']==='3');
+check('popup targeting: ids win over page types', Popups::targets($pop, ['page_type'=>'page','post_id'=>48]) && !Popups::targets($pop, ['page_type'=>'home','post_id'=>3]) && Popups::targets($pop, ['page_type'=>'product','post_id'=>500]) && !Popups::targets($pop, ['page_type'=>'cart','post_id'=>0]));
+check('whatsapp url from formatted number', FloatingBlocks::whatsapp_url('+91 98765 43210', 'Hi there') === 'https://wa.me/919876543210?text=Hi%20there' && FloatingBlocks::whatsapp_url('12', '') === '' && FloatingBlocks::whatsapp_url('919876543210') === 'https://wa.me/919876543210');
+check('maintenance ip allowlist', Maintenance::ip_allowed('203.0.113.5', "203.0.113.5\n198.51.100.7") && !Maintenance::ip_allowed('203.0.113.6', '203.0.113.5, 198.51.100.7') && !Maintenance::ip_allowed('', '203.0.113.5'));
 echo "\n" . ($fail ? "$fail FAILURE(S)" : "ALL PASSED") . "\n";
 exit($fail ? 1 : 0);

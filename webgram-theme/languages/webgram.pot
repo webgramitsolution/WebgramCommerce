@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-05T08:50:59+00:00\n"
+"POT-Creation-Date: 2026-09-05T10:25:04+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: webgram\n"
@@ -40,6 +40,16 @@ msgstr ""
 msgid "https://webgramitsolution.com"
 msgstr ""
 
+#: archive-wg_portfolio.php:19
+#: taxonomy-wg_portfolio_cat.php:19
+msgid "Portfolio categories"
+msgstr ""
+
+#: archive-wg_portfolio.php:20
+#: taxonomy-wg_portfolio_cat.php:20
+msgid "All"
+msgstr ""
+
 #. translators: %s: search query
 #: archive.php:19
 #: index.php:19
@@ -49,7 +59,9 @@ msgid "Results for \"%s\""
 msgstr ""
 
 #. translators: %s: number of comments
+#. translators: %s: number of comments.
 #: comments.php:21
+#: template-parts/content/post-meta.php:24
 #, php-format
 msgid "%s comment"
 msgid_plural "%s comments"
@@ -123,6 +135,8 @@ msgstr ""
 
 #: inc/admin/class-demo-importer.php:125
 #: inc/admin/class-plugin-installer.php:131
+#: inc/admin/class-sidebars.php:158
+#: inc/admin/class-sidebars.php:175
 #: inc/builders/class-builder-page.php:298
 #: inc/builders/class-builder-page.php:324
 #: inc/elementor/class-elementor-sync.php:59
@@ -138,65 +152,84 @@ msgstr ""
 msgid "theme-settings.json is missing or invalid."
 msgstr ""
 
+#: inc/admin/class-demo-importer.php:181
+msgid "theme settings (already imported)"
+msgstr ""
+
+#: inc/admin/class-demo-importer.php:199
+msgid "layout (customized, kept)"
+msgstr ""
+
 #. translators: %s: comma separated list.
-#: inc/admin/class-demo-importer.php:185
+#: inc/admin/class-demo-importer.php:203
 #, php-format
 msgid "Settings applied: %s"
 msgstr ""
 
+#. translators: %s: comma separated list.
+#: inc/admin/class-demo-importer.php:203
+msgid "none"
+msgstr ""
+
+#. translators: %s: comma separated list.
+#: inc/admin/class-demo-importer.php:205
+#, php-format
+msgid "Skipped: %s."
+msgstr ""
+
 #. translators: %d: number of images.
-#: inc/admin/class-demo-importer.php:198
+#: inc/admin/class-demo-importer.php:220
 #, php-format
 msgid "%d placeholder images available in the media library."
 msgstr ""
 
-#: inc/admin/class-demo-importer.php:232
+#: inc/admin/class-demo-importer.php:254
 msgid "WooCommerce is not active."
 msgstr ""
 
-#: inc/admin/class-demo-importer.php:236
+#: inc/admin/class-demo-importer.php:258
 msgid "products.csv is missing."
 msgstr ""
 
 #. translators: 1: imported count, 2: updated count.
-#: inc/admin/class-demo-importer.php:261
+#: inc/admin/class-demo-importer.php:283
 #, php-format
 msgid "Products imported: %1$d new, %2$d updated."
 msgstr ""
 
-#: inc/admin/class-demo-importer.php:279
+#: inc/admin/class-demo-importer.php:301
 msgid "posts.json is missing or invalid."
 msgstr ""
 
 #. translators: %d: number of posts.
-#: inc/admin/class-demo-importer.php:309
+#: inc/admin/class-demo-importer.php:331
 #, php-format
 msgid "%d blog posts created."
 msgstr ""
 
-#: inc/admin/class-demo-importer.php:314
+#: inc/admin/class-demo-importer.php:336
 msgid "Webgram Core is not active."
 msgstr ""
 
-#: inc/admin/class-demo-importer.php:322
+#: inc/admin/class-demo-importer.php:344
 msgid "Webgram Core demo content processed."
 msgstr ""
 
-#: inc/admin/class-demo-importer.php:330
-#: inc/settings/defaults.php:52
+#: inc/admin/class-demo-importer.php:352
+#: inc/settings/defaults.php:63
 #: inc/settings/tabs/mobile-navbar.php:31
 #: template-parts/misc/breadcrumb.php:21
 msgid "Home"
 msgstr ""
 
-#: inc/admin/class-demo-importer.php:331
+#: inc/admin/class-demo-importer.php:353
 #: inc/settings/tabs/blog.php:12
-#: inc/settings/tabs/layout.php:27
+#: inc/settings/tabs/layout.php:29
 msgid "Blog"
 msgstr ""
 
 #. Template Name of the theme
-#: inc/admin/class-demo-importer.php:332
+#: inc/admin/class-demo-importer.php:354
 #: inc/builders/elements/class-element-links.php:95
 #: inc/builders/elements/class-element-links.php:99
 #: page-templates/template-help.php:3
@@ -204,66 +237,148 @@ msgid "Help"
 msgstr ""
 
 #. Template Name of the theme
-#: inc/admin/class-demo-importer.php:333
+#: inc/admin/class-demo-importer.php:355
 #: inc/builders/elements/class-element-links.php:61
 #: page-templates/template-track-order.php:3
 msgid "Track Order"
 msgstr ""
 
 #. Template Name of the theme
-#: inc/admin/class-demo-importer.php:334
+#: inc/admin/class-demo-importer.php:356
 #: inc/builders/elements/class-element-links.php:80
 #: page-templates/template-bulk-order.php:3
 msgid "Bulk Order"
 msgstr ""
 
-#: inc/admin/class-demo-importer.php:335
+#: inc/admin/class-demo-importer.php:357
 msgid "About"
 msgstr ""
 
-#: inc/admin/class-demo-importer.php:336
+#: inc/admin/class-demo-importer.php:358
 #: inc/builders/elements/class-element-footer.php:258
 msgid "Contact"
 msgstr ""
 
 #. translators: %d: number of pages.
-#: inc/admin/class-demo-importer.php:355
+#: inc/admin/class-demo-importer.php:377
 #, php-format
 msgid "%d pages ready. Home set as the front page."
 msgstr ""
 
-#: inc/admin/class-demo-importer.php:362
+#: inc/admin/class-demo-importer.php:384
 #: inc/builders/elements/class-element-misc.php:79
 #: inc/settings/tabs/styles.php:28
 #: inc/setup.php:68
 msgid "Primary"
 msgstr ""
 
-#: inc/admin/class-demo-importer.php:364
-#: inc/settings/defaults.php:53
-#: inc/settings/tabs/layout.php:28
+#: inc/admin/class-demo-importer.php:386
+#: inc/settings/defaults.php:64
+#: inc/settings/tabs/layout.php:30
 #: inc/settings/tabs/mobile-navbar.php:31
 #: inc/settings/tabs/shop.php:19
 msgid "Shop"
 msgstr ""
 
-#: inc/admin/class-demo-importer.php:379
+#: inc/admin/class-demo-importer.php:401
 #: inc/settings/tabs/footer.php:12
 msgid "Footer"
 msgstr ""
 
-#: inc/admin/class-demo-importer.php:390
+#: inc/admin/class-demo-importer.php:412
 msgid "Primary and footer menus assigned."
 msgstr ""
 
-#: inc/admin/class-demo-importer.php:411
+#: inc/admin/class-demo-importer.php:433
 msgid "widgets.json is missing or invalid."
 msgstr ""
 
 #. translators: %d: number of widgets.
-#: inc/admin/class-demo-importer.php:436
+#: inc/admin/class-demo-importer.php:458
 #, php-format
 msgid "%d footer widgets added."
+msgstr ""
+
+#: inc/admin/class-page-metabox.php:31
+msgid "Webgram options"
+msgstr ""
+
+#: inc/admin/class-page-metabox.php:38
+#: inc/admin/class-page-metabox.php:69
+#: inc/admin/class-page-metabox.php:79
+msgid "Theme default"
+msgstr ""
+
+#: inc/admin/class-page-metabox.php:39
+#: inc/settings/tabs/layout.php:11
+#: inc/settings/tabs/layout.php:30
+#: inc/settings/tabs/layout.php:31
+msgid "No sidebar"
+msgstr ""
+
+#: inc/admin/class-page-metabox.php:40
+#: inc/builders/class-header-builder.php:176
+#: inc/mega-menu/class-mega-menu-admin.php:42
+#: inc/settings/tabs/layout.php:12
+msgid "Full width"
+msgstr ""
+
+#: inc/admin/class-page-metabox.php:41
+#: inc/settings/tabs/layout.php:13
+#: inc/settings/tabs/layout.php:31
+msgid "Sidebar left"
+msgstr ""
+
+#: inc/admin/class-page-metabox.php:42
+#: inc/settings/tabs/layout.php:14
+#: inc/settings/tabs/layout.php:31
+msgid "Sidebar right"
+msgstr ""
+
+#: inc/admin/class-page-metabox.php:58
+#: inc/settings/tabs/layout.php:21
+#: inc/settings/tabs/single-product.php:17
+msgid "Layout"
+msgstr ""
+
+#: inc/admin/class-page-metabox.php:67
+#: inc/settings/tabs/layout.php:53
+#: inc/settings/tabs/shop.php:31
+#: sidebar.php:29
+#: sidebar.php:31
+msgid "Sidebar"
+msgstr ""
+
+#: inc/admin/class-page-metabox.php:77
+msgid "Page title band"
+msgstr ""
+
+#: inc/admin/class-page-metabox.php:80
+msgid "Show"
+msgstr ""
+
+#: inc/admin/class-page-metabox.php:81
+#: inc/settings/tabs/layout.php:57
+msgid "Hide"
+msgstr ""
+
+#: inc/admin/class-page-metabox.php:85
+msgid "Title background image"
+msgstr ""
+
+#: inc/admin/class-page-metabox.php:91
+#: inc/mega-menu/class-mega-menu-admin.php:28
+#: inc/settings/class-settings-fields.php:177
+#: inc/settings/class-settings-page.php:66
+msgid "Choose image"
+msgstr ""
+
+#: inc/admin/class-page-metabox.php:92
+#: inc/admin/class-sidebars.php:133
+#: inc/builders/class-builder-page.php:134
+#: inc/settings/class-settings-fields.php:178
+#: inc/settings/class-settings-fields.php:346
+msgid "Remove"
 msgstr ""
 
 #: inc/admin/class-plugin-installer.php:112
@@ -298,6 +413,108 @@ msgstr ""
 
 #: inc/admin/class-plugin-installer.php:187
 msgid "Webgram Core could not be installed."
+msgstr ""
+
+#: inc/admin/class-sidebars.php:38
+#: inc/settings/tabs/layout.php:17
+#: inc/setup.php:81
+msgid "Blog sidebar"
+msgstr ""
+
+#: inc/admin/class-sidebars.php:39
+#: inc/setup.php:91
+msgid "Shop sidebar"
+msgstr ""
+
+#: inc/admin/class-sidebars.php:40
+#: inc/admin/class-sidebars.php:74
+msgid "Product sidebar"
+msgstr ""
+
+#: inc/admin/class-sidebars.php:41
+#: inc/admin/class-sidebars.php:75
+msgid "Page sidebar"
+msgstr ""
+
+#: inc/admin/class-sidebars.php:74
+msgid "Shown next to the product page when the Single product tab uses a sidebar layout."
+msgstr ""
+
+#: inc/admin/class-sidebars.php:75
+msgid "Default sidebar for pages that use a sidebar layout."
+msgstr ""
+
+#: inc/admin/class-sidebars.php:77
+msgid "Custom sidebar created under Webgram > Sidebars."
+msgstr ""
+
+#: inc/admin/class-sidebars.php:101
+#: inc/admin/class-sidebars.php:111
+msgid "Sidebars"
+msgstr ""
+
+#: inc/admin/class-sidebars.php:113
+msgid "Sidebar created. Add widgets to it under Appearance > Widgets."
+msgstr ""
+
+#: inc/admin/class-sidebars.php:115
+msgid "Sidebar removed."
+msgstr ""
+
+#. translators: %d: maximum.
+#: inc/admin/class-sidebars.php:117
+#, php-format
+msgid "You can create up to %d custom sidebars."
+msgstr ""
+
+#: inc/admin/class-sidebars.php:121
+#: inc/settings/tabs/layout.php:41
+msgid "Custom sidebars"
+msgstr ""
+
+#: inc/admin/class-sidebars.php:122
+msgid "Create widget areas, fill them under Appearance > Widgets, then assign them below or per page in the Webgram options box."
+msgstr ""
+
+#: inc/admin/class-sidebars.php:124
+msgid "Name"
+msgstr ""
+
+#: inc/admin/class-sidebars.php:124
+msgid "ID"
+msgstr ""
+
+#: inc/admin/class-sidebars.php:127
+msgid "built in"
+msgstr ""
+
+#: inc/admin/class-sidebars.php:133
+msgid "Remove this sidebar? Its widgets become inactive."
+msgstr ""
+
+#: inc/admin/class-sidebars.php:141
+#: inc/admin/class-sidebars.php:142
+msgid "Sidebar name"
+msgstr ""
+
+#: inc/admin/class-sidebars.php:143
+msgid "Create sidebar"
+msgstr ""
+
+#: inc/admin/class-sidebars.php:147
+msgid "Assignments and behaviour"
+msgstr ""
+
+#: inc/admin/class-sidebars.php:148
+msgid "Which area shows in each context, its position and how it behaves on mobile."
+msgstr ""
+
+#: inc/admin/class-sidebars.php:149
+msgid "Open Layout settings"
+msgstr ""
+
+#: inc/admin/class-sidebars.php:149
+msgid "Manage widgets"
 msgstr ""
 
 #: inc/admin/class-theme-dashboard.php:19
@@ -364,13 +581,15 @@ msgstr ""
 
 #: inc/builders/class-builder-page.php:53
 #: inc/settings/class-settings-fields.php:313
-#: inc/settings/tabs/social.php:35
+#: inc/settings/tabs/general.php:33
+#: inc/settings/tabs/social.php:36
 msgid "Desktop"
 msgstr ""
 
 #: inc/builders/class-builder-page.php:53
 #: inc/settings/class-settings-fields.php:313
-#: inc/settings/tabs/social.php:35
+#: inc/settings/tabs/general.php:33
+#: inc/settings/tabs/social.php:36
 msgid "Mobile"
 msgstr ""
 
@@ -396,6 +615,7 @@ msgstr ""
 #: inc/sections/class-sections.php:51
 #: inc/sections/class-sections.php:86
 #: inc/settings/tabs/mobile-menu.php:18
+#: inc/settings/tabs/page-title.php:36
 msgid "Left"
 msgstr ""
 
@@ -405,7 +625,8 @@ msgstr ""
 #: inc/builders/elements/class-element-menu.php:34
 #: inc/sections/class-sections.php:35
 #: inc/sections/class-sections.php:51
-#: inc/settings/tabs/page-title.php:20
+#: inc/settings/tabs/page-title.php:26
+#: inc/settings/tabs/page-title.php:36
 msgid "Center"
 msgstr ""
 
@@ -414,6 +635,7 @@ msgstr ""
 #: inc/sections/class-sections.php:51
 #: inc/sections/class-sections.php:86
 #: inc/settings/tabs/mobile-menu.php:18
+#: inc/settings/tabs/page-title.php:36
 msgid "Right"
 msgstr ""
 
@@ -430,12 +652,6 @@ msgstr ""
 
 #: inc/builders/class-builder-page.php:86
 msgid "Columns row"
-msgstr ""
-
-#: inc/builders/class-builder-page.php:134
-#: inc/settings/class-settings-fields.php:178
-#: inc/settings/class-settings-fields.php:346
-msgid "Remove"
 msgstr ""
 
 #: inc/builders/class-builder-page.php:134
@@ -472,6 +688,7 @@ msgstr ""
 #: inc/sections/class-sections.php:63
 #: inc/sections/class-sections.php:74
 #: inc/settings/tabs/blog.php:20
+#: inc/settings/tabs/other.php:19
 #: inc/settings/tabs/search.php:31
 #: inc/settings/tabs/shop.php:26
 msgid "Columns"
@@ -529,7 +746,7 @@ msgstr ""
 
 #: inc/builders/class-builder-page.php:218
 #: inc/builders/elements/class-element-search.php:70
-#: inc/settings/defaults.php:54
+#: inc/settings/defaults.php:65
 #: inc/settings/tabs/mobile-navbar.php:31
 #: inc/settings/tabs/search.php:12
 #: searchform.php:13
@@ -584,8 +801,8 @@ msgstr ""
 #: inc/mega-menu/class-mega-menu-admin.php:37
 #: inc/sections/class-sections.php:24
 #: inc/settings/tabs/mobile-navbar.php:32
-#: inc/settings/tabs/single-product.php:95
-#: inc/settings/tabs/single-product.php:106
+#: inc/settings/tabs/single-product.php:99
+#: inc/settings/tabs/single-product.php:110
 msgid "Icon"
 msgstr ""
 
@@ -603,23 +820,36 @@ msgstr ""
 
 #: inc/builders/class-footer-builder.php:141
 #: inc/builders/elements/class-element-menu.php:34
-#: inc/settings/tabs/page-title.php:20
+#: inc/settings/tabs/page-title.php:26
 msgid "Start"
 msgstr ""
 
-#: inc/builders/class-footer-builder.php:145
+#: inc/builders/class-footer-builder.php:142
+msgid "Columns on tablet"
+msgstr ""
+
+#: inc/builders/class-footer-builder.php:143
+msgid "Columns on mobile"
+msgstr ""
+
+#: inc/builders/class-footer-builder.php:144
+msgid "Collapse columns into accordions on mobile"
+msgstr ""
+
+#: inc/builders/class-footer-builder.php:148
 msgid "Top border"
 msgstr ""
 
-#: inc/builders/class-footer-builder.php:146
+#: inc/builders/class-footer-builder.php:149
 #: inc/builders/class-header-builder.php:172
 #: inc/sections/class-sections.php:100
 #: inc/settings/tabs/header-banner.php:25
+#: inc/settings/tabs/page-title.php:31
 #: inc/setup.php:73
 msgid "Background"
 msgstr ""
 
-#: inc/builders/class-footer-builder.php:146
+#: inc/builders/class-footer-builder.php:149
 msgid "Leave empty to inherit the footer color."
 msgstr ""
 
@@ -629,7 +859,7 @@ msgstr ""
 
 #: inc/builders/class-header-builder.php:171
 #: inc/builders/elements/class-element-misc.php:209
-#: inc/settings/tabs/page-title.php:19
+#: inc/settings/tabs/page-title.php:24
 msgid "Height"
 msgstr ""
 
@@ -646,7 +876,7 @@ msgid "Bottom border"
 msgstr ""
 
 #: inc/builders/class-header-builder.php:175
-#: inc/settings/tabs/styles.php:84
+#: inc/settings/tabs/styles.php:86
 msgid "Shadow"
 msgstr ""
 
@@ -658,12 +888,6 @@ msgstr ""
 #: inc/builders/class-header-builder.php:176
 #: inc/mega-menu/class-mega-menu-admin.php:42
 msgid "Container"
-msgstr ""
-
-#: inc/builders/class-header-builder.php:176
-#: inc/mega-menu/class-mega-menu-admin.php:42
-#: inc/settings/tabs/layout.php:12
-msgid "Full width"
 msgstr ""
 
 #: inc/builders/elements/class-element-announcement.php:18
@@ -696,9 +920,9 @@ msgstr ""
 #: inc/sections/class-sections.php:48
 #: inc/settings/tabs/header-banner.php:20
 #: inc/settings/tabs/header-banner.php:21
-#: inc/settings/tabs/other.php:21
-#: inc/settings/tabs/single-product.php:96
-#: inc/settings/tabs/single-product.php:108
+#: inc/settings/tabs/other.php:28
+#: inc/settings/tabs/single-product.php:100
+#: inc/settings/tabs/single-product.php:112
 #: inc/setup.php:71
 msgid "Text"
 msgstr ""
@@ -773,8 +997,8 @@ msgstr ""
 #: inc/sections/class-sections.php:103
 #: inc/settings/class-settings-fields.php:205
 #: inc/settings/class-settings-fields.php:267
-#: inc/settings/tabs/shop.php:40
-#: inc/settings/tabs/styles.php:79
+#: inc/settings/tabs/shop.php:41
+#: inc/settings/tabs/styles.php:81
 msgid "None"
 msgstr ""
 
@@ -784,7 +1008,7 @@ msgstr ""
 
 #: inc/builders/elements/class-element-cart-account.php:17
 #: inc/builders/elements/class-element-cart-account.php:33
-#: inc/settings/defaults.php:56
+#: inc/settings/defaults.php:67
 #: inc/settings/tabs/mobile-navbar.php:31
 #: inc/woocommerce/class-wc-checkout.php:56
 msgid "Cart"
@@ -800,7 +1024,7 @@ msgid "Cart drawer"
 msgstr ""
 
 #: inc/builders/elements/class-element-cart-account.php:34
-#: inc/settings/tabs/cart-checkout.php:33
+#: inc/settings/tabs/cart-checkout.php:36
 msgid "Cart page"
 msgstr ""
 
@@ -965,7 +1189,7 @@ msgid "Phone"
 msgstr ""
 
 #: inc/builders/elements/class-element-footer.php:261
-#: inc/settings/tabs/social.php:41
+#: inc/settings/tabs/social.php:42
 #: template-parts/misc/share.php:23
 #: woocommerce/checkout/thankyou.php:50
 msgid "Email"
@@ -1034,7 +1258,7 @@ msgid "Configure panels per item under Appearance > Menus."
 msgstr ""
 
 #: inc/builders/elements/class-element-menu.php:34
-#: inc/settings/tabs/page-title.php:20
+#: inc/settings/tabs/page-title.php:26
 msgid "Alignment"
 msgstr ""
 
@@ -1060,7 +1284,7 @@ msgid "Categories dropdown"
 msgstr ""
 
 #: inc/builders/elements/class-element-menu.php:94
-#: inc/settings/tabs/other.php:23
+#: inc/settings/tabs/other.php:30
 msgid "Button label"
 msgstr ""
 
@@ -1089,6 +1313,7 @@ msgstr ""
 #: inc/builders/elements/class-element-search.php:32
 #: inc/sections/class-sections.php:64
 #: inc/settings/tabs/mobile-navbar.php:19
+#: inc/settings/tabs/page-title.php:23
 msgid "Style"
 msgstr ""
 
@@ -1131,8 +1356,8 @@ msgid "URL"
 msgstr ""
 
 #: inc/builders/elements/class-element-misc.php:79
-#: inc/settings/tabs/styles.php:80
-#: inc/settings/tabs/styles.php:83
+#: inc/settings/tabs/styles.php:82
+#: inc/settings/tabs/styles.php:85
 msgid "Outline"
 msgstr ""
 
@@ -1209,14 +1434,14 @@ msgid "Minimum width (desktop)"
 msgstr ""
 
 #: inc/builders/elements/class-element-search.php:32
-#: inc/settings/tabs/styles.php:78
-#: inc/settings/tabs/styles.php:85
+#: inc/settings/tabs/styles.php:80
+#: inc/settings/tabs/styles.php:87
 msgid "Pill"
 msgstr ""
 
 #: inc/builders/elements/class-element-search.php:32
 #: inc/settings/tabs/product-archive.php:22
-#: inc/settings/tabs/styles.php:78
+#: inc/settings/tabs/styles.php:80
 msgid "Rounded"
 msgstr ""
 
@@ -1326,6 +1551,7 @@ msgstr ""
 
 #: inc/enqueue.php:97
 #: inc/woocommerce/class-wc-shop.php:196
+#: sidebar.php:31
 #: template-parts/cart/drawer-content.php:22
 #: template-parts/header/mobile-drawer.php:25
 msgid "Close"
@@ -1353,10 +1579,12 @@ msgstr ""
 
 #: inc/enqueue.php:104
 #: inc/woocommerce/class-wc-shop.php:179
+#: template-parts/misc/pagination.php:17
 msgid "Load more"
 msgstr ""
 
 #: inc/enqueue.php:105
+#: template-parts/misc/pagination.php:17
 msgid "Loading"
 msgstr ""
 
@@ -1370,13 +1598,13 @@ msgstr ""
 
 #: inc/enqueue.php:108
 #: inc/woocommerce/class-wc-shop.php:184
-#: single.php:21
+#: single.php:23
 msgid "Previous"
 msgstr ""
 
 #: inc/enqueue.php:109
 #: inc/woocommerce/class-wc-shop.php:185
-#: single.php:22
+#: single.php:24
 msgid "Next"
 msgstr ""
 
@@ -1385,7 +1613,7 @@ msgid "Added to cart"
 msgstr ""
 
 #: inc/enqueue.php:111
-#: template-parts/cart/drawer-content.php:127
+#: template-parts/cart/drawer-content.php:130
 msgid "View cart"
 msgstr ""
 
@@ -1402,12 +1630,6 @@ msgstr ""
 
 #: inc/enqueue.php:114
 msgid "Hide password"
-msgstr ""
-
-#: inc/mega-menu/class-mega-menu-admin.php:28
-#: inc/settings/class-settings-fields.php:177
-#: inc/settings/class-settings-page.php:66
-msgid "Choose image"
 msgstr ""
 
 #: inc/mega-menu/class-mega-menu-admin.php:35
@@ -1438,48 +1660,61 @@ msgstr ""
 msgid "Custom width"
 msgstr ""
 
-#: inc/mega-menu/class-mega-menu-admin.php:49
-msgid "Column heading"
+#: inc/mega-menu/class-mega-menu-admin.php:45
+msgid "HTML Block in the panel"
 msgstr ""
 
-#: inc/mega-menu/class-mega-menu-admin.php:49
-msgid "Default"
-msgstr ""
-
-#: inc/mega-menu/class-mega-menu-admin.php:49
-msgid "Bold uppercase"
-msgstr ""
-
-#: inc/mega-menu/class-mega-menu-admin.php:49
-msgid "Hide label"
+#: inc/mega-menu/class-mega-menu-admin.php:45
+msgid "Rendered after the columns (banner, promo, contact card)."
 msgstr ""
 
 #: inc/mega-menu/class-mega-menu-admin.php:50
-msgid "Column image"
+msgid "Column heading"
+msgstr ""
+
+#: inc/mega-menu/class-mega-menu-admin.php:50
+#: inc/settings/tabs/layout.php:47
+msgid "Default"
+msgstr ""
+
+#: inc/mega-menu/class-mega-menu-admin.php:50
+msgid "Bold uppercase"
+msgstr ""
+
+#: inc/mega-menu/class-mega-menu-admin.php:50
+msgid "Hide label"
 msgstr ""
 
 #: inc/mega-menu/class-mega-menu-admin.php:51
-#: inc/mega-menu/class-mega-menu-admin.php:58
-msgid "Description"
+msgid "Column image"
 msgstr ""
 
 #: inc/mega-menu/class-mega-menu-admin.php:52
-msgid "Promo block image"
+#: inc/mega-menu/class-mega-menu-admin.php:60
+msgid "Description"
 msgstr ""
 
 #: inc/mega-menu/class-mega-menu-admin.php:53
-msgid "Promo heading"
+msgid "Promo block image"
 msgstr ""
 
 #: inc/mega-menu/class-mega-menu-admin.php:54
+msgid "Promo heading"
+msgstr ""
+
+#: inc/mega-menu/class-mega-menu-admin.php:55
 msgid "Promo link"
 msgstr ""
 
-#: inc/mega-menu/class-mega-menu-admin.php:59
+#: inc/mega-menu/class-mega-menu-admin.php:56
+msgid "HTML Block in this column"
+msgstr ""
+
+#: inc/mega-menu/class-mega-menu-admin.php:61
 msgid "Hide label (icon only)"
 msgstr ""
 
-#: inc/mega-menu/class-mega-menu-admin.php:76
+#: inc/mega-menu/class-mega-menu-admin.php:78
 msgid "Webgram mega menu"
 msgstr ""
 
@@ -1498,9 +1733,9 @@ msgstr ""
 #: inc/sections/class-sections.php:25
 #: inc/sections/class-sections.php:33
 #: inc/sections/class-sections.php:71
-#: inc/settings/tabs/other.php:20
+#: inc/settings/tabs/other.php:27
 #: inc/settings/tabs/single-product.php:46
-#: inc/settings/tabs/single-product.php:107
+#: inc/settings/tabs/single-product.php:111
 msgid "Title"
 msgstr ""
 
@@ -1539,7 +1774,7 @@ msgstr ""
 #: inc/sections/class-sections.php:85
 #: inc/settings/tabs/header-banner.php:20
 #: inc/settings/tabs/header-banner.php:22
-#: inc/settings/tabs/other.php:22
+#: inc/settings/tabs/other.php:29
 msgid "Image"
 msgstr ""
 
@@ -1567,7 +1802,7 @@ msgstr ""
 #: inc/sections/class-sections.php:54
 #: inc/sections/class-sections.php:101
 #: inc/settings/tabs/header-banner.php:26
-#: inc/settings/tabs/page-title.php:23
+#: inc/settings/tabs/page-title.php:40
 msgid "Text color"
 msgstr ""
 
@@ -1620,6 +1855,7 @@ msgid "Webgram About Split"
 msgstr ""
 
 #: inc/sections/class-sections.php:86
+#: inc/settings/tabs/page-title.php:36
 msgid "Image position"
 msgstr ""
 
@@ -1816,7 +2052,8 @@ msgid "Open"
 msgstr ""
 
 #: inc/settings/class-settings-fields.php:313
-#: inc/settings/tabs/social.php:35
+#: inc/settings/tabs/general.php:33
+#: inc/settings/tabs/social.php:36
 msgid "Tablet"
 msgstr ""
 
@@ -1881,90 +2118,90 @@ msgstr ""
 msgid "Unknown settings tab."
 msgstr ""
 
-#: inc/settings/defaults.php:55
+#: inc/settings/defaults.php:66
 #: inc/settings/tabs/mobile-navbar.php:31
 msgid "Wishlist"
 msgstr ""
 
-#: inc/settings/defaults.php:94
+#: inc/settings/defaults.php:116
 msgid "All rights reserved."
 msgstr ""
 
-#: inc/settings/defaults.php:186
+#: inc/settings/defaults.php:214
 #: template-parts/product/sticky-bar.php:23
 msgid "Buy now"
 msgstr ""
 
-#: inc/settings/defaults.php:219
+#: inc/settings/defaults.php:250
 msgid "100% secure payment by"
 msgstr ""
 
-#: inc/settings/defaults.php:222
+#: inc/settings/defaults.php:253
 msgid "Your payment information is processed securely."
 msgstr ""
 
-#: inc/settings/defaults.php:224
+#: inc/settings/defaults.php:255
 msgid "Secure payments"
 msgstr ""
 
-#: inc/settings/defaults.php:225
+#: inc/settings/defaults.php:256
 msgid "Fast and free shipping"
 msgstr ""
 
-#: inc/settings/defaults.php:226
+#: inc/settings/defaults.php:257
 msgid "Premium quality"
 msgstr ""
 
-#: inc/settings/defaults.php:227
+#: inc/settings/defaults.php:258
 msgid "Customer support 24/7"
 msgstr ""
 
-#: inc/settings/defaults.php:228
+#: inc/settings/defaults.php:259
 msgid "Satisfaction guaranteed"
 msgstr ""
 
-#: inc/settings/defaults.php:231
+#: inc/settings/defaults.php:262
 msgid "Returns"
 msgstr ""
 
-#: inc/settings/defaults.php:231
+#: inc/settings/defaults.php:262
 msgid "As per brand policy, 7 days"
 msgstr ""
 
-#: inc/settings/defaults.php:232
+#: inc/settings/defaults.php:263
 msgid "Shipping"
 msgstr ""
 
-#: inc/settings/defaults.php:232
+#: inc/settings/defaults.php:263
 msgid "Free for bulk orders"
 msgstr ""
 
-#: inc/settings/defaults.php:242
+#: inc/settings/defaults.php:276
 msgid "Apply coupon at next step | Not applicable on combos and gifts"
 msgstr ""
 
-#: inc/settings/defaults.php:243
+#: inc/settings/defaults.php:277
 msgid "Place order"
 msgstr ""
 
-#: inc/settings/defaults.php:244
+#: inc/settings/defaults.php:278
 msgid "Get extra 5% off on prepaid orders"
 msgstr ""
 
-#: inc/settings/defaults.php:253
+#: inc/settings/defaults.php:287
 msgid "Your payment is encrypted and secure."
 msgstr ""
 
-#: inc/settings/defaults.php:285
+#: inc/settings/defaults.php:322
 #: template-parts/misc/breadcrumb.php:42
 msgid "Page not found"
 msgstr ""
 
-#: inc/settings/defaults.php:286
+#: inc/settings/defaults.php:323
 msgid "The page you are looking for does not exist or has moved."
 msgstr ""
 
-#: inc/settings/defaults.php:288
+#: inc/settings/defaults.php:325
 msgid "Back to home"
 msgstr ""
 
@@ -1982,7 +2219,7 @@ msgid "Grid"
 msgstr ""
 
 #: inc/settings/tabs/blog.php:19
-#: inc/settings/tabs/shop.php:38
+#: inc/settings/tabs/shop.php:39
 msgid "List"
 msgstr ""
 
@@ -2015,28 +2252,59 @@ msgstr ""
 msgid "Excerpt length (words)"
 msgstr ""
 
-#: inc/settings/tabs/blog.php:26
-msgid "Single post"
+#: inc/settings/tabs/blog.php:23
+msgid "Show featured images"
 msgstr ""
 
-#: inc/settings/tabs/blog.php:28
-msgid "Sidebar on single posts"
+#: inc/settings/tabs/blog.php:23
+msgid "Applies to post cards and the single post header."
+msgstr ""
+
+#: inc/settings/tabs/blog.php:24
+#: inc/settings/tabs/shop.php:32
+msgid "Pagination"
+msgstr ""
+
+#: inc/settings/tabs/blog.php:24
+msgid "Page numbers"
+msgstr ""
+
+#: inc/settings/tabs/blog.php:24
+#: inc/settings/tabs/shop.php:32
+msgid "Load more button"
+msgstr ""
+
+#: inc/settings/tabs/blog.php:25
+msgid "HTML Block when nothing is found"
+msgstr ""
+
+#: inc/settings/tabs/blog.php:25
+msgid "Shown under the \"Nothing found\" message on empty archives and searches."
 msgstr ""
 
 #: inc/settings/tabs/blog.php:29
+msgid "Single post"
+msgstr ""
+
+#: inc/settings/tabs/blog.php:31
+msgid "Sidebar on single posts"
+msgstr ""
+
+#: inc/settings/tabs/blog.php:32
+#: template-parts/content/related-posts.php:28
 msgid "Related posts"
 msgstr ""
 
-#: inc/settings/tabs/blog.php:30
+#: inc/settings/tabs/blog.php:33
 msgid "Related posts count"
 msgstr ""
 
-#: inc/settings/tabs/blog.php:31
-#: inc/settings/tabs/social.php:39
+#: inc/settings/tabs/blog.php:34
+#: inc/settings/tabs/social.php:40
 msgid "Share buttons"
 msgstr ""
 
-#: inc/settings/tabs/blog.php:31
+#: inc/settings/tabs/blog.php:34
 msgid "Networks are chosen under Social profiles."
 msgstr ""
 
@@ -2077,87 +2345,99 @@ msgid "Recommendations row"
 msgstr ""
 
 #: inc/settings/tabs/cart-checkout.php:23
-msgid "Coupon field in drawer"
+msgid "HTML Block above the items"
 msgstr ""
 
 #: inc/settings/tabs/cart-checkout.php:24
-msgid "Show savings line"
-msgstr ""
-
-#: inc/settings/tabs/cart-checkout.php:24
-msgid "Sale discounts plus applied coupons."
+msgid "HTML Block below the items"
 msgstr ""
 
 #: inc/settings/tabs/cart-checkout.php:25
-msgid "Note under subtotal"
+msgid "HTML Block in the empty state"
 msgstr ""
 
 #: inc/settings/tabs/cart-checkout.php:26
-msgid "Checkout button label"
+msgid "Coupon field in drawer"
 msgstr ""
 
 #: inc/settings/tabs/cart-checkout.php:27
-msgid "Button subline"
+msgid "Show savings line"
+msgstr ""
+
+#: inc/settings/tabs/cart-checkout.php:27
+msgid "Sale discounts plus applied coupons."
 msgstr ""
 
 #: inc/settings/tabs/cart-checkout.php:28
-msgid "Payment icons under the button"
+msgid "Note under subtotal"
 msgstr ""
 
 #: inc/settings/tabs/cart-checkout.php:29
+msgid "Checkout button label"
+msgstr ""
+
+#: inc/settings/tabs/cart-checkout.php:30
+msgid "Button subline"
+msgstr ""
+
+#: inc/settings/tabs/cart-checkout.php:31
+msgid "Payment icons under the button"
+msgstr ""
+
+#: inc/settings/tabs/cart-checkout.php:32
 msgid "\"View cart\" link"
 msgstr ""
 
-#: inc/settings/tabs/cart-checkout.php:35
+#: inc/settings/tabs/cart-checkout.php:38
 msgid "Sticky summary card"
 msgstr ""
 
-#: inc/settings/tabs/cart-checkout.php:36
+#: inc/settings/tabs/cart-checkout.php:39
 msgid "Cross-sells shown"
 msgstr ""
 
-#: inc/settings/tabs/cart-checkout.php:37
+#: inc/settings/tabs/cart-checkout.php:40
 msgid "Suggested products on empty cart"
 msgstr ""
 
-#: inc/settings/tabs/cart-checkout.php:41
+#: inc/settings/tabs/cart-checkout.php:44
 #: woocommerce/checkout/form-checkout.php:24
 msgid "Checkout"
 msgstr ""
 
-#: inc/settings/tabs/cart-checkout.php:43
+#: inc/settings/tabs/cart-checkout.php:46
 msgid "Progress steps header (Cart, Details, Payment)"
 msgstr ""
 
-#: inc/settings/tabs/cart-checkout.php:44
+#: inc/settings/tabs/cart-checkout.php:47
 msgid "Sticky order review"
 msgstr ""
 
-#: inc/settings/tabs/cart-checkout.php:45
+#: inc/settings/tabs/cart-checkout.php:48
 msgid "Coupon form"
 msgstr ""
 
-#: inc/settings/tabs/cart-checkout.php:45
+#: inc/settings/tabs/cart-checkout.php:48
 msgid "Inside the order summary"
 msgstr ""
 
-#: inc/settings/tabs/cart-checkout.php:45
+#: inc/settings/tabs/cart-checkout.php:48
 msgid "Above the form (WooCommerce default)"
 msgstr ""
 
-#: inc/settings/tabs/cart-checkout.php:46
+#: inc/settings/tabs/cart-checkout.php:49
 msgid "Trust text under Place order"
 msgstr ""
 
-#: inc/settings/tabs/cart-checkout.php:50
+#: inc/settings/tabs/cart-checkout.php:53
 msgid "Thank you page"
 msgstr ""
 
-#: inc/settings/tabs/cart-checkout.php:52
+#: inc/settings/tabs/cart-checkout.php:55
 msgid "Status timeline"
 msgstr ""
 
-#: inc/settings/tabs/cart-checkout.php:53
+#: inc/settings/tabs/cart-checkout.php:56
 msgid "\"Continue shopping\" button"
 msgstr ""
 
@@ -2279,14 +2559,33 @@ msgid "Show after scrolling"
 msgstr ""
 
 #: inc/settings/tabs/general.php:32
+#: inc/settings/tabs/header-banner.php:19
+#: inc/settings/tabs/page-title.php:47
+msgid "Position"
+msgstr ""
+
+#: inc/settings/tabs/general.php:32
+msgid "Bottom right"
+msgstr ""
+
+#: inc/settings/tabs/general.php:32
+msgid "Bottom left"
+msgstr ""
+
+#: inc/settings/tabs/general.php:33
+#: inc/settings/tabs/social.php:36
+msgid "Visible on"
+msgstr ""
+
+#: inc/settings/tabs/general.php:34
 msgid "Favicon and logo"
 msgstr ""
 
-#: inc/settings/tabs/general.php:32
+#: inc/settings/tabs/general.php:34
 msgid "Open Site Identity"
 msgstr ""
 
-#: inc/settings/tabs/general.php:32
+#: inc/settings/tabs/general.php:34
 msgid "Logo, site icon and tagline stay in the WordPress Customizer."
 msgstr ""
 
@@ -2296,10 +2595,6 @@ msgstr ""
 
 #: inc/settings/tabs/header-banner.php:18
 msgid "Enable header banner"
-msgstr ""
-
-#: inc/settings/tabs/header-banner.php:19
-msgid "Position"
 msgstr ""
 
 #: inc/settings/tabs/header-banner.php:19
@@ -2326,51 +2621,97 @@ msgstr ""
 msgid "0 remembers for the session only."
 msgstr ""
 
-#: inc/settings/tabs/layout.php:11
-#: inc/settings/tabs/layout.php:28
-msgid "No sidebar"
-msgstr ""
-
-#: inc/settings/tabs/layout.php:13
-msgid "Sidebar left"
-msgstr ""
-
-#: inc/settings/tabs/layout.php:14
-msgid "Sidebar right"
-msgstr ""
-
-#: inc/settings/tabs/layout.php:19
-#: inc/settings/tabs/single-product.php:17
-msgid "Layout"
-msgstr ""
-
-#: inc/settings/tabs/layout.php:24
+#: inc/settings/tabs/layout.php:26
 msgid "Default layouts"
 msgstr ""
 
-#: inc/settings/tabs/layout.php:26
+#: inc/settings/tabs/layout.php:28
+#: inc/settings/tabs/layout.php:38
+#: inc/settings/tabs/page-title.php:22
 msgid "Pages"
 msgstr ""
 
-#: inc/settings/tabs/layout.php:28
+#: inc/settings/tabs/layout.php:30
 msgid "Filters on the left"
 msgstr ""
 
-#: inc/settings/tabs/layout.php:28
+#: inc/settings/tabs/layout.php:30
 msgid "Filters on the right"
 msgstr ""
 
-#: inc/settings/tabs/layout.php:32
-#: inc/settings/tabs/shop.php:30
-msgid "Sidebar"
-msgstr ""
-
-#: inc/settings/tabs/layout.php:34
-msgid "Sidebar width"
+#: inc/settings/tabs/layout.php:31
+#: inc/settings/tabs/layout.php:40
+#: inc/settings/tabs/single-product.php:12
+msgid "Single product"
 msgstr ""
 
 #: inc/settings/tabs/layout.php:35
+msgid "Sidebar areas"
+msgstr ""
+
+#: inc/settings/tabs/layout.php:37
+#: inc/settings/tabs/page-title.php:22
+msgid "Blog and archives"
+msgstr ""
+
+#: inc/settings/tabs/layout.php:39
+msgid "Shop filters"
+msgstr ""
+
+#: inc/settings/tabs/layout.php:41
+msgid "Open Sidebars"
+msgstr ""
+
+#: inc/settings/tabs/layout.php:41
+msgid "Create extra widget areas and pick one per page in the Webgram options box."
+msgstr ""
+
+#: inc/settings/tabs/layout.php:45
+msgid "Spacing and borders"
+msgstr ""
+
+#: inc/settings/tabs/layout.php:47
+msgid "Spacing scale"
+msgstr ""
+
+#: inc/settings/tabs/layout.php:47
+msgid "Compact"
+msgstr ""
+
+#: inc/settings/tabs/layout.php:47
+msgid "Relaxed"
+msgstr ""
+
+#: inc/settings/tabs/layout.php:47
+msgid "Scales every gap, padding and section space in the theme."
+msgstr ""
+
+#: inc/settings/tabs/layout.php:48
+msgid "Space between homepage sections"
+msgstr ""
+
+#: inc/settings/tabs/layout.php:49
+msgid "Border width"
+msgstr ""
+
+#: inc/settings/tabs/layout.php:55
+msgid "Sidebar width"
+msgstr ""
+
+#: inc/settings/tabs/layout.php:56
 msgid "Sticky sidebar"
+msgstr ""
+
+#: inc/settings/tabs/layout.php:57
+msgid "On mobile"
+msgstr ""
+
+#: inc/settings/tabs/layout.php:57
+msgid "Stack under the content"
+msgstr ""
+
+#: inc/settings/tabs/layout.php:57
+msgid "Off-canvas drawer with a toggle button"
 msgstr ""
 
 #: inc/settings/tabs/mobile-menu.php:18
@@ -2492,71 +2833,198 @@ msgid "Other"
 msgstr ""
 
 #: inc/settings/tabs/other.php:17
-msgid "404 page"
+msgid "Projects (portfolio)"
 msgstr ""
 
 #: inc/settings/tabs/other.php:19
-msgid "Replace with HTML Block"
+msgid "The portfolio post type is enabled under Webgram Core > Site tools > Portfolio."
+msgstr ""
+
+#: inc/settings/tabs/other.php:20
+msgid "Category filter chips"
 msgstr ""
 
 #: inc/settings/tabs/other.php:24
+msgid "404 page"
+msgstr ""
+
+#: inc/settings/tabs/other.php:26
+msgid "Replace with HTML Block"
+msgstr ""
+
+#: inc/settings/tabs/other.php:31
 msgid "Show search form"
 msgstr ""
 
-#: inc/settings/tabs/other.php:28
+#: inc/settings/tabs/other.php:35
 msgid "Site tools"
 msgstr ""
 
-#: inc/settings/tabs/other.php:30
+#: inc/settings/tabs/other.php:37
 msgid "Maintenance and coming soon"
 msgstr ""
 
-#: inc/settings/tabs/other.php:30
+#: inc/settings/tabs/other.php:37
 msgid "Open the Maintenance tab."
 msgstr ""
 
-#: inc/settings/tabs/other.php:30
+#: inc/settings/tabs/other.php:37
 msgid "Provided by the Webgram Core plugin (Site Tools module)."
 msgstr ""
 
-#: inc/settings/tabs/page-title.php:12
+#: inc/settings/tabs/page-title.php:14
 msgid "Page title"
 msgstr ""
 
-#: inc/settings/tabs/page-title.php:18
+#: inc/settings/tabs/page-title.php:19
+msgid "Title band"
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:21
 msgid "Show page title band"
 msgstr ""
 
-#: inc/settings/tabs/page-title.php:19
+#: inc/settings/tabs/page-title.php:22
+msgid "Show on"
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:22
+msgid "Single posts"
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:22
+msgid "Shop and product categories"
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:22
+msgid "Search results"
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:22
+msgid "Single products keep the WooCommerce breadcrumb above the gallery. Any page or post can override this in its Webgram options box."
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:23
+msgid "Band (background color or image)"
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:23
+msgid "Minimal (title and breadcrumb only)"
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:23
+msgid "Hero (image with centered text)"
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:24
+#: inc/settings/tabs/page-title.php:25
 #: inc/settings/tabs/product-archive.php:19
 msgid "Small"
 msgstr ""
 
-#: inc/settings/tabs/page-title.php:19
+#: inc/settings/tabs/page-title.php:24
+#: inc/settings/tabs/page-title.php:25
 #: inc/settings/tabs/product-archive.php:19
 msgid "Medium"
 msgstr ""
 
-#: inc/settings/tabs/page-title.php:19
+#: inc/settings/tabs/page-title.php:24
 #: inc/settings/tabs/product-archive.php:19
 msgid "Large"
 msgstr ""
 
-#: inc/settings/tabs/page-title.php:21
+#: inc/settings/tabs/page-title.php:25
+msgid "Height on mobile"
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:25
+msgid "Same as desktop"
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:27
+msgid "Title size"
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:27
+msgid "Heading 1"
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:27
+msgid "Heading 2"
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:27
+msgid "Heading 3"
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:33
 msgid "Background color"
 msgstr ""
 
-#: inc/settings/tabs/page-title.php:22
+#: inc/settings/tabs/page-title.php:34
 msgid "Background image"
 msgstr ""
 
-#: inc/settings/tabs/page-title.php:24
+#: inc/settings/tabs/page-title.php:34
+msgid "Product categories use their own image when one is set."
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:35
+msgid "Image size"
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:35
+msgid "Cover"
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:35
+msgid "Contain"
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:35
+msgid "Original size"
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:36
+msgid "Top"
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:36
+msgid "Bottom"
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:37
+msgid "Fixed image (parallax feel)"
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:38
+msgid "Image overlay color"
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:39
+msgid "Overlay opacity"
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:44
+#: inc/settings/tabs/page-title.php:46
 #: template-parts/misc/breadcrumb.php:13
 msgid "Breadcrumb"
 msgstr ""
 
-#: inc/settings/tabs/page-title.php:24
+#: inc/settings/tabs/page-title.php:46
 msgid "Uses Yoast or Rank Math breadcrumbs when active, otherwise the theme breadcrumb."
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:47
+msgid "Above the title"
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:47
+msgid "Below the title"
+msgstr ""
+
+#: inc/settings/tabs/page-title.php:48
+msgid "Show breadcrumb on mobile"
 msgstr ""
 
 #: inc/settings/tabs/performance.php:12
@@ -2632,8 +3100,8 @@ msgid "Below products"
 msgstr ""
 
 #: inc/settings/tabs/product-archive.php:20
-#: inc/settings/tabs/shop.php:44
 #: inc/settings/tabs/shop.php:45
+#: inc/settings/tabs/shop.php:46
 msgid "Hidden"
 msgstr ""
 
@@ -2715,190 +3183,182 @@ msgid "First attribute of each product"
 msgstr ""
 
 #: inc/settings/tabs/shop.php:27
-msgid "Products per page"
+msgid "Space between products"
 msgstr ""
 
 #: inc/settings/tabs/shop.php:28
-msgid "Toolbar (count, sort, view)"
+msgid "Products per page"
 msgstr ""
 
 #: inc/settings/tabs/shop.php:29
-msgid "Grid / list toggle"
+msgid "Toolbar (count, sort, view)"
 msgstr ""
 
 #: inc/settings/tabs/shop.php:30
+msgid "Grid / list toggle"
+msgstr ""
+
+#: inc/settings/tabs/shop.php:31
 #: inc/woocommerce/class-wc-shop.php:196
 #: template-parts/shop/toolbar.php:15
 #: template-parts/shop/toolbar.php:17
 msgid "Filters"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:30
+#: inc/settings/tabs/shop.php:31
 msgid "Off-canvas drawer"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:31
-msgid "Pagination"
-msgstr ""
-
-#: inc/settings/tabs/shop.php:31
+#: inc/settings/tabs/shop.php:32
 msgid "Numbers"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:31
-msgid "Load more button"
-msgstr ""
-
-#: inc/settings/tabs/shop.php:31
+#: inc/settings/tabs/shop.php:32
 msgid "Infinite scroll"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:32
+#: inc/settings/tabs/shop.php:33
 msgid "AJAX filtering and sorting"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:36
+#: inc/settings/tabs/shop.php:37
 msgid "Product card"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:38
+#: inc/settings/tabs/shop.php:39
 msgid "Default card variant"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:38
+#: inc/settings/tabs/shop.php:39
 msgid "Standard"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:39
+#: inc/settings/tabs/shop.php:40
 msgid "Image ratio"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:39
+#: inc/settings/tabs/shop.php:40
 msgid "Square 1:1"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:39
+#: inc/settings/tabs/shop.php:40
 msgid "Portrait 3:4"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:40
+#: inc/settings/tabs/shop.php:41
 msgid "Image hover effect"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:40
+#: inc/settings/tabs/shop.php:41
 msgid "Swap to second image"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:40
+#: inc/settings/tabs/shop.php:41
 msgid "Slideshow through gallery"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:41
+#: inc/settings/tabs/shop.php:42
 msgid "Slideshow interval"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:42
+#: inc/settings/tabs/shop.php:43
 msgid "Title lines"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:43
+#: inc/settings/tabs/shop.php:44
 msgid "Badge position"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:43
+#: inc/settings/tabs/shop.php:44
 msgid "Top left"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:43
+#: inc/settings/tabs/shop.php:44
 msgid "Top right"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:44
+#: inc/settings/tabs/shop.php:45
 msgid "Quick actions (wishlist, compare, quick view)"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:44
+#: inc/settings/tabs/shop.php:45
 msgid "Show on hover"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:44
+#: inc/settings/tabs/shop.php:45
 msgid "Always visible"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:45
+#: inc/settings/tabs/shop.php:46
 msgid "Rating pill"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:45
+#: inc/settings/tabs/shop.php:46
 msgid "Right end of price line"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:45
+#: inc/settings/tabs/shop.php:46
 msgid "Under title"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:46
+#: inc/settings/tabs/shop.php:47
 msgid "Cart icon button"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:47
+#: inc/settings/tabs/shop.php:48
 msgid "Buy now button"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:47
+#: inc/settings/tabs/shop.php:48
 msgid "Goes to checkout with the selected variation. Requires Webgram Core for the direct-to-checkout behavior; without it the button opens the product page."
 msgstr ""
 
-#: inc/settings/tabs/shop.php:48
+#: inc/settings/tabs/shop.php:49
 msgid "Buy now label"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:49
+#: inc/settings/tabs/shop.php:50
 msgid "Variation chips under price"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:50
+#: inc/settings/tabs/shop.php:51
 msgid "Chip attribute"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:50
+#: inc/settings/tabs/shop.php:51
 msgid "Can be overridden per product."
 msgstr ""
 
-#: inc/settings/tabs/shop.php:51
+#: inc/settings/tabs/shop.php:52
 msgid "Chip style"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:51
+#: inc/settings/tabs/shop.php:52
 msgid "Text chips"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:51
+#: inc/settings/tabs/shop.php:52
 msgid "Color circles"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:51
+#: inc/settings/tabs/shop.php:52
 msgid "Image thumbs"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:52
+#: inc/settings/tabs/shop.php:53
 msgid "Chips shown before \"+N\""
 msgstr ""
 
-#: inc/settings/tabs/shop.php:53
+#: inc/settings/tabs/shop.php:54
 msgid "Quick view"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:53
+#: inc/settings/tabs/shop.php:54
 msgid "Provided by Webgram Core (Quick View module)."
 msgstr ""
 
-#: inc/settings/tabs/shop.php:53
+#: inc/settings/tabs/shop.php:54
 msgid "Enable the Quick View module in Webgram Core."
-msgstr ""
-
-#: inc/settings/tabs/single-product.php:12
-msgid "Single product"
 msgstr ""
 
 #: inc/settings/tabs/single-product.php:19
@@ -2922,7 +3382,7 @@ msgid "White panels on cream background"
 msgstr ""
 
 #: inc/settings/tabs/single-product.php:20
-#: inc/settings/tabs/styles.php:84
+#: inc/settings/tabs/styles.php:86
 msgid "Flat"
 msgstr ""
 
@@ -3023,12 +3483,12 @@ msgid "Quantity, Add to cart, Buy now"
 msgstr ""
 
 #: inc/settings/tabs/single-product.php:53
-#: inc/settings/tabs/single-product.php:83
+#: inc/settings/tabs/single-product.php:87
 msgid "Payment strip"
 msgstr ""
 
 #: inc/settings/tabs/single-product.php:54
-#: inc/settings/tabs/single-product.php:89
+#: inc/settings/tabs/single-product.php:93
 msgid "Trust seals"
 msgstr ""
 
@@ -3045,12 +3505,12 @@ msgid "Info cards (returns, shipping)"
 msgstr ""
 
 #: inc/settings/tabs/single-product.php:58
-#: inc/woocommerce/class-wc-product.php:182
+#: inc/woocommerce/class-wc-product.php:190
 msgid "Specifications"
 msgstr ""
 
 #: inc/settings/tabs/single-product.php:59
-#: inc/woocommerce/class-wc-product.php:193
+#: inc/woocommerce/class-wc-product.php:201
 msgid "Overview"
 msgstr ""
 
@@ -3064,55 +3524,75 @@ msgid "Below the columns"
 msgstr ""
 
 #: inc/settings/tabs/single-product.php:68
-#: inc/settings/tabs/single-product.php:74
+#: inc/settings/tabs/single-product.php:75
 msgid "Related products"
 msgstr ""
 
 #: inc/settings/tabs/single-product.php:69
-msgid "Reviews"
+msgid "Cross-sells (frequently bought together)"
 msgstr ""
 
 #: inc/settings/tabs/single-product.php:70
-msgid "Trending reels (Core)"
+msgid "Reviews"
 msgstr ""
 
 #: inc/settings/tabs/single-product.php:71
+msgid "Trending reels (Core)"
+msgstr ""
+
+#: inc/settings/tabs/single-product.php:72
 msgid "Recently viewed (Core)"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:75
-msgid "Recently viewed"
+#: inc/settings/tabs/single-product.php:76
+msgid "Cross-sells on the product page"
 msgstr ""
 
 #: inc/settings/tabs/single-product.php:76
-msgid "Show meta row"
+msgid "Set under Linked Products on each product. 0 hides the row."
 msgstr ""
 
 #: inc/settings/tabs/single-product.php:77
+msgid "Recently viewed"
+msgstr ""
+
+#: inc/settings/tabs/single-product.php:78
+msgid "Show meta row"
+msgstr ""
+
+#: inc/settings/tabs/single-product.php:79
 msgid "Show share row"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:81
-msgid "Payment strip, seals and info cards"
+#: inc/settings/tabs/single-product.php:80
+msgid "HTML Block under Add to cart"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:84
-msgid "Strip title"
+#: inc/settings/tabs/single-product.php:81
+msgid "HTML Block under the summary columns"
 msgstr ""
 
 #: inc/settings/tabs/single-product.php:85
+msgid "Payment strip, seals and info cards"
+msgstr ""
+
+#: inc/settings/tabs/single-product.php:88
+msgid "Strip title"
+msgstr ""
+
+#: inc/settings/tabs/single-product.php:89
 msgid "Processor logo"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:86
+#: inc/settings/tabs/single-product.php:90
 msgid "Payment methods"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:87
+#: inc/settings/tabs/single-product.php:91
 msgid "Caption"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:100
+#: inc/settings/tabs/single-product.php:104
 msgid "Info cards"
 msgstr ""
 
@@ -3141,14 +3621,22 @@ msgid "Stacked square buttons on the right edge in brand colors."
 msgstr ""
 
 #: inc/settings/tabs/social.php:35
-msgid "Visible on"
+msgid "Side"
 msgstr ""
 
-#: inc/settings/tabs/social.php:41
+#: inc/settings/tabs/social.php:35
+msgid "Right edge"
+msgstr ""
+
+#: inc/settings/tabs/social.php:35
+msgid "Left edge"
+msgstr ""
+
+#: inc/settings/tabs/social.php:42
 msgid "Networks"
 msgstr ""
 
-#: inc/settings/tabs/social.php:41
+#: inc/settings/tabs/social.php:42
 #: template-parts/misc/share.php:30
 msgid "Copy link"
 msgstr ""
@@ -3234,139 +3722,147 @@ msgstr ""
 msgid "Borders"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:50
+#: inc/settings/tabs/styles.php:46
+msgid "Links"
+msgstr ""
+
+#: inc/settings/tabs/styles.php:47
+msgid "Links (hover)"
+msgstr ""
+
+#: inc/settings/tabs/styles.php:52
 msgid "Shop and status colors"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:53
+#: inc/settings/tabs/styles.php:55
 #: woocommerce/cart/cart.php:25
 #: woocommerce/cart/cart.php:84
 msgid "Price"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:54
+#: inc/settings/tabs/styles.php:56
 msgid "Sale and savings"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:55
+#: inc/settings/tabs/styles.php:57
 msgid "Rating stars"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:56
+#: inc/settings/tabs/styles.php:58
 msgid "Success"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:57
+#: inc/settings/tabs/styles.php:59
 msgid "Warning"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:58
+#: inc/settings/tabs/styles.php:60
 msgid "Danger"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:63
+#: inc/settings/tabs/styles.php:65
 msgid "Header and footer"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:66
+#: inc/settings/tabs/styles.php:68
 msgid "Top bar background"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:67
+#: inc/settings/tabs/styles.php:69
 msgid "Top bar text"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:68
+#: inc/settings/tabs/styles.php:70
 msgid "Header background"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:69
+#: inc/settings/tabs/styles.php:71
 msgid "Header text and icons"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:70
+#: inc/settings/tabs/styles.php:72
 msgid "Footer background"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:71
+#: inc/settings/tabs/styles.php:73
 msgid "Footer text"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:76
+#: inc/settings/tabs/styles.php:78
 msgid "Shape and components"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:78
+#: inc/settings/tabs/styles.php:80
 msgid "Corner style"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:78
+#: inc/settings/tabs/styles.php:80
 msgid "Sharp"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:78
-#: inc/settings/tabs/styles.php:79
 #: inc/settings/tabs/styles.php:80
+#: inc/settings/tabs/styles.php:81
+#: inc/settings/tabs/styles.php:82
 msgid "Soft"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:79
+#: inc/settings/tabs/styles.php:81
 msgid "Shadows"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:79
+#: inc/settings/tabs/styles.php:81
 msgid "Normal"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:79
+#: inc/settings/tabs/styles.php:81
 msgid "Strong"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:80
+#: inc/settings/tabs/styles.php:82
 msgid "Button style"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:80
+#: inc/settings/tabs/styles.php:82
 msgid "Solid"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:81
+#: inc/settings/tabs/styles.php:83
 msgid "Button corner radius"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:82
+#: inc/settings/tabs/styles.php:84
 msgid "Diagonal shine on primary buttons"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:83
+#: inc/settings/tabs/styles.php:85
 msgid "Form fields"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:83
+#: inc/settings/tabs/styles.php:85
 msgid "Filled"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:84
+#: inc/settings/tabs/styles.php:86
 msgid "Product card style"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:84
+#: inc/settings/tabs/styles.php:86
 msgid "Bordered"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:85
+#: inc/settings/tabs/styles.php:87
 msgid "Badge shape"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:85
+#: inc/settings/tabs/styles.php:87
 msgid "Wave"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:85
+#: inc/settings/tabs/styles.php:87
 msgid "Rectangle"
 msgstr ""
 
-#: inc/settings/tabs/styles.php:85
+#: inc/settings/tabs/styles.php:87
 msgid "Ribbon"
 msgstr ""
 
@@ -3487,25 +3983,17 @@ msgstr ""
 msgid "Alternate background"
 msgstr ""
 
-#: inc/setup.php:81
-msgid "Blog sidebar"
-msgstr ""
-
-#: inc/setup.php:91
-msgid "Shop sidebar"
-msgstr ""
-
 #. translators: %d: column number
 #: inc/setup.php:104
 #, php-format
 msgid "Footer column %d"
 msgstr ""
 
-#: inc/template-functions.php:145
+#: inc/template-functions.php:169
 msgid "Net banking"
 msgstr ""
 
-#: inc/template-functions.php:147
+#: inc/template-functions.php:171
 msgid "Cash on delivery"
 msgstr ""
 
@@ -3605,8 +4093,12 @@ msgid_plural "%d reviews"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/woocommerce/class-wc-product.php:203
+#: inc/woocommerce/class-wc-product.php:211
 msgid "Related Products"
+msgstr ""
+
+#: inc/woocommerce/class-wc-product.php:259
+msgid "Frequently bought together"
 msgstr ""
 
 #: page-templates/template-bulk-order.php:33
@@ -3637,6 +4129,22 @@ msgstr ""
 msgid "View my orders"
 msgstr ""
 
+#: sidebar.php:27
+msgid "Show sidebar"
+msgstr ""
+
+#: single-wg_portfolio.php:33
+msgid "Previous project"
+msgstr ""
+
+#: single-wg_portfolio.php:34
+msgid "Next project"
+msgstr ""
+
+#: single-wg_portfolio.php:39
+msgid "All projects"
+msgstr ""
+
 #. translators: %s: product
 #: template-parts/cards/product-card-compact.php:33
 #, php-format
@@ -3655,14 +4163,14 @@ msgstr ""
 
 #. translators: %s: placeholder value.
 #. translators: %s: formatted amount saved
-#: template-parts/cards/product-card-list.php:22
+#: template-parts/cards/product-card-list.php:23
 #: template-parts/cards/product-card.php:32
 #: template-parts/product/gallery.php:22
 #, php-format
 msgid "Save %s"
 msgstr ""
 
-#: template-parts/cards/product-card-list.php:43
+#: template-parts/cards/product-card-list.php:44
 #: template-parts/cards/product-card.php:65
 msgid "off"
 msgstr ""
@@ -3679,59 +4187,63 @@ msgid_plural "Your Cart (%s Items)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: template-parts/cart/drawer-content.php:62
+#: template-parts/cart/drawer-content.php:63
 #: woocommerce/global/quantity-input.php:27
 msgid "Decrease quantity"
 msgstr ""
 
 #. translators: %s: Quantity.
-#: template-parts/cart/drawer-content.php:63
+#: template-parts/cart/drawer-content.php:64
 #: woocommerce/cart/cart.php:26
 #: woocommerce/cart/cart.php:87
 #: woocommerce/global/quantity-input.php:14
 msgid "Quantity"
 msgstr ""
 
-#: template-parts/cart/drawer-content.php:64
+#: template-parts/cart/drawer-content.php:65
 #: woocommerce/global/quantity-input.php:44
 msgid "Increase quantity"
 msgstr ""
 
-#: template-parts/cart/drawer-content.php:67
+#: template-parts/cart/drawer-content.php:68
 #: woocommerce/cart/cart.php:22
 msgid "Remove item"
 msgstr ""
 
-#: template-parts/cart/drawer-content.php:77
+#: template-parts/cart/drawer-content.php:79
 msgid "Your cart is empty"
 msgstr ""
 
-#: template-parts/cart/drawer-content.php:78
+#: template-parts/cart/drawer-content.php:80
 msgid "Looks like you have not added anything yet."
 msgstr ""
 
-#: template-parts/cart/drawer-content.php:79
+#: template-parts/cart/drawer-content.php:81
 msgid "Start shopping"
 msgstr ""
 
-#: template-parts/cart/drawer-content.php:90
+#: template-parts/cart/drawer-content.php:93
 #: woocommerce/cart/cart.php:126
 #: woocommerce/checkout/form-checkout.php:54
 #: woocommerce/checkout/form-checkout.php:55
 msgid "Coupon code"
 msgstr ""
 
-#: template-parts/cart/drawer-content.php:91
+#: template-parts/cart/drawer-content.php:94
 #: woocommerce/checkout/form-checkout.php:56
 msgid "Apply"
 msgstr ""
 
-#: template-parts/cart/drawer-content.php:95
+#: template-parts/cart/drawer-content.php:98
 msgid "SUBTOTAL"
 msgstr ""
 
-#: template-parts/cart/drawer-content.php:101
+#: template-parts/cart/drawer-content.php:104
 msgid "You save"
+msgstr ""
+
+#: template-parts/cart/slide-cart.php:10
+msgid "Shopping cart"
 msgstr ""
 
 #: template-parts/content/content-none.php:11
@@ -3747,13 +4259,17 @@ msgid "There is nothing here yet."
 msgstr ""
 
 #: template-parts/content/content-page.php:19
-#: template-parts/content/content-single.php:24
+#: template-parts/content/content-single.php:21
 msgid "Pages:"
 msgstr ""
 
 #: template-parts/content/content.php:22
 #: template-parts/sections/blog-grid.php:42
 msgid "Read more"
+msgstr ""
+
+#: template-parts/content/related-posts.php:29
+msgid "You may also like"
 msgstr ""
 
 #: template-parts/header/banner.php:33
@@ -3790,11 +4306,11 @@ msgstr ""
 msgid "Search: %s"
 msgstr ""
 
-#: template-parts/misc/pagination.php:14
+#: template-parts/misc/pagination.php:28
 msgid "Previous page"
 msgstr ""
 
-#: template-parts/misc/pagination.php:15
+#: template-parts/misc/pagination.php:29
 msgid "Next page"
 msgstr ""
 
@@ -3832,6 +4348,13 @@ msgstr ""
 msgid "Scroll thumbnails forward"
 msgstr ""
 
+#. translators: %d: percent.
+#: template-parts/product/price.php:27
+#, php-format
+msgid "Up to %d%% OFF"
+msgstr ""
+
+#. translators: %d: percent.
 #: template-parts/product/price.php:27
 msgid "OFF"
 msgstr ""

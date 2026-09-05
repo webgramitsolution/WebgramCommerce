@@ -23,3 +23,5 @@ Status values: **coded** = an explicit code path exists (hook, stand down or ove
 Browser support targets: last two versions of Chrome, Firefox, Safari and Edge, iOS Safari 15+. Voice search shows the mic only when the browser exposes `SpeechRecognition`.
 
 Template overrides (8 of the allowed 12, all at `@version 9.4.0`): `content-product.php`, `single-product.php`, `cart/cart.php`, `checkout/form-checkout.php`, `checkout/thankyou.php`, `myaccount/form-login.php`, `myaccount/navigation.php`, `global/quantity-input.php`. Compare against the WooCommerce release notes when a new major version changes these files.
+
+Layouts: when a Core Layout replaces the single product page, the theme fires `woocommerce_before_single_product_summary` and `woocommerce_single_product_summary` after the layout with WooCommerce's and the theme's default callbacks removed, so plugin output attached to those hooks still prints. Layout and popup device targeting uses the User-Agent on the server (layouts) or the viewport in the browser (popups); the server side check is not reliable behind a full page cache, so prefer separate layouts by condition rather than by device on cached sites.

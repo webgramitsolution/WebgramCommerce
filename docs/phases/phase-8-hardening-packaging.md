@@ -25,6 +25,13 @@ Packaging
 - Documentation: `docs/user-guide.html` (buyer documentation, self contained), `docs/compatibility.md`, `docs/security-checklist.md`, `docs/accessibility.md`, `docs/deploy-hostinger.md` (Nginx server block with the `webgram-invoices` deny rule, PHP-FPM, Redis, cron, Git and rsync deployment, migrations, backups), `docs/licensing.md`, `LICENSE.md`.
 - Versions: theme 1.0.0 (`WEBGRAM_MIN_CORE_VERSION` 1.0.0), Core 1.0.0 with changelog, child 1.0.0, `package.json` 1.0.0.
 
+Final audit and gap closure (after the first packaging run)
+- Four code audits compared the implementation with the master specification; `docs/feature-audit.md` records the result per area. Every essential MISSING or PARTIAL item was implemented:
+- Theme: blog settings wired (meta, excerpt length, featured image, related posts, share, list and masonry cards, load more), page title depth (styles, image size and position, overlay, mobile height, per type visibility, breadcrumb position) and the Webgram options box on pages, posts and products (layout, sidebar, title band, title image), link colors, spacing scale, section gap, border width, badge position, product gap, lazy load switch, recently viewed count, variable product discount, cross-sells row, list card chips and hover gallery, wishlist and compare in the mobile drawer and navbar with live counts, dialog semantics on drawers, cart page auto update, drawer coupon result messages, footer tablet and mobile columns with accordions, Sidebars manager (custom areas, product and page sidebars, assignment, mobile mode), Layouts consumed for shop, blog archive, single post, cart, checkout, thank you and my account with a layout template, single product layouts keeping third party summary hooks, HTML Blocks in the mega menu, cart drawer, product page and empty archives, back to top and social sidebar positions and devices, portfolio templates with filter chips.
+- Core: analytics events for add to cart, buy now, purchase, checkout start, search, voice search, quick view, coupon copy and CTA clicks; wishlist button in quick view and move to cart; compare gallery position; responsive wishlist and compare tables; coupon apply flow with pending coupons and four box styles; reachable offer progress endpoint used on the cart page; Popups post type with per popup triggers (including click and immediate), frequency in days, devices checked in the browser, page targeting with ids, focus trap and legacy migration; Floating Blocks (WhatsApp, link, HTML Block) with position, devices and scroll threshold; HTML Block widget, block and shortcode through the registry; exclude only layout rules; maintenance IP allowlist, bypass key and logo; white label admin menu rename and icon plus more hideable pages; Core fallback settings screen renders multicheck, code (gated by `unfiltered_html`) and html fields; slider transition speed; assistant `related_products` tool; assistant window `aria-modal`; demo import applies settings once and never overwrites customized builder layouts.
+- Accessibility: shared focus trap in the Core dialogs and popups, form messages linked with `aria-describedby`.
+- Checks after the audit pass: PHPCS 0 errors and 0 warnings on 348 files, Core harness 150 checks, theme harness 66 checks, `npm run build` clean, POT files regenerated (1019 and 1306 strings), hooks reference 221 hooks.
+
 ### B. Files and modules changed
 
 - Root: `phpcs.xml.dist`, `.gitignore` (dist, build, bundled manifest), `LICENSE.md`, `scripts/package.sh`, `scripts/hooks-reference.php`, `docs/*.md`, `docs/user-guide.html`, `docs/hooks-reference.md`.
@@ -43,11 +50,11 @@ Commands run in this phase (all passing at the final commit):
 
 ```
 php -l on every changed file (PHP 8.4.19)
-php tests/core-harness.php      ALL PASSED (147 checks)
-php tests/theme-harness.php     ALL PASSED (62 checks, 7 new)
+php tests/core-harness.php      ALL PASSED (150 checks)
+php tests/theme-harness.php     ALL PASSED (66 checks)
 cd webgram-theme && npm run build   (sass, esbuild, rtlcss)
-phpcs --report=summary -d memory_limit=1G     0 errors, 0 warnings, 331 files
-php scripts/hooks-reference.php               212 hooks
+phpcs --report=summary -d memory_limit=1G     0 errors, 0 warnings, 348 files
+php scripts/hooks-reference.php               221 hooks
 wp i18n make-pot (both products)
 scripts/package.sh --skip-build               dist/webgram-core.zip 5.0 MB, dist/webgram-theme.zip 5.6 MB, dist/webgram-child.zip
 ```
@@ -73,6 +80,7 @@ Package verification: theme zip contains no `assets/src`, `node_modules` or npm 
 ### G. Not tested
 
 - Nothing in this phase ran inside WordPress: the System status installer flow (install, activate, update) through `Plugin_Upgrader`, the demo importer end to end (media sideload, `WC_Product_CSV_Importer` with the identity mapping, category thumbnails, menus, widgets, Core slider, testimonials, coupons and pages), the resulting homepage rendering, Elementor template import.
+- Everything added in the final audit pass: the Sidebars screen and off-canvas sidebar, the Webgram options box, page title styles and overrides, blog load more and related posts, cart page auto update and drawer coupon messages, footer accordions, Layouts on shop, blog, post, cart, checkout, thank you and account pages, mega menu and cart drawer HTML blocks, portfolio templates, the Popups post type and its triggers (click selector, exit intent, frequency cookies, device check), Floating Blocks rendering and WhatsApp links, the HTML Block widget, the coupon apply flow (immediate and pending), wishlist move to cart, analytics purchase, add to cart, search and CTA events, maintenance IP allowlist and bypass key cookie, white label menu rename, the Core fallback settings fields, the assistant related products tool.
 - Theme Check, Envato Theme Check, Lighthouse (LCP, CLS, INP targets), keyboard only purchase flow, screen reader pass, axe audit.
 - Compatibility matrix plugins (Razorpay or Stripe, Shiprocket, Elementor, Rank Math, WP Rocket or LiteSpeed, swatches, review, membership, forms, GA, Subscriptions): code paths exist, none were exercised.
 - RTL rendering in a browser (only the build ran).
@@ -84,7 +92,8 @@ Package verification: theme zip contains no `assets/src`, `node_modules` or npm 
 - The demo importer does not ship a WXR file or an Elementor kit import step; product data goes through WooCommerce's CSV importer and the homepage is the Gutenberg version, with `homepage-elementor.json` importable manually under Templates. Reels are not created by the demo (they need video files).
 - Placeholder images are flat coloured shapes with a label; the marketplace preview needs real photography before submission.
 - Screenshot and preview images for the listing are not part of the repository.
-- Core quick view, reels viewer and assistant window lack Tab cycling inside the dialog (theme drawers have it).
+- Layout device targeting uses the User-Agent on the server and is not reliable behind full page caching.
+- The theme ships no proprietary product filter engine; shop filtering uses WooCommerce's filter widgets.
 - The security checklist is a code review, not a penetration test.
 
 ### I. Ready for next phase

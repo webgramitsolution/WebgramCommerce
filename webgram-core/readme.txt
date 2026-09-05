@@ -19,6 +19,11 @@ The plugin works with any theme and is designed for Webgram Theme.
 == Changelog ==
 
 = 1.0.0 =
+* Popups post type with per popup content, triggers (delay, immediately, scroll, exit intent, click selector), frequency, devices and page targeting; legacy promo popup migrated automatically.
+* Floating Blocks: WhatsApp chat, link and HTML Block buttons with position, devices and scroll threshold.
+* HTML Block widget, block and shortcode; wishlist and compare links with counts for the theme drawer and navbar; compare gallery position; wishlist move to cart and quick view button.
+* Coupon apply flow with pending coupons and box styles; analytics events for add to cart, buy now, purchase, checkout start, search, voice search, quick view, coupon copy and CTA clicks.
+* Maintenance IP allowlist, bypass key and logo; white label menu rename; exclude only layout rules; slider transition speed; assistant related products tool; fallback settings screen renders multicheck, code and html fields.
 * Hardening: PHPCS zero errors with WordPress-Extra and WooCommerce rulesets, escaping and nonce audit, security checklist per module.
 * Packaging: Composer vendor bundled in the plugin zip, demo content listener (home slider, testimonials, coupons, wishlist and compare pages) for the theme's one click importer, PageSetup::create_page() for programmatic page creation.
 * i18n: webgram-core.pot and wpml-config.xml.

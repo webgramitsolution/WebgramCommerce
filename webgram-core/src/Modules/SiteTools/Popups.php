@@ -216,9 +216,16 @@ final class Popups {
 	public function column( string $column, int $post_id ): void {
 		$s = self::get( $post_id );
 		if ( 'wgc_trigger' === $column ) {
-			$labels = [ 'delay' => __( 'After %d s', 'webgram-core' ), 'scroll' => __( 'At %d%% scroll', 'webgram-core' ), 'exit' => __( 'Exit intent', 'webgram-core' ), 'click' => __( 'Click', 'webgram-core' ), 'load' => __( 'On load', 'webgram-core' ) ];
-			$value  = 'delay' === $s['trigger'] ? $s['delay'] : $s['scroll'];
-			echo esc_html( str_contains( $labels[ $s['trigger'] ], '%d' ) ? sprintf( $labels[ $s['trigger'] ], $value ) : $labels[ $s['trigger'] ] ); // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
+			$labels = [
+				/* translators: %d: seconds. */
+				'delay'  => sprintf( __( 'After %d s', 'webgram-core' ), (int) $s['delay'] ),
+				/* translators: %d: percent of the page height. */
+				'scroll' => sprintf( __( 'At %d%% scroll', 'webgram-core' ), (int) $s['scroll'] ),
+				'exit'   => __( 'Exit intent', 'webgram-core' ),
+				'click'  => __( 'Click', 'webgram-core' ),
+				'load'   => __( 'On load', 'webgram-core' ),
+			];
+			echo esc_html( $labels[ $s['trigger'] ] ?? $labels['delay'] );
 			echo $s['enabled'] ? '' : ' <em>(' . esc_html__( 'paused', 'webgram-core' ) . ')</em>';
 		} elseif ( 'wgc_pages' === $column ) {
 			echo esc_html( implode( ', ', $s['pages'] ) . ( $s['include'] ? ' +' . $s['include'] : '' ) );

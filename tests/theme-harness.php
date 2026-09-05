@@ -17,7 +17,7 @@ function esc_url_raw($s){ return filter_var($s,FILTER_VALIDATE_URL)?:''; } funct
 function wp_kses_post($s){ return strip_tags($s,'<a><strong><em><p><br><span>'); } function absint($n){ return abs((int)$n); } function wp_json_encode($v,$f=0){ return json_encode($v,$f); }
 function is_singular(){return false;} function is_home(){return false;} function is_archive(){return false;} function is_search(){return false;} function is_single(){return false;} function is_page(){return false;} function is_rtl(){return false;} function is_admin(){return false;}
 function sanitize_file_name($s){ return preg_replace('/[^a-z0-9\-]/','',$s); } function wp_kses($s,$a){ return $s; } function admin_url($p=''){ return 'http://x/wp-admin/'.$p; } function home_url($p=''){ return 'http://x'.$p; }
-function untrailingslashit($s){ return rtrim($s,'/'); } function content_url(){ return 'http://x/wp-content'; }
+function remove_accents($s){ return $s; } function untrailingslashit($s){ return rtrim($s,'/'); } function content_url(){ return 'http://x/wp-content'; }
 class Walker_Nav_Menu { public function start_lvl(&$o,$d=0,$a=null){} public function end_lvl(&$o,$d=0,$a=null){} public function start_el(&$o,$i,$d=0,$a=null,$id=0){} public function end_el(&$o,$i,$d=0,$a=null){} }
 class WP_Customize_Manager {}
 require get_template_directory().'/functions.php';
@@ -136,4 +136,12 @@ $csv = array_map('str_getcsv', file(get_template_directory().'/demo/products.csv
 $missing = array_diff(array_map(fn($r)=>$r[7], array_slice($csv,1)), array_map(fn($f)=>basename($f), glob(get_template_directory().'/demo/images/product-*.png')));
 check('demo products csv: 12 rows, every image file present', count($csv)===13 && $csv[0][0]==='sku' && $missing===[]);
 check('version constants agree', WEBGRAM_VERSION==='1.0.0' && WEBGRAM_MIN_CORE_VERSION==='1.0.0');
+check('custom sidebar ids are unique and safe', Webgram_Sidebars::make_id('Shop Promo!')==='sidebar-shop-promo' && Webgram_Sidebars::make_id('Shop Promo', ['sidebar-shop-promo'])==='sidebar-shop-promo-2' && Webgram_Sidebars::make_id('!!!')==='sidebar-custom');
+check('page options layouts and sidebar choices', isset(Webgram_Page_Metabox::layouts()['sidebar-left']) && isset(Webgram_Sidebars::choices()['sidebar-product']) && Webgram_Sidebars::for_context('shop')==='sidebar-shop');
+check('page title type helper defaults to blog', webgram_page_title_type()==='blog');
+$css = Webgram_CSS_Generator::instance()->get_css();
+check('spacing, border and link tokens generated', str_contains($css,'--wg-space-4:16px') && str_contains($css,'--wg-border-width:1px') && str_contains($css,'--wg-color-link:#a0181f') && str_contains($css,'--wg-section-gap:72px'));
+Webgram_Settings::instance()->update(['spacing_scale'=>'compact']);
+check('compact spacing scale shrinks tokens', str_contains(Webgram_CSS_Generator::instance()->get_css(),'--wg-space-4:14px'));
+Webgram_Settings::instance()->reset();
 echo "\n".($fail?"$fail FAILURE(S)":"ALL PASSED")."\n"; exit($fail?1:0);

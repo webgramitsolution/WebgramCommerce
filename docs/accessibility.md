@@ -8,7 +8,7 @@ Target: WCAG 2.1 AA for the purchase flow. What the code does today, and what st
 - `:focus-visible` outlines using the accent token on links, buttons, inputs, menu items and cards (`base/_reset.scss`, `components/*`).
 - `prefers-reduced-motion`: marquee, sliders, hover slideshow, reels autoplay and section animations stop or shorten (`_marquee.scss`, `_sections.scss`, `_product.scss`, Core `slider.js`, `reels.js`).
 - Icon-only buttons carry `aria-label` (header icons, quantity, wishlist, compare, quick view, cart drawer close, mic, assistant launcher). Decorative SVGs are `aria-hidden="true"` through `webgram_icon()`.
-- Theme drawers (cart drawer, mobile menu, search): `role="dialog"` with `aria-modal`, focus moved to the first control on open and restored on close, Escape closes, Tab cycles inside the drawer (`assets/src/js/modules/drawer.js`). Core quick view, reels viewer and assistant window close on Escape and move focus in on open; their focus trap is lighter (no Tab cycling) and is listed below as a follow up.
+- Theme drawers (cart drawer, mobile menu, search, filters, off-canvas sidebar): `role="dialog"` with `aria-modal`, focus moved to the first control on open and restored on close, Escape closes, Tab cycles inside the drawer (`assets/src/js/modules/drawer.js`). Core quick view, reels viewer, assistant window and popups do the same through `WebgramCore.trapFocus()`.
 - Desktop navigation: `aria-expanded` on parent links, Enter, Space and ArrowDown open, Escape closes, arrows move between items (`assets/src/js/modules/menu.js`). Mobile drawer tabs use `role="tablist"` with `aria-selected` and `aria-controls`.
 - Sliders: Swiper a11y module enabled with localized labels, dots are buttons, slides carry `aria-roledescription="slide"`.
 - Product gallery thumbnails are a `tablist` with labelled `tab` buttons; product page sections use WooCommerce's own tabs markup.
@@ -18,10 +18,12 @@ Target: WCAG 2.1 AA for the purchase flow. What the code does today, and what st
 - Reels and product videos autoplay muted only; sound needs a tap.
 - RTL: logical properties everywhere and a generated `*-rtl.css` for each stylesheet.
 
-## Follow ups
+## Done in the final audit pass
 
-- Add Tab cycling inside the Core quick view, reels viewer and assistant window (theme drawers already have it).
-- Link form errors to their fields with `aria-describedby` on the Core forms.
+- Tab cycling inside the Core quick view, reels viewer, assistant window and popups through a shared `WebgramCore.trapFocus()` helper; popups restore focus to the opener and set `aria-modal`.
+- Core form messages (track order, bulk inquiry, review uploads) are linked to their inputs with `aria-describedby` and announced through `role="status"` or `role="alert"`.
+- The cart drawer, filters drawer and off-canvas sidebar carry `role="dialog"`, `aria-modal` and a label.
+- Footer accordions on mobile expose `aria-expanded`.
 
 ## Not tested in this phase
 
