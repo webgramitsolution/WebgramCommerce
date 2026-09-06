@@ -190,7 +190,6 @@ register('swatches', (wrap) => {
 	});
 	document.addEventListener('wg:reset_data', () => document.dispatchEvent(new CustomEvent('wg:variation-image', { detail: {} })));
 });
-document.addEventListener('DOMContentLoaded', () => { qsa('form.variations_form').forEach((f) => { if (!qs('.wg-swatches', f)) f.classList.add('wg-no-swatches'); }); });
 
 /* Quantity stepper */
 register('qty', (qty) => {

@@ -67,8 +67,11 @@
 
 // Variations form and swatches
 .wg-product .variations_form { display: flex; flex-direction: column; gap: var(--wg-space-4); }
-.wg-product .variations { display: none; } // Hidden when swatches render; JS reveals it if swatches are absent.
-.wg-product .variations_form.wg-no-swatches .variations { display: table; width: 100%; td { padding: 4px 0; } label { margin: 0; } select { min-height: 42px; } }
+// WooCommerce's own dropdowns are the default control, which is what a variation swatches plugin builds on.
+.wg-product .variations { display: table; width: 100%; td { padding: 4px 0; } label { margin: 0; font-weight: var(--wg-fw-semibold); }
+  select { width: 100%; min-height: var(--wg-input-height); border: var(--wg-border-width) solid var(--wg-color-border); border-radius: var(--wg-input-radius); background: var(--wg-color-surface); color: inherit; padding: 0 12px; font: inherit; } }
+// The theme's own swatches take the dropdowns' place when they render.
+.wg-product .variations_form:has(.wg-swatches) .variations { display: none; }
 .wg-product .reset_variations { font-size: var(--wg-fs-xs); }
 .wg-swatches { display: flex; flex-direction: column; gap: var(--wg-space-4);
   &__label { font-size: var(--wg-fs-sm); color: var(--wg-color-text-muted); margin-bottom: var(--wg-space-2); strong { color: var(--wg-color-heading); } }

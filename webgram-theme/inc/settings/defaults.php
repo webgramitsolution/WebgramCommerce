@@ -233,6 +233,7 @@ function webgram_defaults(): array {
 			'product_auto_slide'      => true,
 			'product_auto_slide_interval' => 3000,
 			'product_auto_slide_pause' => true,
+			'product_variation_ui'    => 'default',
 			'product_sticky_gallery'  => true,
 			'product_sticky_bar'      => true,
 			'product_zoom'            => true,

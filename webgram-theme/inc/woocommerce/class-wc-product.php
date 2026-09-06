@@ -155,10 +155,20 @@ final class Webgram_WC_Product {
 
 	public static function swatches(): void {
 		global $product;
-		if ( ! apply_filters( 'webgram/product/use_swatches', true, $product ) ) {
-			return; // A third-party swatch plugin can take over.
+		$use = 'webgram' === webgram_option( 'product_variation_ui' ) && ! self::swatch_plugin_active();
+		if ( ! apply_filters( 'webgram/product/use_swatches', $use, $product ) ) {
+			return; // WooCommerce prints its own dropdowns, which is what a swatches plugin builds on.
 		}
 		webgram_part( 'product/swatches', [ 'product' => $product ] );
+	}
+
+	/** True when a variation swatches plugin is running, so the theme leaves the variation form alone. */
+	public static function swatch_plugin_active(): bool {
+		$active = class_exists( 'Woo_Variation_Swatches' )
+			|| class_exists( 'WooCommerce_Variation_Swatches' )
+			|| defined( 'VARIATION_SWATCHES_FOR_WOOCOMMERCE_VERSION' )
+			|| function_exists( 'wvs_pro_init' );
+		return (bool) apply_filters( 'webgram/product/swatch_plugin_active', $active );
 	}
 
 	public static function payment_strip(): void {

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-05T17:54:42+00:00\n"
+"POT-Creation-Date: 2026-09-06T01:26:08+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: webgram\n"
@@ -1101,8 +1101,8 @@ msgstr ""
 #: inc/mega-menu/class-mega-menu-admin.php:37
 #: inc/sections/class-sections.php:24
 #: inc/settings/tabs/mobile-navbar.php:32
-#: inc/settings/tabs/single-product.php:99
-#: inc/settings/tabs/single-product.php:110
+#: inc/settings/tabs/single-product.php:100
+#: inc/settings/tabs/single-product.php:111
 msgid "Icon"
 msgstr ""
 
@@ -1225,8 +1225,8 @@ msgstr ""
 #: inc/settings/tabs/header-banner.php:20
 #: inc/settings/tabs/header-banner.php:21
 #: inc/settings/tabs/other.php:28
-#: inc/settings/tabs/single-product.php:100
-#: inc/settings/tabs/single-product.php:112
+#: inc/settings/tabs/single-product.php:101
+#: inc/settings/tabs/single-product.php:113
 #: inc/setup.php:71
 msgid "Text"
 msgstr ""
@@ -1274,7 +1274,7 @@ msgid "Left to right"
 msgstr ""
 
 #: inc/builders/elements/class-element-announcement.php:50
-#: inc/settings/tabs/single-product.php:34
+#: inc/settings/tabs/single-product.php:35
 msgid "Pause on hover"
 msgstr ""
 
@@ -2030,8 +2030,8 @@ msgstr ""
 #: inc/sections/class-sections.php:33
 #: inc/sections/class-sections.php:71
 #: inc/settings/tabs/other.php:27
-#: inc/settings/tabs/single-product.php:46
-#: inc/settings/tabs/single-product.php:111
+#: inc/settings/tabs/single-product.php:47
+#: inc/settings/tabs/single-product.php:112
 msgid "Title"
 msgstr ""
 
@@ -2424,76 +2424,76 @@ msgstr ""
 msgid "Buy now"
 msgstr ""
 
-#: inc/settings/defaults.php:250
+#: inc/settings/defaults.php:251
 msgid "100% secure payment by"
 msgstr ""
 
-#: inc/settings/defaults.php:253
+#: inc/settings/defaults.php:254
 msgid "Your payment information is processed securely."
 msgstr ""
 
-#: inc/settings/defaults.php:255
+#: inc/settings/defaults.php:256
 msgid "Secure payments"
 msgstr ""
 
-#: inc/settings/defaults.php:256
+#: inc/settings/defaults.php:257
 msgid "Fast and free shipping"
 msgstr ""
 
-#: inc/settings/defaults.php:257
+#: inc/settings/defaults.php:258
 msgid "Premium quality"
 msgstr ""
 
-#: inc/settings/defaults.php:258
+#: inc/settings/defaults.php:259
 msgid "Customer support 24/7"
 msgstr ""
 
-#: inc/settings/defaults.php:259
+#: inc/settings/defaults.php:260
 msgid "Satisfaction guaranteed"
 msgstr ""
 
-#: inc/settings/defaults.php:262
+#: inc/settings/defaults.php:263
 msgid "Returns"
 msgstr ""
 
-#: inc/settings/defaults.php:262
+#: inc/settings/defaults.php:263
 msgid "As per brand policy, 7 days"
 msgstr ""
 
-#: inc/settings/defaults.php:263
+#: inc/settings/defaults.php:264
 msgid "Shipping"
 msgstr ""
 
-#: inc/settings/defaults.php:263
+#: inc/settings/defaults.php:264
 msgid "Free for bulk orders"
 msgstr ""
 
-#: inc/settings/defaults.php:276
+#: inc/settings/defaults.php:277
 msgid "Apply coupon at next step | Not applicable on combos and gifts"
 msgstr ""
 
-#: inc/settings/defaults.php:277
+#: inc/settings/defaults.php:278
 msgid "Place order"
 msgstr ""
 
-#: inc/settings/defaults.php:278
+#: inc/settings/defaults.php:279
 msgid "Get extra 5% off on prepaid orders"
 msgstr ""
 
-#: inc/settings/defaults.php:287
+#: inc/settings/defaults.php:288
 msgid "Your payment is encrypted and secure."
 msgstr ""
 
-#: inc/settings/defaults.php:322
+#: inc/settings/defaults.php:323
 #: template-parts/misc/breadcrumb.php:42
 msgid "Page not found"
 msgstr ""
 
-#: inc/settings/defaults.php:323
+#: inc/settings/defaults.php:324
 msgid "The page you are looking for does not exist or has moved."
 msgstr ""
 
-#: inc/settings/defaults.php:325
+#: inc/settings/defaults.php:326
 msgid "Back to home"
 msgstr ""
 
@@ -3679,212 +3679,228 @@ msgid "Flat"
 msgstr ""
 
 #: inc/settings/tabs/single-product.php:21
-msgid "Sticky gallery"
+msgid "Variation selector"
 msgstr ""
 
 #: inc/settings/tabs/single-product.php:21
-msgid "Releases when the summary column ends."
+msgid "WooCommerce dropdowns (use a swatches plugin)"
+msgstr ""
+
+#: inc/settings/tabs/single-product.php:21
+msgid "Webgram image swatches"
+msgstr ""
+
+#: inc/settings/tabs/single-product.php:21
+msgid "Webgram steps aside automatically when a variation swatches plugin is active."
 msgstr ""
 
 #: inc/settings/tabs/single-product.php:22
+msgid "Sticky gallery"
+msgstr ""
+
+#: inc/settings/tabs/single-product.php:22
+msgid "Releases when the summary column ends."
+msgstr ""
+
+#: inc/settings/tabs/single-product.php:23
 msgid "Mobile sticky bar (price, Add to cart, Buy now)"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:23
+#: inc/settings/tabs/single-product.php:24
 msgid "Specifications and overview"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:23
+#: inc/settings/tabs/single-product.php:24
 msgid "Stacked sections (accordions on mobile)"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:23
+#: inc/settings/tabs/single-product.php:24
 msgid "WooCommerce tabs"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:27
+#: inc/settings/tabs/single-product.php:28
 msgid "Gallery"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:29
+#: inc/settings/tabs/single-product.php:30
 msgid "Thumbnails"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:29
+#: inc/settings/tabs/single-product.php:30
 msgid "Strip below image"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:29
+#: inc/settings/tabs/single-product.php:30
 msgid "Vertical strip on the left"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:30
+#: inc/settings/tabs/single-product.php:31
 msgid "Thumbnails visible"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:31
+#: inc/settings/tabs/single-product.php:32
 msgid "Zoom on hover"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:32
+#: inc/settings/tabs/single-product.php:33
 msgid "Auto slide"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:32
+#: inc/settings/tabs/single-product.php:33
 msgid "Main image advances automatically until the visitor interacts."
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:33
+#: inc/settings/tabs/single-product.php:34
 msgid "Interval"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:38
+#: inc/settings/tabs/single-product.php:39
 msgid "Section order"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:39
+#: inc/settings/tabs/single-product.php:40
 msgid "Drag to reorder, untick to hide. Sections provided by disabled Core modules are skipped automatically."
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:42
+#: inc/settings/tabs/single-product.php:43
 msgid "Summary column"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:47
+#: inc/settings/tabs/single-product.php:48
 msgid "Meta (SKU, category)"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:48
+#: inc/settings/tabs/single-product.php:49
 msgid "Price line with rating pill"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:49
+#: inc/settings/tabs/single-product.php:50
 msgid "Short description"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:50
+#: inc/settings/tabs/single-product.php:51
 msgid "Variant swatches"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:51
+#: inc/settings/tabs/single-product.php:52
 msgid "Coupon box (Core)"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:52
+#: inc/settings/tabs/single-product.php:53
 msgid "Quantity, Add to cart, Buy now"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:53
-#: inc/settings/tabs/single-product.php:87
+#: inc/settings/tabs/single-product.php:54
+#: inc/settings/tabs/single-product.php:88
 msgid "Payment strip"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:54
-#: inc/settings/tabs/single-product.php:93
+#: inc/settings/tabs/single-product.php:55
+#: inc/settings/tabs/single-product.php:94
 msgid "Trust seals"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:55
+#: inc/settings/tabs/single-product.php:56
 msgid "Contact cards (Core)"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:56
+#: inc/settings/tabs/single-product.php:57
 msgid "Delivery check (Core)"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:57
+#: inc/settings/tabs/single-product.php:58
 msgid "Info cards (returns, shipping)"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:58
-#: inc/woocommerce/class-wc-product.php:190
+#: inc/settings/tabs/single-product.php:59
+#: inc/woocommerce/class-wc-product.php:200
 msgid "Specifications"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:59
-#: inc/woocommerce/class-wc-product.php:201
+#: inc/settings/tabs/single-product.php:60
+#: inc/woocommerce/class-wc-product.php:211
 msgid "Overview"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:60
+#: inc/settings/tabs/single-product.php:61
 #: template-parts/misc/share.php:27
 msgid "Share"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:64
+#: inc/settings/tabs/single-product.php:65
 msgid "Below the columns"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:68
-#: inc/settings/tabs/single-product.php:75
+#: inc/settings/tabs/single-product.php:69
+#: inc/settings/tabs/single-product.php:76
 msgid "Related products"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:69
+#: inc/settings/tabs/single-product.php:70
 msgid "Cross-sells (frequently bought together)"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:70
+#: inc/settings/tabs/single-product.php:71
 msgid "Reviews"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:71
+#: inc/settings/tabs/single-product.php:72
 msgid "Trending reels (Core)"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:72
+#: inc/settings/tabs/single-product.php:73
 msgid "Recently viewed (Core)"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:76
+#: inc/settings/tabs/single-product.php:77
 msgid "Cross-sells on the product page"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:76
+#: inc/settings/tabs/single-product.php:77
 msgid "Set under Linked Products on each product. 0 hides the row."
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:77
+#: inc/settings/tabs/single-product.php:78
 msgid "Recently viewed"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:78
+#: inc/settings/tabs/single-product.php:79
 msgid "Show meta row"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:79
+#: inc/settings/tabs/single-product.php:80
 msgid "Show share row"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:80
+#: inc/settings/tabs/single-product.php:81
 msgid "HTML Block under Add to cart"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:81
+#: inc/settings/tabs/single-product.php:82
 msgid "HTML Block under the summary columns"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:85
+#: inc/settings/tabs/single-product.php:86
 msgid "Payment strip, seals and info cards"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:88
+#: inc/settings/tabs/single-product.php:89
 msgid "Strip title"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:89
+#: inc/settings/tabs/single-product.php:90
 msgid "Processor logo"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:90
+#: inc/settings/tabs/single-product.php:91
 msgid "Payment methods"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:91
+#: inc/settings/tabs/single-product.php:92
 msgid "Caption"
 msgstr ""
 
-#: inc/settings/tabs/single-product.php:104
+#: inc/settings/tabs/single-product.php:105
 msgid "Info cards"
 msgstr ""
 
@@ -4381,11 +4397,11 @@ msgid_plural "%d reviews"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/woocommerce/class-wc-product.php:211
+#: inc/woocommerce/class-wc-product.php:221
 msgid "Related Products"
 msgstr ""
 
-#: inc/woocommerce/class-wc-product.php:259
+#: inc/woocommerce/class-wc-product.php:269
 msgid "Frequently bought together"
 msgstr ""
 

@@ -18,6 +18,7 @@ return [
 			'fields' => [
 				'product_layout'        => [ 'label' => __( 'Template', 'webgram' ), 'type' => 'radio', 'choices' => [ 'default' => __( 'Theme layout', 'webgram' ), 'layout' => __( 'Webgram Core Layout (if one matches)', 'webgram' ) ] ],
 				'product_panels'        => [ 'label' => __( 'Panels', 'webgram' ), 'type' => 'radio', 'choices' => [ 'panels' => __( 'White panels on cream background', 'webgram' ), 'flat' => __( 'Flat', 'webgram' ) ] ],
+				'product_variation_ui'  => [ 'label' => __( 'Variation selector', 'webgram' ), 'type' => 'radio', 'choices' => [ 'default' => __( 'WooCommerce dropdowns (use a swatches plugin)', 'webgram' ), 'webgram' => __( 'Webgram image swatches', 'webgram' ) ], 'description' => __( 'Webgram steps aside automatically when a variation swatches plugin is active.', 'webgram' ) ],
 				'product_sticky_gallery' => [ 'label' => __( 'Sticky gallery', 'webgram' ), 'type' => 'switch', 'description' => __( 'Releases when the summary column ends.', 'webgram' ) ],
 				'product_sticky_bar'    => [ 'label' => __( 'Mobile sticky bar (price, Add to cart, Buy now)', 'webgram' ), 'type' => 'switch' ],
 				'product_tabs_style'    => [ 'label' => __( 'Specifications and overview', 'webgram' ), 'type' => 'radio', 'choices' => [ 'stacked' => __( 'Stacked sections (accordions on mobile)', 'webgram' ), 'tabs' => __( 'WooCommerce tabs', 'webgram' ) ] ],
