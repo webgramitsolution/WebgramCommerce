@@ -1,7 +1,7 @@
 @use "../abstracts/breakpoints" as *;
 @use "../abstracts/mixins" as *;
 // Product card (spec 4.2). Variants: standard, list, compact. Style via body.wg-cards-{bordered|shadow|flat}.
-.wg-card { position: relative; display: flex; flex-direction: column; height: 100%; border: var(--wg-border-width) solid var(--wg-color-border); border-radius: var(--wg-card-radius); background: var(--wg-color-surface); overflow: hidden; transition: box-shadow var(--wg-transition-base) var(--wg-ease);
+.wg-card { container: wg-card / inline-size; position: relative; display: flex; flex-direction: column; height: 100%; border: var(--wg-border-width) solid var(--wg-color-border); border-radius: var(--wg-card-radius); background: var(--wg-color-surface); overflow: hidden; transition: box-shadow var(--wg-transition-base) var(--wg-ease);
   &:hover { box-shadow: var(--wg-shadow-md); }
   body.wg-cards-shadow & { border-color: transparent; box-shadow: var(--wg-shadow-sm); &:hover { box-shadow: var(--wg-shadow-lg); } }
   body.wg-cards-flat & { border-color: transparent; background: transparent; &:hover { box-shadow: none; } .wg-card__media { border-radius: var(--wg-card-radius); } }
@@ -36,9 +36,9 @@
   .wg-price__percent { font-size: 14px; font-weight: var(--wg-fw-semibold); color: var(--wg-color-sale); }
   &__chips { margin-top: 2px; }
 
-  &__buttons { display: grid; grid-template-columns: 44px 1fr; gap: var(--wg-space-2); margin-top: auto; padding-top: var(--wg-space-2);
+  &__buttons { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: var(--wg-space-2); margin-top: auto; padding-top: var(--wg-space-2);
     > :only-child { grid-column: 1 / -1; }
-    .wg-btn, .button { min-height: 44px; }
+    .wg-btn, .button { min-height: 44px; padding-inline: var(--wg-space-3); }
   }
   &__cart.button { width: 44px; height: 44px; padding: 0; background: transparent; color: var(--wg-color-primary); border-color: var(--wg-color-primary); font-size: 0; line-height: 0; position: relative;
     &::before { content: ""; width: 20px; height: 20px; background: currentColor; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='9' cy='21' r='1'/%3E%3Ccircle cx='20' cy='21' r='1'/%3E%3Cpath d='M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6'/%3E%3C/svg%3E") center / contain no-repeat; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='9' cy='21' r='1'/%3E%3Ccircle cx='20' cy='21' r='1'/%3E%3Cpath d='M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6'/%3E%3C/svg%3E") center / contain no-repeat; }
@@ -46,7 +46,10 @@
     &.loading::before { animation: wg-spin .8s linear infinite; mask-image: none; -webkit-mask-image: none; background: transparent; border: 2px solid currentColor; border-top-color: transparent; border-radius: 50%; }
     &.added::after { display: none; }
   }
-  &__buy, &__buy.button { text-transform: uppercase; letter-spacing: .04em; font-weight: var(--wg-fw-bold); font-size: 14px; }
+  // One line always. The label shrinks with the card so it never breaks across two rows in a narrow column.
+  &__buy, &__buy.button { min-width: 0; text-transform: uppercase; letter-spacing: .04em; font-weight: var(--wg-fw-bold); font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  @container wg-card (max-width: 260px) { &__buy, &__buy.button { font-size: 13px; letter-spacing: .02em; } }
+  @container wg-card (max-width: 210px) { &__buttons { grid-template-columns: 40px minmax(0, 1fr); gap: 6px; .wg-btn, .button { padding-inline: 8px; } } &__cart.button { width: 40px; } &__buy, &__buy.button { font-size: 12px; letter-spacing: 0; } }
 
   // List variant
   &--list { flex-direction: row; align-items: stretch;
