@@ -1,0 +1,38 @@
+@use "../abstracts/breakpoints" as *;
+@use "../abstracts/mixins" as *;
+.wg-rating { display: inline-flex; align-items: center; gap: var(--wg-space-2); font-size: var(--wg-fs-sm); color: var(--wg-color-text-muted);
+  &__stars { position: relative; display: inline-block; width: 5em; height: 1em; line-height: 1; font-size: 14px; letter-spacing: 0; color: var(--wg-color-border);
+    &::before { content: "\2605\2605\2605\2605\2605"; position: absolute; inset: 0; }
+  }
+  &__fill { position: absolute; inset: 0 auto 0 0; overflow: hidden; white-space: nowrap; color: var(--wg-color-star); &::before { content: "\2605\2605\2605\2605\2605"; } }
+  &--sm { font-size: var(--wg-fs-xs); .wg-rating__stars { font-size: 12px; } }
+  &--red &__fill { color: var(--wg-color-primary); }
+}
+// Rating pill: "★ 4.5 (12)" on the card price line; large variant "★ 4.53/5 | 196 reviews" on the product page.
+.wg-rating-pill { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: var(--wg-radius-pill); background: #ecfdf5; color: var(--wg-color-heading); font-size: 12px; font-weight: var(--wg-fw-semibold); line-height: 1.5; white-space: nowrap; text-decoration: none; flex: none;
+  &__star { width: 12px; height: 12px; color: var(--wg-color-star); fill: var(--wg-color-star); }
+  &__count { color: var(--wg-color-text-muted); font-weight: var(--wg-fw-medium); }
+  &__max { color: var(--wg-color-text-muted); font-weight: var(--wg-fw-regular); }
+  &__sep { width: 1px; height: 12px; background: var(--wg-color-border); margin-inline: 4px; }
+  &--lg { padding: 6px 12px; font-size: var(--wg-fs-sm); gap: 6px; .wg-rating-pill__star { width: 16px; height: 16px; } }
+  &:hover { color: var(--wg-color-primary); }
+}
+// Variation chips
+.wg-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+// Card variation buttons: up to three equal columns, cream base, primary when selected.
+.wg-card__chips.wg-chips { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 6px; margin-top: var(--wg-space-2);
+  .wg-chip { min-height: 34px; padding: 6px 4px; border: var(--wg-border-width) solid var(--wg-color-border); border-radius: var(--wg-radius-sm); background: var(--wg-color-bg-alt); color: var(--wg-color-heading); font-size: 13px; font-weight: var(--wg-fw-semibold); width: 100%;
+    &:hover { border-color: var(--wg-color-primary); color: var(--wg-color-primary); }
+    &.is-selected { background: var(--wg-color-primary); border-color: var(--wg-color-primary); color: #fff; }
+    &.is-unavailable { opacity: .45; text-decoration: line-through; }
+  }
+  &.wg-chips--colors, &.wg-chips--images { display: flex; grid-auto-flow: row; }
+}
+.wg-chip { display: inline-flex; align-items: center; justify-content: center; min-height: 24px; padding: 2px 8px; border: 1px solid transparent; border-radius: var(--wg-radius-sm); background: var(--wg-color-secondary); color: #fff; font-size: 11px; font-weight: var(--wg-fw-semibold); line-height: 1.4; cursor: pointer; text-decoration: none; transition: background var(--wg-transition-fast);
+  &.is-selected { background: var(--wg-color-primary); }
+  &.is-unavailable { opacity: .45; text-decoration: line-through; }
+  &--more { background: transparent; color: var(--wg-color-text-muted); border-color: var(--wg-color-border); }
+  img { width: 100%; height: 100%; object-fit: cover; }
+}
+.wg-chips--colors .wg-chip { width: 22px; height: 22px; min-height: 0; padding: 0; border-radius: 50%; background: var(--wg-chip-color, var(--wg-color-border)); border: 2px solid var(--wg-color-surface); box-shadow: 0 0 0 1px var(--wg-color-border); &.is-selected { box-shadow: 0 0 0 2px var(--wg-color-primary); } }
+.wg-chips--images .wg-chip { width: 32px; height: 32px; min-height: 0; padding: 0; overflow: hidden; background: var(--wg-color-bg-alt); border: 2px solid transparent; &.is-selected { border-color: var(--wg-color-primary); } }

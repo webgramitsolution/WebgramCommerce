@@ -1,0 +1,53 @@
+@use "../abstracts/breakpoints" as *;
+@use "../abstracts/mixins" as *;
+// Footer builder output.
+.wg-footer { background: var(--wg-color-footer-bg); color: var(--wg-color-footer-text); font-size: var(--wg-fs-sm);
+  a { color: inherit; opacity: .85; &:hover { opacity: 1; color: inherit; } }
+  ul { list-style: none; padding: 0; margin: 0; }
+  &__widgets { padding-block: var(--wg-footer-padding, 64px); }
+  &__grid { display: grid; gap: var(--wg-space-8); grid-template-columns: 1fr;
+    &--mobile-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    @include up(md) { @for $i from 1 through 3 { &--tablet-#{$i} { grid-template-columns: repeat(#{$i}, minmax(0, 1fr)); } } }
+    @include up(lg) {
+      @for $i from 1 through 6 { &--#{$i} { grid-template-columns: repeat(#{$i}, minmax(0, 1fr)); } }
+    }
+  }
+  &__widgets--collapse { @include down(md) { .wg-footer__col { gap: 0; border-bottom: var(--wg-border-width) solid rgba(255, 255, 255, .12); } .wg-footer__heading, .wg-widget__title { cursor: pointer; padding-block: var(--wg-space-3); margin: 0; display: flex; justify-content: space-between; align-items: center; &::after { content: "+"; font-weight: var(--wg-fw-normal); margin: 0; width: auto; height: auto; background: none; } &.is-open::after { content: "\2212"; } } .wg-footer__el, .widget > :not(.wg-widget__title) { display: none; padding-bottom: var(--wg-space-3); } .is-open ~ *, .wg-widget__title.is-open ~ * { display: block; } } }
+  &__widgets--first-wide &__grid { @include up(lg) { @for $i from 2 through 6 { &--#{$i} { grid-template-columns: 1.5fr repeat(#{$i - 1}, minmax(0, 1fr)); } } } }
+  &__widgets--separators &__grid { @include up(md) { gap: 0;
+      .wg-footer__col { padding-inline: var(--wg-space-6); border-inline-start: 1px solid rgba(255, 255, 255, .14);
+        &:first-child { padding-inline-start: 0; border-inline-start: 0; }
+        &:last-child { padding-inline-end: 0; }
+      }
+    } }
+  &__widgets--center { text-align: center; .wg-footer__el { justify-content: center; } .wg-social { justify-content: center; } }
+  &__col { display: flex; flex-direction: column; gap: var(--wg-space-4); min-width: 0; }
+  &__el { display: block; }
+  &__widgets--divider .wg-footer__heading::after, &__widgets--divider .wg-widget__title::after { content: ""; display: block; width: 32px; height: 2px; margin-top: var(--wg-space-2); background: var(--wg-color-primary); }
+  &__widgets--center .wg-footer__heading::after, &__widgets--center .wg-widget__title::after { margin-inline: auto; }
+  &__heading, .wg-widget__title { margin: 0 0 var(--wg-space-5); color: inherit; font-size: var(--wg-fs-lg); font-weight: var(--wg-fw-bold); font-family: var(--wg-font-heading);
+    body.wg-footer-divider & { padding-bottom: 10px; position: relative; &::after { content: ""; position: absolute; inset-inline-start: 0; bottom: 0; width: 36px; height: 2px; background: var(--wg-color-accent); } }
+  }
+  &__description { margin: 0; line-height: var(--wg-lh-relaxed); opacity: .85; max-width: 36ch; }
+  &__menu { display: flex; flex-direction: column; gap: var(--wg-space-4); } &__menu a { font-weight: var(--wg-fw-regular); }
+  &__contact li { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; .wg-icon { flex: none; margin-top: 2px; color: var(--wg-color-accent); } }
+  &__newsletter { form { display: flex; gap: 8px; } }
+  .wg-social--circle .wg-social__link .wg-icon { border-color: rgba(255, 255, 255, .5); }
+  // The primary hover color would disappear against a dark footer, so the link keeps the footer text color.
+  .wg-social__link:hover { color: inherit; .wg-icon { border-color: currentColor; } }
+  .wg-logo img { max-height: var(--wg-logo-height, 56px); }
+  &__bottom { font-size: var(--wg-fs-sm); &.has-border { border-top: 1px solid rgba(255, 255, 255, .12); } }
+  &__bottom-inner { display: grid; grid-template-columns: 1fr; gap: var(--wg-space-3); align-items: center; padding-block: var(--wg-space-5); text-align: center;
+    // Explicit columns, so an empty side area (which hides itself) does not pull the centre off centre.
+    @include up(md) { grid-template-columns: 1fr auto 1fr;
+      .wg-footer__area--left { grid-column: 1; }
+      .wg-footer__area--center { grid-column: 2; }
+      .wg-footer__area--right { grid-column: 3; }
+    }
+  }
+  &__area { display: flex; align-items: center; gap: var(--wg-space-4); justify-content: center; flex-wrap: wrap;
+    @include up(md) { &--left { justify-content: flex-start; } &--right { justify-content: flex-end; } }
+    &:empty { display: none; }
+  }
+  &__copyright { margin: 0; opacity: .85; }
+}

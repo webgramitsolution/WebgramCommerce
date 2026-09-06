@@ -1,0 +1,8 @@
+@use "../abstracts/breakpoints" as *;
+@use "../abstracts/mixins" as *;
+.wg-pagination { margin: var(--wg-space-10) 0; .nav-links { display: flex; justify-content: center; gap: var(--wg-space-2); }
+  .page-numbers { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; height: 40px; padding: 0 10px; border: var(--wg-border-width) solid var(--wg-color-border); border-radius: var(--wg-radius-md); color: var(--wg-color-heading); font-weight: var(--wg-fw-medium);
+    &.current { background: var(--wg-color-primary); border-color: var(--wg-color-primary); color: var(--wg-color-primary-contrast); }
+    &:hover:not(.current) { border-color: var(--wg-color-primary); }
+  }
+}

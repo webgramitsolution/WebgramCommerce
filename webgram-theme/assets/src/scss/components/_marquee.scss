@@ -1,0 +1,26 @@
+@use "../abstracts/breakpoints" as *;
+@use "../abstracts/mixins" as *;
+// Announcement marquee: CSS animation over a duplicated track; JS duplicates content and sets --wg-marquee-duration.
+.wg-marquee { position: relative; width: 100%; overflow: hidden; min-height: var(--wg-row-height, 36px); display: flex; align-items: center; --wg-marquee-gap: 48px;
+  &__track { display: flex; align-items: center; gap: var(--wg-marquee-gap); white-space: nowrap; will-change: transform; }
+  &__item { display: inline-flex; align-items: center; gap: 8px; color: inherit; text-decoration: none; flex: none; font-weight: var(--wg-fw-semibold); }
+  &__icon { width: 16px; height: 16px; }
+  &--sep-dot &__item::after { content: ""; width: 5px; height: 5px; border-radius: 50%; background: currentColor; opacity: .7; margin-inline-start: var(--wg-marquee-gap); }
+  &--sep-line &__item::after { content: ""; width: 1px; height: 14px; background: currentColor; opacity: .4; margin-inline-start: var(--wg-marquee-gap); }
+  &--marquee &__track { animation: wg-marquee var(--wg-marquee-duration, 30s) linear infinite; }
+  &--marquee[data-direction="right"] &__track { animation-direction: reverse; }
+  &--marquee.wg-marquee--pause:hover &__track { animation-play-state: paused; }
+  &--static { justify-content: center; &__track { flex-wrap: wrap; justify-content: center; white-space: normal; } }
+  &--static &__track { flex-wrap: wrap; justify-content: center; white-space: normal; row-gap: 4px; }
+  &--static &__item:last-child::after { display: none; }
+  &--slide { justify-content: center; &__track { display: grid; } }
+  &--slide &__track { display: grid; justify-items: center; }
+  &--slide &__item { grid-area: 1 / 1; opacity: 0; transition: opacity var(--wg-transition-base); &.is-active { opacity: 1; } &::after { display: none; } }
+}
+@keyframes wg-marquee { from { transform: translateX(0); } to { transform: translateX(calc(-1 * var(--wg-marquee-half, 50%))); } }
+[dir="rtl"] .wg-marquee--marquee .wg-marquee__track { animation-direction: reverse; }
+[dir="rtl"] .wg-marquee--marquee[data-direction="right"] .wg-marquee__track { animation-direction: normal; }
+@media (prefers-reduced-motion: reduce) {
+  .wg-marquee--marquee .wg-marquee__track { animation: none; flex-wrap: wrap; justify-content: center; white-space: normal; }
+  .wg-marquee--marquee .wg-marquee__item.is-clone { display: none; }
+}

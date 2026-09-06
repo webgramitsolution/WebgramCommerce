@@ -15,4 +15,5 @@ defined( 'ABSPATH' ) || exit;
 		<p class="wg-empty__text"><?php esc_html_e( 'There is nothing here yet.', 'webgram' ); ?></p>
 	<?php endif; ?>
 	<?php get_search_form(); ?>
+	<?php webgram_render_block( (int) webgram_option( 'archive_empty_block' ) ); ?>
 </div>

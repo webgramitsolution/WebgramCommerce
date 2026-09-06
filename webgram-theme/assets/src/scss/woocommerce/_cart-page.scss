@@ -1,0 +1,30 @@
+@use "../abstracts/breakpoints" as *;
+@use "../abstracts/mixins" as *;
+.wg-cart-page { display: grid; gap: var(--wg-space-8); align-items: start; @include up(lg) { grid-template-columns: minmax(0, 1fr) 380px; }
+  &--sticky .wg-cart-summary { @include up(lg) { position: sticky; top: calc(var(--wg-header-height) + var(--wg-sticky-offset, 0px) + 16px); } }
+  &__cross-sells { margin-top: var(--wg-space-12); .cross-sells > h2 { text-align: center; } .cross-sells .products { --wg-cols-desktop: 4; --wg-cols-tablet: 3; --wg-cols-mobile: 2; } }
+}
+.wg-cart-table { width: 100%; border-collapse: collapse; border: 0;
+  th { text-align: start; padding: 0 12px 12px; font-size: var(--wg-fs-xs); text-transform: uppercase; letter-spacing: .06em; color: var(--wg-color-text-muted); border: 0; }
+  td { padding: 14px 12px; border: 0; border-top: var(--wg-border-width) solid var(--wg-color-border); vertical-align: middle; }
+  .product-thumbnail img { width: 72px; height: 72px; object-fit: cover; border-radius: var(--wg-radius-md); }
+  .product-name a { color: var(--wg-color-heading); font-weight: var(--wg-fw-medium); }
+  .variation { font-size: var(--wg-fs-xs); color: var(--wg-color-text-muted); dt, dd { display: inline; margin: 0; } }
+  .product-subtotal { font-weight: var(--wg-fw-bold); }
+  &__remove { display: inline-flex; width: 32px; height: 32px; border-radius: 50%; align-items: center; justify-content: center; color: var(--wg-color-text-muted); &:hover { color: var(--wg-color-danger); background: var(--wg-color-bg-alt); } .wg-icon { width: 16px; height: 16px; } }
+  &__actions { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--wg-space-3); }
+  &__coupon { display: flex; gap: 8px; input { min-height: 44px; width: 200px; } }
+  &__buttons { display: flex; gap: 8px; }
+  .wg-qty { height: 44px; }
+  @include down(md) { thead { display: none; } tr { display: grid; grid-template-columns: 72px 1fr; gap: 4px 12px; padding: 12px 0; border-top: var(--wg-border-width) solid var(--wg-color-border); } td { display: block; border: 0; padding: 0; &::before { content: attr(data-title); display: block; font-size: 10px; text-transform: uppercase; color: var(--wg-color-text-muted); } &.product-remove, &.product-thumbnail { grid-row: span 3; &::before { display: none; } } &.product-remove { grid-column: 1; grid-row: auto; } &.product-thumbnail { grid-column: 1; grid-row: 1 / span 4; } &.product-name { grid-column: 2; &::before { display: none; } } &.actions { grid-column: 1 / -1; } } tr:has(.actions) { display: block; } }
+}
+.wg-cart-summary { padding: var(--wg-space-6); border: var(--wg-border-width) solid var(--wg-color-border); border-radius: var(--wg-radius-xl); background: var(--wg-color-surface); box-shadow: var(--wg-shadow-sm);
+  .cart_totals { width: 100%; > h2 { font-size: var(--wg-fs-lg); margin-bottom: var(--wg-space-4); } }
+  table.shop_table { width: 100%; border: 0; border-collapse: collapse; th, td { padding: 10px 0; border: 0; border-bottom: var(--wg-border-width) solid var(--wg-color-border); font-size: var(--wg-fs-sm); text-align: start; } td { text-align: end; } tr.order-total th, tr.order-total td { font-size: var(--wg-fs-lg); font-weight: var(--wg-fw-bold); border-bottom: 0; } }
+  .wc-proceed-to-checkout { margin-top: var(--wg-space-4); padding: 0; .checkout-button { display: flex; width: 100%; justify-content: center; min-height: 52px; text-transform: uppercase; letter-spacing: .04em; font-weight: var(--wg-fw-bold); } }
+  .woocommerce-shipping-destination { font-size: var(--wg-fs-xs); color: var(--wg-color-text-muted); }
+  #shipping_method { list-style: none; padding: 0; margin: 0; li { display: flex; align-items: center; gap: 6px; font-size: var(--wg-fs-sm); label { margin: 0; font-weight: var(--wg-fw-regular); } } }
+}
+.cart-empty.woocommerce-info { text-align: center; }
+.wg-cart-empty__products { margin-top: var(--wg-space-12); .products { --wg-cols-desktop: 4; --wg-cols-tablet: 3; --wg-cols-mobile: 2; } }
+.return-to-shop { text-align: center; .button { @extend .wg-btn !optional; } }

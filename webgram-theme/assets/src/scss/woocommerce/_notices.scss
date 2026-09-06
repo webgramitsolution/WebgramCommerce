@@ -1,0 +1,9 @@
+@use "../abstracts/breakpoints" as *;
+@use "../abstracts/mixins" as *;
+.woocommerce-message, .woocommerce-info, .woocommerce-error { display: flex; flex-wrap: wrap; align-items: center; gap: var(--wg-space-3); margin: 0 0 var(--wg-space-6); padding: var(--wg-space-3) var(--wg-space-4); border-radius: var(--wg-radius-md); border: var(--wg-border-width) solid var(--wg-color-border); border-inline-start-width: 4px; background: var(--wg-color-bg-alt); list-style: none;
+  .button { margin-inline-start: auto; order: 2; }
+}
+.woocommerce-message { border-inline-start-color: var(--wg-color-success); }
+.woocommerce-info { border-inline-start-color: var(--wg-color-secondary); }
+.woocommerce-error { border-inline-start-color: var(--wg-color-danger); }
+.screen-reader-text { @include sr-only; }

@@ -1,0 +1,21 @@
+@use "../abstracts/breakpoints" as *;
+@use "../abstracts/mixins" as *;
+// Badges. Shape follows body.wg-badges-{wave|pill|rectangle|ribbon}. The wave shape is an SVG mask so colors stay
+// tokens; a thin gold underline curve sits under it.
+.wg-badge { position: relative; display: inline-block; padding: 4px 10px; border-radius: var(--wg-badge-radius); background: var(--wg-color-heading); color: #fff; font-size: 13px; font-weight: var(--wg-fw-semibold); line-height: 1.4; white-space: nowrap;
+  &--sale { background: var(--wg-color-primary); }
+  &--new { background: var(--wg-color-secondary); }
+  &--accent { background: var(--wg-color-accent); color: var(--wg-color-heading); }
+  &--success { background: var(--wg-color-success); }
+  &--outline { background: var(--wg-color-surface); color: var(--wg-color-heading); box-shadow: inset 0 0 0 1px var(--wg-color-border); }
+}
+body.wg-badges-pill .wg-badge { border-radius: var(--wg-radius-pill); }
+body.wg-badges-rectangle .wg-badge { border-radius: 0; }
+body.wg-badges-ribbon .wg-card__badges .wg-badge { border-radius: 0 var(--wg-radius-sm) var(--wg-radius-sm) 0; margin-inline-start: calc(-1 * var(--wg-space-3)); padding-inline-start: var(--wg-space-3);
+  &::before { content: ""; position: absolute; inset-inline-start: 0; top: 100%; border-style: solid; border-width: 0 6px 6px 0; border-color: transparent rgba(0, 0, 0, .35) transparent transparent; }
+}
+body.wg-badges-wave .wg-card__badges .wg-badge, .wg-badge--wave { border-radius: 0; padding: 6px 14px 8px 12px; margin-inline-start: calc(-1 * var(--wg-space-3)); margin-top: calc(-1 * var(--wg-space-3));
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 40' preserveAspectRatio='none'%3E%3Cpath d='M0 0h100v26c-8 6-16 9-26 9S56 38 44 40c-8 1-16-2-26-2S8 40 0 36z'/%3E%3C/svg%3E"); mask-size: 100% 100%; -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 40' preserveAspectRatio='none'%3E%3Cpath d='M0 0h100v26c-8 6-16 9-26 9S56 38 44 40c-8 1-16-2-26-2S8 40 0 36z'/%3E%3C/svg%3E"); -webkit-mask-size: 100% 100%;
+}
+body.wg-badges-wave .wg-card__badges .wg-badge::after, .wg-badge--wave::after { content: ""; position: absolute; inset-inline: 0; bottom: 2px; height: 3px; background: var(--wg-color-accent); border-radius: 50%; opacity: .95; }
+[dir="rtl"] body.wg-badges-wave .wg-card__badges .wg-badge { transform: scaleX(-1); > * { display: inline-block; transform: scaleX(-1); } }

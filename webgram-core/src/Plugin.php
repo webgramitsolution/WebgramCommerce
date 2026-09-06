@@ -55,9 +55,14 @@ final class Plugin {
 			( new Admin\ModulesPage( $this ) )->register();
 			( new Admin\SettingsPage( $this ) )->register();
 			( new Admin\Notices( $this ) )->register();
+			$page_setup = new Admin\PageSetup( $this );
+			$page_setup->register();
+			( new Support\DemoContent( $this, $page_setup ) )->register();
 		}
 
 		$this->assets()->register_hooks();
+		Support\ProductQuery::register();
+		Support\Trending::register();
 
 		// Module boot runs after all plugins are loaded so dependency checks see WooCommerce, Elementor, etc.
 		add_action( 'plugins_loaded', fn() => $this->modules()->boot_all(), 20 );

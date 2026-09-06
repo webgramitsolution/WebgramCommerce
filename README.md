@@ -20,7 +20,7 @@ Architecture: see `docs/architecture.md`. Phase reports: `docs/phases/`.
 3. Front-end build (theme only):
    `cd webgram-theme && npm install && npm run build` (or `npm run watch` while editing SCSS/JS).
 4. Add to `wp-config.php` during development: `define( 'SCRIPT_DEBUG', true );` so assets bust cache by file time.
-5. Activate the Webgram theme, then Webgram Core. Open Webgram > Modules and Appearance > Customize > Webgram.
+5. Activate the Webgram theme, then Webgram Core. Open Webgram > Theme Settings, Header Builder, Footer Builder and Modules.
 
 ## Conventions
 

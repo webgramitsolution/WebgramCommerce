@@ -6,9 +6,9 @@
 
 defined( 'WP_UNINSTALL_PLUGIN' ) || exit;
 
-$settings = get_option( 'webgram_core_settings_general', [] );
+$webgram_core_settings = get_option( 'webgram_core_settings_general', [] );
 
-if ( empty( $settings['remove_data_on_uninstall'] ) ) {
+if ( empty( $webgram_core_settings['remove_data_on_uninstall'] ) ) {
 	return;
 }
 

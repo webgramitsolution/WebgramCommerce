@@ -1,0 +1,158 @@
+@use "../abstracts/breakpoints" as *;
+@use "../abstracts/mixins" as *;
+// Homepage sections (spec 4.3): product rows, Best Sellers band, categories, coupons, trust badges, testimonials,
+// Instagram, about split, blog grid, benefits row, banner, marquee strip, carousel controls.
+
+.wg-section-heading { flex-wrap: wrap; &__text { display: flex; flex-direction: column; align-items: center; } &__subtitle { margin: 4px 0 0; color: var(--wg-color-text-muted); font-size: var(--wg-fs-sm); }
+  &--start &__text { align-items: flex-start; } &--between { justify-content: flex-start; } }
+
+// Carousel chrome (scroll-snap rows enhanced by carousel.js)
+.wg-carousel { position: relative;
+  &__arrows { position: absolute; top: 50%; inset-inline: -8px; display: flex; justify-content: space-between; pointer-events: none; transform: translateY(-50%); z-index: 3; &[hidden] { display: none; } }
+  &__arrow { pointer-events: auto; width: 40px; height: 40px; border-radius: 50%; border: var(--wg-border-width) solid var(--wg-color-border); background: var(--wg-color-surface); color: var(--wg-color-heading); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: var(--wg-shadow-md); transition: opacity var(--wg-transition-fast), background var(--wg-transition-fast); &:hover { background: var(--wg-color-primary); color: #fff; border-color: transparent; } &:disabled { opacity: .35; cursor: default; } }
+  &__dots { display: flex; justify-content: center; gap: 8px; margin-top: var(--wg-space-4); &[hidden] { display: none; } }
+  &__dot { width: 8px; height: 8px; border-radius: 50%; border: 0; padding: 0; background: var(--wg-color-border); cursor: pointer; transition: transform var(--wg-transition-fast), background var(--wg-transition-fast); &.is-active { background: var(--wg-color-primary); transform: scale(1.3); } }
+  &.is-carousel > .products, &.is-carousel > .wg-carousel__track, &.is-carousel > [data-wg-carousel-track] { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; gap: var(--wg-space-4); &::-webkit-scrollbar { display: none; } > * { flex: 0 0 var(--wg-carousel-item, 45%); scroll-snap-align: start; min-width: 0; } }
+  @include down(sm) { &__arrows { display: none; } }
+}
+[data-wg-carousel="mobile"] { @include down(md) { --wg-carousel-item: 45%; } }
+[data-wg-carousel="snap"], [data-wg-carousel="dots"] { --wg-carousel-item: calc((100% - var(--wg-space-4) * (var(--wgc-cols, 4) - 1)) / var(--wgc-cols, 4)); @include down(lg) { --wg-carousel-item: 45%; } @include down(sm) { --wg-carousel-item: 85%; } }
+.wg-band__products[data-wg-carousel="dots"] { --wg-carousel-item: calc((100% - var(--wg-space-4) * 3) / 4); @include down(lg) { --wg-carousel-item: 45%; } }
+
+// Product rows (Core section templates print .wg-products with the theme cards inside)
+.wg-products { margin-block: var(--wg-space-10);
+  .products { display: grid; grid-template-columns: repeat(var(--wg-cols-desktop, 5), minmax(0, 1fr)); gap: var(--wg-space-4); list-style: none; margin: 0; padding: 0; @include down(lg) { grid-template-columns: repeat(var(--wg-cols-tablet, 3), minmax(0, 1fr)); } @include down(md) { grid-template-columns: repeat(var(--wg-cols-mobile, 2), minmax(0, 1fr)); } }
+  &--band { margin-block: var(--wg-space-10); } }
+.wg-band { background: var(--wg-color-secondary); color: #fff; border-radius: 16px; padding: var(--wg-space-8);
+  @include down(md) { padding: var(--wg-space-5); }
+  &__inner { display: grid; grid-template-columns: minmax(220px, 27%) minmax(0, 1fr); gap: var(--wg-space-6); align-items: stretch; @include down(lg) { grid-template-columns: 1fr; gap: var(--wg-space-5); } }
+  &__title { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: var(--wg-space-8) var(--wg-space-5); border: 1px solid rgba(255, 255, 255, .18); border-radius: 12px; background: radial-gradient(circle at 50% 40%, rgba(255, 255, 255, .1), transparent 62%); }
+  &__crown { color: var(--wg-color-accent); margin-bottom: var(--wg-space-2); }
+  &__ornament { display: block; margin-top: var(--wg-space-4); color: var(--wg-color-accent); opacity: .9; }
+  &__line1 { display: block; font-size: clamp(44px, 5vw, 64px); font-weight: 800; letter-spacing: .02em; }
+  &__line2 { display: block; font-size: clamp(36px, 4vw, 52px); font-family: var(--wg-font-display, Georgia, "Times New Roman", serif); font-style: italic; font-weight: 400; margin-top: -4px; color: var(--wg-color-accent); }
+  &__subtitle { margin: var(--wg-space-3) 0 0; opacity: .85; font-size: var(--wg-fs-sm); line-height: 1.5; }
+  &__products .products { grid-template-columns: repeat(var(--wg-cols-desktop, 4), minmax(0, 1fr)); }
+  h1, h2, h3, h4, p { color: inherit; }
+  .wg-card { color: var(--wg-color-text); }
+  .wg-carousel__dot { background: rgba(255,255,255,.35); &.is-active { background: #fff; } }
+  &__more { text-align: center; margin: var(--wg-space-6) 0 0; .wg-btn--outline { color: #fff; border-color: rgba(255,255,255,.6); &:hover { background: #fff; color: var(--wg-color-secondary); } } }
+}
+
+// Category circles row. Sizes, gap and the ribbon come from the Category circles settings (--wg-cat-* tokens).
+.wg-categories { margin-block: var(--wg-space-10);
+  // One row at every width. Circles centre when they fit and scroll from the start when they do not,
+  // which the auto margins on the first and last circle handle without clipping the leading ones.
+  &__row { display: flex; gap: var(--wg-cat-gap, 24px); overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding-block: 4px;
+    &::-webkit-scrollbar { display: none; }
+    // Circles give up to a fifth of their size to fit the row before it starts scrolling.
+    > * { flex: 0 1 var(--wg-cat-size, 140px); min-width: calc(var(--wg-cat-size, 140px) * .8); scroll-snap-align: start; }
+    > :first-child { margin-inline-start: auto; }
+    > :last-child { margin-inline-end: auto; }
+    // Tablet without the single row option wraps into a grid instead.
+    @include down(lg) { .wg-categories--tablet-grid & { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); justify-items: center; overflow: visible; > * { flex: none; } > :first-child, > :last-child { margin-inline: 0; } } }
+    // Phone: three circles fill the row, the rest swipe in.
+    @include down(md) { scroll-snap-type: x mandatory; > * { flex: 0 0 calc((100% - var(--wg-cat-gap, 12px) * 2) / 3); min-width: 0; } > :first-child, > :last-child { margin-inline: 0; } }
+  }
+}
+.wg-category-item { position: relative; display: flex; flex-direction: column; align-items: center; gap: var(--wg-space-2); width: var(--wg-cat-size, 140px); max-width: 100%; text-align: center; color: var(--wg-color-heading); text-decoration: none;
+  @include down(md) { width: 100%; }
+  &__media { position: relative; display: block; width: 100%; aspect-ratio: 1; overflow: hidden; border-radius: 50%; border: 1px solid var(--wg-cat-ring, #ead9d9); background: var(--wg-color-bg-alt); transition: transform var(--wg-transition-base) var(--wg-ease), box-shadow var(--wg-transition-base);
+    .wg-categories--square & { border-radius: 0; }
+    .wg-categories--rounded & { border-radius: var(--wg-radius-lg); }
+    img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  }
+  &:hover &__media { transform: scale(1.04); box-shadow: var(--wg-shadow-sm); }
+
+  // Ribbon banner inside the circle: a small gap from the edge on both sides, notched ends, one line with an ellipsis.
+  &__ribbon { position: absolute; top: var(--wg-cat-ribbon-offset, 56%); inset-inline-start: var(--wg-cat-ribbon-inset, 6px); inset-inline-end: var(--wg-cat-ribbon-inset, 6px); transform: translateY(-50%); height: var(--wg-cat-ribbon-height, 28px); z-index: 2; pointer-events: none; }
+  &__ribbon-text { display: block; width: 100%; height: 100%; line-height: var(--wg-cat-ribbon-height, 28px); padding: 0 calc(var(--wg-cat-ribbon-notch, 9px) + 3px); background: var(--wg-cat-ribbon-bg, var(--wg-color-primary)); color: var(--wg-cat-ribbon-text, #fff); font-size: var(--wg-cat-ribbon-fs, 11px); font-weight: var(--wg-fw-bold); text-transform: var(--wg-cat-ribbon-transform, uppercase); letter-spacing: .02em; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    clip-path: polygon(0 0, 100% 0, calc(100% - var(--wg-cat-ribbon-notch, 9px)) 50%, 100% 100%, 0 100%, var(--wg-cat-ribbon-notch, 9px) 50%); }
+
+  &__label { font-weight: var(--wg-fw-semibold); font-size: var(--wg-fs-sm); }
+  &__count { font-size: var(--wg-fs-xs); color: var(--wg-color-text-muted); }
+}
+
+// Coupons row and trust badges
+.wg-coupons-row { margin-block: var(--wg-space-10); &__grid { display: grid; grid-template-columns: repeat(var(--wgc-cols, 4), minmax(0, 1fr)); gap: var(--wg-space-4); @include down(lg) { grid-template-columns: repeat(2, 1fr); } @include down(sm) { grid-template-columns: 1fr; } } }
+.wg-coupon-card { display: flex; justify-content: space-between; align-items: center; gap: var(--wg-space-3); padding: var(--wg-space-4); border: 1px dashed var(--wg-color-primary); border-radius: var(--wg-radius-lg); background: color-mix(in srgb, var(--wg-color-primary) 5%, #fff);
+  &__body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  &__headline { font-size: var(--wg-fs-lg); color: var(--wg-color-primary); }
+  &__meta { font-size: var(--wg-fs-xs); color: var(--wg-color-text-muted); }
+  &__code { display: flex; flex-direction: column; align-items: center; padding: 8px 14px; border: 1px solid var(--wg-color-border); border-radius: var(--wg-radius-md); background: var(--wg-color-surface); font: inherit; font-weight: var(--wg-fw-bold); letter-spacing: .1em; cursor: pointer; white-space: nowrap; small { font-weight: var(--wg-fw-regular); font-size: 11px; color: var(--wg-color-text-muted); letter-spacing: 0; } &:hover { border-color: var(--wg-color-primary); } } }
+.wg-trust-badges { margin-block: var(--wg-space-8); &__grid { display: grid; grid-template-columns: repeat(var(--wgc-cols, 5), minmax(0, 1fr)); gap: var(--wg-space-6); align-items: center; @include down(md) { grid-template-columns: repeat(3, 1fr); } } }
+.wg-trust-badge { display: flex; flex-direction: column; align-items: center; gap: var(--wg-space-2); font-size: var(--wg-fs-sm); color: var(--wg-color-text-muted); text-decoration: none; img { max-height: 64px; width: auto; transition: filter var(--wg-transition-base), opacity var(--wg-transition-base); } .is-grayscale & img { filter: grayscale(1); opacity: .7; } .is-grayscale &:hover img { filter: none; opacity: 1; } }
+
+// Testimonials
+.wg-testimonials { margin-block: var(--wg-space-10); padding: var(--wg-space-8) var(--wg-space-6); border-radius: 16px; background: var(--wg-color-bg-alt);
+  &--dark { background: var(--wg-color-secondary); color: #fff; .wg-section-heading__title { color: #fff; } .wg-section-heading__ornament { color: var(--wg-color-accent); } .wg-carousel__dot { background: rgba(255,255,255,.35); &.is-active { background: #fff; } } }
+  &__row { display: grid; grid-template-columns: repeat(var(--wgc-cols, 3), minmax(0, 1fr)); gap: var(--wg-space-5);
+    // Tablet and phone: one card at a time on a swipe row, which is also where the carousel script auto plays.
+    @include down(lg) { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+      &::-webkit-scrollbar { display: none; }
+      > * { flex: 0 0 60%; scroll-snap-align: start; }
+      @include down(md) { > * { flex: 0 0 88%; } }
+    }
+  }
+  @include down(md) { padding: var(--wg-space-5) var(--wg-space-4); }
+}
+.wg-testimonial { display: grid; grid-template-columns: 40% minmax(0, 1fr); background: var(--wg-color-surface); color: var(--wg-color-text); border-radius: var(--wg-radius-lg); overflow: hidden; min-height: 220px;
+  &__photo { img { width: 100%; height: 100%; object-fit: cover; display: block; } }
+  &__body { padding: var(--wg-space-5); display: flex; flex-direction: column; gap: var(--wg-space-2); }
+  &__product { font-weight: var(--wg-fw-bold); color: var(--wg-color-heading); }
+  &__text { font-size: var(--wg-fs-sm); color: var(--wg-color-text); p:last-child { margin-bottom: 0; } }
+  // No wrapping, so the name and the stars sit on the same line on every card in the row.
+  &__footer { margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; gap: var(--wg-space-2); flex-wrap: nowrap; }
+  &__name { min-width: 0; font-weight: var(--wg-fw-semibold); font-size: var(--wg-fs-sm); small { display: block; font-weight: var(--wg-fw-regular); color: var(--wg-color-text-muted); } }
+  &__stars { flex: 0 0 auto; display: inline-flex; gap: 2px; color: var(--wg-color-border); .is-on { color: var(--wg-color-accent); } }
+  @include down(sm) { grid-template-columns: 1fr; &__photo img { aspect-ratio: 16 / 9; } }
+}
+
+// Instagram
+.wg-instagram { margin-block: var(--wg-space-10);
+  &__grid { display: grid; grid-template-columns: repeat(var(--wgc-ig-columns, 6), minmax(0, 1fr)); gap: var(--wg-space-3); @include down(lg) { grid-template-columns: repeat(4, 1fr); } @include down(sm) { grid-template-columns: repeat(3, 1fr); gap: var(--wg-space-2); } }
+  &__tile { position: relative; display: block; aspect-ratio: 1; overflow: hidden; border-radius: var(--wg-radius-md); background: var(--wg-color-bg-alt); img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--wg-transition-base) var(--wg-ease); } &:hover img { transform: scale(1.06); } &.is-video::after { content: ""; position: absolute; top: 10px; inset-inline-end: 10px; border-style: solid; border-width: 6px 0 6px 10px; border-color: transparent transparent transparent #fff; filter: drop-shadow(0 1px 2px rgba(0,0,0,.4)); } }
+  &__hover { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--wg-space-2); padding: var(--wg-space-3); background: rgba(17, 24, 39, .55); color: #fff; opacity: 0; transition: opacity var(--wg-transition-fast); text-align: center; font-size: var(--wg-fs-xs); .wg-instagram__tile:hover &, .wg-instagram__tile:focus-visible & { opacity: 1; } }
+  &__follow { margin-inline-start: auto; }
+  .wg-btn--pill { border-radius: var(--wg-radius-pill); }
+}
+
+// About split, blog grid, benefits, banner, strip
+.wg-about { display: grid; grid-template-columns: 40% minmax(0, 1fr); gap: var(--wg-space-8); align-items: center; margin-block: var(--wg-space-10);
+  &--image-right { direction: rtl; > * { direction: ltr; } }
+  &__media img { width: 100%; height: auto; border-radius: var(--wg-radius-xl); display: block; }
+  &__body .wg-section-heading { margin-bottom: var(--wg-space-4); }
+  &__text { color: var(--wg-color-text); margin-bottom: var(--wg-space-5); }
+  .wg-benefits { margin-bottom: var(--wg-space-5); }
+  &__cta { gap: 8px; }
+  @include down(lg) { grid-template-columns: 1fr; gap: var(--wg-space-5); }
+}
+.wg-blog-grid { margin-block: var(--wg-space-10);
+  &__row { display: grid; grid-template-columns: repeat(var(--wg-blog-cols, 4), minmax(0, 1fr)); gap: var(--wg-space-5); @include down(lg) { grid-template-columns: repeat(2, 1fr); } }
+  .wg-post-card--grid { .wg-post-card__media img { aspect-ratio: 16 / 10; object-fit: cover; width: 100%; } .wg-post-card__title { font-size: var(--wg-fs-lg); } .wg-link-more { display: inline-flex; align-items: center; gap: 4px; } }
+}
+.wg-benefits { display: grid; grid-template-columns: repeat(var(--wg-benefits-cols, 5), minmax(0, 1fr)); gap: var(--wg-space-4); margin-block: var(--wg-space-8);
+  @include down(lg) { grid-template-columns: repeat(3, 1fr); } @include down(sm) { grid-template-columns: repeat(2, 1fr); }
+  &--cards .wg-benefit { padding: var(--wg-space-4); border: var(--wg-border-width) solid var(--wg-color-border); border-radius: var(--wg-radius-lg); background: var(--wg-color-surface); align-items: flex-start; text-align: start; }
+}
+.wg-benefit { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px;
+  &__icon { color: var(--wg-color-primary); .wg-icon { width: 28px; height: 28px; } }
+  &__title { font-size: var(--wg-fs-base); color: var(--wg-color-heading); }
+  &__text { font-size: var(--wg-fs-sm); color: var(--wg-color-text-muted); }
+}
+.wg-banner { position: relative; display: flex; align-items: center; min-height: var(--wg-banner-height, 320px); overflow: hidden; color: #fff; margin-block: var(--wg-space-8); text-decoration: none;
+  &--rounded { border-radius: var(--wg-radius-xl); }
+  &__media { position: absolute; inset: 0; img { width: 100%; height: 100%; object-fit: cover; display: block; } }
+  &__overlay { position: absolute; inset: 0; background: rgba(17, 24, 39, var(--wg-banner-overlay, .2)); }
+  &__content { position: relative; z-index: 1; padding: var(--wg-space-8); max-width: 560px; display: flex; flex-direction: column; gap: var(--wg-space-3); align-items: flex-start; }
+  &--center &__content { margin: 0 auto; align-items: center; text-align: center; }
+  &--right &__content { margin-inline-start: auto; align-items: flex-end; text-align: end; }
+  &__heading { margin: 0; color: inherit; font-size: clamp(24px, 3vw, 40px); }
+  &__text { margin: 0; opacity: .92; }
+  @include down(md) { &__content { padding: var(--wg-space-5); } }
+}
+.wg-strip { background: var(--wg-strip-bg, var(--wg-color-primary)); color: var(--wg-strip-color, #fff); font-size: var(--wg-fs-sm); font-weight: var(--wg-fw-medium); padding: 8px 0; margin-block: var(--wg-space-6); .wg-marquee__item { display: inline-flex; align-items: center; gap: 8px; .wg-icon { width: 16px; height: 16px; } } }
+.wp-block-webgram-strip .wg-strip, .elementor-widget-webgram-strip .wg-strip { margin-block: 0; }
+// Hero slider and the marquee strip under it sit flush, with no gap on either side.
+.wp-block-webgram-slider { margin-block: 0; }
+.wp-block-webgram-slider + .wp-block-webgram-strip { margin-block-start: 0; }

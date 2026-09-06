@@ -1,0 +1,5 @@
+// Loaded on shop, product, cart, checkout and account pages. Single product, cart and checkout partials arrive in Phases 2 and 3.
+@use "abstracts/breakpoints" as *;
+@use "abstracts/mixins" as *;
+@use "woocommerce/loop";
+@use "woocommerce/notices";

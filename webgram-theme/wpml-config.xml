@@ -1,0 +1,56 @@
+<wpml-config>
+	<admin-texts>
+		<key name="webgram_theme_settings">
+			<key name="announcement_text" />
+			<key name="header_deliver_label" />
+			<key name="search_placeholder" />
+			<key name="footer_copyright" />
+			<key name="footer_about_text" />
+			<key name="cart_drawer_note" />
+			<key name="cart_drawer_button" />
+			<key name="cart_drawer_subline" />
+			<key name="checkout_trust_text" />
+			<key name="product_payment_title" />
+			<key name="product_payment_caption" />
+			<key name="shop_banner_text" />
+			<key name="blog_title" />
+			<key name="error_404_title" />
+			<key name="error_404_text" />
+			<key name="error_404_button" />
+		</key>
+	</admin-texts>
+	<language-switcher-settings>
+		<key name="show_in_menu">0</key>
+	</language-switcher-settings>
+	<elementor-widgets>
+		<widget name="webgram-section_heading">
+			<fields>
+				<field>title</field>
+				<field>subtitle</field>
+				<field>link_text</field>
+			</fields>
+		</widget>
+		<widget name="webgram-banner">
+			<fields>
+				<field>heading</field>
+				<field>text</field>
+				<field>button_text</field>
+			</fields>
+		</widget>
+		<widget name="webgram-about">
+			<fields>
+				<field>title</field>
+				<field>subtitle</field>
+				<field>text</field>
+				<field>button_text</field>
+			</fields>
+		</widget>
+		<widget name="webgram-blog_grid">
+			<fields>
+				<field>title</field>
+				<field>subtitle</field>
+				<field>link_text</field>
+			</fields>
+		</widget>
+	</elementor-widgets>
+</wpml-config>

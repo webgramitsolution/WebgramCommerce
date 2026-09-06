@@ -1,0 +1,107 @@
+// Fallback token values. The Customizer prints :root overrides after main.css, so these only matter when the inline
+// block is missing (e.g. a cached page during a migration). Keep in sync with inc/customizer/defaults.php.
+:root {
+  --wg-color-primary: #a0181f;
+  --wg-color-primary-hover: #83131a;
+  --wg-color-primary-contrast: #ffffff;
+  --wg-color-secondary: #1f2937;
+  --wg-color-accent: #c9a24d;
+  --wg-color-text: #374151;
+  --wg-color-text-muted: #6b7280;
+  --wg-color-heading: #111827;
+  --wg-color-bg: #ffffff;
+  --wg-color-bg-alt: #f8f7f5;
+  --wg-color-surface: #ffffff;
+  --wg-color-border: #e5e7eb;
+  --wg-color-success: #15803d;
+  --wg-color-warning: #b45309;
+  --wg-color-danger: #b91c1c;
+  --wg-color-price: #111827;
+  --wg-color-sale: #15803d;
+  --wg-color-star: #f59e0b;
+  --wg-color-topbar-bg: #fff1f2;
+  --wg-color-topbar-text: #7f1d1d;
+  --wg-color-header-bg: #ffffff;
+  --wg-color-header-text: #111827;
+  --wg-color-footer-bg: #3f0d12;
+  --wg-color-footer-text: #f5e9ea;
+
+  --wg-font-body: "Inter", system-ui, sans-serif;
+  --wg-font-heading: "Manrope", system-ui, sans-serif;
+  --wg-font-size-base: 16px;
+  --wg-fw-regular: 400;
+  --wg-fw-medium: 500;
+  --wg-fw-semibold: 600;
+  --wg-fw-bold: 700;
+  --wg-fw-heading: 700;
+  --wg-ls-heading: -0.01em;
+  --wg-lh-tight: 1.2;
+  --wg-lh-normal: 1.55;
+  --wg-lh-relaxed: 1.7;
+
+  // Fluid type scale (clamp between 360px and 1320px viewports).
+  --wg-fs-xs: 0.75rem;
+  --wg-fs-sm: 0.875rem;
+  --wg-fs-md: 1rem;
+  --wg-fs-lg: 1.125rem;
+  --wg-fs-xl: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --wg-fs-2xl: clamp(1.5rem, 1.25rem + 1vw, 2rem);
+  --wg-fs-3xl: clamp(1.875rem, 1.4rem + 1.8vw, 2.75rem);
+  --wg-fs-4xl: clamp(2.25rem, 1.6rem + 2.8vw, 3.5rem);
+
+  --wg-space-1: 4px;
+  --wg-space-2: 8px;
+  --wg-space-3: 12px;
+  --wg-space-4: 16px;
+  --wg-space-5: 20px;
+  --wg-space-6: 24px;
+  --wg-space-8: 32px;
+  --wg-space-10: 40px;
+  --wg-space-12: 48px;
+  --wg-space-16: 64px;
+  --wg-section-padding-y: clamp(40px, 3vw + 24px, 72px);
+  --wg-container-max: 1320px;
+  --wg-container-padding: clamp(16px, 2.5vw, 32px);
+
+  --wg-radius-sm: 4px;
+  --wg-radius-md: 8px;
+  --wg-radius-lg: 12px;
+  --wg-radius-xl: 16px;
+  --wg-radius-pill: 999px;
+  --wg-shadow-sm: 0 1px 2px rgba(17, 24, 39, 0.06);
+  --wg-shadow-md: 0 6px 18px rgba(17, 24, 39, 0.08);
+  --wg-shadow-lg: 0 16px 40px rgba(17, 24, 39, 0.12);
+  --wg-border-width: 1px;
+
+  --wg-btn-radius: 8px;
+  --wg-btn-padding-x: 20px;
+  --wg-btn-padding-y: 12px;
+  --wg-btn-font-weight: 600;
+  --wg-card-radius: var(--wg-radius-lg);
+  --wg-card-padding: var(--wg-space-4);
+  --wg-input-height: 46px;
+  --wg-input-radius: var(--wg-radius-md);
+  --wg-input-bg: var(--wg-color-bg-alt);
+  --wg-badge-radius: var(--wg-radius-sm);
+  --wg-header-height: 72px;
+  --wg-topbar-height: 0px;
+
+  --wg-transition-fast: 150ms;
+  --wg-transition-base: 250ms;
+  --wg-ease: cubic-bezier(0.2, 0, 0, 1);
+}
+
+// Phones: the rem scale is anchored to the root font size, not the body base, so the step sizes are
+// restated here. Heading and base sizes come from the generated per device block.
+@media (max-width: 767.98px) {
+  :root {
+    --wg-fs-xs: 0.6875rem;
+    --wg-fs-sm: 0.8125rem;
+    --wg-fs-md: 0.875rem;
+    --wg-fs-lg: 1rem;
+    --wg-fs-xl: 1.125rem;
+    --wg-fs-2xl: 1.25rem;
+    --wg-fs-3xl: 1.5rem;
+    --wg-fs-4xl: 1.75rem;
+  }
+}

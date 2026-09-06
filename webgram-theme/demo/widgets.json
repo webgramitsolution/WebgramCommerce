@@ -1,0 +1,8 @@
+{
+  "footer-1": [
+    { "type": "block", "content": "<!-- wp:heading {\"level\":4} --><h4>Visit us</h4><!-- /wp:heading --><!-- wp:paragraph --><p>Webgram Demo Store<br>12 Market Road, Pune 411001<br>Mon to Sat, 10am to 7pm</p><!-- /wp:paragraph -->" }
+  ],
+  "footer-2": [
+    { "type": "block", "content": "<!-- wp:heading {\"level\":4} --><h4>Help</h4><!-- /wp:heading --><!-- wp:paragraph --><p>Email support@example.com<br>WhatsApp +91 98765 43210<br>365 days help desk</p><!-- /wp:paragraph -->" }
+  ]
+}

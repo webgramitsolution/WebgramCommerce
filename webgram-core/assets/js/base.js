@@ -50,5 +50,41 @@
 		document.dispatchEvent(new CustomEvent('wg:' + event, { detail: detail }));
 	}
 
-	window.WebgramCore = { config: cfg, ajax: ajax, rest: rest, on: on, emit: emit };
+	/* Analytics: track(event, objectType, objectId, meta) queues events; the Analytics module flushes them in batches. */
+	var queue = [];
+	var flushTimer = null;
+	function flush(useBeacon) {
+		if (!queue.length || !cfg.analytics || !cfg.analytics.enabled) { queue = []; return; }
+		var batch = queue.splice(0, 20);
+		var url = (cfg.restUrl || '/wp-json/webgram/v1/') + 'events';
+		var body = JSON.stringify({ events: batch, _wpnonce: cfg.restNonce || '' });
+		if (useBeacon && navigator.sendBeacon) { navigator.sendBeacon(url, new Blob([body], { type: 'application/json' })); return; }
+		fetch(url, { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json', 'X-WP-Nonce': cfg.restNonce || '' }, body: body, keepalive: true }).catch(function () {});
+	}
+	function track(event, objectType, objectId, meta) {
+		if (!event || !cfg.analytics || !cfg.analytics.enabled) { return; }
+		if (cfg.analytics.sample && Math.random() * 100 > cfg.analytics.sample) { return; }
+		queue.push({ event: String(event).slice(0, 48), object_type: objectType ? String(objectType).slice(0, 24) : '', object_id: parseInt(objectId, 10) || 0, meta: meta && typeof meta === 'object' ? meta : {} });
+		clearTimeout(flushTimer);
+		flushTimer = setTimeout(function () { flush(false); }, 1500);
+	}
+	on('track', function (d) { if (d && d.event) { track(d.event, d.object_type, d.object_id, d.meta || Object.keys(d).reduce(function (m, k) { if (['event', 'object_type', 'object_id'].indexOf(k) === -1) { m[k] = d[k]; } return m; }, {})); } });
+	window.addEventListener('pagehide', function () { flush(true); });
+	/* CTA clicks: any link or button carrying data-wg-cta="label" (theme sections, slider, banners, popups). */
+	document.addEventListener('click', function (e) {
+		var cta = e.target.closest('[data-wg-cta]');
+		if (!cta) { return; }
+		track('cta_click', 'cta', 0, { label: String(cta.getAttribute('data-wg-cta') || '').slice(0, 60), href: String(cta.getAttribute('href') || '').slice(0, 120) });
+	});
+
+	/* Keeps Tab and Shift+Tab inside an open dialog. Call from a keydown handler while the dialog is visible. */
+	function trapFocus(container, e) {
+		if (!container || e.key !== 'Tab') { return; }
+		var items = Array.prototype.filter.call(container.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'), function (el) { return el.offsetParent !== null || el === document.activeElement; });
+		if (!items.length) { e.preventDefault(); return; }
+		var first = items[0], last = items[items.length - 1];
+		if (e.shiftKey && (document.activeElement === first || !container.contains(document.activeElement))) { e.preventDefault(); last.focus(); }
+		else if (!e.shiftKey && (document.activeElement === last || !container.contains(document.activeElement))) { e.preventDefault(); first.focus(); }
+	}
+	window.WebgramCore = { config: cfg, ajax: ajax, rest: rest, on: on, emit: emit, track: track, trapFocus: trapFocus };
 })();

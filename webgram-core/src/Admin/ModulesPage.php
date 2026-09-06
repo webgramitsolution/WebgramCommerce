@@ -15,22 +15,42 @@ final class ModulesPage {
 	public function __construct( private Plugin $plugin ) {}
 
 	public function register(): void {
-		add_action( 'admin_menu', [ $this, 'menu' ] );
+		add_action( 'admin_menu', [ $this, 'menu' ], 20 );
 		add_action( 'admin_post_webgram_core_save_modules', [ $this, 'save' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'assets' ] );
 	}
 
+	/**
+	 * Parent menu slug. When the active theme declares an admin menu in its webgram-core theme support, Core pages
+	 * attach under it; otherwise Core owns its own top-level "Webgram" menu.
+	 */
+	public static function parent_slug(): string {
+		$support = get_theme_support( 'webgram-core' );
+		if ( is_array( $support ) && ! empty( $support[0]['admin_menu'] ) ) {
+			return sanitize_key( (string) $support[0]['admin_menu'] );
+		}
+		return self::SLUG;
+	}
+
+	public static function theme_has_panel(): bool {
+		$support = get_theme_support( 'webgram-core' );
+		return is_array( $support ) && ! empty( $support[0]['settings_panel'] );
+	}
+
 	public function menu(): void {
-		add_menu_page(
-			__( 'Webgram', 'webgram-core' ),
-			__( 'Webgram', 'webgram-core' ),
-			'manage_options',
-			self::SLUG,
-			[ $this, 'render' ],
-			'dashicons-layout',
-			58
-		);
-		add_submenu_page( self::SLUG, __( 'Modules', 'webgram-core' ), __( 'Modules', 'webgram-core' ), 'manage_options', self::SLUG, [ $this, 'render' ] );
+		$parent = self::parent_slug();
+		if ( self::SLUG === $parent ) {
+			add_menu_page(
+				__( 'Webgram', 'webgram-core' ),
+				__( 'Webgram', 'webgram-core' ),
+				'manage_options',
+				self::SLUG,
+				[ $this, 'render' ],
+				'dashicons-layout',
+				58
+			);
+		}
+		add_submenu_page( $parent, __( 'Modules', 'webgram-core' ), __( 'Modules', 'webgram-core' ), 'manage_options', self::SLUG, [ $this, 'render' ] );
 	}
 
 	public function assets( string $hook ): void {
@@ -66,7 +86,8 @@ final class ModulesPage {
 				<?php wp_nonce_field( 'webgram_core_save_modules' ); ?>
 
 				<div class="wgc-modules">
-				<?php foreach ( $modules as $id => $module ) :
+				<?php
+				foreach ( $modules as $id => $module ) :
 					$enabled     = $manager->is_enabled_in_settings( $id );
 					$implemented = $module->is_implemented();
 					$blocked     = $manager->blocked_reason( $id );
@@ -81,9 +102,9 @@ final class ModulesPage {
 						</div>
 						<p><?php echo esc_html( $module->description() ); ?></p>
 						<?php if ( ! $implemented ) : ?>
-							<span class="wgc-badge wgc-badge--muted"><?php printf( esc_html__( 'Coming in phase %d', 'webgram-core' ), (int) $module->phase() ); ?></span>
+							<span class="wgc-badge wgc-badge--muted"><?php printf( /* translators: %s: placeholder value. */ esc_html__( 'Coming in phase %d', 'webgram-core' ), (int) $module->phase() ); ?></span>
 						<?php elseif ( $blocked ) : ?>
-							<span class="wgc-badge wgc-badge--warn"><?php printf( esc_html__( 'Needs: %s', 'webgram-core' ), esc_html( $blocked ) ); ?></span>
+							<span class="wgc-badge wgc-badge--warn"><?php printf( /* translators: %s: placeholder value. */ esc_html__( 'Needs: %s', 'webgram-core' ), esc_html( $blocked ) ); ?></span>
 						<?php elseif ( $enabled ) : ?>
 							<span class="wgc-badge wgc-badge--ok"><?php esc_html_e( 'Active', 'webgram-core' ); ?></span>
 						<?php endif; ?>

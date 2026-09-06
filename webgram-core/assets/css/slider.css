@@ -1,0 +1,41 @@
+/* Webgram Core slider fallback styles (Swiper layout comes from the vendored swiper-bundle.min.css). */
+.wgc-slider{position:relative;overflow:hidden;border-radius:var(--wgc-radius,12px);--swiper-theme-color:var(--wgc-color-primary,#a0181f);--swiper-navigation-size:22px}
+.wgc-slider--full{border-radius:0;width:100vw;margin-inline-start:calc(50% - 50vw)}
+.wgc-slide{position:relative;overflow:hidden;background:#111}
+.wgc-slider--ratio .wgc-slide{aspect-ratio:var(--wgc-slider-ratio,16/6)}
+.wgc-slider--fixed .wgc-slide{height:var(--wgc-slider-height,520px)}
+.wgc-slider--viewport .wgc-slide{height:100vh;height:100svh}
+@media(max-width:767.98px){.wgc-slider--ratio .wgc-slide{aspect-ratio:var(--wgc-slider-ratio-mobile,4/5)}.wgc-slider--fixed .wgc-slide{height:auto;aspect-ratio:var(--wgc-slider-ratio-mobile,4/5)}}
+.wgc-slide__media{position:absolute;inset:0;display:block}
+.wgc-slide__media img{width:100%;height:100%;object-fit:cover;display:block}
+.wgc-slide__overlay{position:absolute;inset:0}
+.wgc-slide__content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:clamp(20px,6vw,72px);color:#fff;max-width:min(640px,100%);text-align:start;gap:14px}
+.wgc-slide--center .wgc-slide__content{align-items:center;text-align:center;inset-inline:0;margin:0 auto}
+.wgc-slide--right .wgc-slide__content{align-items:flex-end;text-align:end;inset-inline-start:auto;inset-inline-end:0}
+.wgc-slide--vtop .wgc-slide__content{justify-content:flex-start}
+.wgc-slide--vbottom .wgc-slide__content{justify-content:flex-end}
+.wgc-slide__subheading{margin:0;font-size:14px;letter-spacing:.12em;text-transform:uppercase;opacity:.9}
+.wgc-slide__heading{margin:0;font-size:clamp(28px,4.5vw,56px);line-height:1.08;font-weight:700;color:inherit}
+.wgc-slide__content h1,.wgc-slide__content h2,.wgc-slide__content h3,.wgc-slide__content p,.wgc-slide__content li{color:inherit}
+.wgc-slide__text{font-size:clamp(14px,1.4vw,18px);max-width:520px}
+.wgc-slide__text p{margin:0}
+.wgc-slide__benefits{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px 20px;font-size:14px}
+.wgc-slide__benefits li{display:inline-flex;align-items:center;gap:6px}
+.wgc-slide__benefits svg{width:18px;height:18px}
+.wgc-slide__actions{display:flex;gap:12px;flex-wrap:wrap}
+.wgc-slide__cta{display:inline-flex;align-items:center;justify-content:center;padding:12px 28px;border-radius:var(--wgc-radius,8px);background:var(--wgc-color-primary,#a0181f);color:#fff;font-weight:600;text-decoration:none;letter-spacing:.06em;text-transform:uppercase}
+.wgc-slide__cta--secondary{background:transparent;border:2px solid currentColor;color:inherit}
+.wgc-slide__content>*{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.wgc-slide--anim-zoom .wgc-slide__content>*{transform:scale(.92)}
+.wgc-slide--anim-fade .wgc-slide__content>*{transform:none}
+.wgc-slide.is-animated .wgc-slide__content>*{opacity:1;transform:none}
+.wgc-slide.is-animated .wgc-slide__content>*:nth-child(2){transition-delay:.12s}
+.wgc-slide.is-animated .wgc-slide__content>*:nth-child(3){transition-delay:.24s}
+.wgc-slide.is-animated .wgc-slide__content>*:nth-child(4){transition-delay:.36s}
+.wgc-slide.is-animated .wgc-slide__content>*:nth-child(5){transition-delay:.48s}
+.wgc-slider .swiper-button-prev,.wgc-slider .swiper-button-next{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.9);color:#111;opacity:0;transition:opacity .2s}
+.wgc-slider .swiper-button-prev::after,.wgc-slider .swiper-button-next::after{font-size:16px;font-weight:700}
+.wgc-slider:hover .swiper-button-prev,.wgc-slider:hover .swiper-button-next,.wgc-slider:focus-within .swiper-button-prev,.wgc-slider:focus-within .swiper-button-next{opacity:1}
+.wgc-slider .swiper-pagination-bullet{width:10px;height:10px;background:#fff;opacity:.6}
+.wgc-slider .swiper-pagination-bullet-active{opacity:1;background:var(--wgc-color-primary,#a0181f)}
+@media(prefers-reduced-motion:reduce){.wgc-slide__content>*{transition:none;opacity:1;transform:none}}

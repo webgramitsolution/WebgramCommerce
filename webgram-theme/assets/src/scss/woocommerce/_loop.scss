@@ -1,0 +1,14 @@
+@use "../abstracts/breakpoints" as *;
+@use "../abstracts/mixins" as *;
+.woocommerce ul.products, ul.products { display: grid; gap: var(--wg-space-4); list-style: none; margin: 0; padding: 0; grid-template-columns: repeat(2, 1fr);
+  @include up(md) { grid-template-columns: repeat(3, 1fr); }
+  @include up(lg) { grid-template-columns: repeat(4, 1fr); }
+  @include up(xl) { @for $i from 2 through 6 { &.columns-#{$i} { grid-template-columns: repeat(#{$i}, 1fr); } } }
+  &::before, &::after { display: none; }
+  li.wg-loop__item, li.product { width: auto; margin: 0; float: none; }
+}
+.woocommerce-result-count, .woocommerce-ordering { margin: 0; }
+.wg-shop-toolbar, .woocommerce-notices-wrapper + .wg-shop-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--wg-space-3); margin-bottom: var(--wg-space-6); }
+.woocommerce-ordering select { min-height: 40px; width: auto; }
+.woocommerce-pagination { margin: var(--wg-space-10) 0; ul.page-numbers { display: flex; justify-content: center; gap: var(--wg-space-2); list-style: none; padding: 0; margin: 0; border: 0; li { border: 0; }
+  .page-numbers { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; height: 40px; padding: 0 10px; border: var(--wg-border-width) solid var(--wg-color-border); border-radius: var(--wg-radius-md); color: var(--wg-color-heading); font-weight: var(--wg-fw-medium); &.current { background: var(--wg-color-primary); border-color: var(--wg-color-primary); color: var(--wg-color-primary-contrast); } } } }

@@ -1,0 +1,41 @@
+/* Webgram Core fallback styles for wishlist and compare (used when the active theme does not style Core). */
+.wgc-wishlist-btn,.wgc-compare-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:40px;height:40px;padding:0 10px;border:1px solid var(--wgc-color-border,#e5e7eb);border-radius:var(--wgc-radius,8px);background:var(--wgc-color-surface,#fff);color:inherit;cursor:pointer;font:inherit}
+.wgc-wishlist-btn.is-active svg{fill:currentColor;color:var(--wgc-color-primary,#a0181f)}
+.wgc-compare-btn.is-active{color:var(--wgc-color-primary,#a0181f);border-color:currentColor}
+.wgc-wishlist-btn.is-loading,.wgc-compare-btn.is-loading{opacity:.6}
+.wgc-wishlist__toolbar,.wgc-compare__toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
+.wgc-wishlist__table{width:100%;border-collapse:collapse}
+.wgc-wishlist__table th,.wgc-wishlist__table td{padding:12px;border-bottom:1px solid var(--wgc-color-border,#e5e7eb);text-align:start;vertical-align:middle}
+.wgc-wishlist__table img{width:72px;height:72px;object-fit:cover;border-radius:8px}
+.wgc-wishlist__remove,.wgc-compare__remove{border:0;background:transparent;cursor:pointer;color:var(--wgc-color-muted,#6b7280);margin-inline-start:8px}
+.wgc-wishlist__empty,.wgc-compare__empty{text-align:center;padding:48px 16px}
+.wgc-wishlist__empty svg,.wgc-compare__empty svg{width:48px;height:48px;color:var(--wgc-color-muted,#6b7280)}
+.wgc-compare__scroll{overflow-x:auto}
+.wgc-compare__table{border-collapse:collapse;min-width:640px;width:100%}
+.wgc-compare__table th,.wgc-compare__table td{padding:12px;border:1px solid var(--wgc-color-border,#e5e7eb);text-align:start;vertical-align:top;min-width:180px}
+.wgc-compare__label{position:sticky;inset-inline-start:0;background:var(--wgc-color-bg-alt,#f9fafb);font-weight:600;z-index:1;min-width:140px}
+.wgc-compare__product{position:relative;text-align:center}
+.wgc-compare__product img{width:120px;height:120px;object-fit:cover;border-radius:8px;display:block;margin:0 auto 8px}
+.wgc-compare__remove{position:absolute;top:6px;inset-inline-end:6px}
+.wgc-compare.is-highlight .wgc-compare__row.is-different td{background:#fff7ed}
+.wgc-compare-bar{position:fixed;bottom:16px;inset-inline-start:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;padding:8px 12px;background:var(--wgc-color-surface,#fff);border:1px solid var(--wgc-color-border,#e5e7eb);border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.15);z-index:1040}
+.wgc-compare-bar__items{display:flex;gap:6px}
+.wgc-compare-bar__item{position:relative}
+.wgc-compare-bar__item img{width:40px;height:40px;object-fit:cover;border-radius:8px;display:block}
+.wgc-compare-bar__item button{position:absolute;top:-6px;inset-inline-end:-6px;width:18px;height:18px;border-radius:50%;border:0;background:#111;color:#fff;font-size:12px;line-height:18px;cursor:pointer;padding:0}
+.wgc-compare-bar__count{font-size:13px;color:var(--wgc-color-muted,#6b7280)}
+.wgc-toast{position:fixed;inset-inline-start:50%;bottom:32px;transform:translate(-50%,20px);padding:10px 18px;border-radius:999px;background:#111;color:#fff;font-size:14px;opacity:0;transition:.2s;z-index:1500}
+.wgc-toast.is-visible{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:767px){
+.wgc-wishlist__table thead{display:none}
+.wgc-wishlist__table tr{display:grid;grid-template-columns:72px 1fr;gap:4px 12px;padding:12px 0;border-bottom:1px solid var(--wgc-color-border,#e5e7eb)}
+.wgc-wishlist__table td{display:block;padding:0;border:0}
+.wgc-wishlist__table td.wgc-col-image{grid-row:1/span 3}
+.wgc-wishlist__table td[data-title]:not(.wgc-col-image)::before{content:attr(data-title) ": ";color:var(--wgc-color-muted,#6b7280);font-size:12px}
+.wgc-wishlist__table td.wgc-col-actions{grid-column:2;display:flex;gap:8px;align-items:center;margin-top:6px}
+.wgc-compare__table th,.wgc-compare__table td{min-width:132px;padding:8px;font-size:13px}
+.wgc-compare__label{min-width:96px;font-size:12px}
+.wgc-compare__product img{width:80px;height:80px}
+.wgc-compare-bar{inset-inline:8px;transform:none;width:auto;justify-content:space-between;border-radius:16px}
+}

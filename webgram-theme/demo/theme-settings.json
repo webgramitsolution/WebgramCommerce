@@ -1,0 +1,27 @@
+{
+  "product": "webgram",
+  "version": "1.0.0",
+  "theme_settings": {
+    "social_links": [
+      {
+        "network": "facebook",
+        "url": "https://www.facebook.com/"
+      },
+      {
+        "network": "instagram",
+        "url": "https://www.instagram.com/"
+      },
+      {
+        "network": "linkedin",
+        "url": "https://www.linkedin.com/"
+      },
+      {
+        "network": "x",
+        "url": "https://x.com/"
+      }
+    ],
+    "social_sidebar": true
+  },
+  "header_preset": "store",
+  "footer_preset": "store"
+}

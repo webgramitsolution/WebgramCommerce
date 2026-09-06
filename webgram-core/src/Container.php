@@ -27,7 +27,7 @@ final class Container {
 	public function get( string $id ): mixed {
 		if ( ! isset( $this->instances[ $id ] ) ) {
 			if ( ! isset( $this->factories[ $id ] ) ) {
-				throw new \RuntimeException( sprintf( 'Webgram Core: service "%s" is not registered.', $id ) );
+				throw new \RuntimeException( sprintf( 'Webgram Core: service "%s" is not registered.', esc_html( $id ) ) );
 			}
 			$this->instances[ $id ] = ( $this->factories[ $id ] )( $this );
 		}

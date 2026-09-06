@@ -1,0 +1,7 @@
+@use "../abstracts/breakpoints" as *;
+@use "../abstracts/mixins" as *;
+.wg-price { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--wg-space-2); color: var(--wg-color-price); font-weight: var(--wg-fw-bold);
+  del { color: var(--wg-color-text-muted); font-weight: var(--wg-fw-regular); font-size: 0.85em; }
+  ins { text-decoration: none; }
+  &__percent { color: var(--wg-color-sale); font-size: var(--wg-fs-sm); font-weight: var(--wg-fw-semibold); }
+}

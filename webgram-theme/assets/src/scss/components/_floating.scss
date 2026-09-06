@@ -1,0 +1,31 @@
+@use "../abstracts/breakpoints" as *;
+@use "../abstracts/mixins" as *;
+// Back to top, floating social sidebar, preloader, header banner.
+.wg-back-to-top { position: fixed; inset-inline-end: 20px; bottom: 20px; z-index: 890; &--left { inset-inline-end: auto; inset-inline-start: 20px; } &.wg-back-to-top { display: none; } &.wg-back-to-top.wg-show-desktop { @include up(lg) { display: inline-flex; } } &.wg-back-to-top.wg-show-tablet { @media (min-width: 768px) and (max-width: 991.98px) { display: inline-flex; } } &.wg-back-to-top.wg-show-mobile { @include down(md) { display: inline-flex; } } width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--wg-color-primary); color: #fff; box-shadow: var(--wg-shadow-md); display: inline-flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(12px); transition: opacity var(--wg-transition-base), transform var(--wg-transition-base); cursor: pointer;
+  &[hidden] { display: inline-flex; visibility: hidden; }
+  &.is-visible { opacity: 1; transform: none; visibility: visible; }
+  &:hover { background: var(--wg-color-primary-hover); }
+  @include down(lg) { body.wg-has-bottom-nav & { bottom: calc(72px + env(safe-area-inset-bottom)); } }
+}
+.wg-social-sidebar { position: fixed; inset-inline-end: 0; top: 50%; transform: translateY(-50%); z-index: 880; &--left { inset-inline-end: auto; inset-inline-start: 0; } display: none; flex-direction: column; gap: 2px;
+  &.wg-show-desktop { @include up(lg) { display: flex; } }
+  &.wg-show-tablet { @media (min-width: 768px) and (max-width: 991.98px) { display: flex; } }
+  &.wg-show-mobile { @include down(md) { display: flex; } }
+  &__link { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: var(--wg-brand, var(--wg-color-primary)); color: #fff; border-radius: var(--wg-radius-md) 0 0 var(--wg-radius-md); transition: transform var(--wg-transition-fast), width var(--wg-transition-fast); .wg-icon { width: 20px; height: 20px; }
+    [dir="rtl"] & { border-radius: 0 var(--wg-radius-md) var(--wg-radius-md) 0; }
+    &:hover { color: #fff; width: 52px; }
+  }
+}
+.wg-preloader { position: fixed; inset: 0; z-index: 99999; display: flex; align-items: center; justify-content: center; background: var(--wg-color-bg); transition: opacity var(--wg-transition-base), visibility 0s linear var(--wg-transition-base);
+  &.is-done { opacity: 0; visibility: hidden; }
+  &__spinner { width: 40px; height: 40px; border: 3px solid var(--wg-color-border); border-top-color: var(--wg-preloader-color, var(--wg-color-primary)); border-radius: 50%; animation: wg-spin .8s linear infinite; }
+}
+@keyframes wg-spin { to { transform: rotate(360deg); } }
+.wg-banner { background: var(--wg-banner-bg, var(--wg-color-heading)); color: var(--wg-banner-color, #fff); font-size: var(--wg-fs-sm); font-weight: var(--wg-fw-medium);
+  &[hidden] { display: none; }
+  &__inner { position: relative; display: flex; align-items: center; justify-content: center; min-height: 40px; padding-inline-end: 40px; text-align: center; }
+  &__link { color: inherit; &:hover { color: inherit; opacity: .9; } }
+  &__text p { margin: 0; }
+  &__image { max-height: 120px; width: auto; }
+  &__close { position: absolute; inset-inline-end: var(--wg-container-padding); top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border: 0; border-radius: 50%; background: rgba(255, 255, 255, .15); color: inherit; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; .wg-icon { width: 16px; height: 16px; } &:hover { background: rgba(255, 255, 255, .3); } }
+}

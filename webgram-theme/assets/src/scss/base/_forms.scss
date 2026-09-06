@@ -1,0 +1,9 @@
+@use "../abstracts/breakpoints" as *;
+@use "../abstracts/mixins" as *;
+.wg-field, .wg-search__input, input[type="text"], input[type="email"], input[type="search"], input[type="tel"], input[type="url"], input[type="password"], input[type="number"], textarea, select {
+  width: 100%; min-height: var(--wg-input-height); padding: 0 var(--wg-space-4); border: var(--wg-border-width) solid var(--wg-color-border); border-radius: var(--wg-input-radius); background: var(--wg-input-bg); color: var(--wg-color-text); transition: border-color var(--wg-transition-fast), background var(--wg-transition-fast);
+  &::placeholder { color: var(--wg-color-text-muted); }
+  &:focus { border-color: var(--wg-color-primary); background: var(--wg-color-surface); outline: none; }
+}
+textarea { min-height: 120px; padding-block: var(--wg-space-3); }
+label { display: block; margin-bottom: var(--wg-space-2); font-weight: var(--wg-fw-medium); color: var(--wg-color-heading); }

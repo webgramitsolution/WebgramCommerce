@@ -37,6 +37,25 @@ function webgram_enqueue_assets(): void {
 
 	wp_enqueue_script( 'webgram-main', WEBGRAM_URI . '/assets/js/main.js', [], webgram_asset_version( 'js/main.js' ), [ 'in_footer' => true, 'strategy' => 'defer' ] );
 
+	// Cart drawer script everywhere WooCommerce is active (needed after AJAX add to cart), deferred.
+	if ( class_exists( 'WooCommerce' ) && webgram_option( 'cart_drawer' ) ) {
+		wp_enqueue_script( 'webgram-cart', WEBGRAM_URI . '/assets/js/cart.js', [ 'webgram-main' ], webgram_asset_version( 'js/cart.js' ), [ 'in_footer' => true, 'strategy' => 'defer' ] );
+	}
+	if ( class_exists( 'WooCommerce' ) && ( is_cart() || is_checkout() || is_account_page() ) ) {
+		wp_enqueue_style( 'webgram-cart-checkout', WEBGRAM_URI . '/assets/css/cart-checkout' . $rtl . '.css', [ 'webgram-woocommerce' ], webgram_asset_version( 'css/cart-checkout.css' ) );
+		wp_enqueue_script( 'webgram-checkout', WEBGRAM_URI . '/assets/js/checkout.js', [ 'webgram-main' ], webgram_asset_version( 'js/checkout.js' ), [ 'in_footer' => true, 'strategy' => 'defer' ] );
+	}
+
+	// Page specific bundles: shop archive and single product only load where they render.
+	if ( function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() || ( is_search() && 'product' === get_query_var( 'post_type' ) ) ) ) {
+		wp_enqueue_style( 'webgram-shop', WEBGRAM_URI . '/assets/css/shop' . $rtl . '.css', [ 'webgram-woocommerce' ], webgram_asset_version( 'css/shop.css' ) );
+		wp_enqueue_script( 'webgram-shop', WEBGRAM_URI . '/assets/js/shop.js', [ 'webgram-main' ], webgram_asset_version( 'js/shop.js' ), [ 'in_footer' => true, 'strategy' => 'defer' ] );
+	}
+	if ( function_exists( 'is_product' ) && is_product() ) {
+		wp_enqueue_style( 'webgram-product', WEBGRAM_URI . '/assets/css/product' . $rtl . '.css', [ 'webgram-woocommerce' ], webgram_asset_version( 'css/product.css' ) );
+		wp_enqueue_script( 'webgram-product', WEBGRAM_URI . '/assets/js/product.js', [ 'webgram-main' ], webgram_asset_version( 'js/product.js' ), [ 'in_footer' => true, 'strategy' => 'defer' ] );
+	}
+
 	wp_localize_script(
 		'webgram-main',
 		'webgramData',
@@ -46,10 +65,53 @@ function webgram_enqueue_assets(): void {
 				'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
 				'wcAjax'     => class_exists( 'WC_AJAX' ) ? WC_AJAX::get_endpoint( '%%endpoint%%' ) : '',
 				'nonce'      => wp_create_nonce( 'webgram_nonce' ),
-				'stickyHeader' => (bool) webgram_option( 'header_sticky' ),
+				'sticky'     => [
+					'enabled'      => (bool) webgram_option( 'sticky_enabled' ),
+					'shrink'       => (bool) webgram_option( 'sticky_shrink' ),
+					'shadow'       => (bool) webgram_option( 'sticky_shadow' ),
+					'hideOnScroll' => (bool) webgram_option( 'sticky_hide_on_scroll' ),
+					'mobile'       => (bool) webgram_option( 'sticky_mobile' ),
+				],
+				'search'     => [
+					'live'     => (bool) webgram_option( 'search_live' ),
+					'minChars' => (int) webgram_option( 'search_min_chars' ),
+				],
+				'shop'       => [
+					'ajax'       => (bool) webgram_option( 'shop_ajax' ),
+					'pagination' => (string) webgram_option( 'shop_pagination' ),
+				],
+				'cart'       => [
+					'drawer'   => (bool) webgram_option( 'cart_drawer' ),
+					'afterAdd' => (string) webgram_option( 'cart_after_add' ),
+					'url'      => function_exists( 'wc_get_cart_url' ) ? wc_get_cart_url() : '',
+				],
+				'product'    => [
+					'autoSlide'    => (bool) webgram_option( 'product_auto_slide' ),
+					'interval'     => (int) webgram_option( 'product_auto_slide_interval' ),
+					'pauseOnHover' => (bool) webgram_option( 'product_auto_slide_pause' ),
+					'sticky'       => (bool) webgram_option( 'product_sticky_gallery' ),
+					'zoom'         => (bool) webgram_option( 'product_zoom' ),
+				],
 				'i18n'       => [
-					'menu'  => __( 'Menu', 'webgram' ),
-					'close' => __( 'Close', 'webgram' ),
+					'menu'       => __( 'Menu', 'webgram' ),
+					'close'      => __( 'Close', 'webgram' ),
+					'noResults'  => __( 'No results found', 'webgram' ),
+					'viewAll'    => __( 'View all results', 'webgram' ),
+					'products'   => __( 'Products', 'webgram' ),
+					'categories' => __( 'Categories', 'webgram' ),
+					'posts'      => __( 'Articles', 'webgram' ),
+					'searching'  => __( 'Searching', 'webgram' ),
+					'loadMore'   => __( 'Load more', 'webgram' ),
+					'loading'    => __( 'Loading', 'webgram' ),
+					'noMore'     => __( 'No more products', 'webgram' ),
+					'copied'     => __( 'Code copied', 'webgram' ),
+					'prev'       => __( 'Previous', 'webgram' ),
+					'next'       => __( 'Next', 'webgram' ),
+					'addedToCart' => __( 'Added to cart', 'webgram' ),
+					'viewCart'   => __( 'View cart', 'webgram' ),
+					'removed'    => __( 'Item removed', 'webgram' ),
+					'showPassword' => __( 'Show password', 'webgram' ),
+					'hidePassword' => __( 'Hide password', 'webgram' ),
 				],
 			]
 		)
@@ -62,6 +124,18 @@ function webgram_enqueue_assets(): void {
 	// Print generated token CSS after the main stylesheet so it overrides compiled fallbacks.
 	wp_add_inline_style( 'webgram-main', Webgram_CSS_Generator::instance()->get_css() );
 }
+
+/** Critical header CSS inline (optional): the compiled header rules from assets/css/critical.css. */
+function webgram_critical_css(): void {
+	if ( ! webgram_option( 'perf_critical_header' ) ) {
+		return;
+	}
+	$file = WEBGRAM_DIR . '/assets/css/critical.css';
+	if ( is_readable( $file ) ) {
+		echo '<style id="wg-critical">' . wp_strip_all_tags( (string) file_get_contents( $file ) ) . '</style>' . "\n"; // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents, WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
+}
+add_action( 'wp_head', 'webgram_critical_css', 3 );
 add_action( 'wp_enqueue_scripts', 'webgram_enqueue_assets' );
 
 /** Remove WooCommerce's default stylesheets; the theme provides complete WooCommerce styling. */
@@ -75,7 +149,7 @@ add_action( 'admin_init', 'webgram_editor_assets' );
 
 /** Preload the two primary self-hosted font files. */
 function webgram_preload_fonts(): void {
-	if ( 'google' === webgram_option( 'font_source' ) ) {
+	if ( 'google' === webgram_option( 'font_source' ) || ! webgram_option( 'perf_font_preload' ) ) {
 		return;
 	}
 	foreach ( [ 'inter-latin-400.woff2', 'manrope-latin-700.woff2' ] as $file ) {

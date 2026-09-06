@@ -10,12 +10,9 @@ defined( 'ABSPATH' ) || exit;
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'wg-entry' ); ?>>
 	<header class="wg-entry__header">
 		<h1 class="wg-entry__title"><?php the_title(); ?></h1>
-		<div class="wg-entry__meta">
-			<time datetime="<?php echo esc_attr( get_the_date( DATE_W3C ) ); ?>"><?php echo esc_html( get_the_date() ); ?></time>
-			<span class="wg-entry__author"><?php the_author_posts_link(); ?></span>
-		</div>
+		<?php webgram_part( 'content/post-meta', [ 'meta' => (array) webgram_option( 'blog_meta' ) ] ); ?>
 	</header>
-	<?php if ( has_post_thumbnail() ) : ?>
+	<?php if ( webgram_option( 'blog_featured_image' ) && has_post_thumbnail() ) : ?>
 		<figure class="wg-entry__media"><?php the_post_thumbnail( 'large', [ 'fetchpriority' => 'high' ] ); ?></figure>
 	<?php endif; ?>
 	<div class="wg-entry__content wg-prose">
@@ -26,5 +23,8 @@ defined( 'ABSPATH' ) || exit;
 	</div>
 	<footer class="wg-entry__footer">
 		<?php the_tags( '<div class="wg-entry__tags">', '', '</div>' ); ?>
+		<?php if ( webgram_option( 'blog_share' ) ) : ?>
+			<?php webgram_part( 'misc/share', [ 'url' => get_permalink(), 'title' => get_the_title() ] ); ?>
+		<?php endif; ?>
 	</footer>
 </article>

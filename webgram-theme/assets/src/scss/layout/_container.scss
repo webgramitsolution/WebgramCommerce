@@ -1,0 +1,22 @@
+@use "../abstracts/breakpoints" as *;
+@use "../abstracts/mixins" as *;
+.wg-container { width: 100%; max-width: var(--wg-container-max); margin-inline: auto; padding-inline: var(--wg-container-padding); }
+.wg-site-content { padding-block: var(--wg-space-6) var(--wg-section-padding-y); }
+.wg-content { display: grid; gap: var(--wg-space-8);
+  &--with-sidebar { @include up(lg) { grid-template-columns: minmax(0, 1fr) var(--wg-sidebar-width, 25%); } }
+  &--sidebar-left { @include up(lg) { grid-template-columns: var(--wg-sidebar-width, 25%) minmax(0, 1fr); .wg-main { order: 2; } .wg-sidebar { order: 1; } } }
+}
+body.wg-site-boxed { background: var(--wg-boxed-bg, #f3f4f6); .wg-site { max-width: calc(var(--wg-container-max) + 2 * var(--wg-container-padding)); margin-inline: auto; background: var(--wg-color-bg); box-shadow: var(--wg-shadow-md); } }
+.wg-main { min-width: 0; }
+// Full width pages are built from sections, so the reading measure of .wg-prose does not apply.
+.wg-content--full .wg-prose { max-width: none; }
+// "Flush content to header" on a page: the first section (usually a full bleed hero) touches the header.
+body.wg-flush-top .wg-site-content { padding-block-start: 0; }
+body.wg-flush-top .wg-entry--page > .wg-entry__content > :first-child { margin-block-start: 0; }
+.wg-widget { margin-bottom: var(--wg-space-8); &__title { font-size: var(--wg-fs-md); margin-bottom: var(--wg-space-3); } }
+.wg-section { padding-block: var(--wg-section-padding-y); &--alt { background: var(--wg-color-bg-alt); } }
+
+.wg-sidebar-toggle { display: none; margin-bottom: var(--wg-space-4); @include down(lg) { display: inline-flex; } }
+.wg-sidebar--offcanvas { @include up(lg) { position: static; transform: none; visibility: visible; width: auto; box-shadow: none; background: transparent; display: block; &[hidden] { display: block; } .wg-sidebar__head { display: none; } }
+  @include down(lg) { .wg-sidebar__body { padding: var(--wg-space-4); overflow: auto; } } }
+body.wg-sidebar-mobile-hide .wg-sidebar:not(.wg-sidebar--shop) { @include down(lg) { display: none; } }
