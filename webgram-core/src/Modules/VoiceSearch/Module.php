@@ -58,7 +58,7 @@ final class Module extends BaseModule {
 			[ 'id' => 'engine', 'label' => __( 'Engine', 'webgram-core' ), 'type' => 'select', 'options' => $engines, 'default' => 'web_speech' ],
 			[ 'id' => 'language', 'label' => __( 'Language', 'webgram-core' ), 'type' => 'select', 'options' => self::languages(), 'default' => 'en-IN' ],
 			[ 'id' => 'auto_submit', 'label' => __( 'Search automatically when speech ends', 'webgram-core' ), 'type' => 'checkbox', 'default' => true ],
-			[ 'id' => 'in_search', 'label' => __( 'Show in the header search', 'webgram-core' ), 'type' => 'checkbox', 'default' => true ],
+			[ 'id' => 'in_search', 'label' => __( 'Show a mic in the header search', 'webgram-core' ), 'type' => 'checkbox', 'default' => false ],
 			[ 'id' => 'in_assistant', 'label' => __( 'Show in the AI assistant', 'webgram-core' ), 'type' => 'checkbox', 'default' => true ],
 		];
 	}
@@ -102,7 +102,7 @@ final class Module extends BaseModule {
 	public function button( string $input_id = '' ): void {
 		$engine  = $this->engine();
 		$context = current_action() === 'webgram_core/assistant/input' ? 'in_assistant' : 'in_search';
-		if ( ! $engine || ! Helpers::bool( $this->settings()->get( $context, true ) ) ) {
+		if ( ! $engine || ! Helpers::bool( $this->settings()->get( $context, 'in_assistant' === $context ) ) ) {
 			return;
 		}
 		\webgram_core()->assets()->enqueue_module( 'voice_search' );

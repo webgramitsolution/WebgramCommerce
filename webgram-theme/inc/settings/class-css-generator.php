@@ -110,7 +110,29 @@ final class Webgram_CSS_Generator {
 		$t['wg-preloader-color']     = Webgram_Settings_Sanitizer::color( (string) webgram_option( 'preloader_color' ) ) ?: 'var(--wg-color-primary)';
 		$t['wg-color-primary-contrast'] = '#ffffff';
 
+		// Category circles and their ribbon. Sizes per device come from device_tokens().
+		$t['wg-cat-ring']             = Webgram_Settings_Sanitizer::color( (string) webgram_option( 'cat_ring_color' ) ) ?: '#ead9d9';
+		$t['wg-cat-ribbon-bg']        = Webgram_Settings_Sanitizer::color( (string) webgram_option( 'cat_ribbon_bg' ) ) ?: 'var(--wg-color-primary)';
+		$t['wg-cat-ribbon-text']      = Webgram_Settings_Sanitizer::color( (string) webgram_option( 'cat_ribbon_text' ) ) ?: '#ffffff';
+		$t['wg-cat-ribbon-inset']     = max( 0, min( 24, (int) webgram_option( 'cat_ribbon_inset' ) ) ) . 'px';
+		$t['wg-cat-ribbon-offset']    = max( 30, min( 80, (int) webgram_option( 'cat_ribbon_offset' ) ) ) . '%';
+		$t['wg-cat-ribbon-notch']     = max( 0, min( 16, (int) webgram_option( 'cat_ribbon_notch' ) ) ) . 'px';
+		$t['wg-cat-ribbon-transform'] = webgram_option( 'cat_ribbon_uppercase' ) ? 'uppercase' : 'none';
+		foreach ( $this->category_device_tokens( 'desktop' ) as $name => $value ) {
+			$t[ $name ] = $value;
+		}
+
 		return (array) apply_filters( 'webgram/tokens', $t );
+	}
+
+	/** Circle size, gap and ribbon sizes for one device. */
+	private function category_device_tokens( string $device ): array {
+		return [
+			'wg-cat-size'           => (int) webgram_option_device( 'cat_size', $device ) . 'px',
+			'wg-cat-gap'            => (int) webgram_option_device( 'cat_gap', $device ) . 'px',
+			'wg-cat-ribbon-height'  => (int) webgram_option_device( 'cat_ribbon_height', $device ) . 'px',
+			'wg-cat-ribbon-fs'      => (int) webgram_option_device( 'cat_ribbon_font_size', $device ) . 'px',
+		];
 	}
 
 	/** Device overrides for dimension fields. */
@@ -121,6 +143,9 @@ final class Webgram_CSS_Generator {
 			$t[ 'wg-fs-h' . $level ] = webgram_option_device( 'font_size_h' . $level, $device ) . 'px';
 		}
 		$t['wg-section-gap'] = (int) webgram_option_device( 'section_gap', $device ) . 'px';
+		foreach ( $this->category_device_tokens( $device ) as $name => $value ) {
+			$t[ $name ] = $value;
+		}
 		return (array) apply_filters( 'webgram/tokens_' . $device, $t );
 	}
 

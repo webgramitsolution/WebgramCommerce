@@ -143,6 +143,7 @@ check('page title type helper defaults to blog', webgram_page_title_type()==='bl
 $css = Webgram_CSS_Generator::instance()->get_css();
 check('spacing, border and link tokens generated', str_contains($css,'--wg-space-4:16px') && str_contains($css,'--wg-border-width:1px') && str_contains($css,'--wg-color-link:#a0181f') && str_contains($css,'--wg-section-gap:72px'));
 Webgram_Settings::instance()->update(['spacing_scale'=>'compact']);
+check('category circle tokens per device', str_contains(Webgram_CSS_Generator::instance()->get_css(),'--wg-cat-size:140px') && str_contains(Webgram_CSS_Generator::instance()->get_css(),'--wg-cat-ribbon-inset:6px') && str_contains(Webgram_CSS_Generator::instance()->get_css(),'--wg-cat-size:100px'));
 check('compact spacing scale shrinks tokens', str_contains(Webgram_CSS_Generator::instance()->get_css(),'--wg-space-4:14px'));
 Webgram_Settings::instance()->reset();
 echo "\n".($fail?"$fail FAILURE(S)":"ALL PASSED")."\n"; exit($fail?1:0);

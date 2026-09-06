@@ -11,7 +11,11 @@ use Webgram\Core\Support\Helpers;
 
 $wgc_a = $args['a'];
 ?>
-<section class="<?php echo esc_attr( Helpers::css_class( 'categories', 'wgc-categories--' . $wgc_a['shape'] . ' wgc-categories--label-' . $wgc_a['label_position'] ) ); ?>" style="--wgc-cols:<?php echo (int) $wgc_a['columns']; ?>">
+<?php
+// The theme's Category circles setting decides whether tablets get one swipe row or a wrapped grid.
+$wgc_tablet_grid = function_exists( 'webgram_option' ) && ! webgram_option( 'cat_tablet_row' ) ? ' wg-categories--tablet-grid' : '';
+?>
+<section class="<?php echo esc_attr( Helpers::css_class( 'categories', 'wgc-categories--' . $wgc_a['shape'] . ' wgc-categories--label-' . $wgc_a['label_position'] . $wgc_tablet_grid ) ); ?>" style="--wgc-cols:<?php echo (int) $wgc_a['columns']; ?>">
 	<?php webgram_core()->view( 'sections/heading', $args['heading'] ); ?>
 	<div class="<?php echo esc_attr( Helpers::css_class( 'categories__row' ) ); ?>" data-wg-component="carousel" data-wg-carousel="overflow">
 		<?php foreach ( $args['items'] as $wgc_item ) : ?>

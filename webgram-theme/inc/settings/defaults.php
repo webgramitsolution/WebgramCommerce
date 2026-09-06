@@ -217,6 +217,18 @@ function webgram_defaults(): array {
 			'card_chip_style'         => 'chips',
 			'card_chips_max'          => 3,
 			'card_title_lines'        => 2,
+			'cat_size'                => [ 'desktop' => 140, 'tablet' => 110, 'mobile' => 100 ],
+			'cat_gap'                 => [ 'desktop' => 24, 'tablet' => 20, 'mobile' => 12 ],
+			'cat_tablet_row'          => true,
+			'cat_ring_color'          => '#ead9d9',
+			'cat_ribbon_bg'           => '',
+			'cat_ribbon_text'         => '#ffffff',
+			'cat_ribbon_height'       => [ 'desktop' => 28, 'tablet' => 24, 'mobile' => 22 ],
+			'cat_ribbon_font_size'    => [ 'desktop' => 11, 'tablet' => 10, 'mobile' => 10 ],
+			'cat_ribbon_inset'        => 6,
+			'cat_ribbon_offset'       => 56,
+			'cat_ribbon_notch'        => 9,
+			'cat_ribbon_uppercase'    => true,
 
 			// Product archive.
 			'archive_banner'          => true,

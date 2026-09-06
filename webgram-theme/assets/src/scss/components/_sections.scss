@@ -39,21 +39,24 @@
   &__more { text-align: center; margin: var(--wg-space-6) 0 0; .wg-btn--outline { color: #fff; border-color: rgba(255,255,255,.6); &:hover { background: #fff; color: var(--wg-color-secondary); } } }
 }
 
-// Category circles row
-.wg-categories { margin-block: var(--wg-space-10); --wg-cat-size: 120px;
-  @include down(lg) { --wg-cat-size: 90px; }
-  @include down(md) { --wg-cat-size: 70px; }
-  &__row { display: grid; grid-template-columns: repeat(var(--wgc-cols, 8), minmax(0, 1fr)); gap: var(--wg-space-8); justify-items: center;
-    @include down(lg) { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--wg-space-6); }
-    // Phone: a single row with three circles visible, the rest reached by swiping.
-    @include down(md) { display: flex; gap: var(--wg-space-3); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch;
-      &::-webkit-scrollbar { display: none; }
-      > * { flex: 0 0 calc((100% - var(--wg-space-3) * 2) / 3); scroll-snap-align: start; }
-    }
+// Category circles row. Sizes, gap and the ribbon come from the Category circles settings (--wg-cat-* tokens).
+.wg-categories { margin-block: var(--wg-space-10);
+  // One row at every width. Circles centre when they fit and scroll from the start when they do not,
+  // which the auto margins on the first and last circle handle without clipping the leading ones.
+  &__row { display: flex; gap: var(--wg-cat-gap, 24px); overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding-block: 4px;
+    &::-webkit-scrollbar { display: none; }
+    // Circles give up to a fifth of their size to fit the row before it starts scrolling.
+    > * { flex: 0 1 var(--wg-cat-size, 140px); min-width: calc(var(--wg-cat-size, 140px) * .8); scroll-snap-align: start; }
+    > :first-child { margin-inline-start: auto; }
+    > :last-child { margin-inline-end: auto; }
+    // Tablet without the single row option wraps into a grid instead.
+    @include down(lg) { .wg-categories--tablet-grid & { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); justify-items: center; overflow: visible; > * { flex: none; } > :first-child, > :last-child { margin-inline: 0; } } }
+    // Phone: three circles fill the row, the rest swipe in.
+    @include down(md) { scroll-snap-type: x mandatory; > * { flex: 0 0 calc((100% - var(--wg-cat-gap, 12px) * 2) / 3); min-width: 0; } > :first-child, > :last-child { margin-inline: 0; } }
   }
-  @include down(md) { .wg-category-item { width: 100%; } }
-  &.wg-carousel.is-carousel &__row, .wg-carousel.is-carousel > &__row { display: flex; --wg-carousel-item: 120px; } }
-.wg-category-item { position: relative; display: flex; flex-direction: column; align-items: center; gap: var(--wg-space-2); width: var(--wg-cat-size, 120px); text-align: center; color: var(--wg-color-heading); text-decoration: none;
+}
+.wg-category-item { position: relative; display: flex; flex-direction: column; align-items: center; gap: var(--wg-space-2); width: var(--wg-cat-size, 140px); max-width: 100%; text-align: center; color: var(--wg-color-heading); text-decoration: none;
+  @include down(md) { width: 100%; }
   &__media { position: relative; display: block; width: 100%; aspect-ratio: 1; overflow: hidden; border-radius: 50%; border: 1px solid var(--wg-cat-ring, #ead9d9); background: var(--wg-color-bg-alt); transition: transform var(--wg-transition-base) var(--wg-ease), box-shadow var(--wg-transition-base);
     .wg-categories--square & { border-radius: 0; }
     .wg-categories--rounded & { border-radius: var(--wg-radius-lg); }
@@ -61,17 +64,10 @@
   }
   &:hover &__media { transform: scale(1.04); box-shadow: var(--wg-shadow-sm); }
 
-  // Ribbon banner: sits across the circle, overhangs both edges, notched ends with a folded tail behind.
-  &__ribbon { position: absolute; top: 56%; inset-inline-start: 50%; transform: translate(-50%, -50%); width: max-content; min-width: calc(100% + 18px); max-width: calc(100% + 28px); height: 28px; z-index: 2; pointer-events: none;
-    [dir="rtl"] & { transform: translate(50%, -50%); }
-    &::before, &::after { content: ""; position: absolute; top: 100%; width: 9px; height: 7px; background: var(--wg-cat-ribbon-fold, #7a1219); }
-    &::before { inset-inline-start: 0; clip-path: polygon(0 0, 100% 0, 100% 100%); }
-    &::after { inset-inline-end: 0; clip-path: polygon(0 0, 100% 0, 0 100%); }
-  }
-  &__ribbon-text { display: block; width: 100%; height: 100%; line-height: 28px; padding: 0 16px; background: var(--wg-color-primary); color: #fff; font-size: 12px; font-weight: var(--wg-fw-bold); text-transform: uppercase; letter-spacing: .04em; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; clip-path: polygon(0 0, 100% 0, calc(100% - 9px) 50%, 100% 100%, 0 100%, 9px 50%); }
-
-  @include down(lg) { &__ribbon { height: 24px; min-width: calc(100% + 14px); max-width: calc(100% + 22px); } &__ribbon-text { line-height: 24px; font-size: 11px; padding: 0 13px; } }
-  @include down(md) { &__ribbon { height: 22px; min-width: calc(100% + 10px); max-width: calc(100% + 10px); } &__ribbon-text { line-height: 22px; font-size: 10px; padding: 0 11px; letter-spacing: .02em; } }
+  // Ribbon banner inside the circle: a small gap from the edge on both sides, notched ends, one line with an ellipsis.
+  &__ribbon { position: absolute; top: var(--wg-cat-ribbon-offset, 56%); inset-inline-start: var(--wg-cat-ribbon-inset, 6px); inset-inline-end: var(--wg-cat-ribbon-inset, 6px); transform: translateY(-50%); height: var(--wg-cat-ribbon-height, 28px); z-index: 2; pointer-events: none; }
+  &__ribbon-text { display: block; width: 100%; height: 100%; line-height: var(--wg-cat-ribbon-height, 28px); padding: 0 calc(var(--wg-cat-ribbon-notch, 9px) + 3px); background: var(--wg-cat-ribbon-bg, var(--wg-color-primary)); color: var(--wg-cat-ribbon-text, #fff); font-size: var(--wg-cat-ribbon-fs, 11px); font-weight: var(--wg-fw-bold); text-transform: var(--wg-cat-ribbon-transform, uppercase); letter-spacing: .02em; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    clip-path: polygon(0 0, 100% 0, calc(100% - var(--wg-cat-ribbon-notch, 9px)) 50%, 100% 100%, 0 100%, var(--wg-cat-ribbon-notch, 9px) 50%); }
 
   &__label { font-weight: var(--wg-fw-semibold); font-size: var(--wg-fs-sm); }
   &__count { font-size: var(--wg-fs-xs); color: var(--wg-color-text-muted); }

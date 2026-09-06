@@ -33,6 +33,23 @@ return [
 				'shop_ajax'             => [ 'label' => __( 'AJAX filtering and sorting', 'webgram' ), 'type' => 'switch' ],
 			],
 		],
+		'categories' => [
+			'label'  => __( 'Category circles', 'webgram' ),
+			'fields' => [
+				'cat_size'             => [ 'label' => __( 'Circle size', 'webgram' ), 'type' => 'dimensions', 'min' => 48, 'max' => 240, 'unit' => 'px', 'description' => __( 'On phones the circles are sized to fit three in a row.', 'webgram' ) ],
+				'cat_gap'              => [ 'label' => __( 'Space between circles', 'webgram' ), 'type' => 'dimensions', 'min' => 4, 'max' => 64, 'unit' => 'px' ],
+				'cat_tablet_row'       => [ 'label' => __( 'Single row on tablet (swipe for more)', 'webgram' ), 'type' => 'switch' ],
+				'cat_ring_color'       => [ 'label' => __( 'Circle border', 'webgram' ), 'type' => 'color' ],
+				'cat_ribbon_bg'        => [ 'label' => __( 'Ribbon color', 'webgram' ), 'type' => 'color', 'description' => __( 'Leave empty for the primary color.', 'webgram' ) ],
+				'cat_ribbon_text'      => [ 'label' => __( 'Ribbon text color', 'webgram' ), 'type' => 'color' ],
+				'cat_ribbon_height'    => [ 'label' => __( 'Ribbon height', 'webgram' ), 'type' => 'dimensions', 'min' => 16, 'max' => 48, 'unit' => 'px' ],
+				'cat_ribbon_font_size' => [ 'label' => __( 'Ribbon text size', 'webgram' ), 'type' => 'dimensions', 'min' => 8, 'max' => 20, 'unit' => 'px' ],
+				'cat_ribbon_inset'     => [ 'label' => __( 'Ribbon gap from the circle edge', 'webgram' ), 'type' => 'number', 'min' => 0, 'max' => 24, 'unit' => 'px' ],
+				'cat_ribbon_offset'    => [ 'label' => __( 'Ribbon position from the top', 'webgram' ), 'type' => 'range', 'min' => 30, 'max' => 80, 'unit' => '%' ],
+				'cat_ribbon_notch'     => [ 'label' => __( 'Notch depth at the ribbon ends', 'webgram' ), 'type' => 'range', 'min' => 0, 'max' => 16, 'unit' => 'px' ],
+				'cat_ribbon_uppercase' => [ 'label' => __( 'Uppercase ribbon text', 'webgram' ), 'type' => 'switch' ],
+			],
+		],
 		'card' => [
 			'label'  => __( 'Product card', 'webgram' ),
 			'fields' => [

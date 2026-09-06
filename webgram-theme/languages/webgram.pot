@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-06T01:26:08+00:00\n"
+"POT-Creation-Date: 2026-09-06T02:25:30+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: webgram\n"
@@ -1301,7 +1301,7 @@ msgstr ""
 #: inc/sections/class-sections.php:103
 #: inc/settings/class-settings-fields.php:205
 #: inc/settings/class-settings-fields.php:267
-#: inc/settings/tabs/shop.php:41
+#: inc/settings/tabs/shop.php:58
 #: inc/settings/tabs/styles.php:81
 msgid "None"
 msgstr ""
@@ -2424,76 +2424,76 @@ msgstr ""
 msgid "Buy now"
 msgstr ""
 
-#: inc/settings/defaults.php:251
+#: inc/settings/defaults.php:263
 msgid "100% secure payment by"
 msgstr ""
 
-#: inc/settings/defaults.php:254
+#: inc/settings/defaults.php:266
 msgid "Your payment information is processed securely."
 msgstr ""
 
-#: inc/settings/defaults.php:256
+#: inc/settings/defaults.php:268
 msgid "Secure payments"
 msgstr ""
 
-#: inc/settings/defaults.php:257
+#: inc/settings/defaults.php:269
 msgid "Fast and free shipping"
 msgstr ""
 
-#: inc/settings/defaults.php:258
+#: inc/settings/defaults.php:270
 msgid "Premium quality"
 msgstr ""
 
-#: inc/settings/defaults.php:259
+#: inc/settings/defaults.php:271
 msgid "Customer support 24/7"
 msgstr ""
 
-#: inc/settings/defaults.php:260
+#: inc/settings/defaults.php:272
 msgid "Satisfaction guaranteed"
 msgstr ""
 
-#: inc/settings/defaults.php:263
+#: inc/settings/defaults.php:275
 msgid "Returns"
 msgstr ""
 
-#: inc/settings/defaults.php:263
+#: inc/settings/defaults.php:275
 msgid "As per brand policy, 7 days"
 msgstr ""
 
-#: inc/settings/defaults.php:264
+#: inc/settings/defaults.php:276
 msgid "Shipping"
 msgstr ""
 
-#: inc/settings/defaults.php:264
+#: inc/settings/defaults.php:276
 msgid "Free for bulk orders"
 msgstr ""
 
-#: inc/settings/defaults.php:277
+#: inc/settings/defaults.php:289
 msgid "Apply coupon at next step | Not applicable on combos and gifts"
 msgstr ""
 
-#: inc/settings/defaults.php:278
+#: inc/settings/defaults.php:290
 msgid "Place order"
 msgstr ""
 
-#: inc/settings/defaults.php:279
+#: inc/settings/defaults.php:291
 msgid "Get extra 5% off on prepaid orders"
 msgstr ""
 
-#: inc/settings/defaults.php:288
+#: inc/settings/defaults.php:300
 msgid "Your payment is encrypted and secure."
 msgstr ""
 
-#: inc/settings/defaults.php:323
+#: inc/settings/defaults.php:335
 #: template-parts/misc/breadcrumb.php:42
 msgid "Page not found"
 msgstr ""
 
-#: inc/settings/defaults.php:324
+#: inc/settings/defaults.php:336
 msgid "The page you are looking for does not exist or has moved."
 msgstr ""
 
-#: inc/settings/defaults.php:326
+#: inc/settings/defaults.php:338
 msgid "Back to home"
 msgstr ""
 
@@ -2511,7 +2511,7 @@ msgid "Grid"
 msgstr ""
 
 #: inc/settings/tabs/blog.php:19
-#: inc/settings/tabs/shop.php:39
+#: inc/settings/tabs/shop.php:56
 msgid "List"
 msgstr ""
 
@@ -3392,8 +3392,8 @@ msgid "Below products"
 msgstr ""
 
 #: inc/settings/tabs/product-archive.php:20
-#: inc/settings/tabs/shop.php:45
-#: inc/settings/tabs/shop.php:46
+#: inc/settings/tabs/shop.php:62
+#: inc/settings/tabs/shop.php:63
 msgid "Hidden"
 msgstr ""
 
@@ -3514,142 +3514,202 @@ msgid "AJAX filtering and sorting"
 msgstr ""
 
 #: inc/settings/tabs/shop.php:37
-msgid "Product card"
+msgid "Category circles"
 msgstr ""
 
 #: inc/settings/tabs/shop.php:39
-msgid "Default card variant"
+msgid "Circle size"
 msgstr ""
 
 #: inc/settings/tabs/shop.php:39
-msgid "Standard"
+msgid "On phones the circles are sized to fit three in a row."
 msgstr ""
 
 #: inc/settings/tabs/shop.php:40
-msgid "Image ratio"
-msgstr ""
-
-#: inc/settings/tabs/shop.php:40
-msgid "Square 1:1"
-msgstr ""
-
-#: inc/settings/tabs/shop.php:40
-msgid "Portrait 3:4"
+msgid "Space between circles"
 msgstr ""
 
 #: inc/settings/tabs/shop.php:41
-msgid "Image hover effect"
-msgstr ""
-
-#: inc/settings/tabs/shop.php:41
-msgid "Swap to second image"
-msgstr ""
-
-#: inc/settings/tabs/shop.php:41
-msgid "Slideshow through gallery"
+msgid "Single row on tablet (swipe for more)"
 msgstr ""
 
 #: inc/settings/tabs/shop.php:42
-msgid "Slideshow interval"
+msgid "Circle border"
 msgstr ""
 
 #: inc/settings/tabs/shop.php:43
-msgid "Title lines"
+msgid "Ribbon color"
+msgstr ""
+
+#: inc/settings/tabs/shop.php:43
+msgid "Leave empty for the primary color."
 msgstr ""
 
 #: inc/settings/tabs/shop.php:44
-msgid "Badge position"
-msgstr ""
-
-#: inc/settings/tabs/shop.php:44
-msgid "Top left"
-msgstr ""
-
-#: inc/settings/tabs/shop.php:44
-msgid "Top right"
+msgid "Ribbon text color"
 msgstr ""
 
 #: inc/settings/tabs/shop.php:45
-msgid "Quick actions (wishlist, compare, quick view)"
-msgstr ""
-
-#: inc/settings/tabs/shop.php:45
-msgid "Show on hover"
-msgstr ""
-
-#: inc/settings/tabs/shop.php:45
-msgid "Always visible"
+msgid "Ribbon height"
 msgstr ""
 
 #: inc/settings/tabs/shop.php:46
-msgid "Rating pill"
-msgstr ""
-
-#: inc/settings/tabs/shop.php:46
-msgid "Right end of price line"
-msgstr ""
-
-#: inc/settings/tabs/shop.php:46
-msgid "Under title"
+msgid "Ribbon text size"
 msgstr ""
 
 #: inc/settings/tabs/shop.php:47
-msgid "Cart icon button"
+msgid "Ribbon gap from the circle edge"
 msgstr ""
 
 #: inc/settings/tabs/shop.php:48
-msgid "Buy now button"
-msgstr ""
-
-#: inc/settings/tabs/shop.php:48
-msgid "Goes to checkout with the selected variation. Requires Webgram Core for the direct-to-checkout behavior; without it the button opens the product page."
+msgid "Ribbon position from the top"
 msgstr ""
 
 #: inc/settings/tabs/shop.php:49
-msgid "Buy now label"
+msgid "Notch depth at the ribbon ends"
 msgstr ""
 
 #: inc/settings/tabs/shop.php:50
+msgid "Uppercase ribbon text"
+msgstr ""
+
+#: inc/settings/tabs/shop.php:54
+msgid "Product card"
+msgstr ""
+
+#: inc/settings/tabs/shop.php:56
+msgid "Default card variant"
+msgstr ""
+
+#: inc/settings/tabs/shop.php:56
+msgid "Standard"
+msgstr ""
+
+#: inc/settings/tabs/shop.php:57
+msgid "Image ratio"
+msgstr ""
+
+#: inc/settings/tabs/shop.php:57
+msgid "Square 1:1"
+msgstr ""
+
+#: inc/settings/tabs/shop.php:57
+msgid "Portrait 3:4"
+msgstr ""
+
+#: inc/settings/tabs/shop.php:58
+msgid "Image hover effect"
+msgstr ""
+
+#: inc/settings/tabs/shop.php:58
+msgid "Swap to second image"
+msgstr ""
+
+#: inc/settings/tabs/shop.php:58
+msgid "Slideshow through gallery"
+msgstr ""
+
+#: inc/settings/tabs/shop.php:59
+msgid "Slideshow interval"
+msgstr ""
+
+#: inc/settings/tabs/shop.php:60
+msgid "Title lines"
+msgstr ""
+
+#: inc/settings/tabs/shop.php:61
+msgid "Badge position"
+msgstr ""
+
+#: inc/settings/tabs/shop.php:61
+msgid "Top left"
+msgstr ""
+
+#: inc/settings/tabs/shop.php:61
+msgid "Top right"
+msgstr ""
+
+#: inc/settings/tabs/shop.php:62
+msgid "Quick actions (wishlist, compare, quick view)"
+msgstr ""
+
+#: inc/settings/tabs/shop.php:62
+msgid "Show on hover"
+msgstr ""
+
+#: inc/settings/tabs/shop.php:62
+msgid "Always visible"
+msgstr ""
+
+#: inc/settings/tabs/shop.php:63
+msgid "Rating pill"
+msgstr ""
+
+#: inc/settings/tabs/shop.php:63
+msgid "Right end of price line"
+msgstr ""
+
+#: inc/settings/tabs/shop.php:63
+msgid "Under title"
+msgstr ""
+
+#: inc/settings/tabs/shop.php:64
+msgid "Cart icon button"
+msgstr ""
+
+#: inc/settings/tabs/shop.php:65
+msgid "Buy now button"
+msgstr ""
+
+#: inc/settings/tabs/shop.php:65
+msgid "Goes to checkout with the selected variation. Requires Webgram Core for the direct-to-checkout behavior; without it the button opens the product page."
+msgstr ""
+
+#: inc/settings/tabs/shop.php:66
+msgid "Buy now label"
+msgstr ""
+
+#: inc/settings/tabs/shop.php:67
 msgid "Variation chips under price"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:51
+#: inc/settings/tabs/shop.php:68
 msgid "Chip attribute"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:51
+#: inc/settings/tabs/shop.php:68
 msgid "Can be overridden per product."
 msgstr ""
 
-#: inc/settings/tabs/shop.php:52
+#: inc/settings/tabs/shop.php:69
 msgid "Chip style"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:52
+#: inc/settings/tabs/shop.php:69
 msgid "Text chips"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:52
+#: inc/settings/tabs/shop.php:69
 msgid "Color circles"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:52
+#: inc/settings/tabs/shop.php:69
 msgid "Image thumbs"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:53
+#: inc/settings/tabs/shop.php:70
 msgid "Chips shown before \"+N\""
 msgstr ""
 
-#: inc/settings/tabs/shop.php:54
+#: inc/settings/tabs/shop.php:71
 msgid "Quick view"
 msgstr ""
 
-#: inc/settings/tabs/shop.php:54
+#: inc/settings/tabs/shop.php:71
 msgid "Provided by Webgram Core (Quick View module)."
 msgstr ""
 
-#: inc/settings/tabs/shop.php:54
+#: inc/settings/tabs/shop.php:71
 msgid "Enable the Quick View module in Webgram Core."
 msgstr ""
 
